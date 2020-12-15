@@ -1,4 +1,4 @@
-FROM node:10-alpine as songbox-webapp-stage
+FROM node:10-alpine as songbox-webapp
 LABEL maintainer="tonymtz <hello@tonymtz.com>"
 ARG REACT_APP_ENV=$REACT_APP_ENV
 WORKDIR /app
@@ -8,4 +8,4 @@ RUN npm install --silent
 RUN npm run build
 
 FROM nginx:alpine
-COPY --from=songbox-webapp-stage /app/build /usr/share/nginx/html
+COPY --from=songbox-webapp /app/build /usr/share/nginx/html
