@@ -19,12 +19,9 @@ const FilesComponent = ({ files, folders }) => (
       files.map((song, index) => (
         <LinkToSong
           key={song.get('name')}
-          index={index}
           fileName={song.get('name')}
-          samePlaylist={false}
-          files={files}
           path={song.get('path_lower')}
-          inFavorites={false}
+          songIndex={index}
         />
       ))
     }

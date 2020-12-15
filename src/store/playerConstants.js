@@ -1,0 +1,5 @@
+export const SET_SONG_LINK = 'SET_SONG_LINK';
+export const CHANGE_SONG_INDEX = 'CHANGE_SONG_INDEX';
+export const SET_ON_REPEAT = 'TOGGLE_REPEAT';
+export const SET_CURRENT_SONG = 'SET_CURRENT_SONG';
+export const SET_VOLUME = 'SET_VOLUME';

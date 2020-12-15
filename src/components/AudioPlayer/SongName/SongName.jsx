@@ -4,8 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import propTypes from 'prop-types';
 import swal from 'sweetalert';
 
-import { addFavorite } from '../../../Favorites/favorites';
-import { addToFavorites } from '../../../store/actions';
+import { addFavorite } from '../../../store/actions/favoritesActions';
 
 import '../style/song.scss';
 
@@ -14,7 +13,7 @@ const SongName = ({ showingName }) => {
   const songPath = currentSong ? currentSong.path : '';
 
   const dispatch = useDispatch();
-  const addToFavoritesState = (newFile) => dispatch(addToFavorites(newFile));
+  const addToFavoritesState = (newFile) => dispatch(addFavorite(newFile));
 
   const history = useHistory();
 

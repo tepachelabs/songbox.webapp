@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from 'react';
-import propTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import * as FaIcons from 'react-icons/fa';
@@ -17,16 +16,16 @@ const Sidebar = () => {
 
   const [sidebar, setSidebar] = useState(false);
 
-  const darkThemeActive = useSelector((state) => state.player.darkTheme);
+  const darkThemeActive = useSelector((state) => state.settings.darkTheme);
   const selectedIndex = useSelector((state) => state.slidebarIndex);
 
-  const showSidebar = (newState) => { 
+  const showSidebar = (newState) => {
     if (newState !== undefined) {
       setSidebar(newState);
       return;
     }
 
-    setSidebar(!sidebar)
+    setSidebar(!sidebar);
   };
 
   useEffect(() => {
@@ -34,7 +33,6 @@ const Sidebar = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedIndex]);
 
-  
   useEffect(() => {
     const clickOutside = (e) => {
       if (nodeRef.current.contains(e.target)) {
@@ -72,28 +70,18 @@ const Sidebar = () => {
             <Profile />
           </li>
           {
-                        SidebarData.map((item, index) => (
-                          <Item
-                            key={item.title}
-                            index={index}
-                            item={item}
-                          />
-                        ))
+            SidebarData.map((item, index) => (
+              <Item
+                key={item.title}
+                index={index}
+                item={item}
+              />
+            ))
           }
         </ul>
       </div>
     </div>
   );
-};
-
-Sidebar.defaultProps = {
-  sidebar: false,
-  setSidebar: undefined,
-};
-
-Sidebar.propTypes = {
-  sidebar: propTypes.bool,
-  setSidebar: propTypes.func,
 };
 
 export default Sidebar;

@@ -3,28 +3,28 @@ import { create } from 'react-test-renderer';
 
 import ParentTest from './ParentTest';
 
-import AudioPlayer from '../components/AudioPlayer';
-import Audio from '../components/AudioPlayer/Audio';
+import AudioPlayerComponent from '../components/AudioPlayer';
+import AudioComponent from '../components/AudioPlayer/Audio';
 import AudioProgress from '../components/AudioPlayer/AudioProgress';
-import Player from '../components/AudioPlayer/Player';
+import PlayerContainer from '../components/AudioPlayer/Player';
 import Forward from '../components/AudioPlayer/PlayerButtons/Forward';
 import Play from '../components/AudioPlayer/PlayerButtons/Play';
 import Repeat from '../components/AudioPlayer/PlayerButtons/Repeat';
 import Rewind from '../components/AudioPlayer/PlayerButtons/Rewind';
 import Shuffle from '../components/AudioPlayer/PlayerButtons/Shuffle';
 
-test('Render AudioPlayer component', () => {
+test('Render AudioPlayerComponent component', () => {
   const component = create(
     <ParentTest>
-      <AudioPlayer />
+      <AudioPlayerComponent />
     </ParentTest>,
   );
 });
 
-test('Render Audio component', () => {
+test('Render AudioComponent component', () => {
   const component = create(
     <ParentTest>
-      <Audio
+      <AudioComponent
         currentSong="despacito.mp3"
         singleSong={false}
         setProgress={0}
@@ -46,10 +46,10 @@ test('Render AudioProgress component', () => {
   );
 });
 
-test('Render Player component', () => {
+test('Render PlayerContainer component', () => {
   const component = create(
     <ParentTest>
-      <Player
+      <PlayerContainer
         isPlaying
         nextSong={null}
         onRandom={false}

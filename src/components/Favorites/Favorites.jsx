@@ -2,13 +2,13 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import propTypes from 'prop-types';
 
-import LinkToSong from '../Files/LinkToSong';
+import LinkToSong from '../Files/LinkToSong/LinkToSong.container';
 
 import { changeSlidebarIndex } from '../../store/actions';
 
 const Favorites = ({ pageNumber }) => {
   const favorites = useSelector((state) => state.favorites.songs);
-  const darkThemeActive = useSelector((state) => state.player.darkTheme);
+  const darkThemeActive = useSelector((state) => state.settings.darkTheme);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -23,24 +23,24 @@ const Favorites = ({ pageNumber }) => {
       </h1>
       <div className={`files-container ${darkThemeActive ? 'dark-theme-background dark-theme-color' : ''}`}>
         {
-                        favorites.length > 0
-                          ? favorites.map((favorite, index) => (
-                            <LinkToSong
-                              key={favorite.song_name || favorite.name}
-                              index={index}
-                              fileName={favorite.song_name || favorite.name}
-                              samePlaylist
-                              files={favorites}
-                              path={favorite.path_lower}
-                              inFavorites
-                            />
-                          ))
-                          : (
-                            <div className="no-favorites-container">
-                              <p>No favorites songs...</p>
-                            </div>
-                          )
-                    }
+          favorites.length > 0
+            ? favorites.map((favorite, index) => (
+              <LinkToSong
+                key={favorite.song_name || favorite.name}
+                index={index}
+                fileName={favorite.song_name || favorite.name}
+                samePlaylist
+                files={favorites}
+                path={favorite.path_lower}
+                inFavorites
+              />
+            ))
+            : (
+              <div className="no-favorites-container">
+                <p>No favorites songs...</p>
+              </div>
+            )
+        }
       </div>
     </div>
   );

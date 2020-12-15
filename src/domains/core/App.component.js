@@ -9,14 +9,14 @@ import {
 import Sidebar from '../../components/Sidebar';
 import Main from '../../components/Main';
 import Favorites from '../../components/Favorites';
-import Settings from '../../components/Settings';
+import SettingsContainer from '../../components/Settings';
 import Help from '../../components/Help';
 import Logout from '../../components/Logout';
 import NotFound from '../../components/NotFound';
-import AudioPlayer from '../../components/AudioPlayer';
+import AudioPlayerComponent from '../../components/AudioPlayer';
 
 const AppComponent = () => {
-  const darkThemeActive = useSelector((state) => state.player.darkTheme);
+  const darkThemeActive = useSelector((state) => state.settings.darkTheme);
 
   return (
     <BrowserRouter>
@@ -26,7 +26,7 @@ const AppComponent = () => {
       <div className="App">
         <Switch>
           <Route path={FAVORITES_PATH} render={() => <Favorites pageNumber={1} />} />
-          <Route path={SETTINGS_PATH} render={() => <Settings pageNumber={2} />} />
+          <Route path={SETTINGS_PATH} render={() => <SettingsContainer pageNumber={2} />} />
           <Route path={HELP_PATH} render={() => <Help pageNumber={3} />} />
           <Route path={LOGOUT_PATH} render={() => <Logout />} />
           <Route path={HOMEPAGE_PATH} exact component={Main} />
@@ -34,7 +34,7 @@ const AppComponent = () => {
           <Route path="*" component={NotFound} />
         </Switch>
       </div>
-      <AudioPlayer />
+      <AudioPlayerComponent />
     </BrowserRouter>
   );
 };

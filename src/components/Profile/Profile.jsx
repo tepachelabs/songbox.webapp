@@ -6,7 +6,7 @@ import './style/profile.scss';
 
 const Profile = () => {
   const user = useSelector((state) => state.user);
-  const darkThemeActive = useSelector((state) => state.player.darkTheme);
+  const darkThemeActive = useSelector((state) => state.settings.darkTheme);
 
   return (
     <div className="profile-container">

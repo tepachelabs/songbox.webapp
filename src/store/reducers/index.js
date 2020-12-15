@@ -2,8 +2,8 @@ import { combineReducers } from 'redux';
 
 import appReducer from './app';
 import filesReducer from './files';
+import settings from './settings';
 import slidebar from './slideBar';
-import songIndex from './songIndex';
 import songsQueue from './songsQueue';
 import auth from './auth';
 import user from './user';
@@ -14,14 +14,14 @@ import menu from './menu';
 
 export default combineReducers({
   app: appReducer,
-  files: filesReducer,
-  slidebarIndex: slidebar,
-  songIndex,
-  songsQueue,
   auth,
-  user,
-  player,
-  favorites,
   brokenLinks,
+  favorites,
+  files: filesReducer,
   menu,
+  player,
+  settings,
+  slidebarIndex: slidebar,
+  songsQueue,
+  user,
 });

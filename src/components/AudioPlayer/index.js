@@ -1,3 +1,3 @@
-import AudioPlayer from './AudioPlayer';
+import AudioPlayerContainer from './AudioPlayer.container';
 
-export default AudioPlayer;
+export default AudioPlayerContainer;

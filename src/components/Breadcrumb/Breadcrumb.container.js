@@ -1,11 +1,12 @@
 import React from 'react';
+import propTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import Home from '../Home';
 
 const BreadcrumbContainer = ({ clickableFolders, showingRoute }) => {
-  const darkThemeActive = useSelector((state) => state.player.darkTheme);
+  const darkThemeActive = useSelector((state) => state.settings.darkTheme);
 
   return (
     <div className="directory-container">
@@ -29,6 +30,16 @@ const BreadcrumbContainer = ({ clickableFolders, showingRoute }) => {
       </div>
     </div>
   );
+};
+
+BreadcrumbContainer.propTypes = {
+  clickableFolders: propTypes.instanceOf(Array),
+  showingRoute: propTypes.string,
+};
+
+BreadcrumbContainer.defaultProps = {
+  clickableFolders: [],
+  showingRoute: '/',
 };
 
 export default BreadcrumbContainer;

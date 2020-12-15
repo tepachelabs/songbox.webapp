@@ -20,7 +20,7 @@ const ContextMenu = () => {
         <img src={moreIcon} alt="more-menu" />
       </button>
 
-      <div className="dark-screen"></div>
+      <div className="dark-screen" />
 
       <Menu
         menuShowing={showMenu}

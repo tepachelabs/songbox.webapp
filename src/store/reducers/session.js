@@ -10,7 +10,6 @@ import { SESSION_DELETE, SESSION_RECOVER, SESSION_UPDATE } from '../constants';
 import { getSession } from '../../lib/localStorage';
 
 const user = {};
-const token = null;
 const isLogged = false;
 
 const initState = {

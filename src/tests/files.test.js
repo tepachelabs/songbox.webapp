@@ -6,7 +6,7 @@ import ParentTest from './ParentTest';
 
 import FilesComponent from '../components/Files';
 import LinkToFolder from '../components/Files/LinkToFolder';
-import LinkToSong from '../components/Files/LinkToSong';
+import LinkToSong from '../components/Files/LinkToSong/LinkToSong.container';
 
 test('Test Files component', () => {
   const component = create(

@@ -21,7 +21,7 @@ const SidebarData = [
   },
 
   {
-    title: 'Settings    ',
+    title: 'Settings',
     path: '/settings',
     icon: <IoMdSettings />,
     className: 'nav-text',
