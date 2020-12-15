@@ -1,0 +1,65 @@
+@import "colors.scss";
+@import "fonts.scss";
+.App {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    &-logo {
+        height: 40vmin;
+        pointer-events: none;
+    }
+    &-header {
+        background-color: $dark-color;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: calc(10px + 2vmin);
+        color: $white;
+    }
+    &-link {
+        color: $light-blue;
+    }
+}
+
+#root {
+    height: 100%;
+}
+
+.sidebar-container {
+    text-align: initial;
+}
+
+.title {
+    font-family: $font-quick;
+    font-weight: bold;
+}
+
+.text {
+    font-family: $font-asap;
+    font-size: 5vw;
+}
+
+@media (min-width: 1025px) {
+    .App {
+        width: 100%;
+        height: unset;
+        margin-left: 250px; //Slidebars width
+    }
+
+    #root {
+        height: 100%;
+        display: flex;
+    }
+}
+
+@media (max-height: 700px)  {
+    #root {
+        flex-direction: column;
+    }
+
+    .App {
+        margin-left: 0;
+    }
+}

@@ -1,0 +1,66 @@
+@import "../../../styles/colors.scss";
+
+$size-on-hover: 16px;
+$increased-size: 10px;
+
+.progress-bar-container {
+    height: 10px;
+    position: relative;
+}
+
+.progress { 
+    border-radius: 0;
+    height: 100%;
+}
+
+.progress-indicator {
+    position: absolute;
+    top: -50%;
+    height: $size-on-hover + $increased-size;
+    width: $size-on-hover + $increased-size;
+    border-radius: 50%;
+    border: 1px solid #adadad;
+    background-color: white;
+    display: block !important;
+}
+
+.hide {
+    display: none;
+}
+
+.display-name-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.display-name-container {
+    cursor: pointer;
+}
+
+.swal-title {
+    font-size: 16px !important;
+}
+
+@media (min-width: 1024px) {
+    .progress { 
+        height: 40%;
+    }
+
+    .progress-bar-container {
+        height: 20px;
+    }
+
+    .progress-hover {
+        height: 100%;
+    }
+
+    .progress-indicator {
+        display: none !important;
+        top: -10%;
+    }
+
+    .show {
+        display: block !important;
+    }
+}

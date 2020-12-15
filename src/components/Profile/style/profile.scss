@@ -1,0 +1,46 @@
+@import "../../../styles/fonts.scss";
+@import "../../../styles/colors.scss";
+
+$img-size: 100px;
+
+.profile-container {
+    text-align: center;
+}
+
+.profile-picture {
+    height: $img-size;
+    width: $img-size;
+    border-radius: 50%;
+}
+
+.user-email {
+    font-family: 'Asap', sans-serif;
+    font-size: 14px;
+    margin-bottom: 0;
+    padding: 1vw;
+    padding-bottom: 0.1vw;
+    word-wrap: break-word;
+    color: $not-so-soft-gray;
+}
+
+.user-name {
+    font-size: 16px;
+    font-weight: bold;
+    padding: 3vw;
+    padding-top: 0;
+    word-wrap: break-word;
+    font-family: 'Asap', sans-serif;
+}
+
+@media only screen and (min-width: 600px) and (max-width: 1024px) {
+    .user-name {
+        padding: 0;
+    }
+}
+
+@media(min-width: 1024px) { 
+    .user-name {
+        padding: 0;
+        font-size: 18px;
+    }
+}

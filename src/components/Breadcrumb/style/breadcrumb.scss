@@ -1,0 +1,41 @@
+@import "../../../styles/colors.scss";
+@import "../../../styles//fonts.scss";
+
+.directory-container {
+    & .title {
+        margin-left: 2vw;
+        margin-bottom: 0;
+        font-size: 16px;
+    }
+}
+
+.sub-directory-container {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+.route-breadcrumb {
+    text-decoration: none;
+    color: black;
+}
+
+.route-refresh-container {
+    align-items: center;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.route-breadcrumb:hover {
+    color: $orange;
+}
+
+@media (min-width: 1024px) {
+    .directory-container {
+        & .title { 
+            margin-left: 1vw;
+        }
+    }
+}
