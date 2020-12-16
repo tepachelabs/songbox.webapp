@@ -4,10 +4,12 @@ const dev = {
 
 const prod = {
   apiGatewayUrl: 'https://songbox.io',
+  rollbarKey: process.env.REACT_APP_ROLLBAR_KEY,
 };
 
 const stage = {
   apiGatewayUrl: 'https://stage.songbox.io',
+  rollbarKey: process.env.REACT_APP_ROLLBAR_KEY,
 };
 
 let config = dev;
