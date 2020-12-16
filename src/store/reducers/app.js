@@ -1,6 +1,6 @@
 import { Map } from 'immutable';
 
-import { APP_LOADED, APP_LOADING, APP_TOKEN_UPDATE } from '../constants';
+import { APP_LOADED, APP_LOADING, APP_TOKEN_UPDATE } from '../constants/constants';
 
 const initialState = Map({
   isLoaded: false,

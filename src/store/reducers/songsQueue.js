@@ -1,13 +1,21 @@
-const songsQueueReducer = (state = [], { type, payload }) => {
+import { ADD_BROKEN_LINK, CHANGE_SONGS_QUEUE, SET_SONG_INDEX } from '../constants/songsQueue';
+
+const initialState = {
+  index: 0,
+  queue: [],
+  brokenLinks: [],
+};
+
+const songsQueueReducer = (state = initialState, { type, payload }) => {
   switch (type) {
-  case 'CHANGE_SONGS_QUEUE':
+  case SET_SONG_INDEX:
     return payload;
 
-  case 'MARK_SONG_AS_BROKEN':
-    // eslint-disable-next-line no-case-declarations
-    const newState = [...state];
-    newState[payload].broken = true;
-    return newState;
+  case CHANGE_SONGS_QUEUE:
+    return payload;
+
+  case ADD_BROKEN_LINK:
+    return [...state, payload];
 
   default:
     return state;
