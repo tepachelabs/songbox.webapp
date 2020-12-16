@@ -13,12 +13,7 @@ const AudioComponent = ({ autoPlay, songLink }) => (
 );
 
 AudioComponent.propTypes = {
-  autoPlay: propTypes.bool,
-  songLink: propTypes.string,
-};
-
-AudioComponent.defaultProps = {
-  autoPlay: true,
+  autoPlay: propTypes.bool.isRequired,
   songLink: propTypes.string.isRequired,
 };
 
