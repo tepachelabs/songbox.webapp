@@ -1,3 +1,3 @@
-import AudioComponent from './Audio.container';
+import AudioContainer from './Audio.container';
 
-export default AudioComponent;
+export default AudioContainer;

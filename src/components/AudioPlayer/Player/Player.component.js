@@ -1,11 +1,9 @@
 import React from 'react';
 import propTypes from 'prop-types';
 
-import Repeat from '../PlayerButtons/Repeat';
-import Rewind from '../PlayerButtons/Rewind';
-import Play from '../PlayerButtons/Play';
-import Forward from '../PlayerButtons/Forward';
-import Shuffle from '../PlayerButtons/Shuffle';
+import {
+  Repeat, Rewind, Play, Forward, Shuffle,
+} from '../PlayerButtons';
 
 const PlayerComponent = ({ isDisabled }) => (
   <div className={`buttons ${isDisabled ? 'disable-buttons' : ''}`}>

@@ -9,7 +9,6 @@ const AudioContainer = () => {
 
   return (
     <AudioComponent
-      key={songLink}
       autoPlay={autoPlay}
       songLink={songLink}
     />

@@ -14,11 +14,11 @@ const AudioPlayerComponent = () => {
     <div className={`audio-container ${darkThemeActive ? 'dark-theme-background' : ''}`}>
       <AudioComponent />
 
-      <Fragment>
+      <>
         <div className={`audio-player ${darkThemeActive ? 'dark-theme-background' : ''}`}>
           <PlayerContainer />
         </div>
-      </Fragment>
+      </>
     </div>
   );
 };
