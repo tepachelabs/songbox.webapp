@@ -4,8 +4,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 
 const Option = ({ optionText, onClick, option }) => (
-  <>
-
+  <React.Fragment>
     {
       option === 'pref' ? (
         <button
@@ -24,8 +23,7 @@ const Option = ({ optionText, onClick, option }) => (
         </h4>
       )
     }
-
-  </>
+  </React.Fragment>
 );
 
 Option.propTypes = {

@@ -24,7 +24,8 @@ module.exports = {
   rules: {
     "indent": ["error", 2],
     "import/prefer-default-export": "off",
-    "react/jsx-filename-extension": "off"
+    "react/jsx-filename-extension": "off",
+    "react/jsx-fragments": ["error", "element"]
   },
   overrides: [
     {
