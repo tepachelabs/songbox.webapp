@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { createNewSession, recoverSession } from '../../store/actions/sessionActions';
+import { createNewSession, recoverSession } from 'store/actions/sessionActions';
 import AppComponent from './App.component';
 import LoadingComponent from './Loading.component';
 
