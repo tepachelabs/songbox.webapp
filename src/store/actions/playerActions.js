@@ -1,6 +1,6 @@
 import {
   TOGGLE_REPEAT, SET_VOLUME, SET_SONG_LINK, SET_CURRENT_SONG,
-} from '../constants/player';
+} from '../constants';
 
 export const toggleRepeat = (payload) => ({ type: TOGGLE_REPEAT, payload });
 export const setVolume = (payload) => ({ type: SET_VOLUME, payload });

@@ -1,6 +1,6 @@
 import {
   TOGGLE_IS_FAVORITE_PLAYING, REMOVE_FAVORITE, ADD_FAVORITE, INITIALIZE_FAVORITES,
-} from '../constants/favorites';
+} from '../constants';
 
 export const toggleIsFavoritePlaying = (payload) => ({ type: TOGGLE_IS_FAVORITE_PLAYING, payload });
 export const removeFavorite = (payload) => ({ type: REMOVE_FAVORITE, payload });

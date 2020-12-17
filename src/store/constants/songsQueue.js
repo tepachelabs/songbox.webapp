@@ -1,3 +1,0 @@
-export const CHANGE_SONGS_QUEUE = 'CHANGE_SONGS_QUEUE';
-export const ADD_BROKEN_LINK = 'ADD_BROKEN_LINK';
-export const SET_SONG_INDEX = 'SET_SONG_INDEX';

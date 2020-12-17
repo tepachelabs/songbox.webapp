@@ -1,4 +1,4 @@
-import { APP_LOADED, APP_LOADING, APP_TOKEN_UPDATE } from '../constants/constants';
+import { APP_LOADED, APP_LOADING, APP_TOKEN_UPDATE } from '../constants';
 
 /* SYNC OPERATIONS */
 

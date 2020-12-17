@@ -1,9 +1,15 @@
-import { CHANGE_SIDEBAR_INDEX } from '../constants/constants';
+import { Map } from 'immutable';
 
-const slideBarReducer = (state = 0, { type, payload = 0 }) => {
+import { CHANGE_SIDEBAR_INDEX } from '../constants';
+
+const initialState = Map({
+  index: 0,
+});
+
+const slideBarReducer = (state = initialState, { type, payload }) => {
   switch (type) {
   case CHANGE_SIDEBAR_INDEX:
-    return payload;
+    return state.set('index', payload);
 
   default:
     return state;

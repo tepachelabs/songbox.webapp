@@ -14,7 +14,7 @@ export default combineReducers({
   favorites: favoritesReducer,
   files: filesReducer,
   settings: settingsReducer,
-  sidebarIndex: sidebarReducer,
+  sidebar: sidebarReducer,
   songsQueue: songsQueueReducer,
   player: playerReducer,
   user: userReducer,

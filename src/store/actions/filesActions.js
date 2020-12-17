@@ -1,4 +1,4 @@
-import { FILES_SET_FILES_LIST, FILES_SET_FOLDER_LIST } from '../constants/constants';
+import { FILES_SET_FILES_LIST, FILES_SET_FOLDER_LIST } from '../constants';
 import { apiFetchFiles } from '../../lib/apiFilesService';
 import { getFolders, getSongs } from '../../utils/files';
 

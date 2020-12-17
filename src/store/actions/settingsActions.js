@@ -1,6 +1,6 @@
 import {
   SET_AUTO_PLAY, SET_FULL_FILENAME, SET_DARK_THEME, RESTORE_PREFERENCES,
-} from '../constants/settings';
+} from '../constants';
 
 export const setAutoPlay = (payload) => ({ type: SET_AUTO_PLAY, payload });
 export const setFullFilename = (payload) => ({ type: SET_FULL_FILENAME, payload });

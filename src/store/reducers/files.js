@@ -1,6 +1,6 @@
 import { Map, List } from 'immutable';
 
-import { FILES_SET_FILES_LIST, FILES_SET_FOLDER_LIST } from '../constants/constants';
+import { FILES_SET_FILES_LIST, FILES_SET_FOLDER_LIST } from '../constants';
 
 const initialState = Map({
   folders: List(),
