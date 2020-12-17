@@ -18,6 +18,6 @@ export const fetchFilelistFromPath = (path) => (dispatch, getState) => {
       dispatch(setFilesList(getSongs(data)));
     })
     .catch((err) => {
-      console.error(err);
+      throw new Error(err);
     });
 };

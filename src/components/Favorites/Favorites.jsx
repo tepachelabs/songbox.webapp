@@ -23,24 +23,24 @@ const Favorites = ({ pageNumber }) => {
       </h1>
       <div className={`files-container ${darkThemeActive ? 'dark-theme-background dark-theme-color' : ''}`}>
         {
-                        favorites.length > 0
-                          ? favorites.map((favorite, index) => (
-                            <LinkToSong
-                              key={favorite.song_name || favorite.name}
-                              index={index}
-                              fileName={favorite.song_name || favorite.name}
-                              samePlaylist
-                              files={favorites}
-                              path={favorite.path_lower}
-                              inFavorites
-                            />
-                          ))
-                          : (
-                            <div className="no-favorites-container">
-                              <p>No favorites songs...</p>
-                            </div>
-                          )
-                    }
+          favorites.length > 0
+            ? favorites.map((favorite, index) => (
+              <LinkToSong
+                key={favorite.song_name || favorite.name}
+                index={index}
+                fileName={favorite.song_name || favorite.name}
+                samePlaylist
+                files={favorites}
+                path={favorite.path_lower}
+                inFavorites
+              />
+            ))
+            : (
+              <div className="no-favorites-container">
+                <p>No favorites songs...</p>
+              </div>
+            )
+        }
       </div>
     </div>
   );

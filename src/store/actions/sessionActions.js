@@ -22,13 +22,13 @@ export const recoverSession = () => (dispatch) => {
 
 export const createNewSession = (token) => (dispatch) => {
   apiMeRequest(token)
-  .then(({ data: user }) => {
-      dispatch(setUser(user)); 
+    .then(({ data: user }) => {
+      dispatch(setUser(user));
       dispatch(updateAppToken(token));
       saveSession(token, user); // rename this saveSessionToLocalStorage
     })
     .catch((err) => {
-      console.error(err);
+      throw new Error(err);
     })
     .then(() => {
       dispatch(setAppLoaded());

@@ -1,10 +1,10 @@
 const authReducer = (state = false, { type, payload = false }) => {
   switch (type) {
-    case 'CHANGED_AUTH':
-      return payload;
+  case 'CHANGED_AUTH':
+    return payload;
 
-    default:
-      return state;
+  default:
+    return state;
   }
 };
 

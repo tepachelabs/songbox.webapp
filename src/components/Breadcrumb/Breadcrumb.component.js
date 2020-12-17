@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import propTypes from 'prop-types';
 
 import BreadcrumbContainer from './Breadcrumb.container';
 
 import './style/breadcrumb.scss';
 
-const Directory = () => {
+const BreadcrumbComponent = () => {
   const { path } = useParams();
 
   const [showingRoute, setShowingRoute] = useState([]);
@@ -33,20 +32,15 @@ const Directory = () => {
     setShowingRoute(cleanRoutes);
   }, [path]);
 
-  return ( 
-    <BreadcrumbContainer 
+  return (
+    <BreadcrumbContainer
       clickableFolders={clickableFolders}
       showingRoute={showingRoute}
     />
   );
 };
 
-Directory.defaultProps = {
-  setTriggerUpdate: undefined,
+BreadcrumbComponent.propTypes = {
 };
 
-Directory.propTypes = {
-  setTriggerUpdate: propTypes.func,
-};
-
-export default Directory;
+export default BreadcrumbComponent;
