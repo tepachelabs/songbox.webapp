@@ -16,8 +16,6 @@ jobs:
         node-version: [ 10.x, 12.x, 14.x ]
 
     steps:
-      - name: Codecov
-        uses: codecov/codecov-action@v1.0.15
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
@@ -27,3 +25,5 @@ jobs:
       - run: npm run lint
       - run: npm run build
       - run: npm test:coverage
+      - name: Codecov
+        uses: codecov/codecov-action@v1.0.15
