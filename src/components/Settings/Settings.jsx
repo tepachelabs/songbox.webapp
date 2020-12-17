@@ -3,7 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import propTypes from 'prop-types';
 
 import { changeSidebarIndex } from 'store/actions';
-import { setAutoPlay, setDarkTheme, setFullFilename, restorePreferences} from 'store/actions/settingsActions';
+import {
+  setAutoPlay, setDarkTheme, setFullFilename, restorePreferences
+} from 'store/actions/settingsActions';
 
 import OptionSection from './OptionSection';
 import OptionToggle from './OptionToggle';
@@ -19,8 +21,8 @@ const Settings = ({ pageNumber }) => {
   const fullFilename = useSelector((state) => state.player.fullFilename);
 
   useEffect(() => {
-    dispatch(changeSidebarIndex (pageNumber));
-  }, [dispatch, pageNumber]);
+    dispatch(changeSidebarIndex(pageNumber));
+  },[dispatch, pageNumber]);
 
   const toggleAutoPlay = () => dispatch(setAutoPlay(!autoPlayActive));
   const toggleDarkTheme = () => dispatch(setDarkTheme(!darkThemeActive));

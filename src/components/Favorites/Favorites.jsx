@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import propTypes from 'prop-types';
 
-import LinkToSong from '../Files/LinkToSong';
-
 import { changeSidebarIndex } from 'store/actions';
+
+import LinkToSong from '../Files/LinkToSong';
 
 const Favorites = ({ pageNumber }) => {
   const favorites = useSelector((state) => state.favorites.songs);
