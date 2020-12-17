@@ -22,7 +22,7 @@ const Settings = ({ pageNumber }) => {
 
   useEffect(() => {
     dispatch(changeSidebarIndex(pageNumber));
-  },[dispatch, pageNumber]);
+  }, [dispatch, pageNumber]);
 
   const toggleAutoPlay = () => dispatch(setAutoPlay(!autoPlayActive));
   const toggleDarkTheme = () => dispatch(setDarkTheme(!darkThemeActive));
