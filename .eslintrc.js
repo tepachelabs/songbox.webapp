@@ -35,5 +35,12 @@ module.exports = {
         "eslint linebreak-style": ["error", "windows"]
       }
     }
-  ]
+  ],
+  settings: {
+    "import/resolver": {
+      node: {
+        paths: ["src"]
+      }
+    }
+  }
 };
