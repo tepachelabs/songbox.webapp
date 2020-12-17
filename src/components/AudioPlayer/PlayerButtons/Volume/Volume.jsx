@@ -14,7 +14,7 @@ const Volume = ({ audioPlayer }) => {
   const showVolume = () => setBarShowing(!barShowing);
 
   return (
-    <>
+    <React.Fragment>
       <button type="button" className="player-button volume-button" onClick={showVolume}>
         <VolumeBar
           barShowing={barShowing}
@@ -25,7 +25,7 @@ const Volume = ({ audioPlayer }) => {
           alt="volume-icon"
         />
       </button>
-    </>
+    </React.Fragment>
   );
 };
 

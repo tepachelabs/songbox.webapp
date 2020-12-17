@@ -15,7 +15,7 @@ const ContextMenu = () => {
   };
 
   return (
-    <>
+    <React.Fragment>
       <button className="icon context-menu" onClick={openMenu} type="button">
         <img src={moreIcon} alt="more-menu" />
       </button>
@@ -26,7 +26,7 @@ const ContextMenu = () => {
         menuShowing={showMenu}
         setShowMenu={setShowMenu}
       />
-    </>
+    </React.Fragment>
   );
 };
 

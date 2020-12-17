@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
@@ -17,18 +17,18 @@ const Sidebar = () => {
   const darkThemeActive = useSelector((state) => state.player.darkTheme);
   const selectedIndex = useSelector((state) => state.slidebarIndex);
 
-  const showSidebar = (newState) => {
+  const showSidebar = useCallback((newState) => {
     if (newState !== undefined) {
       setSidebar(newState);
       return;
     }
 
     setSidebar(!sidebar);
-  };
+  }, [sidebar]);
 
   useEffect(() => {
     showSidebar(false);
-  }, [selectedIndex]);
+  }, [showSidebar, selectedIndex]);
 
   useEffect(() => {
     const clickOutside = (e) => {
@@ -45,7 +45,7 @@ const Sidebar = () => {
     return () => {
       document.removeEventListener('mousedown', clickOutside, false);
     };
-  }, []);
+  }, [showSidebar]);
 
   return (
     <div ref={nodeRef}>

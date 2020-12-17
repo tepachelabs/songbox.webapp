@@ -68,13 +68,13 @@ const LinkToSong = ({
       {
         !isBroken
                 && (
-                  <>
+                  <React.Fragment>
                     <HeartFavorite
                       fileName={fileName}
                       path={path}
                     />
                     <ContextMenu />
-                  </>
+                  </React.Fragment>
                 )
       }
     </div>

@@ -2,6 +2,7 @@ module.exports = {
   env: {
     browser: true,
     es6: true,
+    jest: true
   },
   extends: [
     'plugin:react/recommended',
@@ -23,19 +24,11 @@ module.exports = {
   ],
   rules: {
     "indent": ["error", 2],
+    "linebreak-style": ["error", "unix"],
     "import/prefer-default-export": "off",
-    "react/jsx-filename-extension": "off"
+    "react/jsx-filename-extension": "off",
+    "react/jsx-fragments": ["error", "element"]
   },
-  overrides: [
-    {
-      files: ["*.spec.js"],
-
-      rules: {
-        "jest/valid-expect": 0,
-        "eslint linebreak-style": ["error", "windows"]
-      }
-    }
-  ],
   settings: {
     "import/resolver": {
       node: {
