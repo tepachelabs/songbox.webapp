@@ -15,7 +15,7 @@ const Sidebar = () => {
   const [sidebar, setSidebar] = useState(false);
 
   const darkThemeActive = useSelector((state) => state.player.darkTheme);
-  const selectedIndex = useSelector((state) => state.slidebarIndex);
+  const selectedIndex = useSelector((state) => state.sidebar.index);
 
   const showSidebar = useCallback((newState) => {
     if (newState !== undefined) {

@@ -4,7 +4,7 @@ import propTypes from 'prop-types';
 
 import LinkToSong from '../Files/LinkToSong';
 
-import { changeSlidebarIndex } from '../../store/actions';
+import { changeSidebarIndex } from 'store/actions';
 
 const Favorites = ({ pageNumber }) => {
   const favorites = useSelector((state) => state.favorites.songs);
@@ -12,7 +12,7 @@ const Favorites = ({ pageNumber }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(changeSlidebarIndex(pageNumber));
+    dispatch(changeSidebarIndex(pageNumber));
   }, [pageNumber, dispatch]);
 
   return (
