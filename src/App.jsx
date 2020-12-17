@@ -33,12 +33,13 @@ const App = () => {
       try {
         const userFavorites = await getFavorites();
         if (!userFavorites) {
-          throw new Error();
+          setFavoritesState([]);
         } else {
           setFavoritesState(userFavorites.data);
         }
       } catch (error) {
         setFavoritesState([]);
+        throw new Error(error);
       }
     };
 
@@ -73,29 +74,29 @@ const App = () => {
   return (
     <>
       {
-                isAuth
+        isAuth
                 && (
-                <>
-                  <BrowserRouter>
-                    <div className={`sidebar-container ${darkThemeActive ? 'dark-soft-theme-background' : ''}`}>
-                      <Sidebar />
-                    </div>
-                    <div className="App">
-                      <Switch>
-                        <Route path="/app" component={Main} />
-                        <Route path="/app/:path" component={Main} />
-                        <Route path="/favorites" render={() => <Favorites pageNumber={1} />} />
-                        <Route path="/settings" render={() => <Settings pageNumber={2} />} />
-                        <Route path="/help" render={() => <Help pageNumber={3} />} />
-                        <Route path="/logout" render={() => <Logout />} />
-                        <Route path="*" component={NotFound} />
-                      </Switch>
-                    </div>
-                    <AudioPlayer />
-                  </BrowserRouter>
-                </>
+                  <>
+                    <BrowserRouter>
+                      <div className={`sidebar-container ${darkThemeActive ? 'dark-soft-theme-background' : ''}`}>
+                        <Sidebar />
+                      </div>
+                      <div className="App">
+                        <Switch>
+                          <Route path="/app" component={Main} />
+                          <Route path="/app/:path" component={Main} />
+                          <Route path="/favorites" render={() => <Favorites pageNumber={1} />} />
+                          <Route path="/settings" render={() => <Settings pageNumber={2} />} />
+                          <Route path="/help" render={() => <Help pageNumber={3} />} />
+                          <Route path="/logout" render={() => <Logout />} />
+                          <Route path="*" component={NotFound} />
+                        </Switch>
+                      </div>
+                      <AudioPlayer />
+                    </BrowserRouter>
+                  </>
                 )
-            }
+      }
     </>
   );
 };

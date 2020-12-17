@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import Rollbar from 'rollbar';
 import config from '../config';
 

@@ -5,11 +5,11 @@ const initialState = {
 
 const menuReducer = (state = initialState, { type, payload }) => {
   switch (type) {
-    case 'TOGGLE_MENU':
-      return { ...state, open: payload };
+  case 'TOGGLE_MENU':
+    return { ...state, open: payload };
 
-    default:
-      return state;
+  default:
+    return state;
   }
 };
 

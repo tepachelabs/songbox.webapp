@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
+import propTypes from 'prop-types';
 import Home from '../Home';
 
 const BreadcrumbContainer = ({ clickableFolders, showingRoute }) => {
@@ -29,6 +30,11 @@ const BreadcrumbContainer = ({ clickableFolders, showingRoute }) => {
       </div>
     </div>
   );
+};
+
+BreadcrumbContainer.propTypes = {
+  clickableFolders: propTypes.arrayOf(propTypes.string).isRequired,
+  showingRoute: propTypes.arrayOf(propTypes.string).isRequired,
 };
 
 export default BreadcrumbContainer;
