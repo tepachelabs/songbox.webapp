@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import propTypes from 'prop-types';
 
-import { changeSlidebarIndex } from '../../store/actions';
+import { changeSidebarIndex } from 'store/actions';
 
 import './styles/help.scss';
 
@@ -11,7 +11,7 @@ const Help = ({ pageNumber }) => {
   const darkThemeActive = useSelector((state) => state.player.darkTheme);
 
   useEffect(() => {
-    dispatch(changeSlidebarIndex(pageNumber));
+    dispatch(changeSidebarIndex(pageNumber));
   }, [dispatch, pageNumber]);
 
   return (

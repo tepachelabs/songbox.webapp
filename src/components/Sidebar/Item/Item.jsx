@@ -7,15 +7,15 @@ import propTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { changeSlidebarIndex } from '../../../store/actions';
+import { changeSidebarIndex } from 'store/actions';
 
 const Item = ({ index, item }) => {
-  const selectedIndex = useSelector((state) => state.slidebarIndex);
+  const selectedIndex = useSelector((state) => state.sidebar.index);
   const dispatch = useDispatch();
 
   return (
     <Link className="nav-item" to={item.path}>
-      <li onClick={() => dispatch(changeSlidebarIndex(index))} className={`nav-li ${selectedIndex === index ? 'selected-item' : ''}`}>
+      <li onClick={() => dispatch(changeSidebarIndex(index))} className={`nav-li ${selectedIndex === index ? 'selected-item' : ''}`}>
         <div className="nav-item-container">
           { item.icon }
           <span className="item-title">{ item.title }</span>

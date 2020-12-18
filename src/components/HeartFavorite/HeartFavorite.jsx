@@ -4,8 +4,8 @@ import propTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import swal from 'sweetalert';
 
-import { addToFavorites, removeFromFavorites } from '../../store/actions';
-import { addFavorite, removeFavorite } from '../../Favorites/favorites';
+import { addFavorite, removeFavorite } from 'store/actions/favoritesActions';
+import { addFavorite as addFavoriteToDatabase, removeFavorite as removeFromDatabase } from '../../Favorites/favorites';
 
 import './styles/favorite.scss';
 
@@ -13,8 +13,8 @@ const HeartFavorite = ({ fileName, path }) => {
   const [isFavorite, setIsFavorite] = useState(false);
 
   const dispatch = useDispatch();
-  const addToFavoritesState = (newFile) => dispatch(addToFavorites(newFile));
-  const removeFromFavoritesState = (songToRemove) => dispatch(removeFromFavorites(songToRemove));
+  const addToFavoritesState = (newFile) => dispatch(addFavorite(newFile));
+  const removeFromFavoritesState = (songToRemove) => dispatch(removeFavorite(songToRemove));
 
   const favorites = useSelector((state) => state.favorites.songs);
   const brokenLinks = useSelector((state) => state.brokenLinks);
@@ -55,8 +55,6 @@ const HeartFavorite = ({ fileName, path }) => {
           removeFromFavoritesState(file);
           await removeFavorite(file);
         } catch (e) {
-          setIsFavorite(false);
-          removeFromFavoritesState(file);
           showServiceNotAvailable();
         }
       }
@@ -81,12 +79,11 @@ const HeartFavorite = ({ fileName, path }) => {
       if (!isFavorite) {
         setIsFavorite(true);
         addToFavoritesState(file);
-        await addFavorite(file);
-        success = await addFavorite(file);
+        success = await addFavoriteToDatabase(file);
       } else {
         setIsFavorite(false);
         removeFromFavoritesState(file);
-        success = await removeFavorite(file);
+        success = await removeFromDatabase(file);
       }
 
       if (!success) throw new Error();
