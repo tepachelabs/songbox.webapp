@@ -1,5 +1,9 @@
-import { ADD_BROKEN_LINK, CHANGE_SONGS_QUEUE, SET_SONG_INDEX } from '../constants';
+import {
+  SONGS_QUEUE_ADD_BROKEN_LINK,
+  SONGS_QUEUE_CHANGE_SONGS,
+  SONGS_QUEUE_SET_SONG_INDEX,
+} from '../constants';
 
-export const addBrokenLink = (payload) => ({ type: ADD_BROKEN_LINK, payload });
-export const changeSongsQueue = (payload) => ({ type: CHANGE_SONGS_QUEUE, payload });
-export const setSongIndex = (payload) => ({ type: SET_SONG_INDEX, payload });
+export const addBrokenLink = (payload) => ({ type: SONGS_QUEUE_ADD_BROKEN_LINK, payload });
+export const changeSongsQueue = (payload) => ({ type: SONGS_QUEUE_CHANGE_SONGS, payload });
+export const setSongIndex = (payload) => ({ type: SONGS_QUEUE_SET_SONG_INDEX, payload });

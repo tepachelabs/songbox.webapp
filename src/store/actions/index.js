@@ -1,4 +1,4 @@
-import { CHANGE_SIDEBAR_INDEX, SET_USER } from '../constants';
+import { SIDEBAR_CHANGE_INDEX, USER_SET_USER } from '../constants';
 
-export const changeSidebarIndex = (payload) => ({ type: CHANGE_SIDEBAR_INDEX, payload });
-export const setUser = (payload) => ({ type: SET_USER, payload });
+export const changeSidebarIndex = (payload) => ({ type: SIDEBAR_CHANGE_INDEX, payload });
+export const setUser = (payload) => ({ type: USER_SET_USER, payload });

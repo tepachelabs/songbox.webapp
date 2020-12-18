@@ -4,7 +4,10 @@ import propTypes from 'prop-types';
 
 import { changeSidebarIndex } from 'store/actions';
 import {
-  setAutoPlay, setDarkTheme, setFullFilename, restorePreferences,
+  setAutoPlay,
+  setDarkTheme,
+  setFullFilename,
+  restorePreferences,
 } from 'store/actions/settingsActions';
 
 import OptionSection from './OptionSection';

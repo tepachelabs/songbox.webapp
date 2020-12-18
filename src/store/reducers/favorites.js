@@ -1,7 +1,10 @@
 import { Map, List } from 'immutable';
 
 import {
-  INITIALIZE_FAVORITES, ADD_FAVORITE, REMOVE_FAVORITE, TOGGLE_IS_FAVORITE_PLAYING,
+  FAVORITES_INITIALIZE_FAVORITES,
+  FAVORITES_ADD_FAVORITE,
+  FAVORITES_REMOVE_FAVORITE,
+  FAVORITES_SET_IS_FAVORITE_PLAYING,
 } from '../constants';
 
 const initialState = Map({
@@ -11,20 +14,20 @@ const initialState = Map({
 
 const favoritesReducer = (state = initialState, { type, payload }) => {
   switch (type) {
-  case INITIALIZE_FAVORITES:
+  case FAVORITES_INITIALIZE_FAVORITES:
     return state.set('songs', payload);
 
-  case ADD_FAVORITE: {
-    const favoritesUpdated = state.get('songs').push(payload);
-    return state.set('songs', favoritesUpdated);
+  case FAVORITES_ADD_FAVORITE: {
+    const itemIndex = state.get('songs').findIndex((song) => song.get('song_name') === payload.get('song_name'));
+    return itemIndex > -1 ? state.deleteIn(['songs', itemIndex]) : state;
   }
 
-  case REMOVE_FAVORITE: {
+  case FAVORITES_REMOVE_FAVORITE: {
     const favoritesUpdated = state.songs.filter((song) => song.song_name !== payload.song_name);
     return state.set('songs', favoritesUpdated);
   }
 
-  case TOGGLE_IS_FAVORITE_PLAYING:
+  case FAVORITES_SET_IS_FAVORITE_PLAYING:
     return state.set('isPlaying', payload);
 
   default:

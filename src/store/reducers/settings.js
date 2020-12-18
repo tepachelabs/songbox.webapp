@@ -1,7 +1,10 @@
 import { Map } from 'immutable';
 
 import {
-  SET_AUTO_PLAY, SET_FULL_FILENAME, SET_DARK_THEME, RESTORE_PREFERENCES,
+  SETTINGS_SET_AUTO_PLAY,
+  SETTINGS_SET_FULL_FILENAME,
+  SETTINGS_SET_DARK_THEME,
+  SETTINGS_RESTORE_PREFERENCES,
 } from '../constants';
 
 const initialState = Map({
@@ -12,18 +15,15 @@ const initialState = Map({
 
 const settingsReducer = (state = initialState, { type, payload }) => {
   switch (type) {
-  case SET_AUTO_PLAY:
+  case SETTINGS_SET_AUTO_PLAY:
     return state.set('autoPlay', payload);
-  case SET_FULL_FILENAME:
+  case SETTINGS_SET_FULL_FILENAME:
     return state.set('fullFilename', payload);
-  case SET_DARK_THEME:
+  case SETTINGS_SET_DARK_THEME:
     return state.set('darkTheme', payload);
 
-  case RESTORE_PREFERENCES:
-    return state
-      .set('autoPlay', true)
-      .set('darkTheme', false)
-      .set('fullFilename', false);
+  case SETTINGS_RESTORE_PREFERENCES:
+    return initialState;
 
   default:
     return state;
