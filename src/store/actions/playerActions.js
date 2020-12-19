@@ -12,7 +12,7 @@ export const setVolume = (payload) => ({ type: PLAYER_SET_VOLUME, payload });
 export const setSong = (payload) => ({ type: PLAYER_SET_CURRENT_SONG, payload });
 export const setSongLink = (payload) => ({ type: PLAYER_SET_SONG_LINK, payload });
 
-export const fetchStreamableSong = (path) => (dispatch, getState) => {
+export const getSongStreamLink = (path) => (dispatch, getState) => {
   const token = getState().app.get('token');
 
   apiFetchStreamableSongs(token, path)

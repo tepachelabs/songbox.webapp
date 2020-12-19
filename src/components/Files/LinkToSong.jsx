@@ -6,7 +6,7 @@ import { List } from 'immutable';
 import { changeSidebarIndex } from 'store/actions';
 import { toggleIsFavoritePlaying } from 'store/actions/favoritesActions';
 import { changeSongsQueue } from 'store/actions/songsQueueActions';
-import { fetchStreamableSong } from 'store/actions/playerActions';
+import { getSongStreamLink } from 'store/actions/playerActions';
 
 import SongIcon from '../SongIcon';
 import HeartFavorite from '../HeartFavorite';
@@ -30,7 +30,7 @@ const LinkToSong = ({
   const setSongIndex = (sonIndex) => dispatch(changeSidebarIndex(sonIndex));
 
   const selectSong = () => {
-    dispatch(fetchStreamableSong(path));
+    dispatch(getSongStreamLink(path));
     setSongIndex(index);
     setIsPlaying(true);
     setSongsQueue(files);
