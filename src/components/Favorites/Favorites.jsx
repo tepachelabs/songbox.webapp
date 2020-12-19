@@ -7,8 +7,8 @@ import { changeSidebarIndex } from 'store/actions';
 import LinkToSong from '../Files/LinkToSong';
 
 const Favorites = ({ pageNumber }) => {
-  const favorites = useSelector((state) => state.favorites.songs);
-  const darkThemeActive = useSelector((state) => state.player.darkTheme);
+  const favorites = useSelector((state) => state.favorites.get('songs'));
+  const darkThemeActive = useSelector((state) => state.settings.get('darkTheme'));
   const dispatch = useDispatch();
 
   useEffect(() => {

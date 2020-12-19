@@ -16,8 +16,8 @@ const HeartFavorite = ({ fileName, path }) => {
   const addToFavoritesState = (newFile) => dispatch(addFavorite(newFile));
   const removeFromFavoritesState = (songToRemove) => dispatch(removeFavorite(songToRemove));
 
-  const favorites = useSelector((state) => state.favorites.songs);
-  const brokenLinks = useSelector((state) => state.brokenLinks);
+  const favorites = useSelector((state) => state.favorites.get('songs'));
+  const brokenLinks = useSelector((state) => state.songsQueue.get('brokenLinks'));
 
   const showServiceNotAvailable = () => {
     setIsFavorite(false);
