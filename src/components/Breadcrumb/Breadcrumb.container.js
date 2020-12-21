@@ -1,40 +1,44 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
-import propTypes from 'prop-types';
-import Home from '../Home';
+import BreadcrumbComponent from './Breadcrumb.component';
 
-const BreadcrumbContainer = ({ clickableFolders, showingRoute }) => {
-  const darkThemeActive = useSelector((state) => state.player.darkTheme);
+const BreadcrumbContainer = () => {
+  const { path } = useParams();
+
+  const [showingRoute, setShowingRoute] = useState([]);
+  const [clickableFolders, setClickableFolders] = useState([]);
+
+  useEffect(() => {
+    const myRoute = path || '';
+    const cleanRoute = myRoute.replaceAll('%20', ' ');
+
+    const splitBreadCrumb = cleanRoute.split('/');
+    const cleanRoutes = splitBreadCrumb.filter((tempRoute) => tempRoute !== '');
+    const finalRoutes = [];
+
+    for (let i = 0; i < cleanRoutes.length; i += 1) {
+      let tempRoute = '';
+      for (let j = 0; j <= i; j += 1) {
+        tempRoute = `${tempRoute}/${cleanRoutes[j]}`;
+      }
+
+      finalRoutes.push(`${tempRoute}/`);
+    }
+
+    setClickableFolders(finalRoutes);
+    setShowingRoute(cleanRoutes);
+  }, [path]);
 
   return (
-    <div className="directory-container">
-      <div className="sub-directory-container">
-        <Home />
-        <div className={`route-refresh-container ${darkThemeActive ? 'dark-theme-background' : ''}`}>
-          <h4 className="title">
-            {
-              clickableFolders.length >= 1
-                ? clickableFolders.map((tempRoute, index) => (
-                  <Link className={`${darkThemeActive ? 'dark-theme-color' : ''} route-breadcrumb`} key={tempRoute} to={`/app${tempRoute}`}>
-                    {`/${showingRoute[index]}`}
-                  </Link>
-                ))
-                : (
-                  '/'
-                )
-            }
-          </h4>
-        </div>
-      </div>
-    </div>
+    <BreadcrumbComponent
+      clickableFolders={clickableFolders}
+      showingRoute={showingRoute}
+    />
   );
 };
 
 BreadcrumbContainer.propTypes = {
-  clickableFolders: propTypes.arrayOf(propTypes.string).isRequired,
-  showingRoute: propTypes.arrayOf(propTypes.string).isRequired,
 };
 
 export default BreadcrumbContainer;

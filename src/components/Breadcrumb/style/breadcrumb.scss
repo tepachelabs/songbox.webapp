@@ -1,23 +1,25 @@
 @import "../../../styles/colors.scss";
-@import "../../../styles//fonts.scss";
+@import "../../../styles/fonts.scss";
 
 .directory-container {
     & .title {
+        font-size: 16px;
+        font-family: $font-asap;
         margin-left: 2vw;
         margin-bottom: 0;
-        font-size: 16px;
+        margin-top: 0;
     }
 }
 
 .sub-directory-container {
-    display: flex;
     align-items: center;
+    display: flex;
     justify-content: left;
 }
 
 .route-breadcrumb {
-    text-decoration: none;
     color: black;
+    text-decoration: none;
 }
 
 .route-refresh-container {
