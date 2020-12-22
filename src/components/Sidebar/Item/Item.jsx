@@ -10,7 +10,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { changeSidebarIndex } from 'store/actions';
 
 const Item = ({ index, item }) => {
-  const selectedIndex = useSelector((state) => state.sidebar.index);
+  const selectedIndex = useSelector((state) => state.sidebar.get('index'));
   const dispatch = useDispatch();
 
   return (

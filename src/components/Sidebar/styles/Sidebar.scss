@@ -44,7 +44,11 @@ $padding-left-s: 4vw;
 }
 
 .close {
+  background: none;
+  border: none;
+  cursor: pointer;
   fill: $orange;
+  outline: none;
 
   & path {
     fill: $orange;
