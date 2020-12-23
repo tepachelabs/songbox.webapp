@@ -1,24 +1,17 @@
-/* eslint-disable react/require-default-props */
-/* eslint-disable react/forbid-prop-types */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React from 'react';
 import propTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 
-import { useSelector, useDispatch } from 'react-redux';
-import { changeSidebarIndex } from 'store/actions';
-
-const Item = ({ index, item }) => {
-  const selectedIndex = useSelector((state) => state.sidebar.index);
-  const dispatch = useDispatch();
+const Item = ({ icon, path, title }) => {
+  const location = useLocation();
+  const isSelected = location.pathname.startsWith(path);
 
   return (
-    <Link className="nav-item" to={item.path}>
-      <li onClick={() => dispatch(changeSidebarIndex(index))} className={`nav-li ${selectedIndex === index ? 'selected-item' : ''}`}>
+    <Link className="nav-item" to={path}>
+      <li className={`nav-li ${isSelected ? 'selected-item' : ''}`}>
         <div className="nav-item-container">
-          { item.icon }
-          <span className="item-title">{ item.title }</span>
+          { icon }
+          <span className="item-title">{ title }</span>
         </div>
       </li>
     </Link>
@@ -26,14 +19,9 @@ const Item = ({ index, item }) => {
 };
 
 Item.propTypes = {
-  index: propTypes.number,
-  item: propTypes.any.isRequired,
-};
-
-Item.defaultProps = {
-  index: 0,
-  // eslint-disable-next-line react/default-props-match-prop-types
-  item: undefined,
+  icon: propTypes.instanceOf(Object).isRequired,
+  path: propTypes.string.isRequired,
+  title: propTypes.string.isRequired,
 };
 
 export default Item;

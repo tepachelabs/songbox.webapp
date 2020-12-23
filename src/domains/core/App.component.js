@@ -14,6 +14,8 @@ import Help from 'components/Help';
 import NotFound from 'components/NotFound';
 import AudioPlayer from 'components/AudioPlayer';
 
+import 'styles/app.scss';
+
 const AppComponent = () => {
   const darkThemeActive = useSelector((state) => state.player.darkTheme);
 
