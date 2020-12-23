@@ -19,18 +19,13 @@ import './styles/settings.scss';
 const Settings = ({ pageNumber }) => {
   const dispatch = useDispatch();
 
-  const autoPlayActive = useSelector((state) => state.player.autoPlay);
-  const darkThemeActive = useSelector((state) => state.player.darkTheme);
-  const fullFilename = useSelector((state) => state.player.fullFilename);
+  const autoPlayActive = useSelector((state) => state.settings.get('autoPlay'));
+  const darkThemeActive = useSelector((state) => state.settings.get('darkTheme'));
+  const fullFilename = useSelector((state) => state.settings.get('fullFilename'));
 
   useEffect(() => {
     dispatch(changeSidebarIndex(pageNumber));
   }, [dispatch, pageNumber]);
-
-  const toggleAutoPlay = () => dispatch(setAutoPlay(!autoPlayActive));
-  const toggleDarkTheme = () => dispatch(setDarkTheme(!darkThemeActive));
-  const toggleFullFilename = () => dispatch(setFullFilename(!fullFilename));
-  const restorePreferencesFunc = () => dispatch(restorePreferences());
 
   return (
     <div className={`content-container ${darkThemeActive ? 'dark-theme-background dark-theme-color' : ''}`}>
@@ -40,7 +35,7 @@ const Settings = ({ pageNumber }) => {
         <OptionSection title="Player">
           <OptionToggle
             optionTitle="Autoplay next song"
-            toggle={toggleAutoPlay}
+            toggle={() => dispatch(setAutoPlay(!autoPlayActive))}
             checked={autoPlayActive}
           />
         </OptionSection>
@@ -48,12 +43,12 @@ const Settings = ({ pageNumber }) => {
         <OptionSection title="Apparience">
           <OptionToggle
             optionTitle="Toggle dark theme"
-            toggle={toggleDarkTheme}
+            toggle={() => dispatch(setDarkTheme(!darkThemeActive))}
             checked={darkThemeActive}
           />
           <OptionToggle
             optionTitle="Show full filename"
-            toggle={toggleFullFilename}
+            toggle={() => dispatch(setFullFilename(!fullFilename))}
             checked={fullFilename}
           />
         </OptionSection>
@@ -61,7 +56,7 @@ const Settings = ({ pageNumber }) => {
         <OptionSection title="Other">
           <Option
             optionText="Restore preferences"
-            onClick={restorePreferencesFunc}
+            onClick={() => dispatch(restorePreferences())}
             option="pref"
           />
         </OptionSection>
