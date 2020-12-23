@@ -15,7 +15,7 @@ const AudioComponent = ({ autoPlay, songLink, audioRef }) => (
 AudioComponent.propTypes = {
   autoPlay: propTypes.bool.isRequired,
   songLink: propTypes.string.isRequired,
-  audioRef: propTypes.shape({ current: propTypes.instanceOf(Element) }).isRequired
+  audioRef: propTypes.shape({ current: propTypes.instanceOf(Element) }).isRequired,
 };
 
 export default AudioComponent;
