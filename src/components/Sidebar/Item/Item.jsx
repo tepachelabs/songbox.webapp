@@ -1,9 +1,8 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import { useLocation } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 
-const Item = ({ icon, path, title, }) => {
+const Item = ({ icon, path, title }) => {
   const location = useLocation();
   const isSelected = location.pathname.startsWith(path);
 
@@ -23,6 +22,6 @@ Item.propTypes = {
   icon: propTypes.instanceOf(Object).isRequired,
   path: propTypes.string.isRequired,
   title: propTypes.string.isRequired,
-}
+};
 
 export default Item;
