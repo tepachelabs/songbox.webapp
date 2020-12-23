@@ -11,9 +11,7 @@ const AudioContainer = () => {
   useEffect(() => {
     if (audioRef.current && songLink) {
       audioRef.current.load();
-      audioRef.current.play()
-        .then(() => console.log('play')) // Change console log for something useful
-        .catch(() => console.log('error')); // Change console log for something useful
+      audioRef.current.play();
     }
   }, [audioRef, songLink]);
 
