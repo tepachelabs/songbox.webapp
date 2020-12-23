@@ -1,9 +1,9 @@
 import React from 'react';
 import propTypes from 'prop-types';
 
-const AudioComponent = ({ autoPlay, songLink }) => (
+const AudioComponent = ({ autoPlay, songLink, audioRef }) => (
   <div className="audio">
-    <audio controls autoPlay={autoPlay}>
+    <audio controls ref={audioRef} autoPlay={autoPlay}>
       <track kind="captions" />
       <source src={songLink} type="audio/mpeg" />
       <source src={songLink} type="audio/wav" />
@@ -15,6 +15,7 @@ const AudioComponent = ({ autoPlay, songLink }) => (
 AudioComponent.propTypes = {
   autoPlay: propTypes.bool.isRequired,
   songLink: propTypes.string.isRequired,
+  audioRef: propTypes.instanceOf(Node).isRequired,
 };
 
 export default AudioComponent;
