@@ -2,6 +2,8 @@
 @import "../../../styles/fonts.scss";
 
 .directory-container {
+    display: flex;
+
     & .title {
         font-size: 16px;
         font-family: $font-asap;
@@ -11,15 +13,20 @@
     }
 }
 
-.sub-directory-container {
-    align-items: center;
-    display: flex;
-    justify-content: left;
+.breadcrumb {
+  align-self: center;
+  margin-left: 10px;
 }
 
 .route-breadcrumb {
-    color: black;
-    text-decoration: none;
+  color: black;
+  font-family: $font-asap;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.route-breadcrumb:hover {
+  color: $orange-active;
 }
 
 .route-refresh-container {
@@ -28,10 +35,6 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
-}
-
-.route-breadcrumb:hover {
-    color: $orange;
 }
 
 @media (min-width: 1024px) {
