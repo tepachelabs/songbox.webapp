@@ -1,8 +1,8 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import { useSelector } from 'react-redux';
-import * as FaIcons from 'react-icons/fa';
-import * as AiIcons from 'react-icons/ai';
+import { FaBars } from 'react-icons/fa';
+import { AiOutlineClose } from 'react-icons/ai';
 
 import Profile from '../Profile';
 import Item from './Item';
@@ -18,14 +18,14 @@ const SidebarComponent = ({ sidebarShowing, setShowingSidebar, nodeRef }) => {
     <div ref={nodeRef}>
       <div className={`hamburger ${darkThemeActive ? 'dark-theme-background dark-theme-color' : ''}`}>
         <button type="button" onClick={() => setShowingSidebar(true)}>
-          <FaIcons.FaBars />
+          <FaBars />
         </button>
       </div>
       <div className={`${sidebarShowing ? 'sidebar active' : 'sidebar'} ${darkThemeActive ? 'dark-soft-theme-background' : ''}`}>
         <ul className="elements">
           <li className="navbar">
             <button type="button" className="close" onClick={() => setShowingSidebar(false)}>
-              <AiIcons.AiOutlineClose />
+              <AiOutlineClose />
             </button>
           </li>
 
@@ -33,11 +33,12 @@ const SidebarComponent = ({ sidebarShowing, setShowingSidebar, nodeRef }) => {
             <Profile />
           </li>
           {
-            SidebarData.map((item, index) => (
+            SidebarData.map((item) => (
               <Item
                 key={item.title}
-                index={index}
-                item={item}
+                path={item.path}
+                icon={item.icon}
+                title={item.title}
               />
             ))
           }
