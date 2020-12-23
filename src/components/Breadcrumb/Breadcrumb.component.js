@@ -15,14 +15,17 @@ const BreadcrumbComponent = ({ breadcrumbs }) => (
           <Link key={title} className="route-breadcrumb" to={`${uri}`}>
             {`/${title}`}
           </Link>
-        ) : undefined))
+        ) : null))
       }
     </div>
   </div>
 );
 
 BreadcrumbComponent.propTypes = {
-  breadcrumbs: propTypes.arrayOf(Object).isRequired,
+  breadcrumbs: propTypes.arrayOf(propTypes.shape({
+    title: propTypes.string.isRequired,
+    uri: propTypes.string.isRequired,
+  })).isRequired,
 };
 
 export default BreadcrumbComponent;
