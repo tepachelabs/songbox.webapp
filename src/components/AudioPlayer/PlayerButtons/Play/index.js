@@ -1,3 +1,1 @@
-import Play from './Play';
-
-export default Play;
+export { default } from './Play.container';

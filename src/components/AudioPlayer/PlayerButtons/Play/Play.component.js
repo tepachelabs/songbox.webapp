@@ -4,9 +4,8 @@ import propTypes from 'prop-types';
 import playIcon from '../../icons/play-circle.svg';
 import pauseIcon from '../../icons/pause-circle.svg';
 
-const Play = ({ play, isPlaying }) => (
+const PlayComponent = ({ isPlaying, play }) => (
   <button type="button" className="play-button" onClick={play}>
-
     <img
       className={`icon play-icon ${!isPlaying && 'hide'}`}
       src={pauseIcon}
@@ -21,14 +20,9 @@ const Play = ({ play, isPlaying }) => (
   </button>
 );
 
-Play.propTypes = {
-  play: propTypes.func,
-  isPlaying: propTypes.bool,
+PlayComponent.propTypes = {
+  play: propTypes.func.isRequired,
+  isPlaying: propTypes.bool.isRequired,
 };
 
-Play.defaultProps = {
-  play: undefined,
-  isPlaying: undefined,
-};
-
-export default Play;
+export default PlayComponent;
