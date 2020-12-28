@@ -3,18 +3,19 @@ import propTypes from 'prop-types';
 
 import {
   Repeat,
-  Rewind,
+  RewindButtonContainer,
   PlayContainer,
-  Forward, Shuffle,
+  ForwardButtonContainer,
+  Shuffle,
 } from '../PlayerButtons';
 
 const PlayerComponent = ({ isDisabled, audioRef }) => (
   <div className={`buttons ${isDisabled ? 'disable-buttons' : ''}`}>
     <div className="buttons-container">
       <Repeat />
-      <Rewind />
+      <RewindButtonContainer />
       <PlayContainer audioRef={audioRef} />
-      <Forward />
+      <ForwardButtonContainer />
       <Shuffle />
     </div>
   </div>

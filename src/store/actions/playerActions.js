@@ -1,4 +1,7 @@
 import { apiFetchStreamableSong } from 'lib/apiFetchStreamableSong';
+
+import { setSongIndex } from 'store/actions/songsQueueActions';
+
 import {
   PLAYER_SET_REPEAT,
   PLAYER_SET_VOLUME,
@@ -24,4 +27,36 @@ export const getSongStreamLink = (path) => (dispatch, getState) => {
     .catch((err) => {
       throw new Error(err);
     });
+};
+
+export const playNextSong = () => (dispatch, getState) => {
+  const songIndex = getState().songsQueue.get('index');
+  const songsQueue = getState().songsQueue.get('queue');
+
+  const canPlayNextSong = songIndex + 1 <= songsQueue.size;
+
+  if (canPlayNextSong) {
+    const nextIndex = songIndex + 1;
+    // eslint-disable-next-line no-underscore-dangle
+    const nextSongPath = songsQueue.get(nextIndex)._root.entries[2][1];
+
+    dispatch(getSongStreamLink(nextSongPath));
+    dispatch(setSongIndex(nextIndex));
+  }
+};
+
+export const playPreviousSong = () => (dispatch, getState) => {
+  const songIndex = getState().songsQueue.get('index');
+  const songsQueue = getState().songsQueue.get('queue');
+
+  const canPlayNextSong = songIndex - 1 >= 0;
+
+  if (canPlayNextSong) {
+    const nextIndex = songIndex - 1;
+    // eslint-disable-next-line no-underscore-dangle
+    const nextSongPath = songsQueue.get(nextIndex)._root.entries[2][1];
+
+    dispatch(getSongStreamLink(nextSongPath));
+    dispatch(setSongIndex(nextIndex));
+  }
 };
