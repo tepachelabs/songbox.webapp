@@ -1,26 +1,34 @@
-import React, { Fragment } from 'react';
-import { useSelector } from 'react-redux';
+import React from 'react';
+import propTypes from 'prop-types';
 
 import PlayerContainer from './Player';
-import AudioComponent from './Audio';
 
 import './style/player.scss';
 import './style/progress.scss';
 
-const AudioPlayerComponent = () => {
-  const darkThemeActive = useSelector((state) => state.settings.darkTheme);
-
-  return (
-    <div className={`audio-container ${darkThemeActive ? 'dark-theme-background' : ''}`}>
-      <AudioComponent />
-
-      <Fragment>
-        <div className={`audio-player ${darkThemeActive ? 'dark-theme-background' : ''}`}>
-          <PlayerContainer />
-        </div>
-      </Fragment>
+const AudioPlayerComponent = ({ autoPlay, songLink, audioRef }) => (
+  <div className="audio-container">
+    <div className="audio">
+      <audio controls ref={audioRef} autoPlay={autoPlay}>
+        <track kind="captions" />
+        <source src={songLink} type="audio/mpeg" />
+        <source src={songLink} type="audio/wav" />
+        <source src={songLink} type="audio/ogg" />
+      </audio>
     </div>
-  );
+
+    <div className="audio-player">
+      <PlayerContainer
+        audioRef={audioRef}
+      />
+    </div>
+  </div>
+);
+
+AudioPlayerComponent.propTypes = {
+  autoPlay: propTypes.bool.isRequired,
+  songLink: propTypes.string.isRequired,
+  audioRef: propTypes.shape({ current: propTypes.node }).isRequired,
 };
 
 export default AudioPlayerComponent;

@@ -2,15 +2,18 @@ import React from 'react';
 import propTypes from 'prop-types';
 
 import {
-  Repeat, Rewind, Play, Forward, Shuffle,
+  Repeat,
+  Rewind,
+  PlayContainer,
+  Forward, Shuffle,
 } from '../PlayerButtons';
 
-const PlayerComponent = ({ isDisabled }) => (
+const PlayerComponent = ({ isDisabled, audioRef }) => (
   <div className={`buttons ${isDisabled ? 'disable-buttons' : ''}`}>
     <div className="buttons-container">
       <Repeat />
       <Rewind />
-      <Play />
+      <PlayContainer audioRef={audioRef} />
       <Forward />
       <Shuffle />
     </div>
@@ -19,6 +22,7 @@ const PlayerComponent = ({ isDisabled }) => (
 
 PlayerComponent.propTypes = {
   isDisabled: propTypes.bool.isRequired,
+  audioRef: propTypes.shape({ current: propTypes.instanceOf(Node) }).isRequired,
 };
 
 export default PlayerComponent;
