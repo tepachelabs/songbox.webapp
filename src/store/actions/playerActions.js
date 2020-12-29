@@ -37,8 +37,7 @@ export const playNextSong = () => (dispatch, getState) => {
 
   if (canPlayNextSong) {
     const nextIndex = songIndex + 1;
-    // eslint-disable-next-line no-underscore-dangle
-    const nextSongPath = songsQueue.get(nextIndex)._root.entries[2][1];
+    const nextSongPath = songsQueue.getIn([nextIndex, 'path_lower']);
 
     dispatch(getSongStreamLink(nextSongPath));
     dispatch(setSongIndex(nextIndex));
@@ -53,8 +52,7 @@ export const playPreviousSong = () => (dispatch, getState) => {
 
   if (canPlayNextSong) {
     const nextIndex = songIndex - 1;
-    // eslint-disable-next-line no-underscore-dangle
-    const nextSongPath = songsQueue.get(nextIndex)._root.entries[2][1];
+    const nextSongPath = songsQueue.getIn([nextIndex, 'path_lower']);
 
     dispatch(getSongStreamLink(nextSongPath));
     dispatch(setSongIndex(nextIndex));
