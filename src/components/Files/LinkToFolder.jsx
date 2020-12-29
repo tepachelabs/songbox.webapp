@@ -2,10 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import propTypes from 'prop-types';
 
+import { HOMEPAGE_PATH } from 'routes';
+
 import folderIcon from './icons/folder.svg';
 
 const LinkToFolder = ({ name, path }) => (
-  <Link className="file-container" to={`/app${path}`}>
+  <Link className="file-container" to={`${HOMEPAGE_PATH}${path}`}>
     <img
       className="icon"
       src={folderIcon}
