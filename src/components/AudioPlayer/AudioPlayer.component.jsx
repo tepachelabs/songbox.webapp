@@ -2,6 +2,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 
 import PlayerContainer from './Player';
+import AudioProgressContainer from './AudioProgress';
 
 import './style/player.scss';
 import './style/progress.scss';
@@ -16,6 +17,10 @@ const AudioPlayerComponent = ({ autoPlay, songLink, audioRef }) => (
         <source src={songLink} type="audio/ogg" />
       </audio>
     </div>
+
+    <AudioProgressContainer
+      audioRef={audioRef}
+    />
 
     <div className="audio-player">
       <PlayerContainer

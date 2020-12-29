@@ -1,66 +1,46 @@
 @import "../../../styles/colors.scss";
 
-$size-on-hover: 16px;
-$increased-size: 10px;
-
-.progress-bar-container {
-    height: 10px;
-    position: relative;
-}
-
-.progress { 
-    border-radius: 0;
-    height: 100%;
-}
-
-.progress-indicator {
-    position: absolute;
-    top: -50%;
-    height: $size-on-hover + $increased-size;
-    width: $size-on-hover + $increased-size;
-    border-radius: 50%;
-    border: 1px solid #adadad;
-    background-color: white;
-    display: block !important;
-}
-
 .hide {
-    display: none;
+  display: none;
 }
 
-.display-name-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+#progress-input {
+  background: white;
+  margin: 0;
+  padding: 0;
+  width: 100%;
 }
 
-.display-name-container {
-    cursor: pointer;
+#progress-input[type=range]::-webkit-slider-thumb {
+  background-color: white;
+  width: 20px;
+  height: 20px;
+  border: 2px solid $not-so-soft-gray;
+  border-radius: 50%;
+  margin-top: -9px;
 }
 
-.swal-title {
-    font-size: 16px !important;
+#progress-input[type=range]::-moz-range-thumb {
+  background-color: white;
+  width: 15px;
+  height: 15px;
+  border: 2px solid $not-so-soft-gray;
+  border-radius: 50%;
 }
 
-@media (min-width: 1024px) {
-    .progress { 
-        height: 40%;
-    }
+#progress-input[type=range]::-ms-thumb {
+  background-color: white;
+  width: 20px;
+  height: 20px;
+  border: 2px solid $not-so-soft-gray;
+  border-radius: 50%;
+}
 
-    .progress-bar-container {
-        height: 20px;
-    }
-
-    .progress-hover {
-        height: 100%;
-    }
-
-    .progress-indicator {
-        display: none !important;
-        top: -10%;
-    }
-
-    .show {
-        display: block !important;
-    }
+#progress-input[type=range]::-webkit-slider-runnable-track  {
+  height: 10px;
+  background-image: -webkit-linear-gradient(left, black 50%, white 50%);
+}
+#progress-input[type=range]::-moz-range-track{
+  height: 10px;
+  background-image:-moz-linear-gradient(left, black 50%, white 50%);
 }
