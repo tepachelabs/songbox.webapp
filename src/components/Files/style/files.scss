@@ -5,110 +5,112 @@ $icon-height: 25px;
 $icon-width: 25px;
 
 .files-container {
-    padding: 0 20px;
-    padding-bottom: 150px;
+  padding: 0 20px;
+  padding-bottom: 150px;
 
-    & a:hover {
-        text-decoration: none;
-    }
+  & a:hover {
+    text-decoration: none;
+  }
 }
 
 .file-container {
-    align-items: center;
-    border-top: 0.5px solid $soft-gray;
-    display: flex;
-    justify-content: flex-start;
-    padding: 20px 5vw;
+  align-items: center;
+  border-top: 0.5px solid $soft-gray;
+  display: flex;
+  justify-content: flex-start;
+  padding: 20px 5vw;
+  text-decoration: none;
 
-    & .text {
-        margin-left: 10px;
-    }
+  & .text {
+    margin-left: 10px;
+  }
 
-    &:hover {
-        cursor: pointer;
-    }
+  &:hover {
+    background: $selected-item;
+    cursor: pointer;
+  }
 
-    & polygon {
-        fill: $not-so-soft-gray;
-    }
+  & polygon {
+    fill: $not-so-soft-gray;
+  }
 }
 
 .file-name-container {
-    margin-left: 20px;
-    font-size: 14px;
-    max-width: 60%;
+  margin-left: 20px;
+  font-size: 14px;
+  max-width: 60%;
 }
 
 .file-name {
-    margin-bottom: 0;
-    font-family: $font-asap;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    color: #656565;
-    width: 80%;
+  margin-bottom: 0;
+  font-family: $font-asap;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: #656565;
+  width: 80%;
 }
 
 .folder {
-    width: 100%;
+  width: 100%;
 }
 
 .icon {
-    height: $icon-height;
-    width: $icon-width;
+  height: $icon-height;
+  width: $icon-width;
 }
 
 .heart-icon {
-    margin-left: auto;
+  margin-left: auto;
 }
 
 .is-playing {
-    background-color: $selected-item;
+  background-color: $selected-item;
 
-    & polygon {
-        fill: white;
-    }
+  & polygon {
+    fill: white;
+  }
 }
 
 .broken-link {
-    background-color: $broken-link-background;
+  background-color: $broken-link-background;
 }
 
 .no-favorites-container {
-    padding-left: 2vw;
+  padding-left: 2vw;
 }
 
 @media (min-width: 1024px) {
-    .files-container {
-        padding-bottom: 150px;
-      }
-      
-      .file-container {
-        padding: 20px 5vw;
-        position: relative; //this is for the context menu
-    }
+  .files-container {
+    padding-bottom: 150px;
+  }
+
+  .file-container {
+    padding: 20px 5vw;
+    position: relative; //this is for the context menu
+  }
 }
 
 @media (min-width: 600px) {
-    .file-name-container {
-        max-width: 80%;
-    }
+  .file-name-container {
+    max-width: 80%;
+  }
 }
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
-    $icon-height: 3vw;
-    $icon-width: 3vw;
-    
-    .icon {
-        height: $icon-height;
-        width: $icon-width;
-    }
+  $icon-height: 3vw;
+  $icon-width: 3vw;
 
-    .files-container {
-        padding-top: 0;
-    }
+  .icon {
+    height: $icon-height;
+    width: $icon-width;
+  }
 
-    .file-name-container {
-        font-size: 2.2vw;
-    }
+  .files-container {
+    padding-top: 0;
+  }
+
+  .file-name-container {
+    font-size: 2.2vw;
+  }
 }

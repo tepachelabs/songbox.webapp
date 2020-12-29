@@ -11,7 +11,11 @@ const FilesComponent = ({ files, folders }) => (
   <div className="files-container">
     {
       folders.map((folder) => (
-        <LinkToFolder key={folder.get('name')} folder={folder} />
+        <LinkToFolder
+          key={folder.get('name')}
+          path={folder.get('path_lower')}
+          name={folder.get('name')}
+        />
       ))
     }
 

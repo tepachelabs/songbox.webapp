@@ -1,32 +1,29 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import propTypes from 'prop-types';
 
+import { HOMEPAGE_PATH } from 'routes';
+
 import folderIcon from './icons/folder.svg';
 
-const LinkToFolder = ({ folder }) => {
-  const darkThemeActive = useSelector((state) => state.player.darkTheme);
-
-  return (
-    <Link to={`/app${folder.get('path_lower')}`}>
-      <div className="file-container">
-        <img
-          className="icon"
-          src={folderIcon}
-          alt="folder-icon"
-        />
-        <div className="file-name-container folder">
-          <p className={`file-name ${darkThemeActive ? 'dark-theme-color' : ''}`}>{'Unnamed file' && folder.get('name')}</p>
-        </div>
-      </div>
-    </Link>
-  );
-};
+const LinkToFolder = ({ name, path }) => (
+  <Link className="file-container" to={`${HOMEPAGE_PATH}${path}`}>
+    <img
+      className="icon"
+      src={folderIcon}
+      alt="folder-icon"
+    />
+    <div className="file-name-container folder">
+      <p className="file-name">
+        {'Unnamed file' && name}
+      </p>
+    </div>
+  </Link>
+);
 
 LinkToFolder.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
-  folder: propTypes.object.isRequired,
+  name: propTypes.string.isRequired,
+  path: propTypes.string.isRequired,
 };
 
 export default LinkToFolder;
