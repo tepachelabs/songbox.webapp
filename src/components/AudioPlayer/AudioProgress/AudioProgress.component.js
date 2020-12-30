@@ -1,34 +1,41 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import propTypes from 'prop-types';
 
 import '../style/progress.scss';
 
 const AudioProgressComponent = ({
   progress,
-  changeSongSecond,
-  startDragging,
-  stopDragging,
-  inputRef,
-}) => (
-  <input
-    min={0}
-    max={100}
-    step={1}
-    value={progress}
-    onChange={(e) => changeSongSecond(parseInt(e.target.value, 10))}
-    onMouseDown={startDragging}
-    onMouseUp={stopDragging}
-    id="progress-input"
-    type="range"
-    ref={inputRef}
-  />
-);
+  handleSetProgress,
+  handleDragging,
+  handleStopDragging,
+}) => {
+  const inputRef = React.createRef();
+
+  useEffect(() => {
+    inputRef.current.style.background = `linear-gradient(90deg, #FFA834 0% ${progress}%, white ${progress}% 100%)`;
+  }, [progress, inputRef]);
+
+  return (
+    <input
+      min={0}
+      max={100}
+      step={1}
+      value={progress}
+      onChange={handleSetProgress}
+      onMouseDown={handleDragging}
+      onMouseUp={handleStopDragging}
+      id="progress-input"
+      type="range"
+      ref={inputRef}
+    />
+  );
+};
 
 AudioProgressComponent.propTypes = {
   progress: propTypes.number.isRequired,
-  changeSongSecond: propTypes.func.isRequired,
-  startDragging: propTypes.func.isRequired,
-  stopDragging: propTypes.func.isRequired,
+  handleSetProgress: propTypes.func.isRequired,
+  handleDragging: propTypes.func.isRequired,
+  handleStopDragging: propTypes.func.isRequired,
 };
 
 export default AudioProgressComponent;
