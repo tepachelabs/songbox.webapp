@@ -4,7 +4,11 @@ import propTypes from 'prop-types';
 import '../style/progress.scss';
 
 const AudioProgressComponent = ({
-  progress, changeSongSecond, startDragging, stopDragging,
+  progress,
+  changeSongSecond,
+  startDragging,
+  stopDragging,
+  inputRef,
 }) => (
   <input
     min={0}
@@ -16,6 +20,7 @@ const AudioProgressComponent = ({
     onMouseUp={stopDragging}
     id="progress-input"
     type="range"
+    ref={inputRef}
   />
 );
 

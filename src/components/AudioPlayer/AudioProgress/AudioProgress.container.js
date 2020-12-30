@@ -6,9 +6,16 @@ import AudioProgressComponent from './AudioProgress.component';
 const AudioProgressContainer = ({ audioRef }) => {
   const [progress, setProgress] = useState(0);
   const [isBeingDragged, setIsBeingDragged] = useState(false);
+  const inputRef = React.createRef();
 
   const changeSongSecond = (moveTo) => {
     setProgress(moveTo);
+  };
+
+  const dragging = () => {
+    setIsBeingDragged(true);
+    console.log(inputRef);
+    // inputRef.style.setProperty("--webkitProgressPercent", `${calculateSongProgress()}%`);
   };
 
   const stopDragging = () => {
@@ -38,8 +45,9 @@ const AudioProgressContainer = ({ audioRef }) => {
     <AudioProgressComponent
       progress={progress}
       changeSongSecond={changeSongSecond}
-      startDragging={() => setIsBeingDragged(true)}
+      startDragging={dragging}
       stopDragging={stopDragging}
+      inputRef={inputRef}
     />
   );
 };
