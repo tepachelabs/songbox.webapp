@@ -5,7 +5,7 @@ import PlayerContainer from './Player';
 import AudioProgressContainer from './AudioProgress';
 
 import './style/player.scss';
-import './style/progress.scss';
+import './AudioProgress/styles/progress.scss';
 
 const AudioPlayerComponent = ({ autoPlay, songLink, audioRef }) => (
   <div className="audio-container">

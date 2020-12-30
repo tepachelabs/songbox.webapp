@@ -30,7 +30,7 @@ const AudioProgressContainer = ({ audioRef }) => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      if (!isBeingDragged && audioRef) {
+      if (!isBeingDragged && audioRef.current) {
         const { currentTime, duration } = audioRef.current;
         setProgress(convertDurationToProgress(currentTime, duration));
       }

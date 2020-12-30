@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import propTypes from 'prop-types';
 
-import '../style/progress.scss';
+import './styles/progress.scss';
 
 const AudioProgressComponent = ({
   progress,
