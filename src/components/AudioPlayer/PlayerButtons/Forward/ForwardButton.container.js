@@ -10,7 +10,7 @@ const ForwardButtonContainer = () => {
   const songsQueue = useSelector((state) => state.songsQueue.get('queue'));
   const onRepeat = useSelector((state) => state.player.get('onRepeat'));
 
-  const isDisabled = onRepeat === true ? false : songIndex + 1 >= songsQueue.size;
+  const isDisabled = onRepeat ? false : songIndex + 1 >= songsQueue.size;
   const dispatch = useDispatch();
 
   return (
