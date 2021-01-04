@@ -1,9 +1,9 @@
 import Repeat from './Repeat';
-import RewindButtonContainer from './Rewind';
+import RewindButton from './Rewind';
 import PlayContainer from './Play';
-import ForwardButtonContainer from './Forward';
+import ForwardButton from './Forward';
 import Shuffle from './Shuffle';
 
 export {
-  Repeat, RewindButtonContainer, PlayContainer, ForwardButtonContainer, Shuffle,
+  Repeat, RewindButton, PlayContainer, ForwardButton, Shuffle,
 };

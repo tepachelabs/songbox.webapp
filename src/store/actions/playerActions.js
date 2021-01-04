@@ -10,6 +10,13 @@ import {
   PLAYER_SET_IS_PLAYING,
 } from '../constants';
 
+import {
+  canPlayNextSong,
+  canPlayPreviousSong,
+  selectIndex,
+  selectSongPathAtIndex,
+} from '../selectors/songsQueue';
+
 export const toggleRepeat = (payload) => ({ type: PLAYER_SET_REPEAT, payload });
 export const setVolume = (payload) => ({ type: PLAYER_SET_VOLUME, payload });
 export const setSong = (payload) => ({ type: PLAYER_SET_CURRENT_SONG, payload });
@@ -30,31 +37,27 @@ export const getSongStreamLink = (path) => (dispatch, getState) => {
 };
 
 export const playNextSong = () => (dispatch, getState) => {
-  const songIndex = getState().songsQueue.get('index');
-  const songsQueue = getState().songsQueue.get('queue');
+  const state = getState();
+  const songIndex = selectIndex(state);
 
-  const canPlayNextSong = songIndex + 1 <= songsQueue.size;
-
-  if (canPlayNextSong) {
+  if (canPlayNextSong(state)) {
     const nextIndex = songIndex + 1;
-    const nextSongPath = songsQueue.getIn([nextIndex, 'path_lower']);
+    const songPath = selectSongPathAtIndex(state, nextIndex);
 
-    dispatch(getSongStreamLink(nextSongPath));
+    dispatch(getSongStreamLink(songPath));
     dispatch(setSongIndex(nextIndex));
   }
 };
 
 export const playPreviousSong = () => (dispatch, getState) => {
-  const songIndex = getState().songsQueue.get('index');
-  const songsQueue = getState().songsQueue.get('queue');
+  const state = getState();
+  const songIndex = selectIndex(state);
 
-  const canPlayNextSong = songIndex - 1 >= 0;
-
-  if (canPlayNextSong) {
+  if (canPlayPreviousSong(state)) {
     const nextIndex = songIndex - 1;
-    const nextSongPath = songsQueue.getIn([nextIndex, 'path_lower']);
+    const songPath = selectSongPathAtIndex(state, nextIndex);
 
-    dispatch(getSongStreamLink(nextSongPath));
+    dispatch(getSongStreamLink(songPath));
     dispatch(setSongIndex(nextIndex));
   }
 };

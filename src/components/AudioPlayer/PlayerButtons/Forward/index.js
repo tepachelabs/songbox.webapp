@@ -1,1 +1,1 @@
-export { default } from './ForwardButton.container';
+export { default } from './ForwardButton';

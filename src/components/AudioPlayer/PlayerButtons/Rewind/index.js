@@ -1,1 +1,1 @@
-export { default } from './RewindButton.container';
+export { default } from './RewindButton';
