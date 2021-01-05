@@ -5,7 +5,7 @@ import PlayerButton from 'components/AudioPlayer/PlayerButtons/PlayerButton';
 
 import icon from 'components/AudioPlayer/icons/fast-forward.svg';
 
-test('it should have correct className and be disabled', () => {
+test('it should have correct className, be disabled and should NOT be clickable', () => {
   const className = 'disabled-button';
   const mockFn = jest.fn();
 
@@ -29,7 +29,7 @@ test('it should have correct className and be disabled', () => {
   expect(mockFn).not.toHaveBeenCalled();
 });
 
-test('it should have correct className and be enabled', () => {
+test('it should have correct className, be enabled and it should be clickable', () => {
   const className = '';
   const mockFn = jest.fn();
 
@@ -51,5 +51,4 @@ test('it should have correct className and be enabled', () => {
   expect(componentHasCorrectClass).toBe(true);
   expect(isComponentDisabled).toBe(false);
   expect(mockFn).toHaveBeenCalled();
-
 });
