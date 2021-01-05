@@ -121,4 +121,3 @@ describe('setVolume actions', () => {
     expect(setVolume(payload)).not.toEqual(expectedAction);
   });
 });
-
