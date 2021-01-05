@@ -10,6 +10,6 @@ test('It should render', () => {
   render(
     <Provider store={store}>
       <ForwardButton />
-    </Provider>
+    </Provider>,
   );
 });

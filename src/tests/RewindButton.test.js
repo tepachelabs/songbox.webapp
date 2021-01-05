@@ -10,6 +10,6 @@ test('It should render', () => {
   render(
     <Provider store={store}>
       <RewindButton />
-    </Provider>
+    </Provider>,
   );
 });

@@ -12,9 +12,9 @@ test('it should have correct className, be disabled and should NOT be clickable'
   const component = render(
     <PlayerButton
       handleOnClick={mockFn}
-      isDisabled={true}
+      isDisabled
       icon={icon}
-    />
+    />,
   );
 
   const { firstChild } = component.container;
@@ -37,7 +37,7 @@ test('it should have correct className, be enabled and it should be clickable', 
       handleOnClick={mockFn}
       isDisabled={false}
       icon={icon}
-    />
+    />,
   );
 
   const { firstChild } = component.container;
