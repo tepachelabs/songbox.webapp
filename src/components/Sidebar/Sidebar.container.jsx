@@ -1,34 +1,36 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 import SidebarComponent from './Sidebar.component';
+import useClickOutside from '../../hooks/useClickOutside';
 
 const SidebarContainer = () => {
-  const nodeRef = React.useRef();
+  const [showSidebar, setShowSidebar] = React.useState(false);
+  const nodeRef = useClickOutside(showSidebar, () => {
+    setShowSidebar(false);
+  });
 
-  const [sidebar, setShowingSidebar] = useState(false);
+  // useEffect(() => {
+  //   const clickOutside = (e) => {
+  //     if (nodeRef.current.contains(e.target)) {
+  //       return;
+  //     }
 
-  useEffect(() => {
-    const clickOutside = (e) => {
-      if (nodeRef.current.contains(e.target)) {
-        return;
-      }
+  //     e.stopPropagation();
+  //     setShowSidebar(false);
+  //   };
 
-      e.stopPropagation();
-      setShowingSidebar(false);
-    };
+  //   document.addEventListener('mousedown', clickOutside, false);
 
-    document.addEventListener('mousedown', clickOutside, false);
-
-    return () => {
-      document.removeEventListener('mousedown', clickOutside, false);
-    };
-  }, []);
+  //   return () => {
+  //     document.removeEventListener('mousedown', clickOutside, false);
+  //   };
+  // }, []);
 
   return (
     <SidebarComponent
       nodeRef={nodeRef}
-      sidebarShowing={sidebar}
-      setShowingSidebar={setShowingSidebar}
+      sidebarShowing={showSidebar}
+      setShowingSidebar={setShowSidebar}
     />
   );
 };
