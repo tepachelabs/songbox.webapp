@@ -6,7 +6,7 @@ import PlayerButton from 'components/AudioPlayer/PlayerButtons/PlayerButton';
 import icon from 'components/AudioPlayer/icons/fast-forward.svg';
 
 test('it should have correct className, be disabled and should NOT be clickable', () => {
-  const className = 'disabled-button';
+  const className = 'disable-buttons';
   const mockFn = jest.fn();
 
   const component = render(
@@ -14,11 +14,10 @@ test('it should have correct className, be disabled and should NOT be clickable'
       handleOnClick={mockFn}
       isDisabled={true}
       icon={icon}
-      classStatus={className}
     />
   );
 
-  const firstChild = component.container.firstChild;
+  const { firstChild } = component.container;
 
   const componentHasCorrectClass = firstChild.className.includes(className);
   const isComponentDisabled = firstChild.disabled;
@@ -38,11 +37,10 @@ test('it should have correct className, be enabled and it should be clickable', 
       handleOnClick={mockFn}
       isDisabled={false}
       icon={icon}
-      classStatus={className}
     />
   );
 
-  const firstChild = component.container.firstChild;
+  const { firstChild } = component.container;
 
   const componentHasCorrectClass = firstChild.className.includes(className);
   const isComponentDisabled = firstChild.disabled;

@@ -17,7 +17,7 @@ import {
   selectSongPathAtIndex,
 } from '../selectors/songsQueue';
 
-export const toggleRepeat = (payload) => ({ type: PLAYER_SET_REPEAT, payload });
+export const setRepeat = (payload) => ({ type: PLAYER_SET_REPEAT, payload });
 export const setVolume = (payload) => ({ type: PLAYER_SET_VOLUME, payload });
 export const setSong = (payload) => ({ type: PLAYER_SET_CURRENT_SONG, payload });
 export const setSongLink = (payload) => ({ type: PLAYER_SET_SONG_LINK, payload });

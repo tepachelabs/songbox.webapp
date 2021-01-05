@@ -11,13 +11,10 @@ const RewindButton = () => {
   const canRewind = useSelector((state) => canPlayPreviousSong(state));
   const isDisabled = !canRewind;
 
-  const classStatus = isDisabled ? 'disable-buttons' : '';
-
   const dispatch = useDispatch();
 
   return (
     <PlayerButton
-      classStatus={classStatus}
       handleOnClick={() => dispatch(playPreviousSong())}
       icon={rewindIcon}
       isDisabled={isDisabled}

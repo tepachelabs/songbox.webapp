@@ -1,13 +1,13 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { toggleRepeat } from 'store/actions/playerActions';
+import { setRepeat } from 'store/actions/playerActions';
 
 const Repeat = () => {
   const onRepeat = useSelector((state) => state.player.onRepeat);
 
   const dispatch = useDispatch();
-  const toggleOnRepeat = () => dispatch((toggleRepeat(!onRepeat)));
+  const toggleOnRepeat = () => dispatch((setRepeat(!onRepeat)));
 
   return (
     <button type="button" className="player-button" onClick={toggleOnRepeat}>
