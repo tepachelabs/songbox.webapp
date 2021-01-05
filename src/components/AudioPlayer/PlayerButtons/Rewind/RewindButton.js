@@ -1,10 +1,9 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import PlayerButton from '../PlayerButton';
-
 import { playPreviousSong } from 'store/actions/playerActions';
 import { canPlayPreviousSong } from 'store/selectors/songsQueue';
+import PlayerButton from '../PlayerButton';
 
 import rewindIcon from '../../icons/rewind.svg';
 

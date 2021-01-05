@@ -1,8 +1,10 @@
 import React from 'react';
 import propTypes from 'prop-types';
 
-const PlayerButton = ({ classStatus, handleOnClick, icon, isDisabled }) => (
-  <button onClick={handleOnClick} className={`player-button ${classStatus}`} disabled={isDisabled}>
+const PlayerButton = ({
+  classStatus, handleOnClick, icon, isDisabled,
+}) => (
+  <button type="button" onClick={handleOnClick} className={`player-button ${classStatus}`} disabled={isDisabled}>
     <img
       src={icon}
       alt="player-button-icon"

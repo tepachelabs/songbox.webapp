@@ -1,39 +1,39 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
-import { fireEvent } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
+
+import PlayerButton from 'components/AudioPlayer/PlayerButtons/PlayerButton';
 
 import icon from 'components/AudioPlayer/icons/fast-forward.svg';
 
-import PlayerButton from 'components/AudioPlayer/PlayerButtons/PlayerButton/';
-
 test('it should have correct className and be disabled', () => {
-  const className = 'disabled-button'
+  const className = 'disabled-button';
+  const mockFn = jest.fn();
 
-  const component = renderer.create(
+  const component = render(
     <PlayerButton
-      handleOnClick={() => console.log('clicked')}
+      handleOnClick={mockFn}
       isDisabled={true}
       icon={icon}
       classStatus={className}
     />
   );
 
-  const tree = component.toJSON();
+  const firstChild = component.container.firstChild;
 
-  const componentClassName = tree.props.className;
-  const componentDisabled = tree.props.disabled;
+  const componentHasCorrectClass = firstChild.className.includes(className);
+  const isComponentDisabled = firstChild.disabled;
+  fireEvent.click(firstChild);
 
-  const checkClassName = componentClassName.includes(className)
-
-  expect(checkClassName).toBe(true);
-  expect(componentDisabled).toBe(true);
+  expect(componentHasCorrectClass).toBe(true);
+  expect(isComponentDisabled).toBe(true);
+  expect(mockFn).not.toHaveBeenCalled();
 });
 
 test('it should have correct className and be enabled', () => {
-  const className = ''
+  const className = '';
   const mockFn = jest.fn();
 
-  const component = renderer.create(
+  const component = render(
     <PlayerButton
       handleOnClick={mockFn}
       isDisabled={false}
@@ -42,16 +42,14 @@ test('it should have correct className and be enabled', () => {
     />
   );
 
-  const tree = component.toJSON();
+  const firstChild = component.container.firstChild;
 
-  const propertyClassName = tree.props.className;
-  const propertyDisabled = tree.props.disabled;
+  const componentHasCorrectClass = firstChild.className.includes(className);
+  const isComponentDisabled = firstChild.disabled;
+  fireEvent.click(firstChild);
 
-  const checkClassName = propertyClassName.includes(className)
-  fireEvent.click(tree);
-
-  expect(checkClassName).toBe(true);
-  expect(propertyDisabled).toBe(false);
-  expect(mockFn).toHaveBeenCalled(1);
+  expect(componentHasCorrectClass).toBe(true);
+  expect(isComponentDisabled).toBe(false);
+  expect(mockFn).toHaveBeenCalled();
 
 });
