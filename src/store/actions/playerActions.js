@@ -1,4 +1,7 @@
 import { apiFetchStreamableSong } from 'lib/apiFetchStreamableSong';
+
+import { setSongIndex } from 'store/actions/songsQueueActions';
+
 import {
   PLAYER_SET_REPEAT,
   PLAYER_SET_VOLUME,
@@ -7,7 +10,14 @@ import {
   PLAYER_SET_IS_PLAYING,
 } from '../constants';
 
-export const toggleRepeat = (payload) => ({ type: PLAYER_SET_REPEAT, payload });
+import {
+  canPlayNextSong,
+  canPlayPreviousSong,
+  selectIndex,
+  selectSongPathAtIndex,
+} from '../selectors/songsQueue';
+
+export const setRepeat = (payload) => ({ type: PLAYER_SET_REPEAT, payload });
 export const setVolume = (payload) => ({ type: PLAYER_SET_VOLUME, payload });
 export const setSong = (payload) => ({ type: PLAYER_SET_CURRENT_SONG, payload });
 export const setSongLink = (payload) => ({ type: PLAYER_SET_SONG_LINK, payload });
@@ -24,4 +34,30 @@ export const getSongStreamLink = (path) => (dispatch, getState) => {
     .catch((err) => {
       throw new Error(err);
     });
+};
+
+export const playNextSong = () => (dispatch, getState) => {
+  const state = getState();
+  const songIndex = selectIndex(state);
+
+  if (canPlayNextSong(state)) {
+    const nextIndex = songIndex + 1;
+    const songPath = selectSongPathAtIndex(state, nextIndex);
+
+    dispatch(getSongStreamLink(songPath));
+    dispatch(setSongIndex(nextIndex));
+  }
+};
+
+export const playPreviousSong = () => (dispatch, getState) => {
+  const state = getState();
+  const songIndex = selectIndex(state);
+
+  if (canPlayPreviousSong(state)) {
+    const nextIndex = songIndex - 1;
+    const songPath = selectSongPathAtIndex(state, nextIndex);
+
+    dispatch(getSongStreamLink(songPath));
+    dispatch(setSongIndex(nextIndex));
+  }
 };
