@@ -21,15 +21,17 @@ $thumb-width: 15px;
   -webkit-appearance: none;
   appearance: none;
   background: white;
-  border: 1px solid $not-so-soft-gray;
-  border-radius: 50%;
-  height: $thumb-height;
-  width: 15px;
 }
 
-#progress-input::-moz-range-thumb {
+#progress-input::-webkit-slider-thumb, #progress-input::-webkit-slider-thumb {
   border: 1px solid $not-so-soft-gray;
   border-radius: 50%;
   height: $thumb-height;
   width: $thumb-width;
+}
+
+@for $i from 0 through 100 {
+  .progress-#{$i} {
+    background: linear-gradient(90deg, #FFA834 $i * 1%, white $i * 1%);
+  }
 }

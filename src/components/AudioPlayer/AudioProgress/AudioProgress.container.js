@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import propTypes from 'prop-types';
 
 import {
-  convertDurationToProgress,
-  convertInputToProgress,
+  getNumericValueFromDOMEvent,
   convertProgressToDuration,
-} from './songProgress';
+  updateProgress,
+} from './AudioProgress.utils';
 
 import AudioProgressComponent from './AudioProgress.component';
 
 const AudioProgressContainer = ({ audioRef }) => {
+  const songLink = useSelector((state) => state.player.get('songLink'));
+
   const [progress, setProgress] = useState(0);
   const [isBeingDragged, setIsBeingDragged] = useState(false);
 
@@ -17,24 +20,26 @@ const AudioProgressContainer = ({ audioRef }) => {
 
   const handleStopDragging = () => {
     const { duration } = audioRef.current;
-    const nextProgress = convertProgressToDuration(progress, duration);
     // eslint-disable-next-line no-param-reassign
-    audioRef.current.currentTime = Number.isNaN(nextProgress) ? 0 : nextProgress;
+    audioRef.current.currentTime = convertProgressToDuration(progress, duration);
     setIsBeingDragged(false);
   };
 
   const handleSetProgress = (input) => {
-    const nextProgress = convertInputToProgress(input);
+    const nextProgress = getNumericValueFromDOMEvent(input);
     setProgress(nextProgress);
   };
 
   useEffect(() => {
     const interval = setInterval(() => {
-      if (!isBeingDragged && audioRef.current) {
-        const { currentTime, duration } = audioRef.current;
-        setProgress(convertDurationToProgress(currentTime, duration));
-      }
-    }, 0);
+      updateProgress(isBeingDragged, songLink, audioRef)
+        .then((progressValue) => {
+          setProgress(progressValue);
+        })
+        .catch(() => {
+          setProgress(0);
+        });
+    }, 1000);
 
     return () => clearInterval(interval);
   });
