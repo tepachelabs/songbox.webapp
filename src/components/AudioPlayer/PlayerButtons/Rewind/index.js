@@ -1,3 +1,1 @@
-import Rewind from './Rewind';
-
-export default Rewind;
+export { default } from './RewindButton';

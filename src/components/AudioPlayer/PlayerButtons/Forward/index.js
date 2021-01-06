@@ -1,3 +1,1 @@
-import Forward from './Forward';
-
-export default Forward;
+export { default } from './ForwardButton';

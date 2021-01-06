@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import propTypes from 'prop-types';
 
 import { List } from 'immutable';
-import { changeSidebarIndex } from 'store/actions';
+import { setSongIndex, changeSongsQueue } from 'store/actions/songsQueueActions';
 import { toggleIsFavoritePlaying } from 'store/actions/favoritesActions';
-import { changeSongsQueue } from 'store/actions/songsQueueActions';
+
 import { getSongStreamLink } from 'store/actions/playerActions';
 
 import SongIcon from '../SongIcon';
@@ -27,11 +27,10 @@ const LinkToSong = ({
 
   const setSongsQueue = (newQueue) => dispatch(changeSongsQueue(newQueue));
   const toggleFavoritePlayingState = (playing) => dispatch(toggleIsFavoritePlaying(playing));
-  const setSongIndex = (sonIndex) => dispatch(changeSidebarIndex(sonIndex));
 
   const selectSong = () => {
     dispatch(getSongStreamLink(path));
-    setSongIndex(index);
+    dispatch(setSongIndex(index));
     setIsPlaying(true);
     setSongsQueue(files);
 
