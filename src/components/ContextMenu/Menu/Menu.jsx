@@ -1,6 +1,6 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import useClickOutside from '../../../hooks/useClickOutside';
+import useClickOutside from 'hooks/useClickOutside';
 import Option from '../Option';
 
 import '../styles/contextmenu.scss';
