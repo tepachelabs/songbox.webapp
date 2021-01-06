@@ -4,7 +4,7 @@ import propTypes from 'prop-types';
 
 import {
   getNumericValueFromDOMEvent,
-  convertProgressToDuration,
+  convertProgressToCurrentTime,
   updateProgress,
 } from './AudioProgress.utils';
 
@@ -21,7 +21,7 @@ const AudioProgressContainer = ({ audioRef }) => {
   const handleStopDragging = () => {
     const { duration } = audioRef.current;
     // eslint-disable-next-line no-param-reassign
-    audioRef.current.currentTime = convertProgressToDuration(progress, duration);
+    audioRef.current.currentTime = convertProgressToCurrentTime(progress, duration);
     setIsBeingDragged(false);
   };
 

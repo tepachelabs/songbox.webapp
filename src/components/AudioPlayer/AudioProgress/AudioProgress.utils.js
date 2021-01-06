@@ -10,12 +10,12 @@ export const convertDurationToProgress = (currentTime, duration) => {
   return Math.round(progress);
 };
 
-export const convertProgressToDuration = (progress, duration) => (duration * progress) / 100;
+export const convertProgressToCurrentTime = (progress, duration) => (duration * progress) / 100;
 
 export const updateProgress = (
   isBeingDragged, songLink, { current },
 ) => new Promise((resolve, reject) => {
-  if (!isBeingDragged && songLink) {
+  if (!isBeingDragged && current && songLink) {
     const { currentTime, duration } = current;
     const progress = convertDurationToProgress(currentTime, duration);
     resolve(progress);
