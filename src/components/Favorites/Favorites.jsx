@@ -4,7 +4,7 @@ import propTypes from 'prop-types';
 
 import { changeSidebarIndex } from 'store/actions';
 
-import LinkToSong from '../Files/LinkToSong';
+import LinkToSongContainer from '../Files/LinkToSong';
 
 const Favorites = ({ pageNumber }) => {
   const favorites = useSelector((state) => state.favorites.get('songs'));
@@ -25,7 +25,7 @@ const Favorites = ({ pageNumber }) => {
         {
           favorites.length > 0
             ? favorites.map((favorite, index) => (
-              <LinkToSong
+              <LinkToSongContainer
                 key={favorite.song_name || favorite.name}
                 index={index}
                 fileName={favorite.song_name || favorite.name}
