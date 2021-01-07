@@ -1,29 +1,12 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import propTypes from 'prop-types';
+import useClickOutside from 'hooks/useClickOutside';
+import Option from '../Option';
 
 import '../styles/contextmenu.scss';
 
-import Option from '../Option';
-
 const Menu = ({ menuShowing, setShowMenu }) => {
-  const nodeRef = React.useRef();
-
-  useEffect(() => {
-    const clickOutside = (e) => {
-      if (nodeRef.current.contains(e.target)) {
-        return;
-      }
-
-      e.stopPropagation();
-      setShowMenu(false);
-    };
-
-    document.addEventListener('mousedown', clickOutside, false);
-
-    return () => {
-      document.removeEventListener('mousedown', clickOutside, false);
-    };
-  }, [setShowMenu]);
+  const nodeRef = useClickOutside(menuShowing, () => { setShowMenu(false); });
 
   return (
     <ul ref={nodeRef} className={`menu-options ${menuShowing ? '' : 'hide'}`}>

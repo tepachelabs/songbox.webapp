@@ -17,11 +17,11 @@ const SidebarComponent = ({ sidebarShowing, setShowingSidebar, nodeRef }) => {
   return (
     <div ref={nodeRef}>
       <div className={`hamburger ${darkThemeActive ? 'dark-theme-background dark-theme-color' : ''}`}>
-        <button type="button" onClick={() => setShowingSidebar(true)}>
+        <button data-testid="sidebar-button" type="button" onClick={() => setShowingSidebar(true)}>
           <FaBars />
         </button>
       </div>
-      <div className={`${sidebarShowing ? 'sidebar active' : 'sidebar'} ${darkThemeActive ? 'dark-soft-theme-background' : ''}`}>
+      <div data-testid="sidebar" className={`${sidebarShowing ? 'sidebar active' : 'sidebar'} ${darkThemeActive ? 'dark-soft-theme-background' : ''}`}>
         <ul className="elements">
           <li className="navbar">
             <button type="button" className="close" onClick={() => setShowingSidebar(false)}>
