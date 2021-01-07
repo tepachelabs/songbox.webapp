@@ -12,11 +12,9 @@ export const convertDurationToProgress = (currentTime, duration) => {
 
 export const convertProgressToCurrentTime = (progress, duration) => (duration * progress) / 100;
 
-export const updateProgress = (
-  isBeingDragged, songLink, { current },
-) => new Promise((resolve, reject) => {
-  if (!isBeingDragged && current && songLink) {
-    const { currentTime, duration } = current;
+export const updateProgress = (isBeingDragged, audioRef) => new Promise((resolve, reject) => {
+  if (!isBeingDragged && audioRef.duration) {
+    const { currentTime, duration } = audioRef;
     const progress = convertDurationToProgress(currentTime, duration);
     resolve(progress);
   } else {

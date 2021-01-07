@@ -7,21 +7,12 @@ import AudioProgressContainer from './AudioProgress';
 import './style/player.scss';
 import './AudioProgress/styles/progress.scss';
 
-const AudioPlayerComponent = ({ autoPlay, songLink, audioRef }) => (
+const AudioPlayerComponent = ({ audioRef, updateCurrentTime }) => (
   <div className="audio-container">
-    <div className="audio">
-      <audio controls ref={audioRef} autoPlay={autoPlay}>
-        <track kind="captions" />
-        <source src={songLink} type="audio/mpeg" />
-        <source src={songLink} type="audio/wav" />
-        <source src={songLink} type="audio/ogg" />
-      </audio>
-    </div>
-
     <AudioProgressContainer
       audioRef={audioRef}
+      updateCurrentTime={updateCurrentTime}
     />
-
     <div className="audio-player">
       <PlayerContainer
         audioRef={audioRef}
@@ -31,9 +22,8 @@ const AudioPlayerComponent = ({ autoPlay, songLink, audioRef }) => (
 );
 
 AudioPlayerComponent.propTypes = {
-  autoPlay: propTypes.bool.isRequired,
-  songLink: propTypes.string.isRequired,
   audioRef: propTypes.shape({ current: propTypes.node }).isRequired,
+  updateCurrentTime: propTypes.func.isRequired,
 };
 
 export default AudioPlayerComponent;

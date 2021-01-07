@@ -24,6 +24,7 @@ const AudioProgressComponent = ({
       onChange={handleSetProgress}
       onMouseDown={handleDragging}
       onMouseUp={handleStopDragging}
+      onTouchEndCapture={handleStopDragging}
       id="progress-input"
       type="range"
       ref={inputRef}

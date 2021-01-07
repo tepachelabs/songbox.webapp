@@ -12,10 +12,10 @@ const PlayContainer = ({ audioRef }) => {
 
   const play = () => {
     if (isPlaying) {
-      audioRef.current.pause();
+      audioRef.pause();
       dispatch(setIsPlaying(false));
     } else {
-      audioRef.current.play();
+      audioRef.play();
       dispatch(setIsPlaying(true));
     }
   };
@@ -29,7 +29,7 @@ const PlayContainer = ({ audioRef }) => {
 };
 
 PlayContainer.propTypes = {
-  audioRef: propTypes.shape({ current: propTypes.instanceOf(Node) }).isRequired,
+  audioRef: propTypes.instanceOf(Audio).isRequired,
 };
 
 export default PlayContainer;

@@ -8,11 +8,13 @@ import AudioProgress from 'components/AudioPlayer/AudioProgress';
 
 test('it renders', () => {
   const ref = React.createRef();
+  const mockFn = jest.fn();
 
   render(
     <Provider store={store}>
       <AudioProgress
         audioRef={ref}
+        updateCurrentTime={mockFn}
       />
     </Provider>,
   );
