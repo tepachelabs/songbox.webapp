@@ -42,7 +42,7 @@ $icon-width: 25px;
 }
 
 .file-name {
-  margin-bottom: 0;
+  margin: 0;
   font-family: $font-asap;
   overflow: hidden;
   white-space: nowrap;
@@ -78,6 +78,19 @@ $icon-width: 25px;
 
 .no-favorites-container {
   padding-left: 2vw;
+}
+
+.song-file-container:hover {
+  cursor: unset;
+}
+
+.song-file {
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  padding: 0;
+  width: 100%;
 }
 
 @media (min-width: 1024px) {

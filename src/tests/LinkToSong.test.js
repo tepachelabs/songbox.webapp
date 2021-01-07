@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import { render, fireEvent } from '@testing-library/react';
 
 import store from 'store';
-import LinkToSongComponent from '../components/Files/LinkToSong/LinkToSong.component';
+import LinkToSongComponent from 'components/Files/LinkToSong/LinkToSong.component';
 
 describe('link to song', () => {
   test('it should render, should have correct className and be able to click it', () => {
@@ -22,9 +22,10 @@ describe('link to song', () => {
     );
 
     const { firstChild } = component.container;
-    fireEvent.click(firstChild);
+    const button = firstChild.firstChild.nextSibling;
 
     const componentHasCorrectClassName = firstChild.className.includes(className);
+    fireEvent.click(button);
 
     expect(componentHasCorrectClassName).toBe(true);
     expect(mockFn).toHaveBeenCalled();
@@ -46,7 +47,6 @@ describe('link to song', () => {
     );
 
     const { firstChild } = component.container;
-
     const componentHasCorrectClassName = firstChild.className.includes(className);
 
     expect(componentHasCorrectClassName).toBe(true);

@@ -18,9 +18,3 @@ export const selectSongPathAtIndex = (state, index) => {
   const songsQueue = selectSongsQueue(state);
   return songsQueue.getIn([index, 'path_lower']);
 };
-
-export const getPlayingSongPath = (state) => {
-  const index = selectIndex(state);
-  const songsQueue = selectSongsQueue(state);
-  return songsQueue.getIn([index, 'path_lower']);
-};

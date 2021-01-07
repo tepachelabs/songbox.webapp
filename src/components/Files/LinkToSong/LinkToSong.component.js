@@ -1,36 +1,31 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import propTypes from 'prop-types';
 
-import SongIcon from '../../SongIcon';
-import HeartFavorite from '../../HeartFavorite';
-import ContextMenu from '../../ContextMenu';
+import SongIcon from 'components/SongIcon';
+import HeartFavorite from 'components/HeartFavorite';
+import ContextMenu from 'components/ContextMenu';
 
 const LinkToSongComponent = ({
-  fileName, isPlaying, selectSong, path,
+  fileName,
+  isPlaying,
+  selectSong,
+  path,
 }) => {
   const isPlayingClassName = isPlaying ? 'is-playing' : '';
 
   return (
-    <div
-      onClick={selectSong}
-      role="button"
-      tabIndex={-1}
-      onKeyDown={selectSong}
-      className={`file-container ${isPlayingClassName}`}
-    >
-      <SongIcon
-        isPlaying={isPlaying}
-      />
-      <div className="file-name-container">
+    <div className={`file-container song-file-container ${isPlayingClassName}`}>
+      <SongIcon isPlaying={isPlaying} />
+      <button className="file-name-container song-file" onClick={selectSong} type="button">
         <p className="file-name">{fileName}</p>
-      </div>
-      <React.Fragment>
+      </button>
+      <Fragment>
         <HeartFavorite
           fileName={fileName}
           path={path}
         />
         <ContextMenu />
-      </React.Fragment>
+      </Fragment>
     </div>
   );
 };

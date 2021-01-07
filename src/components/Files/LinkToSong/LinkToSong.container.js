@@ -6,13 +6,17 @@ import { List } from 'immutable';
 import { setSongIndex, changeSongsQueue } from 'store/actions/songsQueueActions';
 import { getSongStreamLink } from 'store/actions/playerActions';
 
-import { getPlayingSongPath } from 'store/selectors/songsQueue';
+import { selectSongPathAtIndex } from 'store/selectors/songsQueue';
 import LinkToSongComponent from './LinkToSong.component';
 
 const LinkToSongContainer = ({
-  index, fileName, files, path,
+  index,
+  fileName,
+  files,
+  path,
 }) => {
-  const playingSongPath = useSelector((state) => getPlayingSongPath(state));
+  const songIndex = useSelector((state) => state.songsQueue.get('index'));
+  const playingSongPath = useSelector((state) => selectSongPathAtIndex(state, songIndex));
 
   const dispatch = useDispatch();
 
