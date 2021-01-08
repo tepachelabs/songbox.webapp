@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { createNewSession, recoverSession } from 'store/actions/sessionActions';
 import AppComponent from './App.component';
-import LoadingComponent from './Loading.component';
+import LoadingComponent from './Loading/Loading.component';
 
 const App = () => {
   const isAppLoaded = useSelector((state) => state.app.get('isLoaded'));
