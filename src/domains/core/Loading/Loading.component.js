@@ -4,10 +4,8 @@ import propTypes from 'prop-types';
 import './styles/loading.scss';
 
 const LoadingComponent = ({ isLoading }) => {
-  const className = isLoading ? 'is-loading' : 'hide-loading';
-  return (
-    <div className={className} />
-  );
+  const className = isLoading ? '' : 'hide-loading';
+  return <div className={`is-loading ${className}`} />;
 };
 
 LoadingComponent.propTypes = {
