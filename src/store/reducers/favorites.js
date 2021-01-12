@@ -19,7 +19,9 @@ const favoritesReducer = (state = initialState, { type, payload }) => {
 
   case FAVORITES_ADD_FAVORITE: {
     const itemIndex = state.get('songs').findIndex((song) => song.get('song_name') === payload.get('song_name'));
-    return itemIndex > -1 ? state.deleteIn(['songs', itemIndex]) : state;
+    const songs = state.get('songs');
+    const updatedSongs = songs.push(payload);
+    return itemIndex > -1 ? state : state.set('songs', updatedSongs);
   }
 
   case FAVORITES_REMOVE_FAVORITE: {

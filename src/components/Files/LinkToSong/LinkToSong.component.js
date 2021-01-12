@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import propTypes from 'prop-types';
 
 import SongIcon from 'components/SongIcon';
-import HeartFavorite from 'components/HeartFavorite';
+import HeartFavoriteContainer from 'components/HeartFavorite';
 import ContextMenu from 'components/ContextMenu';
 
 const LinkToSongComponent = ({
@@ -20,7 +20,7 @@ const LinkToSongComponent = ({
         <p className="file-name">{fileName}</p>
       </button>
       <Fragment>
-        <HeartFavorite
+        <HeartFavoriteContainer
           fileName={fileName}
           path={path}
         />
