@@ -3,7 +3,7 @@ import React from 'react';
 import { List } from 'immutable';
 
 import LinkToFolder from './LinkToFolder';
-import LinkToSong from './LinkToSong';
+import LinkToSongContainer from './LinkToSong';
 
 import './style/files.scss';
 
@@ -21,7 +21,7 @@ const FilesComponent = ({ files, folders }) => (
 
     {
       files.map((song, index) => (
-        <LinkToSong
+        <LinkToSongContainer
           key={song.get('name')}
           index={index}
           fileName={song.get('name')}
