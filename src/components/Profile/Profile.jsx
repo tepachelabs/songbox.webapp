@@ -6,7 +6,6 @@ import './style/profile.scss';
 
 const Profile = () => {
   const user = useSelector((state) => state.user);
-  const darkThemeActive = useSelector((state) => state.settings.get('darkTheme'));
 
   return (
     <div className="profile-container">
@@ -15,7 +14,7 @@ const Profile = () => {
         src={user.get('photo') || profilePicture}
         alt="profile"
       />
-      <p className={`${darkThemeActive ? 'dark-theme-name' : ''} user-email`}>{user.email || 'you@anonymous.com'}</p>
+      <p className="user-email">{user.get('email') || 'you@anonymous.com'}</p>
       <h4 className="user-name">{user.getIn(['name', 'display_name']) || 'Anonymous'}</h4>
     </div>
   );
