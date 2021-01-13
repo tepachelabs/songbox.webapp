@@ -6,6 +6,8 @@ import {
   getFavoriteSongsService,
 } from 'lib/apiFavoritesService';
 
+import { isSongInFavorites } from 'utils/favorites';
+
 import {
   FAVORITES_SET_IS_FAVORITE_PLAYING,
   FAVORITES_REMOVE_FAVORITE,
@@ -23,22 +25,26 @@ export const initializeFavorites = (payload) => ({ type: FAVORITES_INITIALIZE_FA
 
 export const createFavorite = (fileName, path) => (dispatch, getState) => {
   const token = getState().app.get('token');
+  const favorites = getState().favorites.get('songs');
+
   const body = {
     song_name: fileName,
     path_lower: path,
   };
 
-  createFavoriteService(token, body)
-    .then(({ data }) => {
-      const songData = Map(data);
-      dispatch(addFavorite(songData));
-    })
-    .catch(() => {
-      swal({
-        text: 'Favorites service not available.',
-        icon: 'error',
+  if (!isSongInFavorites(favorites, path)) {
+    createFavoriteService(token, body)
+      .then(({ data }) => {
+        const songData = Map(data);
+        dispatch(addFavorite(songData));
+      })
+      .catch(() => {
+        swal({
+          text: 'Favorites service not available.',
+          icon: 'error',
+        });
       });
-    });
+  }
 };
 
 export const fetchFavoritesSongs = () => (dispatch, getState) => {

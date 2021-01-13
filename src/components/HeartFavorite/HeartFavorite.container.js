@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import propTypes from 'prop-types';
 
 import { createFavorite } from 'store/actions/favoritesActions';
+import { isSongInFavorites } from 'utils/favorites';
 
 import HeartFavoriteComponent from './HeartFavorite.component';
 
@@ -17,8 +18,7 @@ const HeartFavoriteContainer = ({ fileName, path }) => {
   };
 
   useEffect(() => {
-    const isSongInFavorites = favorites.some((favorite) => favorite.get('path_lower') === path);
-    setIsFavorite(isSongInFavorites);
+    setIsFavorite(isSongInFavorites(favorites, path));
   }, [favorites, path]);
 
   return (
