@@ -26,7 +26,7 @@ const AppComponent = () => {
       </div>
       <div className="App">
         <Switch>
-          <Route path={FAVORITES_PATH} render={() => <Favorites pageNumber={1} />} />
+          <Route path={FAVORITES_PATH} component={Favorites} />
           <Route path={SETTINGS_PATH} render={() => <Settings pageNumber={2} />} />
           <Route path={HELP_PATH} render={() => <Help pageNumber={3} />} />
           <Route path={HOMEPAGE_PATH} exact component={Main} />
