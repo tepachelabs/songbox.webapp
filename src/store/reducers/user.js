@@ -2,8 +2,8 @@ import { Map } from 'immutable';
 import { USER_SET_USER } from '../constants';
 
 const initialState = Map({
-  name: 'Anonymous Name',
-  email: 'anonymous@gmail.com',
+  name: '',
+  email: '',
   photo: '',
 });
 
