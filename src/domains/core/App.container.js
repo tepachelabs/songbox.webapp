@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { createNewSession, recoverSession } from 'store/actions/sessionActions';
+
 import { Loading } from './Loading';
 import { AppComponent } from './App.component';
 import { selectIsAppLoaded } from './App.selectors';

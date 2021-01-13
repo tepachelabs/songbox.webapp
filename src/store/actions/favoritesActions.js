@@ -1,8 +1,9 @@
-import { Map } from 'immutable';
+import { Map, fromJS } from 'immutable';
 import swal from 'sweetalert';
 
 import {
   createFavoriteService,
+  getFavoriteSongsService,
 } from 'lib/apiFavoritesService';
 
 import {
@@ -28,9 +29,24 @@ export const createFavorite = (fileName, path) => (dispatch, getState) => {
   };
 
   createFavoriteService(token, body)
-    .then((result) => {
-      const songData = Map(result.data);
+    .then(({ data }) => {
+      const songData = Map(data);
       dispatch(addFavorite(songData));
+    })
+    .catch(() => {
+      swal({
+        text: 'Favorites service not available.',
+        icon: 'error',
+      });
+    });
+};
+
+export const fetchFavoritesSongs = () => (dispatch, getState) => {
+  const token = getState().app.get('token');
+
+  getFavoriteSongsService(token)
+    .then((result) => {
+      dispatch(initializeFavorites(fromJS(result.data)));
     })
     .catch(() => {
       swal({
