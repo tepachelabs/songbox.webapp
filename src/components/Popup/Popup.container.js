@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import propTypes from 'prop-types';
 
 import useClickOutside from 'hooks/useClickOutside';
 import PopupComponent from './Popup.component';
 
-const PopupContainer = ({ type }) => {
-  const [isPopupOpen, setIsPopupOpen] = useState(true);
-  const nodeRef = useClickOutside(isPopupOpen, () => {
-    setIsPopupOpen(false);
+const PopupContainer = ({ type, isOpen, setIsOpen }) => {
+  const nodeRef = useClickOutside(isOpen, () => {
+    setIsOpen(false);
   });
 
   const showingComponent = new Map();
@@ -15,13 +14,13 @@ const PopupContainer = ({ type }) => {
   showingComponent.set('success', <p>Success</p>);
 
   const handleClose = () => {
-    setIsPopupOpen(false);
+    setIsOpen(false);
   };
 
   return (
     <PopupComponent
       handleClose={handleClose}
-      isShowing={isPopupOpen}
+      isShowing={isOpen}
       showingElement={showingComponent.get(type)}
       isOpenRef={nodeRef}
     />
@@ -30,6 +29,8 @@ const PopupContainer = ({ type }) => {
 
 PopupContainer.propTypes = {
   type: propTypes.string.isRequired,
+  isOpen: propTypes.bool.isRequired,
+  setIsOpen: propTypes.func.isRequired,
 };
 
 export default PopupContainer;
