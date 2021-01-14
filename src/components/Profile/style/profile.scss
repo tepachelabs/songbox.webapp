@@ -4,43 +4,42 @@
 $img-size: 100px;
 
 .profile-container {
-    text-align: center;
+  text-align: center;
 }
 
 .profile-picture {
-    height: $img-size;
-    width: $img-size;
-    border-radius: 50%;
+  border-radius: 50%;
+  height: $img-size;
+  width: $img-size;
 }
 
 .user-email {
-    font-family: 'Asap', sans-serif;
-    font-size: 14px;
-    margin-bottom: 0;
-    padding: 1vw;
-    padding-bottom: 0.1vw;
-    word-wrap: break-word;
-    color: $not-so-soft-gray;
+  font-family: $font-asap;
+  font-size: 14px;
+  margin-bottom: 0;
+  padding: 1vw 0 0.1vw 1vw;
+  word-wrap: break-word;
+  color: $not-so-soft-gray;
 }
 
 .user-name {
-    font-size: 16px;
-    font-weight: bold;
-    padding: 3vw;
-    padding-top: 0;
-    word-wrap: break-word;
-    font-family: 'Asap', sans-serif;
+  font-family: $font-quick;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 0 0 3vw 0;
+  margin-top: 0;
+  word-wrap: break-word;
 }
 
 @media only screen and (min-width: 600px) and (max-width: 1024px) {
-    .user-name {
-        padding: 0;
-    }
+  .user-name {
+    padding: 0;
+  }
 }
 
-@media(min-width: 1024px) { 
-    .user-name {
-        padding: 0;
-        font-size: 18px;
-    }
+@media(min-width: 1024px) {
+  .user-name {
+    font-size: 18px;
+    padding: 0;
+  }
 }
