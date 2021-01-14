@@ -1,12 +1,13 @@
 import { Map, fromJS } from 'immutable';
-import swal from 'sweetalert';
 
 import {
   createFavoriteService,
   getFavoriteSongsService,
 } from 'lib/apiFavoritesService';
 
-import { isSongInFavorites } from 'utils/favorites';
+import { isSongInFavorites } from 'Favorites/favorites';
+
+import { logError } from 'lib/errorLogger';
 
 import {
   FAVORITES_SET_IS_FAVORITE_PLAYING,
@@ -23,26 +24,18 @@ export const removeFavorite = (payload) => ({ type: FAVORITES_REMOVE_FAVORITE, p
 export const addFavorite = (payload) => ({ type: FAVORITES_ADD_FAVORITE, payload });
 export const initializeFavorites = (payload) => ({ type: FAVORITES_INITIALIZE_FAVORITES, payload });
 
-export const createFavorite = (fileName, path) => (dispatch, getState) => {
+export const createFavorite = (body) => (dispatch, getState) => {
   const token = getState().app.get('token');
   const favorites = getState().favorites.get('songs');
 
-  const body = {
-    song_name: fileName,
-    path_lower: path,
-  };
-
-  if (!isSongInFavorites(favorites, path)) {
+  if (!isSongInFavorites(favorites, body.path_lower)) {
     createFavoriteService(token, body)
       .then(({ data }) => {
         const songData = Map(data);
         dispatch(addFavorite(songData));
       })
-      .catch(() => {
-        swal({
-          text: 'Favorites service not available.',
-          icon: 'error',
-        });
+      .catch((error) => {
+        logError(error);
       });
   }
 };
@@ -54,10 +47,7 @@ export const fetchFavoritesSongs = () => (dispatch, getState) => {
     .then((result) => {
       dispatch(initializeFavorites(fromJS(result.data)));
     })
-    .catch(() => {
-      swal({
-        text: 'Favorites service not available.',
-        icon: 'error',
-      });
+    .catch((error) => {
+      logError(error);
     });
 };

@@ -60,3 +60,5 @@ export const removeFavorite = async (file) => {
     return false;
   }
 };
+
+export const isSongInFavorites = (favorites, path) => favorites.some((favorite) => favorite.get('path_lower') === path);

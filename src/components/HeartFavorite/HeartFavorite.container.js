@@ -1,25 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import propTypes from 'prop-types';
 
 import { createFavorite } from 'store/actions/favoritesActions';
-import { isSongInFavorites } from 'utils/favorites';
+import { isSongInFavorites } from 'Favorites/favorites';
 
 import HeartFavoriteComponent from './HeartFavorite.component';
 
 const HeartFavoriteContainer = ({ fileName, path }) => {
-  const [isFavorite, setIsFavorite] = useState(false);
-
   const favorites = useSelector((state) => state.favorites.get('songs'));
   const dispatch = useDispatch();
 
-  const handleFavorite = () => {
-    dispatch(createFavorite(fileName, path));
-  };
+  const isFavorite = isSongInFavorites(favorites, path);
 
-  useEffect(() => {
-    setIsFavorite(isSongInFavorites(favorites, path));
-  }, [favorites, path]);
+  const handleFavorite = () => {
+    dispatch(createFavorite({
+      song_name: fileName,
+      path_lower: path,
+    }));
+  };
 
   return (
     <HeartFavoriteComponent
