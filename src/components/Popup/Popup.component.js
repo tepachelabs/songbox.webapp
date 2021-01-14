@@ -1,7 +1,7 @@
 import React from 'react';
 import propTypes from 'prop-types';
 
-import './styles/pupup.scss';
+import './styles/popup.scss';
 
 const PopupComponent = ({
   handleClose,
@@ -15,8 +15,8 @@ const PopupComponent = ({
     <div className={`popup-background ${isHiddenClassName}`}>
       <div ref={isOpenRef} className="show-popup">
         { showingElement }
+        <button type="button" onClick={handleClose}>Close</button>
       </div>
-      <button type="button" onClick={handleClose}>Close</button>
     </div>
   );
 };
@@ -24,7 +24,7 @@ const PopupComponent = ({
 PopupComponent.propTypes = {
   handleClose: propTypes.func.isRequired,
   isShowing: propTypes.bool.isRequired,
-  isOpenRef: propTypes.shape({ current: propTypes.instanceOf(Element) }).isRequired,
+  isOpenRef: propTypes.shape({ current: propTypes.instanceOf(Node) }).isRequired,
   showingElement: propTypes.node.isRequired,
 };
 
