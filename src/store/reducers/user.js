@@ -10,11 +10,7 @@ const initialState = Map({
 const userReducer = (state = initialState, { type, payload }) => {
   switch (type) {
   case USER_SET_USER:
-    return state
-      .set('name', payload.name)
-      .set('email', payload.email)
-      .set('photo', payload.photo);
-
+    return state.merge({ ...payload });
   default:
     return state;
   }

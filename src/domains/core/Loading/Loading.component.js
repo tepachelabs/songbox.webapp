@@ -3,13 +3,11 @@ import propTypes from 'prop-types';
 
 import './styles/loading.scss';
 
-const LoadingComponent = ({ isLoading }) => {
+export const Loading = ({ isLoading }) => {
   const className = isLoading ? '' : 'hide-loading';
   return <div className={`is-loading ${className}`} />;
 };
 
-LoadingComponent.propTypes = {
+Loading.propTypes = {
   isLoading: propTypes.bool.isRequired,
 };
-
-export default LoadingComponent;
