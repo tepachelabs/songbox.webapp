@@ -1,1 +1,1 @@
-export { default } from './Loading.component';
+export { Loading } from './Loading.component';

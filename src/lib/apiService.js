@@ -1,7 +1,7 @@
 import axios from 'axios';
 import config from '../config';
 import { logError } from './errorLogger';
-// import { destroySession } from './localStorage';
+import { destroySession } from './localStorage';
 
 const { apiGatewayUrl } = config;
 
@@ -9,8 +9,8 @@ const onError = (error, reject) => {
   logError(error);
 
   if (error.response.status === 401) { // probably because token has expired
-    // destroySession();
-    // window.location = '/login?token-expired';
+    destroySession();
+    window.location = '/login?token-expired';
   }
 
   reject(error);
