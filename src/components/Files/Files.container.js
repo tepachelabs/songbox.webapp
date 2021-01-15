@@ -2,7 +2,7 @@ import propTypes from 'prop-types';
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { obtainFiles } from '../../store/actions/filesActions';
+import { getFilesFromPath } from 'store/actions/filesActions';
 import FilesComponent from './Files.component';
 
 const FilesContainer = ({ path }) => {
@@ -11,7 +11,7 @@ const FilesContainer = ({ path }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(obtainFiles(path));
+    dispatch(getFilesFromPath(path));
   }, [path, dispatch]);
 
   return <FilesComponent files={files} folders={folders} />;

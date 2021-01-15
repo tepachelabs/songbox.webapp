@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
-import { fetchFileListFromPath } from '../../store/actions/filesActions';
+import { fetchFileListFromPath } from 'store/actions/filesActions';
 
 import RefreshButtonComponent from './RefreshButton.component';
 

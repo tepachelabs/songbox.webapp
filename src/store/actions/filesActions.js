@@ -28,7 +28,7 @@ export const fetchFileListFromPath = (path) => (dispatch, getState) => {
     });
 };
 
-export const obtainFiles = (path) => (dispatch, getState) => {
+export const getFilesFromPath = (path) => (dispatch, getState) => {
   const files = getState().files.get('cachedFiles');
   const routeFiles = files.get(path);
 
