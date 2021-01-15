@@ -24,7 +24,7 @@ export const removeFavorite = (payload) => ({ type: FAVORITES_REMOVE_FAVORITE, p
 export const addFavorite = (payload) => ({ type: FAVORITES_ADD_FAVORITE, payload });
 export const initializeFavorites = (payload) => ({ type: FAVORITES_INITIALIZE_FAVORITES, payload });
 
-export const createFavorite = (body, handleError) => (dispatch, getState) => {
+export const createFavorite = (body) => (dispatch, getState) => {
   const token = getState().app.get('token');
   const favorites = getState().favorites.get('songs');
 
@@ -35,7 +35,6 @@ export const createFavorite = (body, handleError) => (dispatch, getState) => {
         dispatch(addFavorite(songData));
       })
       .catch((error) => {
-        handleError();
         logError(error);
       });
   }
