@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import propTypes from 'prop-types';
 
-import { createFavorite } from 'store/actions/favoritesActions';
+import { handleInteractionWithFavorite } from 'store/actions/favoritesActions';
 
 import { isSongInFavorites } from 'Favorites/favorites';
 
@@ -15,7 +15,7 @@ const HeartFavoriteContainer = ({ fileName, path }) => {
   const isFavorite = isSongInFavorites(favorites, path);
 
   const handleFavorite = () => {
-    dispatch(createFavorite({
+    dispatch(handleInteractionWithFavorite(isFavorite, {
       song_name: fileName,
       path_lower: path,
     }));

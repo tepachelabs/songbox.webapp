@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { fetchFavoritesSongs } from 'store/actions/favoritesActions';
 import { createNewSession, recoverSession } from 'store/actions/sessionActions';
 
 import { Loading } from './Loading';
@@ -20,6 +21,8 @@ export const App = () => {
     } else {
       dispatch(recoverSession());
     }
+
+    dispatch(fetchFavoritesSongs());
   }, [dispatch]);
 
   return isAppLoaded ? <AppComponent /> : <Loading isLoading />;

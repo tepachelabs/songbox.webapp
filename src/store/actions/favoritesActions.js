@@ -3,9 +3,8 @@ import { Map, fromJS } from 'immutable';
 import {
   createFavoriteService,
   getFavoriteSongsService,
+  deleteFavoriteSongService,
 } from 'lib/apiFavoritesService';
-
-import { isSongInFavorites } from 'Favorites/favorites';
 
 import { logError } from 'lib/errorLogger';
 
@@ -26,18 +25,27 @@ export const initializeFavorites = (payload) => ({ type: FAVORITES_INITIALIZE_FA
 
 export const createFavorite = (body) => (dispatch, getState) => {
   const token = getState().app.get('token');
-  const favorites = getState().favorites.get('songs');
 
-  if (!isSongInFavorites(favorites, body.path_lower)) {
-    createFavoriteService(token, body)
-      .then(({ data }) => {
-        const songData = Map(data);
-        dispatch(addFavorite(songData));
-      })
-      .catch((error) => {
-        logError(error);
-      });
-  }
+  createFavoriteService(token, body)
+    .then(({ data }) => {
+      const songData = Map(data);
+      dispatch(addFavorite(songData));
+    })
+    .catch((error) => {
+      logError(error);
+    });
+};
+
+export const deleteFavorite = (body) => (dispatch, getState) => {
+  const token = getState().app.get('token');
+
+  deleteFavoriteSongService(token, body)
+    .then(() => {
+      dispatch(removeFavorite(Map(body)));
+    })
+    .catch((error) => {
+      logError(error);
+    });
 };
 
 export const fetchFavoritesSongs = () => (dispatch, getState) => {
@@ -50,4 +58,12 @@ export const fetchFavoritesSongs = () => (dispatch, getState) => {
     .catch((error) => {
       logError(error);
     });
+};
+
+export const handleInteractionWithFavorite = (isFavorite, body) => (dispatch) => {
+  if (isFavorite) {
+    dispatch(deleteFavorite(body));
+  } else {
+    dispatch(createFavorite(body));
+  }
 };
