@@ -3,8 +3,8 @@ import { useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
 import { LOGIN_PATH } from 'routes';
-import { WorkspaceComponent } from './Workspace.component';
-import { selectIsSessionToken } from '../App.selectors';
+import { WorkspaceComponent } from './workspace.component';
+import { selectIsSessionToken } from '../app.selectors';
 
 export const Workspace = () => {
   const isSessionToken = useSelector(selectIsSessionToken);
