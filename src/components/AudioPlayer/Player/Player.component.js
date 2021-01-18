@@ -6,7 +6,7 @@ import {
   RewindButton,
   PlayContainer,
   ForwardButton,
-  Shuffle,
+  ShuffleButton,
 } from '../PlayerButtons';
 
 const PlayerComponent = ({ isDisabled, audioRef }) => (
@@ -16,7 +16,7 @@ const PlayerComponent = ({ isDisabled, audioRef }) => (
       <RewindButton />
       <PlayContainer audioRef={audioRef} />
       <ForwardButton />
-      <Shuffle />
+      <ShuffleButton />
     </div>
   </div>
 );
