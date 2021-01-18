@@ -1,5 +1,5 @@
 import { apiFetchFiles } from 'lib/apiFilesService';
-import { getFolders, getSongs } from 'utils/files';
+import { filterAndSortFolders, filterAndSortSongs } from 'utils/files';
 import {
   FILES_SET_FILES_LIST,
   FILES_SET_FOLDER_LIST,
@@ -19,8 +19,8 @@ export const fetchFileListFromPath = (path) => (dispatch, getState) => {
 
   apiFetchFiles(token, path)
     .then(({ data }) => {
-      dispatch(setFoldersList(getFolders(data)));
-      dispatch(setFilesList(getSongs(data)));
+      dispatch(setFoldersList(filterAndSortFolders(data)));
+      dispatch(setFilesList(filterAndSortSongs(data)));
       dispatch(setCachedFiles({ path, files: data }));
     })
     .catch((err) => {
@@ -33,8 +33,8 @@ export const getFilesFromPath = (path) => (dispatch, getState) => {
   const routeFiles = files.get(path);
 
   if (routeFiles) {
-    dispatch(setFoldersList(getFolders(routeFiles)));
-    dispatch(setFilesList(getSongs(routeFiles)));
+    dispatch(setFoldersList(filterAndSortFolders(routeFiles)));
+    dispatch(setFilesList(filterAndSortSongs(routeFiles)));
   } else {
     dispatch(fetchFileListFromPath(path));
   }
