@@ -1,3 +1,3 @@
-import Repeat from './Repeat';
+import RepeatButton from './RepeatButton';
 
-export default Repeat;
+export default RepeatButton;
