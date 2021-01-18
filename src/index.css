@@ -1,0 +1,13 @@
+/* GLOBAL STYLES FOR ELEMENTS OUTSIDE THE REACT APP */
+
+/* NOTE: Do NOT add styles for react components */
+/* please update MaterialUI or StyledComponents */
+/* themes instead.                              */
+
+html, body, #root {
+    font-family: 'Asap', sans-serif;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}

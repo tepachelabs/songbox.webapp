@@ -2,11 +2,12 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { createNewSession, recoverSession } from 'store/actions/sessionActions';
-import AppComponent from './App.component';
-import LoadingComponent from './Loading.component';
+import { Loading } from './Loading';
+import { AppComponent } from './app.component';
+import { selectIsAppLoaded } from './app.selectors';
 
-const App = () => {
-  const isAppLoaded = useSelector((state) => state.app.get('isLoaded'));
+export const App = () => {
+  const isAppLoaded = useSelector(selectIsAppLoaded);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -15,14 +16,10 @@ const App = () => {
 
     if (retrievedToken) {
       dispatch(createNewSession(retrievedToken));
-      window.history.replaceState({}, document.title, '/app');
     } else {
       dispatch(recoverSession());
-      window.history.replaceState({}, document.title, '/app');
     }
   }, [dispatch]);
 
-  return isAppLoaded ? <AppComponent /> : <LoadingComponent />;
+  return isAppLoaded ? <AppComponent /> : <Loading isLoading />;
 };
-
-export default App;
