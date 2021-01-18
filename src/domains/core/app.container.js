@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { createNewSession, recoverSession } from 'store/actions/sessionActions';
 import { Loading } from './Loading';
-import { AppComponent } from './App.component';
-import { selectIsAppLoaded } from './App.selectors';
+import { AppComponent } from './app.component';
+import { selectIsAppLoaded } from './app.selectors';
 
 export const App = () => {
   const isAppLoaded = useSelector(selectIsAppLoaded);
