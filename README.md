@@ -24,9 +24,10 @@ Songbox is a web service that allows users to listen to their music stored in Dr
 ## Webapp Installation
 
 ```shell script
+$ git clone https://github.com/tepachelabs/songbox.webapp.git
+$ cd songbox.webapp
 $ npm install
 $ npm start
-
 # localhost:3000
 ```
 
