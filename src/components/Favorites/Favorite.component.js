@@ -2,15 +2,21 @@ import React from 'react';
 import { List } from 'immutable';
 import propTypes from 'prop-types';
 
+import {
+  FavoritesContent,
+  FavoritesTitle,
+  FavoritesSongs,
+} from './Favorites.style';
+
 import LinkToSongContainer from '../Files/LinkToSong';
 
 const FavoriteComponent = ({ favorites }) => (
-  <div className="content-container">
-    <h1 id="your-personal-library" className="title">
+  <FavoritesContent>
+    <FavoritesTitle>
       Your personal library
       <span role="img" aria-label="heart">❤️</span>
-    </h1>
-    <div className="files-container">
+    </FavoritesTitle>
+    <FavoritesSongs>
       {
         favorites.map((favorite, index) => (
           <LinkToSongContainer
@@ -22,8 +28,8 @@ const FavoriteComponent = ({ favorites }) => (
           />
         ))
       }
-    </div>
-  </div>
+    </FavoritesSongs>
+  </FavoritesContent>
 );
 
 FavoriteComponent.propTypes = {

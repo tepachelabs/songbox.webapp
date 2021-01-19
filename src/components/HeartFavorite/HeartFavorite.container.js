@@ -24,7 +24,7 @@ const HeartFavoriteContainer = ({ fileName, path }) => {
   return (
     <HeartFavoriteComponent
       isFavorite={isFavorite}
-      handleFavorite={handleFavorite}
+      onButtonClick={handleFavorite}
     />
   );
 };
