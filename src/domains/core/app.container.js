@@ -5,8 +5,8 @@ import { createNewSession, recoverSession } from 'store/actions/sessionActions';
 import { fetchFavoritesSongs } from 'store/actions/favoritesActions';
 
 import { Loading } from './Loading';
-import { AppComponent } from './App.component';
-import { selectIsAppLoaded } from './App.selectors';
+import { AppComponent } from './app.component';
+import { selectIsAppLoaded } from './app.selectors';
 
 export const App = () => {
   const isAppLoaded = useSelector(selectIsAppLoaded);

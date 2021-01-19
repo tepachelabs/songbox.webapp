@@ -1,1 +1,1 @@
-export { Workspace } from './Workspace.container';
+export { Workspace } from './workspace.container';

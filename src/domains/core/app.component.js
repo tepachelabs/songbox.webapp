@@ -9,15 +9,17 @@ import { Login } from 'domains/login';
 import NotFound from 'components/NotFound';
 import { Workspace } from './workspace';
 
+import { AppWrapper } from './app.style';
+
 export const AppComponent = () => (
   <BrowserRouter>
-    <div className="App">
+    <AppWrapper>
       <Switch>
         <Route path={LOGIN_PATH} component={Login} />
         <Route path={APP_PATH} component={Workspace} />
         <Redirect strict from={EMPTY_PATH} to={APP_PATH} />
         <Route path="*" component={NotFound} />
       </Switch>
-    </div>
+    </AppWrapper>
   </BrowserRouter>
 );
