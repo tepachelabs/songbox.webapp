@@ -3,6 +3,7 @@ import Promise from 'bluebird';
 import {
   postWithAuth,
   getWithAuth,
+  deleteWithAuth,
 } from 'lib/apiService';
 
 import {
@@ -16,4 +17,8 @@ export const createFavoriteService = (token, body) => new Promise((resolve, reje
 
 export const getFavoriteSongsService = (token) => new Promise((resolve, reject) => {
   getWithAuth(API_FAVORITES_ROUTE, token, resolve, reject);
+});
+
+export const deleteFavoriteSongService = (token, body) => new Promise((resolve, reject) => {
+  deleteWithAuth(API_FAVORITE_ROUTE, token, body, resolve, reject);
 });

@@ -1,42 +1,23 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-
 import {
-  FAVORITES_PATH, FILE_PATH, HELP_PATH, HOMEPAGE_PATH, SETTINGS_PATH,
-} from 'routes';
+  BrowserRouter, Route, Switch, Redirect,
+} from 'react-router-dom';
 
-import Sidebar from 'components/Sidebar';
-import Main from 'components/Main';
-import Favorites from 'components/Favorites';
-import Settings from 'components/Settings';
-import Help from 'components/Help';
+import { LOGIN_PATH, APP_PATH, EMPTY_PATH } from 'routes';
+
+import { Login } from 'domains/login';
 import NotFound from 'components/NotFound';
-import AudioPlayer from 'components/AudioPlayer';
+import { Workspace } from './workspace';
 
-import 'styles/app.scss';
-
-const AppComponent = () => {
-  const darkThemeActive = useSelector((state) => state.player.darkTheme);
-
-  return (
-    <BrowserRouter>
-      <div className={`sidebar-container ${darkThemeActive ? 'dark-soft-theme-background' : ''}`}>
-        <Sidebar />
-      </div>
-      <div className="App">
-        <Switch>
-          <Route path={FAVORITES_PATH} component={Favorites} />
-          <Route path={SETTINGS_PATH} render={() => <Settings pageNumber={2} />} />
-          <Route path={HELP_PATH} render={() => <Help pageNumber={3} />} />
-          <Route path={HOMEPAGE_PATH} exact component={Main} />
-          <Route path={FILE_PATH} exact component={Main} />
-          <Route path="*" component={NotFound} />
-        </Switch>
-      </div>
-      <AudioPlayer />
-    </BrowserRouter>
-  );
-};
-
-export default AppComponent;
+export const AppComponent = () => (
+  <BrowserRouter>
+    <div className="App">
+      <Switch>
+        <Route path={LOGIN_PATH} component={Login} />
+        <Route path={APP_PATH} component={Workspace} />
+        <Redirect strict from={EMPTY_PATH} to={APP_PATH} />
+        <Route path="*" component={NotFound} />
+      </Switch>
+    </div>
+  </BrowserRouter>
+);

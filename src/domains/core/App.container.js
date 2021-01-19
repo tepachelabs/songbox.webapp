@@ -3,11 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { createNewSession, recoverSession } from 'store/actions/sessionActions';
 import { fetchFavoritesSongs } from 'store/actions/favoritesActions';
-import AppComponent from './App.component';
-import LoadingComponent from './Loading';
 
-const App = () => {
-  const isAppLoaded = useSelector((state) => state.app.get('isLoaded'));
+import { Loading } from './Loading';
+import { AppComponent } from './App.component';
+import { selectIsAppLoaded } from './App.selectors';
+
+export const App = () => {
+  const isAppLoaded = useSelector(selectIsAppLoaded);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -16,16 +18,12 @@ const App = () => {
 
     if (retrievedToken) {
       dispatch(createNewSession(retrievedToken));
-      window.history.replaceState({}, document.title, '/app');
     } else {
       dispatch(recoverSession());
-      window.history.replaceState({}, document.title, '/app');
     }
 
     dispatch(fetchFavoritesSongs());
   }, [dispatch]);
 
-  return isAppLoaded ? <AppComponent /> : <LoadingComponent isLoading={!isAppLoaded} />;
+  return isAppLoaded ? <AppComponent /> : <Loading isLoading />;
 };
-
-export default App;
