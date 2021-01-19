@@ -2,6 +2,7 @@ import { apiFetchStreamableSong } from 'lib/apiFetchStreamableSong';
 
 import { setSongIndex } from 'store/actions/songsQueueActions';
 
+import { getRandomNumber } from 'utils/numberGenerator';
 import {
   PLAYER_SET_REPEAT,
   PLAYER_SET_VOLUME,
@@ -14,7 +15,7 @@ import {
 import {
   canPlayNextSong,
   canPlayPreviousSong,
-  selectIndex,
+  selectIndex, selectQueueSize,
   selectSongPathAtIndex,
 } from '../selectors/songsQueue';
 
@@ -38,17 +39,31 @@ export const getSongStreamLink = (path) => (dispatch, getState) => {
     });
 };
 
-export const playNextSong = () => (dispatch, getState) => {
-  const state = getState();
+const getNextAvailableIndex = (state) => {
   const songIndex = selectIndex(state);
+  const queueSize = selectQueueSize(state);
+  const onRepeat = state.player.get('onRepeat');
+  const onRandom = state.player.get('onRandom');
 
-  if (canPlayNextSong(state)) {
-    const nextIndex = songIndex + 1;
-    const songPath = selectSongPathAtIndex(state, nextIndex);
-
-    dispatch(getSongStreamLink(songPath));
-    dispatch(setSongIndex(nextIndex));
+  if (onRandom) {
+    return getRandomNumber(songIndex, queueSize);
   }
+  if (onRepeat) {
+    const lastPosition = queueSize - 1;
+    return songIndex === lastPosition ? 0 : songIndex + 1;
+  } if (canPlayNextSong(state)) {
+    return songIndex + 1;
+  }
+
+  return songIndex;
+};
+
+export const playNextSong = () => (dispatch, getState) => {
+  const nextIndex = getNextAvailableIndex(getState());
+  const songPath = selectSongPathAtIndex(getState(), nextIndex);
+
+  dispatch(getSongStreamLink(songPath));
+  dispatch(setSongIndex(nextIndex));
 };
 
 export const playPreviousSong = () => (dispatch, getState) => {
