@@ -1,8 +1,21 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+const DefaultFont = css`
+  font-family: 'Asap', sans-serif;
+`;
+
+const BrandFont = css`
+  font-family: 'Quicksand', sans-serif;
+`;
+
+export const FONT = {
+  DEFAULT: DefaultFont,
+  BRAND: BrandFont,
+};
 
 export const ProductTitle = styled.h1`
   color: ${(props) => props.theme.textColor.darker};
-  font-family: 'Quicksand', sans-serif;
+  ${BrandFont}
 `;
 
 export const Link = styled.a`

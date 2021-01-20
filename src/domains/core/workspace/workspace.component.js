@@ -5,7 +5,8 @@ import {
   FAVORITES_PATH, FILE_PATH, HELP_PATH, APP_PATH, SETTINGS_PATH,
 } from 'routes';
 
-import Sidebar from 'components/Sidebar';
+import { Sidebar } from 'components/sidebar';
+import { UserProfile } from 'components/user-profile';
 import Main from 'components/Main';
 import Favorites from 'components/Favorites';
 import Settings from 'components/Settings';
@@ -14,8 +15,10 @@ import AudioPlayer from 'components/AudioPlayer';
 
 export const WorkspaceComponent = () => (
   <BrowserRouter>
-    <div className="sidebar-container">
-      <Sidebar />
+    <div style={{ paddingTop: '1em' }}>
+      <Sidebar>
+        <UserProfile />
+      </Sidebar>
     </div>
     <div className="App">
       <Switch>
