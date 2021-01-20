@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-export const FavoritesContent = styled.div`
+export const FavoritesWrapper = styled.div`
  width: 100%;
 `;
 
-export const FavoritesSongs = styled.div`
+export const FavoritesSongListWrapper = styled.div`
   padding: 0 20px 150px 0;
 `;
 

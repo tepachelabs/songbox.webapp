@@ -1,1 +1,1 @@
-export { default } from './HeartFavorite.container';
+export { default } from './HeartFavorite';

@@ -5,6 +5,6 @@ export const HeartButton = styled.button`
   border: none;
 `;
 
-export const HeartIcon = styled.div`  
+export const HeartIconWrapper = styled.div`  
   margin-left: auto;
 `;

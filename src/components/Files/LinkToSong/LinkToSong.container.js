@@ -8,6 +8,8 @@ import { getSongStreamLink } from 'store/actions/playerActions';
 
 import { selectSongPathAtIndex } from 'store/selectors/songsQueue';
 import LinkToSongComponent from './LinkToSong.component';
+import { isSongInFavorites } from '../../../Favorites/favorites';
+import { handleInteractionWithFavorite } from '../../../store/actions/favoritesActions';
 
 const LinkToSongContainer = ({
   index,
@@ -17,8 +19,11 @@ const LinkToSongContainer = ({
 }) => {
   const songIndex = useSelector((state) => state.songsQueue.get('index'));
   const playingSongPath = useSelector((state) => selectSongPathAtIndex(state, songIndex));
-
+  const favorites = useSelector((state) => state.favorites.get('songs'));
   const dispatch = useDispatch();
+
+  const isFavorite = isSongInFavorites(favorites, path);
+  const isPlaying = path === playingSongPath;
 
   const selectSong = () => {
     dispatch(getSongStreamLink(path));
@@ -26,14 +31,20 @@ const LinkToSongContainer = ({
     dispatch(changeSongsQueue(files));
   };
 
-  const isPlaying = path === playingSongPath;
+  const handleFavorite = () => {
+    dispatch(handleInteractionWithFavorite(isFavorite, {
+      song_name: fileName,
+      path_lower: path,
+    }));
+  };
 
   return (
     <LinkToSongComponent
-      isPlaying={isPlaying}
       fileName={fileName}
+      handleFavorite={handleFavorite}
+      isFavorite={isFavorite}
+      isPlaying={isPlaying}
       selectSong={selectSong}
-      path={path}
     />
   );
 };

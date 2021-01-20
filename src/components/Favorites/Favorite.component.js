@@ -3,20 +3,20 @@ import { List } from 'immutable';
 import propTypes from 'prop-types';
 
 import {
-  FavoritesContent,
+  FavoritesWrapper,
   FavoritesTitle,
-  FavoritesSongs,
+  FavoritesSongListWrapper,
 } from './Favorites.style';
 
 import LinkToSongContainer from '../Files/LinkToSong';
 
 const FavoriteComponent = ({ favorites }) => (
-  <FavoritesContent>
+  <FavoritesWrapper>
     <FavoritesTitle>
       Your personal library
       <span role="img" aria-label="heart">❤️</span>
     </FavoritesTitle>
-    <FavoritesSongs>
+    <FavoritesSongListWrapper>
       {
         favorites.map((favorite, index) => (
           <LinkToSongContainer
@@ -28,8 +28,8 @@ const FavoriteComponent = ({ favorites }) => (
           />
         ))
       }
-    </FavoritesSongs>
-  </FavoritesContent>
+    </FavoritesSongListWrapper>
+  </FavoritesWrapper>
 );
 
 FavoriteComponent.propTypes = {
