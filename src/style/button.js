@@ -1,5 +1,6 @@
 import { Button as MuiButton, withStyles } from '@material-ui/core';
 import { blue, white } from './colors';
+import { theme } from './theme';
 
 export const Button = withStyles(({ spacing }) => ({
   root: {
@@ -20,11 +21,14 @@ export const DropboxButton = withStyles(() => ({
   },
 }))(Button);
 
-export const PlayerButton = withStyles(() => ({
+export const PlayerButton = withStyles(({ breakpoints }) => ({
   root: {
-    height: '45px',
-    width: '45px',
-    minWidth: '25px',
+    [breakpoints.down('sm')]: {
+      height: theme.spacing.four,
+      width: theme.spacing.four,
+    },
+    height: theme.spacing.nine,
+    width: theme.spacing.nine,
     padding: 0,
   },
 }))(Button);

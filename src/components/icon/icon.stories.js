@@ -7,6 +7,7 @@ import {
   HomeIcon,
   PlayCircleIcon,
   SettingsIcon,
+  ShuffleIcon,
   MoreIcon,
   LogOutIcon,
   HelpCircleIcon,
@@ -22,6 +23,7 @@ const icons = [
   { component: MoreIcon, title: 'MoreIcon' },
   { component: PlayCircleIcon, title: 'PlayCircleIcon' },
   { component: SettingsIcon, title: 'SettingsIcon' },
+  { component: ShuffleIcon, title: 'ShuffleIcon' },
 ];
 
 export default {
