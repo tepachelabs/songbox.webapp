@@ -11,7 +11,7 @@ import { Workspace } from './workspace';
 
 import { AppWrapper } from './app.style';
 
-export const AppComponent = () => (
+const AppComponent = () => (
   <BrowserRouter>
     <AppWrapper>
       <Switch>
@@ -23,3 +23,5 @@ export const AppComponent = () => (
     </AppWrapper>
   </BrowserRouter>
 );
+
+export default AppComponent;
