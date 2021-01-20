@@ -27,7 +27,8 @@ module.exports = {
     "linebreak-style": ["error", "unix"],
     "import/prefer-default-export": "off",
     "react/jsx-filename-extension": "off",
-    "react/jsx-fragments": ["error", "element"]
+    "react/jsx-fragments": ["error", "element"],
+    "react/jsx-props-no-spreading": ["off"]
   },
   settings: {
     "import/resolver": {
