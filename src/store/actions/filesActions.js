@@ -1,5 +1,5 @@
 import { apiFetchFiles } from 'lib/apiFilesService';
-import { filterAndSortFolders, filterAndSortSongs } from 'utils/files';
+import { filterAndSortFolders, filterAndSortSongs } from 'utils';
 import {
   FILES_SET_FILES_LIST,
   FILES_SET_FOLDER_LIST,
