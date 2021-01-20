@@ -6,15 +6,15 @@
  * @returns {String}
  */
 export default function getMobileOperatingSystem() {
-    var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+  const userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
-      if (/android/i.test(userAgent)) {
-          return 'android';
-      }
-
-      if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-          return 'iOS';
-      }
-
-      return 'base';
+  if (/android/i.test(userAgent)) {
+    return 'android';
   }
+
+  if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+    return 'iOS';
+  }
+
+  return 'base';
+}

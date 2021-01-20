@@ -8,16 +8,16 @@ import { getMobileOperatingSystem } from 'utils';
 import { createNewSession, recoverSession } from 'store/actions/sessionActions';
 import { setOS } from 'store/actions/appActions';
 import { Loading } from './Loading';
-const AppComponent  = React.lazy(() => import('./app.component'));
+
+const AppComponent = React.lazy(() => import('./app.component'));
 
 export const App = () => {
-
   const dispatch = useDispatch();
   const dark = useSelector((state) => state.settings.get('darkTheme'));
   const theme = createMuiTheme({
     palette: {
-      type: dark ? 'dark' : 'light'
-    }
+      type: dark ? 'dark' : 'light',
+    },
   });
 
   useEffect(() => {
@@ -33,10 +33,12 @@ export const App = () => {
     dispatch(setOS(os));
   }, [dispatch]);
 
-  return <Suspense fallback={<Loading />}>
-            <ThemeProvider theme={theme}>
-              <CssBaseline />
-              <AppComponent />
-            </ThemeProvider>
-        </Suspense>;
+  return (
+    <Suspense fallback={<Loading />}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <AppComponent />
+      </ThemeProvider>
+    </Suspense>
+  );
 };

@@ -1,11 +1,13 @@
 import { Map } from 'immutable';
 
-import { APP_LOADED, APP_LOADING, APP_TOKEN_UPDATE, SET_OS } from '../constants';
+import {
+  APP_LOADED, APP_LOADING, APP_TOKEN_UPDATE, SET_OS,
+} from '../constants';
 
 const initialState = Map({
   isLoaded: false,
   token: null,
-  os: null //android | iOS | base
+  os: null, // android | iOS | base
 });
 
 export default (state = initialState, { type, payload }) => {

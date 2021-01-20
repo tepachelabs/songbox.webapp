@@ -7,7 +7,7 @@ import {
   FormLabel,
   Box,
   Container,
-  Paper
+  Paper,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -20,20 +20,20 @@ import {
 } from 'store/actions/settingsActions';
 import { StyledSwitch } from 'components/Common';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   palette: {
-    type: theme.palette
+    type: theme.palette,
   },
   paper: {
     height: '100vh',
-    backgroundColor: theme.palette.primary
+    backgroundColor: theme.palette.primary,
   },
   box: {
-    margin: '40px auto'
+    margin: '40px auto',
   },
   p: {
-    textAlign: 'center'
-  }
+    textAlign: 'center',
+  },
 }));
 
 const Settings = ({ pageNumber }) => {
@@ -51,48 +51,55 @@ const Settings = ({ pageNumber }) => {
   return (
     <Paper className={classes.paper}>
       <h1 id="your-personal-library" className="title">Settings</h1>
-        <Container>
-          <Box className={classes.box}>
-            <FormLabel component='legend'>Autoplay next song</FormLabel>
-            <FormControlLabel
-              control={<StyledSwitch
+      <Container>
+        <Box className={classes.box}>
+          <FormLabel component="legend">Autoplay next song</FormLabel>
+          <FormControlLabel
+            control={(
+              <StyledSwitch
                 onChange={() => dispatch(setAutoPlay(!autoPlayActive))}
-                checked={autoPlayActive}/>}
-                label='Autoplay next song'
-            />
-          </Box>
-          <Box className={classes.box}>
-            <FormLabel component='legend'>Apparience</FormLabel>
-              <FormControlLabel
-                control={<StyledSwitch
-                  onChange={() => dispatch(setDarkTheme(!darkThemeActive))}
-                  checked={darkThemeActive}
-                />}
-                label='Toggle dark theme'
+                checked={autoPlayActive}
               />
-              <FormControlLabel
-                control={<StyledSwitch
-                  optionTitle="Show full filename"
-                  onChange={() => dispatch(setFullFilename(!fullFilename))}
-                  checked={fullFilename}
-                />}
-                label='Show full filename'
+            )}
+            label="Autoplay next song"
+          />
+        </Box>
+        <Box className={classes.box}>
+          <FormLabel component="legend">Apparience</FormLabel>
+          <FormControlLabel
+            control={(
+              <StyledSwitch
+                onChange={() => dispatch(setDarkTheme(!darkThemeActive))}
+                checked={darkThemeActive}
               />
-          </Box>
-          <Box className={classes.box}>
-            <FormLabel component='legend'>Other</FormLabel>
-            <Button
-              variant='outlined'
-              onClick={() => dispatch(restorePreferences())}
-            >
-              Restore preferences
-            </Button>
-          </Box>
-        </Container>
+            )}
+            label="Toggle dark theme"
+          />
+          <FormControlLabel
+            control={(
+              <StyledSwitch
+                optionTitle="Show full filename"
+                onChange={() => dispatch(setFullFilename(!fullFilename))}
+                checked={fullFilename}
+              />
+            )}
+            label="Show full filename"
+          />
+        </Box>
+        <Box className={classes.box}>
+          <FormLabel component="legend">Other</FormLabel>
+          <Button
+            variant="outlined"
+            onClick={() => dispatch(restorePreferences())}
+          >
+            Restore preferences
+          </Button>
+        </Box>
+      </Container>
 
-        <Container>
-          <p className={classes.p}>Copyright © 2020, Songbox. All rights reserved.</p>
-        </Container>
+      <Container>
+        <p className={classes.p}>Copyright © 2020, Songbox. All rights reserved.</p>
+      </Container>
     </Paper>
   );
 };
