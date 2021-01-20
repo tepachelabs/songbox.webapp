@@ -14,11 +14,9 @@ initErrorLogger();
 
 ReactDOM.render(
   <Provider store={store}>
-    <React.StrictMode>
-      <StyleProvider>
-        <App />
-      </StyleProvider>
-    </React.StrictMode>
+    <StyleProvider>
+      <App />
+    </StyleProvider>
   </Provider>,
   document.getElementById('root'),
 );
