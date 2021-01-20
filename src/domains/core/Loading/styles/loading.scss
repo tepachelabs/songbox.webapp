@@ -1,4 +1,4 @@
-.is-loading {
+#loading-splash {
   align-items: center;
   display: flex;
 
@@ -13,10 +13,6 @@
     left: 50%;
     position: absolute;
   }
-}
-
-.hide-loading {
-  display: none;
 }
 
 @keyframes spin {
