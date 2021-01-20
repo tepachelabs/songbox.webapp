@@ -19,3 +19,12 @@ export const DropboxButton = withStyles(() => ({
     },
   },
 }))(Button);
+
+export const PlayerButton = withStyles(() => ({
+  root: {
+    height: '45px',
+    width: '45px',
+    minWidth: '25px',
+    padding: 0,
+  },
+}))(Button);
