@@ -2,12 +2,8 @@ import React from 'react';
 import propTypes from 'prop-types';
 
 import { softGray } from 'style/colors';
+import { HeartButton } from 'style/button';
 import { HeartIcon } from 'components/icon';
-
-import {
-  HeartButton,
-  HeartIconWrapper,
-} from './HeartFavorite.style';
 
 const HeartFavorite = ({
   isFavorite,
@@ -17,12 +13,10 @@ const HeartFavorite = ({
 
   return (
     <HeartButton onClick={onButtonClick}>
-      <HeartIconWrapper>
-        <HeartIcon
-          fill={fillHeartStatus}
-          stroke={softGray}
-        />
-      </HeartIconWrapper>
+      <HeartIcon
+        fill={fillHeartStatus}
+        stroke={softGray}
+      />
     </HeartButton>
   );
 };

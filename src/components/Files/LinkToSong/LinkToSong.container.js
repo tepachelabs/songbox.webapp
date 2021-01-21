@@ -7,9 +7,9 @@ import { setSongIndex, changeSongsQueue } from 'store/actions/songsQueueActions'
 import { getSongStreamLink } from 'store/actions/playerActions';
 
 import { selectSongPathAtIndex } from 'store/selectors/songsQueue';
+import { isSongInFavorites } from 'Favorites/favorites';
+import { handleInteractionWithFavorite } from 'store/actions/favoritesActions';
 import LinkToSongComponent from './LinkToSong.component';
-import { isSongInFavorites } from '../../../Favorites/favorites';
-import { handleInteractionWithFavorite } from '../../../store/actions/favoritesActions';
 
 const LinkToSongContainer = ({
   index,
