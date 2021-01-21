@@ -51,15 +51,16 @@ const stage = {
 ```
 
 ## Running Storybook
-We added storybook, so we can see and test components in isolation.
+Once you have installed all modules you can run the storybook. We added storybook, so we can see and test components in isolation.
 ```shell script
 $ npm run storybook
 
 # Open in your browser the url http://localhost:6006
 ```
 ## Building For Production
+When building for production we have to run the next command, we have to set the **REACT_APP_ENV** env variable to **prod** (**REACT_APP_ENV**=**prod**).
 ```shell script
-$
+$ npm run build
 
 ```
 Simple as that...
