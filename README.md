@@ -22,28 +22,45 @@ Songbox is a web service that allows users to listen to their music stored in Dr
 4. Free to use.
 
 ## Webapp Installation
-
 ```shell script
 $ git clone https://github.com/tepachelabs/songbox.webapp.git
 $ cd songbox.webapp
 $ npm install
 $ npm start
-# localhost:3000
+
+# Open in your browser the url http://localhost:3000
+```
+## Backend URL
+Under the **src** folder there's a file called **config.js**. In this file you can change the **apiGatewayUrl** to fill your needs.
+whether you want to change the url for development or production (this is just the url for the [backend](https://github.com/tepachelabs/songbox.api))
+```
+const dev = {
+  apiGatewayUrl: 'http://localhost:4000',
+  ...
+};
+
+const prod = {
+  apiGatewayUrl: 'https://songbox.io',
+  ...
+};
+
+const stage = {
+  apiGatewayUrl: 'https://stage.songbox.io',
+  ...
+};
 ```
 
-## API
+## Running Storybook
+We added storybook, so we can see and test components in isolation.
+```shell script
+$ npm run storybook
+
+# Open in your browser the url http://localhost:6006
 ```
-1. GET -> /api/files
-This route will give you all files from the root of your Dropbox.
+## Building For Production
+```shell script
+$
 
-2. GET -> /api/files/*
-This route will give you access to an specific folder of your Dropbox (specifying the route where the '*' is).
-
-3. GET -> /api/file/filename.mp3
-This route will give access to the file link.
-
-4. GET -> /api/me
-This route will check if your token is valid and return the information of the user.
 ```
 Simple as that...
 
