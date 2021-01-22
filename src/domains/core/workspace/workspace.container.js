@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
@@ -11,9 +11,9 @@ export const Workspace = () => {
   const isSessionToken = useSelector(selectIsSessionToken);
   const dispatch = useDispatch();
 
-  if (isSessionToken) {
+  useEffect(() => {
     dispatch(fetchFavoritesSongs());
-  }
+  }, [dispatch]);
 
   return isSessionToken
     ? <WorkspaceComponent />

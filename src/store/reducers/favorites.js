@@ -25,7 +25,7 @@ const favoritesReducer = (state = initialState, { type, payload }) => {
   }
 
   case FAVORITES_REMOVE_FAVORITE: {
-    const favoritesUpdated = state.get('songs').filter((song) => song.get('path_lower') !== payload.get('path_lower'));
+    const favoritesUpdated = state.get('songs').filter((song) => song.get('path_lower') !== payload.get('path'));
     return state.set('songs', favoritesUpdated);
   }
 

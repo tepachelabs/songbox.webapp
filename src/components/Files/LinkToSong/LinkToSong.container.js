@@ -31,17 +31,14 @@ const LinkToSongContainer = ({
     dispatch(changeSongsQueue(files));
   };
 
-  const handleFavorite = () => {
-    dispatch(handleInteractionWithFavorite(isFavorite, {
-      song_name: fileName,
-      path_lower: path,
-    }));
+  const onAddFavorite = () => {
+    dispatch(handleInteractionWithFavorite(isFavorite, { fileName, path }));
   };
 
   return (
     <LinkToSongComponent
       fileName={fileName}
-      handleFavorite={handleFavorite}
+      handleFavorite={onAddFavorite}
       isFavorite={isFavorite}
       isPlaying={isPlaying}
       selectSong={selectSong}

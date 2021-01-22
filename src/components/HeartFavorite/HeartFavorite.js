@@ -1,29 +1,29 @@
 import React from 'react';
 import propTypes from 'prop-types';
 
-import { softGray } from 'style/colors';
-import { HeartButton } from 'style/button';
+import { gray } from 'style/colors';
+import { TransparentButton } from 'style/button';
 import { HeartIcon } from 'components/icon';
 
 const HeartFavorite = ({
   isFavorite,
-  onButtonClick,
+  onClick,
 }) => {
-  const fillHeartStatus = isFavorite ? softGray : 'none';
+  const fillHeartStatus = isFavorite ? gray : 'none';
 
   return (
-    <HeartButton onClick={onButtonClick}>
+    <TransparentButton onClick={onClick}>
       <HeartIcon
         fill={fillHeartStatus}
-        stroke={softGray}
+        stroke={gray}
       />
-    </HeartButton>
+    </TransparentButton>
   );
 };
 
 HeartFavorite.propTypes = {
   isFavorite: propTypes.bool.isRequired,
-  onButtonClick: propTypes.func.isRequired,
+  onClick: propTypes.func.isRequired,
 };
 
 export default HeartFavorite;

@@ -1,8 +1,7 @@
 import styled from 'styled-components';
-import { theme } from 'style/theme';
 
 export const FavoritesTitle = styled.h1`
-  font-size: ${theme.spacing.three};
+  font-size: ${(props) => props.theme.spacing.three};
   text-align: left;
-  padding: ${theme.spacing.two};
+  padding: ${(props) => props.theme.spacing.two};
 `;

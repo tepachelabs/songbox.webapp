@@ -23,7 +23,7 @@ const LinkToSongComponent = ({
       <Fragment>
         <HeartFavorite
           isFavorite={isFavorite}
-          onButtonClick={handleFavorite}
+          onClick={handleFavorite}
         />
         <ContextMenu />
       </Fragment>

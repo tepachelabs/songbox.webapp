@@ -6,7 +6,6 @@ export const orange = '#ffa834';
 export const lightGray = '#d2dae2';
 export const almostWhite = '#f0f4f7';
 export const darkWhite = '#b3b3ba';
-export const softGray = '#8A8A8A';
 
 export const primary = orange;
 
@@ -19,7 +18,6 @@ export default {
   lightGray,
   darkWhite,
   almostWhite,
-  softGray,
   currentColor: 'currentColor',
   none: 'none',
 };

@@ -20,7 +20,7 @@ export const DropboxButton = withStyles(() => ({
   },
 }))(Button);
 
-export const HeartButton = withStyles(() => ({
+export const TransparentButton = withStyles(() => ({
   root: {
     background: 'none',
     border: 'none',
