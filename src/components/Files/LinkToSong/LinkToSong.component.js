@@ -7,7 +7,7 @@ import HeartFavorite from 'components/HeartFavorite';
 
 const LinkToSongComponent = ({
   fileName,
-  handleFavorite,
+  onAddFavorite,
   isFavorite,
   isPlaying,
   selectSong,
@@ -23,7 +23,7 @@ const LinkToSongComponent = ({
       <Fragment>
         <HeartFavorite
           isFavorite={isFavorite}
-          onClick={handleFavorite}
+          onClick={onAddFavorite}
         />
         <ContextMenu />
       </Fragment>
@@ -36,7 +36,7 @@ LinkToSongComponent.propTypes = {
   isPlaying: propTypes.bool.isRequired,
   fileName: propTypes.string.isRequired,
   selectSong: propTypes.func.isRequired,
-  handleFavorite: propTypes.func.isRequired,
+  onAddFavorite: propTypes.func.isRequired,
 };
 
 export default LinkToSongComponent;

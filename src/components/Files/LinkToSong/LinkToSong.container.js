@@ -38,7 +38,7 @@ const LinkToSongContainer = ({
   return (
     <LinkToSongComponent
       fileName={fileName}
-      handleFavorite={onAddFavorite}
+      onAddFavorite={onAddFavorite}
       isFavorite={isFavorite}
       isPlaying={isPlaying}
       selectSong={selectSong}
