@@ -1,22 +1,24 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import propTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 
-import { setRandom } from 'store/actions/playerActions';
 import { ShuffleIcon } from 'components/icon';
 import { PlayerButton } from 'style/button';
 import { gray, orange } from 'style/colors';
 
-const ShuffleButton = () => {
-  const onRandom = useSelector((state) => state.player.get('onRandom'));
-  const dispatch = useDispatch();
-
-  const strokeColor = onRandom ? orange : gray;
+const ShuffleButton = ({ onClick }) => {
+  const isRandomEnabled = useSelector((state) => state.player.get('onRandom'));
+  const strokeColor = isRandomEnabled ? orange : gray;
 
   return (
-    <PlayerButton onClick={() => dispatch(setRandom(!onRandom))}>
+    <PlayerButton onClick={onClick}>
       <ShuffleIcon stroke={strokeColor} />
     </PlayerButton>
   );
+};
+
+ShuffleButton.propTypes = {
+  onClick: propTypes.func.isRequired,
 };
 
 export default ShuffleButton;

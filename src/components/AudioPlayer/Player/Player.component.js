@@ -9,14 +9,18 @@ import {
   ShuffleButton,
 } from '../PlayerButtons';
 
-const PlayerComponent = ({ isDisabled, audioRef }) => (
+const PlayerComponent = ({
+  isDisabled,
+  audioRef,
+  toggleIsRandom,
+}) => (
   <div className={`buttons ${isDisabled ? 'disable-buttons' : ''}`}>
     <div className="buttons-container">
       <RepeatButton />
       <RewindButton />
       <PlayContainer audioRef={audioRef} />
       <ForwardButton />
-      <ShuffleButton />
+      <ShuffleButton onClick={toggleIsRandom} />
     </div>
   </div>
 );
@@ -24,6 +28,7 @@ const PlayerComponent = ({ isDisabled, audioRef }) => (
 PlayerComponent.propTypes = {
   isDisabled: propTypes.bool.isRequired,
   audioRef: propTypes.shape({ current: propTypes.instanceOf(Node) }).isRequired,
+  toggleIsRandom: propTypes.func.isRequired,
 };
 
 export default PlayerComponent;
