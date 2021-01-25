@@ -26,3 +26,15 @@ export const TransparentButton = withStyles(() => ({
     border: 'none',
   },
 }))(Button);
+
+export const PlayerButton = withStyles(({ breakpoints, spacing }) => ({
+  root: {
+    [breakpoints.down('sm')]: {
+      height: spacing(4),
+      width: spacing(4),
+    },
+    height: spacing(6),
+    width: spacing(6),
+    padding: 0,
+  },
+}))(Button);

@@ -1,35 +1,51 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { setIsPlaying } from 'store/actions/playerActions';
+import { setIsPlaying, playNextSong } from 'store/actions/playerActions';
 
 import AudioPlayerComponent from './AudioPlayer.component';
 
 const AudioPlayerContainer = () => {
-  const autoPlay = useSelector((state) => state.settings.get('autoPlay'));
   const songLink = useSelector((state) => state.player.get('songLink'));
   const dispatch = useDispatch();
 
-  const audioRef = React.createRef();
+  const audioRef = new Audio(songLink);
 
   useEffect(() => {
-    if (audioRef.current && songLink) {
-      audioRef.current.load();
-      audioRef.current.play()
+    const playMusic = () => {
+      audioRef.play()
         .then(() => {
           dispatch(setIsPlaying(true));
         })
         .catch(() => {
           dispatch(setIsPlaying(false));
         });
-    }
-  }, [audioRef, dispatch, songLink]);
+    };
+
+    const onPause = () => {
+      if (audioRef.ended) {
+        dispatch(playNextSong());
+      }
+    };
+
+    audioRef.addEventListener('canplaythrough', playMusic, false);
+    audioRef.addEventListener('pause', onPause, false);
+
+    return () => {
+      audioRef.removeEventListener('canplaythrough', playMusic, false);
+      audioRef.removeEventListener('pause', onPause, false);
+      audioRef.pause();
+    };
+  }, [audioRef, songLink, dispatch]);
+
+  const updateCurrentTime = (second) => {
+    audioRef.currentTime = second;
+  };
 
   return (
     <AudioPlayerComponent
-      autoPlay={autoPlay}
-      songLink={songLink}
       audioRef={audioRef}
+      updateCurrentTime={updateCurrentTime}
     />
   );
 };

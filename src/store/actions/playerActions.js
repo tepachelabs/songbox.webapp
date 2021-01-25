@@ -2,12 +2,14 @@ import { apiFetchStreamableSong } from 'lib/apiFetchStreamableSong';
 
 import { setSongIndex } from 'store/actions/songsQueueActions';
 
+import { getRandomNumber } from 'utils/numberGenerator';
 import {
   PLAYER_SET_REPEAT,
   PLAYER_SET_VOLUME,
   PLAYER_SET_SONG_LINK,
   PLAYER_SET_CURRENT_SONG,
   PLAYER_SET_IS_PLAYING,
+  PLAYER_SET_RANDOM,
 } from '../constants';
 
 import {
@@ -22,6 +24,7 @@ export const setVolume = (payload) => ({ type: PLAYER_SET_VOLUME, payload });
 export const setSong = (payload) => ({ type: PLAYER_SET_CURRENT_SONG, payload });
 export const setSongLink = (payload) => ({ type: PLAYER_SET_SONG_LINK, payload });
 export const setIsPlaying = (payload) => ({ type: PLAYER_SET_IS_PLAYING, payload });
+export const setRandom = (payload) => ({ type: PLAYER_SET_RANDOM, payload });
 
 export const getSongStreamLink = (path) => (dispatch, getState) => {
   const token = getState().app.get('token');
@@ -40,7 +43,11 @@ const getNextAvailableIndex = (state) => {
   const songIndex = selectIndex(state);
   const queueSize = selectQueueSize(state);
   const onRepeat = state.player.get('onRepeat');
+  const isRandomEnabled = state.player.get('isRandomEnabled');
 
+  if (isRandomEnabled) {
+    return getRandomNumber(songIndex, queueSize);
+  }
   if (onRepeat) {
     const lastPosition = queueSize - 1;
     return songIndex === lastPosition ? 0 : songIndex + 1;
