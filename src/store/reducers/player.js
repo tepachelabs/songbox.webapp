@@ -11,7 +11,7 @@ import {
 
 const defaultPlayer = Map({
   isRandomEnabled: false,
-  onRepeat: false,
+  isRepeatEnabled: false,
   currentSong: undefined,
   volume: 0.5,
   songLink: '',
@@ -21,7 +21,7 @@ const defaultPlayer = Map({
 const playerReducer = (state = defaultPlayer, { type, payload }) => {
   switch (type) {
   case PLAYER_SET_REPEAT:
-    return state.set('onRepeat', payload);
+    return state.set('isRepeatEnabled', payload);
 
   case PLAYER_SET_CURRENT_SONG:
     return state.set('currentSong', payload);

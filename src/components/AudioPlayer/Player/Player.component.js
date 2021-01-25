@@ -4,31 +4,37 @@ import propTypes from 'prop-types';
 import {
   RepeatButton,
   RewindButton,
-  PlayContainer,
+  PlayButton,
   ForwardButton,
   ShuffleButton,
 } from '../PlayerButtons';
 
 const PlayerComponent = ({
   isDisabled,
-  audioRef,
-  toggleIsRandom,
+  toggleRandom,
+  toggleRepeat,
+  fastForward,
+  rewind,
+  play,
 }) => (
   <div className={`buttons ${isDisabled ? 'disable-buttons' : ''}`}>
     <div className="buttons-container">
-      <RepeatButton />
-      <RewindButton />
-      <PlayContainer audioRef={audioRef} />
-      <ForwardButton />
-      <ShuffleButton onClick={toggleIsRandom} />
+      <RepeatButton onClick={toggleRepeat} />
+      <RewindButton onClick={rewind} />
+      <PlayButton onClick={play} />
+      <ForwardButton onClick={fastForward} />
+      <ShuffleButton onClick={toggleRandom} />
     </div>
   </div>
 );
 
 PlayerComponent.propTypes = {
   isDisabled: propTypes.bool.isRequired,
-  audioRef: propTypes.shape({ current: propTypes.instanceOf(Node) }).isRequired,
-  toggleIsRandom: propTypes.func.isRequired,
+  toggleRandom: propTypes.func.isRequired,
+  toggleRepeat: propTypes.func.isRequired,
+  fastForward: propTypes.func.isRequired,
+  rewind: propTypes.func.isRequired,
+  play: propTypes.func.isRequired,
 };
 
 export default PlayerComponent;
