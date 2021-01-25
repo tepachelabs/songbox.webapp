@@ -32,7 +32,7 @@ $ npm start
 ```
 ## Backend URL
 Under the **src** folder there's a file called **config.js**. In this file you can change the **apiGatewayUrl** to fill your needs.
-whether you want to change the url for development or production (this is just the url for the [backend](https://github.com/tepachelabs/songbox.api))
+Whether you want to change the url for development or production (this is just the url for the [backend](https://github.com/tepachelabs/songbox.api))
 ```
 const dev = {
   apiGatewayUrl: 'http://localhost:4000',
@@ -51,18 +51,17 @@ const stage = {
 ```
 
 ## Running Storybook
-Once you have installed all modules you can run the storybook. We added storybook, so we can see and test components in isolation.
+Once you have installed all modules, you can run Storybook to see and test components in isolation.
 ```shell script
 $ npm run storybook
 
 # Open in your browser the url http://localhost:6006
 ```
 ## Building For Production
-When building for production we have to run the next command, we have to set the **REACT_APP_ENV** env variable to **prod** (**REACT_APP_ENV**=**prod**).
+
 ```shell script
-$ npm run build
+$ REACT_APP_ENV=prod npm run build
 
 ```
-Simple as that...
 
 Checkout the [server repository](https://github.com/tepachelabs/songbox.api) to set up the whole project.
