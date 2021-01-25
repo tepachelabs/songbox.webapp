@@ -10,7 +10,7 @@ import {
 } from '../constants';
 
 const defaultPlayer = Map({
-  onRandom: false,
+  isRandomEnabled: false,
   onRepeat: false,
   currentSong: undefined,
   volume: 0.5,
@@ -36,7 +36,7 @@ const playerReducer = (state = defaultPlayer, { type, payload }) => {
     return state.set('isPlaying', payload);
 
   case PLAYER_SET_RANDOM:
-    return state.set('onRandom', payload);
+    return state.set('isRandomEnabled', payload);
 
   default:
     return state;

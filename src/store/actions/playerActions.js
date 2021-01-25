@@ -43,9 +43,9 @@ const getNextAvailableIndex = (state) => {
   const songIndex = selectIndex(state);
   const queueSize = selectQueueSize(state);
   const onRepeat = state.player.get('onRepeat');
-  const onRandom = state.player.get('onRandom');
+  const isRandomEnabled = state.player.get('isRandomEnabled');
 
-  if (onRandom) {
+  if (isRandomEnabled) {
     return getRandomNumber(songIndex, queueSize);
   }
   if (onRepeat) {

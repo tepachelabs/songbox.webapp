@@ -7,7 +7,7 @@ import PlayerComponent from './Player.component';
 
 const PlayerContainer = ({ audioRef }) => {
   const songsQueue = useSelector((state) => state.songsQueue.get('queue'));
-  const isRandomEnabled = useSelector((state) => state.player.get('onRandom'));
+  const isRandomEnabled = useSelector((state) => state.player.get('isRandomEnabled'));
   const isDisable = songsQueue.size <= 0;
 
   const dispatch = useDispatch();
