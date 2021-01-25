@@ -20,6 +20,13 @@ export const DropboxButton = withStyles(() => ({
   },
 }))(Button);
 
+export const TransparentButton = withStyles(() => ({
+  root: {
+    background: 'none',
+    border: 'none',
+  },
+}))(Button);
+
 export const PlayerButton = withStyles(({ breakpoints, spacing }) => ({
   root: {
     [breakpoints.down('sm')]: {

@@ -47,6 +47,20 @@ export const postWithAuth = (url, token, body, resolve, reject) => {
     .catch((error) => onError(error, reject));
 };
 
+export const deleteWithAuth = (url, token, body, resolve, reject) => {
+  axios.delete(`${apiGatewayUrl}${url}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+    params: {
+      body,
+    },
+  })
+    .then(resolve)
+    .catch((error) => onError(error, reject));
+};
+
 export default {
   post,
   getWithAuth,

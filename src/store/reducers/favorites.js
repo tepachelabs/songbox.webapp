@@ -19,11 +19,13 @@ const favoritesReducer = (state = initialState, { type, payload }) => {
 
   case FAVORITES_ADD_FAVORITE: {
     const itemIndex = state.get('songs').findIndex((song) => song.get('song_name') === payload.get('song_name'));
-    return itemIndex > -1 ? state.deleteIn(['songs', itemIndex]) : state;
+    const songs = state.get('songs');
+    const updatedSongs = songs.push(payload);
+    return itemIndex > -1 ? state : state.set('songs', updatedSongs);
   }
 
   case FAVORITES_REMOVE_FAVORITE: {
-    const favoritesUpdated = state.songs.filter((song) => song.song_name !== payload.song_name);
+    const favoritesUpdated = state.get('songs').filter((song) => song.get('path_lower') !== payload.get('path'));
     return state.set('songs', favoritesUpdated);
   }
 
