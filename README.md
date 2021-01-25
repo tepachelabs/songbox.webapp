@@ -1,70 +1,67 @@
 Copyright © 2020, TepacheLabs
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Songbox
 
-## Available Scripts
+Songbox is a web service that allows users to listen to their music stored in Dropbox without having to install any app, directly from a web interface.
 
-In the project directory, you can run:
+## Features:
 
-### `npm start`
+1. Out of the box solution for mobile devices.
+2. Dropbox stream cross-platform player.
+3. Play music, mp3, audiobooks from Dropbox.
+4. Supported audio formats: mp3, wav, ogg.
+5. No need to install Dropbox app.
+6. Access to Dropbox audio content anywhere
+7. All your music, songs, audio, audio books, audio reports in one place.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+**Other:**
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+1. Using HTML5 web browser.
+2. No need to install any additional software.
+3. No stored files in system memory.
+4. Free to use.
 
-### `npm test`
+## Webapp Installation
+```shell script
+$ git clone https://github.com/tepachelabs/songbox.webapp.git
+$ cd songbox.webapp
+$ npm install
+$ npm start
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Open in your browser the url http://localhost:3000
+```
+## Backend URL
+Under the **src** folder there's a file called **config.js**. In this file you can change the **apiGatewayUrl** to fill your needs.
+Whether you want to change the url for development or production (this is just the url for the [backend](https://github.com/tepachelabs/songbox.api))
+```
+const dev = {
+  apiGatewayUrl: 'http://localhost:4000',
+  ...
+};
 
-### `npm run build`
+const prod = {
+  apiGatewayUrl: 'https://songbox.io',
+  ...
+};
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+const stage = {
+  apiGatewayUrl: 'https://stage.songbox.io',
+  ...
+};
+```
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## Running Storybook
+Once you have installed all modules, you can run Storybook to see and test components in isolation.
+```shell script
+$ npm run storybook
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Open in your browser the url http://localhost:6006
+```
+## Building For Production
 
-### `npm run eject`
+```shell script
+$ REACT_APP_ENV=prod npm run build
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Checkout the [server repository](https://github.com/tepachelabs/songbox.api) to set up the whole project.
