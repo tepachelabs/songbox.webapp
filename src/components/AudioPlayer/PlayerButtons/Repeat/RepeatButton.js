@@ -8,7 +8,7 @@ import { gray, orange } from 'style/colors';
 import { RepeatIcon } from 'components/icon';
 
 const RepeatButton = ({ onClick }) => {
-  const isRepeatEnabled = useSelector((state) => state.player.get('isRepeatEnabled'));
+  const isRepeatEnabled = useSelector((state) => state.player.get('isRepeat'));
   const strokeColor = isRepeatEnabled ? orange : gray;
 
   return (
