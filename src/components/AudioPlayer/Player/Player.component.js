@@ -11,30 +11,30 @@ import {
 
 const PlayerComponent = ({
   isDisabled,
-  toggleRandom,
-  toggleRepeat,
-  fastForward,
-  rewind,
-  play,
+  onShuffleClick,
+  onRepeatClick,
+  onForwardClick,
+  onRewindClick,
+  onPlayClick,
 }) => (
   <div className={`buttons ${isDisabled ? 'disable-buttons' : ''}`}>
     <div className="buttons-container">
-      <RepeatButton onClick={toggleRepeat} />
-      <RewindButton onClick={rewind} />
-      <PlayButton onClick={play} />
-      <ForwardButton onClick={fastForward} />
-      <ShuffleButton onClick={toggleRandom} />
+      <RepeatButton onClick={onRepeatClick} />
+      <RewindButton onClick={onRewindClick} />
+      <PlayButton onClick={onPlayClick} />
+      <ForwardButton onClick={onForwardClick} />
+      <ShuffleButton onClick={onShuffleClick} />
     </div>
   </div>
 );
 
 PlayerComponent.propTypes = {
   isDisabled: propTypes.bool.isRequired,
-  toggleRandom: propTypes.func.isRequired,
-  toggleRepeat: propTypes.func.isRequired,
-  fastForward: propTypes.func.isRequired,
-  rewind: propTypes.func.isRequired,
-  play: propTypes.func.isRequired,
+  onShuffleClick: propTypes.func.isRequired,
+  onRepeatClick: propTypes.func.isRequired,
+  onForwardClick: propTypes.func.isRequired,
+  onRewindClick: propTypes.func.isRequired,
+  onPlayClick: propTypes.func.isRequired,
 };
 
 export default PlayerComponent;

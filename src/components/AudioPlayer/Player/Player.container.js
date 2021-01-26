@@ -14,29 +14,29 @@ import PlayerComponent from './Player.component';
 const PlayerContainer = ({ audioRef }) => {
   const songsQueue = useSelector((state) => state.songsQueue.get('queue'));
   const isPlaying = useSelector((state) => state.player.get('isPlaying'));
-  const isRandomEnabled = useSelector((state) => state.player.get('isRandomEnabled'));
-  const isRepeatEnabled = useSelector((state) => state.player.get('isRepeatEnabled'));
+  const isRandomEnabled = useSelector((state) => state.player.get('isRandom'));
+  const isRepeatEnabled = useSelector((state) => state.player.get('isRepeat'));
   const isDisable = songsQueue.size <= 0;
 
   const dispatch = useDispatch();
 
-  const toggleRepeat = () => {
+  const onRepeatClick = () => {
     dispatch(setRepeat(!isRepeatEnabled));
   };
 
-  const toggleRandom = () => {
+  const onShuffleClick = () => {
     dispatch(setRandom(!isRandomEnabled));
   };
 
-  const rewind = () => {
+  const onRewindClick = () => {
     dispatch(playPreviousSong());
   };
 
-  const fastForward = () => {
+  const onForwardClick = () => {
     dispatch(playNextSong());
   };
 
-  const play = () => {
+  const onPlayClick = () => {
     if (isPlaying) {
       audioRef.pause();
       dispatch(setIsPlaying(false));
@@ -49,11 +49,11 @@ const PlayerContainer = ({ audioRef }) => {
   return (
     <PlayerComponent
       isDisabled={isDisable}
-      rewind={rewind}
-      fastForward={fastForward}
-      toggleRandom={toggleRandom}
-      toggleRepeat={toggleRepeat}
-      play={play}
+      onRewindClick={onRewindClick}
+      onForwardClick={onForwardClick}
+      onShuffleClick={onShuffleClick}
+      onRepeatClick={onRepeatClick}
+      onPlayClick={onPlayClick}
     />
   );
 };

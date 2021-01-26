@@ -9,7 +9,7 @@ import { gray } from 'style/colors';
 import { FastForwardIcon } from 'components/icon';
 
 const ForwardButton = ({ onClick }) => {
-  const isRepeatEnabled = useSelector((state) => state.player.get('isRepeatEnabled'));
+  const isRepeatEnabled = useSelector((state) => state.player.get('isRepeat'));
   const canFastForward = useSelector((state) => canPlayNextSong(state));
   const isDisabled = !isRepeatEnabled && !canFastForward;
 
