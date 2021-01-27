@@ -6,7 +6,9 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import { getMobileOperatingSystem } from 'utils';
 
 import { createNewSession, recoverSession } from 'store/actions/sessionActions';
+
 import { setOS } from 'store/actions/appActions';
+
 import { Loading } from './Loading';
 
 const AppComponent = React.lazy(() => import('./app.component'));

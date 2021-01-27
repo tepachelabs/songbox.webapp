@@ -6,20 +6,22 @@ import {
   PLAYER_SET_VOLUME,
   PLAYER_SET_SONG_LINK,
   PLAYER_SET_IS_PLAYING,
+  PLAYER_SET_RANDOM,
 } from '../constants';
 
 const defaultPlayer = Map({
-  onRepeat: false,
   currentSong: undefined,
-  volume: 0.5,
-  songLink: '',
+  isRandom: false,
+  isRepeat: false,
   isPlaying: false,
+  songLink: '',
+  volume: 0.5,
 });
 
 const playerReducer = (state = defaultPlayer, { type, payload }) => {
   switch (type) {
   case PLAYER_SET_REPEAT:
-    return state.set('onRepeat', payload);
+    return state.set('isRepeat', payload);
 
   case PLAYER_SET_CURRENT_SONG:
     return state.set('currentSong', payload);
@@ -32,6 +34,9 @@ const playerReducer = (state = defaultPlayer, { type, payload }) => {
 
   case PLAYER_SET_IS_PLAYING:
     return state.set('isPlaying', payload);
+
+  case PLAYER_SET_RANDOM:
+    return state.set('isRandom', payload);
 
   default:
     return state;

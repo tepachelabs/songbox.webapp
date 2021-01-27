@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { List } from 'immutable';
 import {
@@ -27,7 +27,7 @@ const renderActions = (actions) => (
 export const FileListComponent = ({ dense, files }) => (
   <MuiList dense={dense}>
     {files.map(({ type, title, actions }) => (
-      <React.Fragment key={title}>
+      <Fragment key={title}>
         <Divider />
         <FileListItemComponent
           icon={getIcon(type)}
@@ -36,7 +36,7 @@ export const FileListComponent = ({ dense, files }) => (
         >
           { actions && renderActions(actions) }
         </FileListItemComponent>
-      </React.Fragment>
+      </Fragment>
     ))}
   </MuiList>
 );

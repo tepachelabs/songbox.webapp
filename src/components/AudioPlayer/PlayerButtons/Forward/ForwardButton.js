@@ -1,26 +1,27 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import propTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 
-import { playNextSong } from 'store/actions/playerActions';
 import { canPlayNextSong } from 'store/selectors/songsQueue';
-import PlayerButton from '../PlayerButton';
+import { PlayerButton } from 'style/button';
+import { gray } from 'style/colors';
 
-import fastForwardIcon from '../../icons/fast-forward.svg';
+import { FastForwardIcon } from 'components/icon';
 
-const ForwardButton = () => {
-  const onRepeat = useSelector((state) => state.player.get('onRepeat'));
+const ForwardButton = ({ onClick }) => {
+  const isRepeatEnabled = useSelector((state) => state.player.get('isRepeat'));
   const canFastForward = useSelector((state) => canPlayNextSong(state));
-  const isDisabled = !onRepeat && !canFastForward;
-
-  const dispatch = useDispatch();
+  const isDisabled = !isRepeatEnabled && !canFastForward;
 
   return (
-    <PlayerButton
-      handleOnClick={() => dispatch(playNextSong())}
-      icon={fastForwardIcon}
-      isDisabled={isDisabled}
-    />
+    <PlayerButton onClick={onClick} disabled={isDisabled}>
+      <FastForwardIcon stroke={gray} fill={gray} />
+    </PlayerButton>
   );
+};
+
+ForwardButton.propTypes = {
+  onClick: propTypes.func.isRequired,
 };
 
 export default ForwardButton;

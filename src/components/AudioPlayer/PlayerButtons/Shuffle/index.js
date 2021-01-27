@@ -1,3 +1,3 @@
-import Shuffle from './Shuffle';
+import ShuffleButton from './ShuffleButton';
 
-export default Shuffle;
+export default ShuffleButton;

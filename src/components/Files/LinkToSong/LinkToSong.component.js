@@ -2,27 +2,29 @@ import React, { Fragment } from 'react';
 import propTypes from 'prop-types';
 
 import SongIcon from 'components/SongIcon';
-import HeartFavorite from 'components/HeartFavorite';
 import ContextMenu from 'components/ContextMenu';
+import HeartFavorite from 'components/HeartFavorite';
 
 const LinkToSongComponent = ({
   fileName,
+  onAddFavorite,
+  isFavorite,
   isPlaying,
   selectSong,
-  path,
+  onDoubleClick,
 }) => {
   const isPlayingClassName = isPlaying ? 'is-playing' : '';
 
   return (
-    <div className={`file-container song-file-container ${isPlayingClassName}`}>
+    <div className={`file-container song-file-container ${isPlayingClassName}`} onDoubleClick={onDoubleClick}>
       <SongIcon isPlaying={isPlaying} />
       <button className="file-name-container song-file" onClick={selectSong} type="button">
         <p className="file-name">{fileName}</p>
       </button>
       <Fragment>
         <HeartFavorite
-          fileName={fileName}
-          path={path}
+          isFavorite={isFavorite}
+          onClick={onAddFavorite}
         />
         <ContextMenu />
       </Fragment>
@@ -31,10 +33,12 @@ const LinkToSongComponent = ({
 };
 
 LinkToSongComponent.propTypes = {
-  fileName: propTypes.string.isRequired,
+  isFavorite: propTypes.bool.isRequired,
   isPlaying: propTypes.bool.isRequired,
+  fileName: propTypes.string.isRequired,
   selectSong: propTypes.func.isRequired,
-  path: propTypes.string.isRequired,
+  onAddFavorite: propTypes.func.isRequired,
+  onDoubleClick: propTypes.func.isRequired,
 };
 
 export default LinkToSongComponent;

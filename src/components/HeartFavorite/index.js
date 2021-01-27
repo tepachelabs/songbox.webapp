@@ -1,3 +1,1 @@
-import HeartFavorite from './HeartFavorite';
-
-export default HeartFavorite;
+export { default } from './HeartFavorite';

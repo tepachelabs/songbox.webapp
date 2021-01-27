@@ -4,9 +4,11 @@ import propTypes from 'prop-types';
 import { List } from 'immutable';
 
 import { setSongIndex, changeSongsQueue } from 'store/actions/songsQueueActions';
-import { getSongStreamLink } from 'store/actions/playerActions';
+import { getSongStreamLink, setIsPlaying } from 'store/actions/playerActions';
 
 import { selectSongPathAtIndex } from 'store/selectors/songsQueue';
+import { isSongInFavorites } from 'Favorites/favorites';
+import { handleInteractionWithFavorite } from 'store/actions/favoritesActions';
 import LinkToSongComponent from './LinkToSong.component';
 
 const LinkToSongContainer = ({
@@ -17,8 +19,12 @@ const LinkToSongContainer = ({
 }) => {
   const songIndex = useSelector((state) => state.songsQueue.get('index'));
   const playingSongPath = useSelector((state) => selectSongPathAtIndex(state, songIndex));
-
+  const favorites = useSelector((state) => state.favorites.get('songs'));
+  const isPlayingSong = useSelector((state) => state.player.get('isPlaying'));
   const dispatch = useDispatch();
+
+  const isFavorite = isSongInFavorites(favorites, path);
+  const isPlaying = path === playingSongPath;
 
   const selectSong = () => {
     dispatch(getSongStreamLink(path));
@@ -26,14 +32,22 @@ const LinkToSongContainer = ({
     dispatch(changeSongsQueue(files));
   };
 
-  const isPlaying = path === playingSongPath;
+  const onDoubleClick = () => {
+    dispatch(setIsPlaying(!isPlayingSong));
+  };
+
+  const onAddFavorite = () => {
+    dispatch(handleInteractionWithFavorite(isFavorite, { fileName, path }));
+  };
 
   return (
     <LinkToSongComponent
-      isPlaying={isPlaying}
       fileName={fileName}
+      onAddFavorite={onAddFavorite}
+      isFavorite={isFavorite}
+      isPlaying={isPlaying}
       selectSong={selectSong}
-      path={path}
+      onDoubleClick={onDoubleClick}
     />
   );
 };

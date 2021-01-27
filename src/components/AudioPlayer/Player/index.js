@@ -1,3 +1,3 @@
-import PlayerContainer from './Player.container';
+import PlayerComponent from './Player.component';
 
-export default PlayerContainer;
+export default PlayerComponent;

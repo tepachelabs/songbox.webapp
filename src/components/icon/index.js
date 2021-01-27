@@ -8,3 +8,8 @@ export { HelpCircleIcon } from './graphics/help-circle';
 export { HeartIcon } from './graphics/heart';
 export { FolderIcon } from './graphics/folder';
 export { MusicIcon } from './graphics/music';
+export { ShuffleIcon } from './graphics/shuffle';
+export { FastForwardIcon } from './graphics/fast-forward';
+export { RewindIcon } from './graphics/rewind';
+export { RepeatIcon } from './graphics/repeat';
+export { PauseCircleIcon } from './graphics/pause-circle';
