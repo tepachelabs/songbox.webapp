@@ -38,9 +38,9 @@ const AudioPlayerContainer = () => {
   useEffect(() => {
     if (songLink) {
       if (isPlaying) {
-        audio.play();
-      } else {
         audio.pause();
+      } else {
+        audio.play();
       }
     }
   }, [isPlaying, songLink, audio]);
