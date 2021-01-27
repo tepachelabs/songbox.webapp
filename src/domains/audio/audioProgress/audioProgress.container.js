@@ -5,9 +5,9 @@ import {
   getNumericValueFromDOMEvent,
   convertProgressToCurrentTime,
   updateProgress,
-} from './AudioProgress.utils';
+} from './audioProgress.utils';
 
-import AudioProgressComponent from './AudioProgress.component';
+import AudioProgressComponent from './audioProgress.component';
 
 const AudioProgressContainer = ({ audioRef, updateCurrentTime }) => {
   const [progress, setProgress] = useState(0);

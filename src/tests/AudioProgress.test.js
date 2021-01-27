@@ -4,7 +4,7 @@ import { render } from '@testing-library/react';
 
 import store from 'store';
 
-import AudioProgress from 'components/AudioPlayer/AudioProgress';
+import AudioProgress from 'domains/audio/audioProgress';
 
 test('it renders', () => {
   const ref = React.createRef();
