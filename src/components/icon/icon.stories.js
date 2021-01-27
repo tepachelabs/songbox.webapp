@@ -11,7 +11,10 @@ import {
   LogOutIcon,
   HelpCircleIcon,
   HeartIcon,
+  FolderIcon,
+  MusicIcon,
 } from 'components/icon';
+import { Icon } from './icon';
 
 const icons = [
   { component: HomeIcon, title: 'HomeIcon' },
@@ -22,11 +25,13 @@ const icons = [
   { component: MoreIcon, title: 'MoreIcon' },
   { component: PlayCircleIcon, title: 'PlayCircleIcon' },
   { component: SettingsIcon, title: 'SettingsIcon' },
+  { component: FolderIcon, title: 'FolderIcon' },
+  { component: MusicIcon, title: 'MusicIcon' },
 ];
 
 export default {
-  component: MenuIcon,
-  title: 'MenuIcon',
+  component: Icon,
+  title: 'Icon',
   decorators: [withKnobs],
   argTypes: {
     stroke: {

@@ -6,3 +6,5 @@ export { MoreIcon } from './graphics/more';
 export { LogOutIcon } from './graphics/log-out';
 export { HelpCircleIcon } from './graphics/help-circle';
 export { HeartIcon } from './graphics/heart';
+export { FolderIcon } from './graphics/folder';
+export { MusicIcon } from './graphics/music';
