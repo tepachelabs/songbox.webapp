@@ -1,5 +1,5 @@
+import React, { Fragment, useEffect } from 'react';
 import propTypes from 'prop-types';
-import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { getFilesFromPath } from 'store/actions/filesActions';
@@ -8,6 +8,7 @@ import { FileListComponent } from '../file-list';
 const transformPaths = (paths) => paths.map((path) => ({
   type: path.get('.tag'),
   title: path.get('name'),
+  path: path.get('path_lower'),
 }));
 
 const FilesContainer = ({ path }) => {
@@ -20,10 +21,10 @@ const FilesContainer = ({ path }) => {
   }, [path, dispatch]);
 
   return (
-    <React.Fragment>
+    <Fragment>
       <FileListComponent files={transformPaths(folders)} dense={false} />
       <FileListComponent files={transformPaths(files)} dense={false} />
-    </React.Fragment>
+    </Fragment>
   );
 };
 
