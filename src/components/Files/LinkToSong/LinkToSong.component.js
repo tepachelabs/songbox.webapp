@@ -11,11 +11,12 @@ const LinkToSongComponent = ({
   isFavorite,
   isPlaying,
   selectSong,
+  onDoubleClick,
 }) => {
   const isPlayingClassName = isPlaying ? 'is-playing' : '';
 
   return (
-    <div className={`file-container song-file-container ${isPlayingClassName}`}>
+    <div className={`file-container song-file-container ${isPlayingClassName}`} onDoubleClick={onDoubleClick}>
       <SongIcon isPlaying={isPlaying} />
       <button className="file-name-container song-file" onClick={selectSong} type="button">
         <p className="file-name">{fileName}</p>
@@ -37,6 +38,7 @@ LinkToSongComponent.propTypes = {
   fileName: propTypes.string.isRequired,
   selectSong: propTypes.func.isRequired,
   onAddFavorite: propTypes.func.isRequired,
+  onDoubleClick: propTypes.func.isRequired,
 };
 
 export default LinkToSongComponent;

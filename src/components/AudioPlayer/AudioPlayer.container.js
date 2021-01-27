@@ -1,51 +1,68 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { setIsPlaying, playNextSong } from 'store/actions/playerActions';
+import {
+  setIsPlaying, playNextSong, setRepeat, setRandom, playPreviousSong,
+} from 'store/actions/playerActions';
 
 import AudioPlayerComponent from './AudioPlayer.component';
 
 const AudioPlayerContainer = () => {
   const songLink = useSelector((state) => state.player.get('songLink'));
+  const songsQueue = useSelector((state) => state.songsQueue.get('queue'));
+  const isPlaying = useSelector((state) => state.player.get('isPlaying'));
+  const isRandomEnabled = useSelector((state) => state.player.get('isRandomEnabled'));
+  const isRepeatEnabled = useSelector((state) => state.player.get('isRepeatEnabled'));
+  const isDisabled = songsQueue.size <= 0;
   const dispatch = useDispatch();
+  const [audio] = useState(new Audio(songLink));
 
-  const audioRef = new Audio(songLink);
+  const playerActions = {
+    forward: () => dispatch(playNextSong()),
+    rewind: () => dispatch(playPreviousSong()),
+    repeat: () => dispatch(setRepeat(!isRepeatEnabled)),
+    random: () => dispatch(setRandom(!isRandomEnabled)),
+    play: () => {
+      if (isPlaying) {
+        dispatch(setIsPlaying(false));
+      } else {
+        dispatch(setIsPlaying((true)));
+      }
+    },
+  };
 
   useEffect(() => {
-    const playMusic = () => {
-      audioRef.play()
-        .then(() => {
-          dispatch(setIsPlaying(true));
-        })
-        .catch(() => {
-          dispatch(setIsPlaying(false));
-        });
-    };
+    audio.src = songLink;
+  }, [songLink, audio, audio.src]);
 
-    const onPause = () => {
-      if (audioRef.ended) {
-        dispatch(playNextSong());
+  useEffect(() => {
+    if (songLink) {
+      if (isPlaying) {
+        audio.pause();
+      } else {
+        audio.play();
       }
-    };
+    }
+  }, [isPlaying, songLink, audio]);
 
-    audioRef.addEventListener('canplaythrough', playMusic, false);
-    audioRef.addEventListener('pause', onPause, false);
-
-    return () => {
-      audioRef.removeEventListener('canplaythrough', playMusic, false);
-      audioRef.removeEventListener('pause', onPause, false);
-      audioRef.pause();
-    };
-  }, [audioRef, songLink, dispatch]);
+  const onClick = (action) => (e) => {
+    e.preventDefault();
+    const exec = playerActions[action];
+    if (exec) {
+      exec();
+    }
+  };
 
   const updateCurrentTime = (second) => {
-    audioRef.currentTime = second;
+    audio.currentTime = second;
   };
 
   return (
     <AudioPlayerComponent
-      audioRef={audioRef}
+      audioRef={audio}
       updateCurrentTime={updateCurrentTime}
+      onClick={onClick}
+      isDisabled={isDisabled}
     />
   );
 };

@@ -7,7 +7,7 @@ import { PlayerButton } from 'style/button';
 import { gray, orange } from 'style/colors';
 
 const ShuffleButton = ({ onClick }) => {
-  const isRandomEnabled = useSelector((state) => state.player.get('isRandomEnabled'));
+  const isRandomEnabled = useSelector((state) => state.player.get('isRandom'));
   const strokeColor = isRandomEnabled ? orange : gray;
 
   return (

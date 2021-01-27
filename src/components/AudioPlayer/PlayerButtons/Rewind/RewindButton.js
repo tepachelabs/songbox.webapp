@@ -1,25 +1,26 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import propTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 
-import { playPreviousSong } from 'store/actions/playerActions';
 import { canPlayPreviousSong } from 'store/selectors/songsQueue';
-import PlayerButton from '../PlayerButton';
+import { PlayerButton } from 'style/button';
 
-import rewindIcon from '../../icons/rewind.svg';
+import { RewindIcon } from 'components/icon';
+import { gray } from 'style/colors';
 
-const RewindButton = () => {
+const RewindButton = ({ onClick }) => {
   const canRewind = useSelector((state) => canPlayPreviousSong(state));
   const isDisabled = !canRewind;
 
-  const dispatch = useDispatch();
-
   return (
-    <PlayerButton
-      handleOnClick={() => dispatch(playPreviousSong())}
-      icon={rewindIcon}
-      isDisabled={isDisabled}
-    />
+    <PlayerButton onClick={onClick} disabled={isDisabled}>
+      <RewindIcon stroke={gray} fill={gray} />
+    </PlayerButton>
   );
+};
+
+RewindButton.propTypes = {
+  onClick: propTypes.func.isRequired,
 };
 
 export default RewindButton;

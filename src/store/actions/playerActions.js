@@ -42,13 +42,12 @@ export const getSongStreamLink = (path) => (dispatch, getState) => {
 const getNextAvailableIndex = (state) => {
   const songIndex = selectIndex(state);
   const queueSize = selectQueueSize(state);
-  const onRepeat = state.player.get('onRepeat');
-  const isRandomEnabled = state.player.get('isRandomEnabled');
+  const isRepeatEnabled = state.player.get('isRepeat');
+  const isRandomEnabled = state.player.get('isRandom');
 
   if (isRandomEnabled) {
     return getRandomNumber(songIndex, queueSize);
-  }
-  if (onRepeat) {
+  } if (isRepeatEnabled) {
     const lastPosition = queueSize - 1;
     return songIndex === lastPosition ? 0 : songIndex + 1;
   } if (canPlayNextSong(state)) {

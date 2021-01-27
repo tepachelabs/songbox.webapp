@@ -7,3 +7,7 @@ export { LogOutIcon } from './graphics/log-out';
 export { HelpCircleIcon } from './graphics/help-circle';
 export { HeartIcon } from './graphics/heart';
 export { ShuffleIcon } from './graphics/shuffle';
+export { FastForwardIcon } from './graphics/fast-forward';
+export { RewindIcon } from './graphics/rewind';
+export { RepeatIcon } from './graphics/repeat';
+export { PauseCircleIcon } from './graphics/pause-circle';

@@ -1,1 +1,1 @@
-export { default } from './Play.container';
+export { default } from './PlayButton';

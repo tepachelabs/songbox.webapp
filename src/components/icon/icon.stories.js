@@ -12,6 +12,10 @@ import {
   LogOutIcon,
   HelpCircleIcon,
   HeartIcon,
+  RewindIcon,
+  PauseCircleIcon,
+  RepeatIcon,
+  FastForwardIcon,
 } from 'components/icon';
 
 const icons = [
@@ -21,8 +25,12 @@ const icons = [
   { component: HelpCircleIcon, title: 'HelpCircleIcon' },
   { component: MenuIcon, title: 'MenuIcon' },
   { component: MoreIcon, title: 'MoreIcon' },
-  { component: PlayCircleIcon, title: 'PlayCircleIcon' },
   { component: SettingsIcon, title: 'SettingsIcon' },
+  { component: RepeatIcon, title: 'RepeatIcon' },
+  { component: RewindIcon, title: 'RewindIcon' },
+  { component: PlayCircleIcon, title: 'PlayCircleIcon' },
+  { component: PauseCircleIcon, title: 'PauseCircleIcon' },
+  { component: FastForwardIcon, title: 'FastForwardIcon' },
   { component: ShuffleIcon, title: 'ShuffleIcon' },
 ];
 
