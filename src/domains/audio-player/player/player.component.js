@@ -7,7 +7,7 @@ import {
   PlayButton,
   ForwardButton,
   ShuffleButton,
-} from '../playerButtons';
+} from '../buttons';
 
 const PlayerComponent = ({
   isDisabled,

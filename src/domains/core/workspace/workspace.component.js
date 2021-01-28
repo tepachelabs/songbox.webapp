@@ -11,7 +11,7 @@ import Main from 'components/Main';
 import Favorites from 'components/Favorites';
 import Settings from 'components/Settings';
 import Help from 'components/Help';
-import AudioPlayer from 'domains/audio';
+import AudioPlayer from 'domains/audio-player';
 
 export const WorkspaceComponent = () => (
   <BrowserRouter>

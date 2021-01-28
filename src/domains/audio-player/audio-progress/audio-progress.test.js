@@ -4,10 +4,10 @@ import { render } from '@testing-library/react';
 
 import store from 'store';
 
-import AudioProgress from 'domains/audio/audioProgress';
+import AudioProgress from 'domains/audio-player/audio-progress/index';
 
 test('it renders', () => {
-  const ref = React.createRef();
+  const ref = new Audio();
   const mockFn = jest.fn();
 
   render(

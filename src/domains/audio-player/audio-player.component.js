@@ -3,10 +3,10 @@ import propTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 
 import PlayerComponent from './player';
-import AudioProgressContainer from './audioProgress';
+import AudioProgressContainer from './audio-progress';
 
 import './style/player.scss';
-import './audioProgress/styles/progress.scss';
+import './audio-progress/styles/progress.scss';
 
 const useStyles = makeStyles(() => ({
   audioContainer: {
