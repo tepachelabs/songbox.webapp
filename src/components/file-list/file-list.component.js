@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { List } from 'immutable';
@@ -6,6 +7,9 @@ import {
   Divider,
   IconButton,
 } from '@material-ui/core';
+
+import { getSongStreamLink } from 'store/actions/playerActions';
+import { setSongIndex } from 'store/actions/songsQueueActions';
 
 import { APP_PATH } from 'routes';
 import { FolderIcon, MusicIcon } from 'components/icon';
@@ -27,8 +31,15 @@ const renderActions = (actions) => (
   ))
 );
 
-export const FileListComponent = ({ dense, files, onClick }) => {
-  const getProps = ({ type, path }) => {
+export const FileListComponent = ({ dense, files }) => {
+  const dispatch = useDispatch();
+
+  const onSongClick = (path, index) => {
+    dispatch(getSongStreamLink(path));
+    dispatch(setSongIndex(index));
+  };
+
+  const getProps = ({ type, path, index }) => {
     if (type === 'folder') {
       return {
         component: Link,
@@ -36,18 +47,18 @@ export const FileListComponent = ({ dense, files, onClick }) => {
       };
     }
 
-    return { onClick };
+    return { onClick: () => onSongClick(path, index) };
   };
 
   return (
     <ListWrapper dense={dense}>
       {files.map(({
         type, title, actions, path,
-      }) => (
+      }, index) => (
         <Fragment key={title}>
           <Divider />
           <FileListItemComponent
-            {...getProps({ type, path })}
+            {...getProps({ type, path, index })}
             icon={getIcon(type)}
             title={title}
           >
