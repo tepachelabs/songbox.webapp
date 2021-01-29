@@ -5,7 +5,7 @@ import {
   setIsPlaying, playNextSong, setRepeat, setRandom, playPreviousSong,
 } from 'store/actions/playerActions';
 
-import AudioPlayerComponent from './AudioPlayer.component';
+import AudioPlayerComponent from './audio-player.component';
 
 const AudioPlayerContainer = () => {
   const songLink = useSelector((state) => state.player.get('songLink'));
@@ -26,7 +26,7 @@ const AudioPlayerContainer = () => {
       if (isPlaying) {
         dispatch(setIsPlaying(false));
       } else {
-        dispatch(setIsPlaying((true)));
+        dispatch(setIsPlaying(true));
       }
     },
   };

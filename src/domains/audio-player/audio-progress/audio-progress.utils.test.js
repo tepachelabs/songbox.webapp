@@ -2,7 +2,7 @@ import {
   getNumericValueFromDOMEvent,
   convertProgressToCurrentTime,
   convertDurationToProgress,
-} from 'components/AudioPlayer/AudioProgress/AudioProgress.utils';
+} from './audio-progress.utils';
 
 describe('get numeric value from DOM event', () => {
   test('it should get the value from the input and convert to integer (50)', () => {

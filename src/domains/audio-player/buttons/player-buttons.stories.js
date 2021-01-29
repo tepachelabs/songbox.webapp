@@ -21,7 +21,7 @@ const buttons = [
 
 export default {
   component: PlayButton,
-  title: 'PlayerButtons',
+  title: 'buttons',
   decorators: [(Story) => (<RouterDecorator><Story /></RouterDecorator>)],
 };
 

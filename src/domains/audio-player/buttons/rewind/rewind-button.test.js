@@ -3,19 +3,14 @@ import { Provider } from 'react-redux';
 import { render } from '@testing-library/react';
 
 import store from 'store';
+import RewindButton from './rewind-button';
 
-import AudioProgress from 'components/AudioPlayer/AudioProgress';
-
-test('it renders', () => {
-  const ref = React.createRef();
+test('It should render', () => {
   const mockFn = jest.fn();
 
   render(
     <Provider store={store}>
-      <AudioProgress
-        audioRef={ref}
-        updateCurrentTime={mockFn}
-      />
+      <RewindButton onClick={mockFn} />
     </Provider>,
   );
 });
