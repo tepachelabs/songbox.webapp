@@ -19,12 +19,12 @@ import { FileListItemComponent } from './file-list-item';
 
 const getIcon = (type) => (type === 'folder' ? <FolderIcon /> : <MusicIcon />);
 
-const renderActions = (actions) => (
+const renderActions = (actions, title, path) => (
   actions.map(({ alt, icon, onClick }) => (
     <IconButton
       key={alt}
       edge="end"
-      onClick={onClick}
+      onClick={() => onClick(title, path)}
     >
       { icon }
     </IconButton>
@@ -62,7 +62,7 @@ export const FileListComponent = ({ dense, files }) => {
             icon={getIcon(type)}
             title={title}
           >
-            { actions && renderActions(actions) }
+            { actions && renderActions(actions, title, path) }
           </FileListItemComponent>
         </Fragment>
       ))}
