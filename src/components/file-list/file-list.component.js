@@ -1,18 +1,16 @@
 import React, { Fragment } from 'react';
-import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { List } from 'immutable';
 import {
   Divider,
   IconButton,
-  List as MuiList,
 } from '@material-ui/core';
 
 import { APP_PATH } from 'routes';
-import { getSongStreamLink } from 'store/actions/playerActions';
-import { setSongIndex, changeSongsQueue } from 'store/actions/songsQueueActions';
 import { FolderIcon, MusicIcon } from 'components/icon';
+
+import { ListWrapper } from './file-list.style';
 import { FileListItemComponent } from './file-list-item';
 
 const getIcon = (type) => (type === 'folder' ? <FolderIcon /> : <MusicIcon />);
@@ -24,61 +22,49 @@ const renderActions = (actions) => (
       edge="end"
       onClick={onClick}
     >
-      {icon}
+      { icon }
     </IconButton>
   ))
 );
 
-export const FileListComponent = ({ dense, files }) => {
-  const dispatch = useDispatch();
-  const history = useHistory();
+export const FileListComponent = ({ dense, files, onClick }) => {
+  const getProps = ({ type, path }) => {
+    if (type === 'folder') {
+      return {
+        component: Link,
+        to: `${APP_PATH}${path}`,
+      };
+    }
 
-  const folderOnClick = (path) => {
-    history.push(APP_PATH + path);
-  };
-
-  const fileOnClick = (path, songs, index) => {
-    dispatch(getSongStreamLink(path));
-    dispatch(changeSongsQueue(songs));
-    dispatch(setSongIndex(index));
+    return { onClick };
   };
 
   return (
-    <MuiList dense={dense}>
+    <ListWrapper dense={dense}>
       {files.map(({
         type, title, actions, path,
-      }, index) => (
-        type === 'folder'
-          ? (
-            <Fragment key={title}>
-              <Divider />
-              <FileListItemComponent
-                icon={getIcon(type)}
-                title={title}
-                onClick={() => folderOnClick(path)}
-              >
-                { actions && renderActions(actions) }
-              </FileListItemComponent>
-            </Fragment>
-          )
-          : (
-            <Fragment key={title}>
-              <Divider />
-              <FileListItemComponent
-                icon={getIcon(type)}
-                title={title}
-                onClick={() => fileOnClick(path, files, index)}
-              >
-                { actions && renderActions(actions) }
-              </FileListItemComponent>
-            </Fragment>
-          )
+      }) => (
+        <Fragment key={title}>
+          <Divider />
+          <FileListItemComponent
+            {...getProps({ type, path })}
+            icon={getIcon(type)}
+            title={title}
+          >
+            { actions && renderActions(actions) }
+          </FileListItemComponent>
+        </Fragment>
       ))}
-    </MuiList>
+    </ListWrapper>
   );
 };
 
 FileListComponent.propTypes = {
   dense: PropTypes.bool.isRequired,
   files: PropTypes.instanceOf(List).isRequired,
+  onClick: PropTypes.func,
+};
+
+FileListComponent.defaultProps = {
+  onClick: () => {},
 };

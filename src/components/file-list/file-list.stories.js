@@ -1,10 +1,13 @@
 import React from 'react';
 import { HeartIcon, MoreIcon } from 'components/icon';
+import { RouterDecorator } from 'stories/decorators';
+
 import { FileListComponent } from './file-list.component';
 
 export default {
   component: FileListComponent,
   title: 'FileList',
+  decorators: [(Story) => (<RouterDecorator><Story /></RouterDecorator>)],
   argTypes: {
     dense: { control: 'boolean' },
   },

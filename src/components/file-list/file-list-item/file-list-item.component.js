@@ -1,17 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  ListItem,
   ListItemIcon,
   ListItemSecondaryAction,
   ListItemText,
   Typography,
 } from '@material-ui/core';
 
+import { FileListItem } from './file-list-item.style';
+
 export const FileListItemComponent = ({
-  children, icon, onClick, title,
+  children, icon, onClick, title, ...props
 }) => (
-  <ListItem button onClick={onClick}>
+  <FileListItem button onClick={onClick} {...props}>
     <ListItemIcon>
       {icon}
     </ListItemIcon>
@@ -25,17 +26,18 @@ export const FileListItemComponent = ({
         {children}
       </ListItemSecondaryAction>
     )}
-  </ListItem>
+  </FileListItem>
 );
 
 FileListItemComponent.propTypes = {
   children: PropTypes.node,
   icon: PropTypes.node,
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
   title: PropTypes.string.isRequired,
 };
 
 FileListItemComponent.defaultProps = {
   children: null,
   icon: null,
+  onClick: () => {},
 };

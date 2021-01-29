@@ -32,9 +32,6 @@ export const muiTheme = createMuiTheme({
           backgroundColor: transparentOrange,
         },
       },
-      secondaryAction: {
-        paddingRight: '6em',
-      },
     },
   },
 });
