@@ -1,8 +1,8 @@
 import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
-import RefreshButton from './RefreshButton.component';
+import RefreshButton from './refresh-button.component';
 
-describe('RefreshButton component', () => {
+describe('refresh-button component', () => {
   it('should render and be clicked', () => {
     const mockFn = jest.fn();
     const component = render(<RefreshButton event={mockFn} />);

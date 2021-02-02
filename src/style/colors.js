@@ -6,6 +6,7 @@ export const orange = '#ffa834';
 export const lightGray = '#d2dae2';
 export const almostWhite = '#f0f4f7';
 export const darkWhite = '#b3b3ba';
+export const darkOrange = 'rgb(238, 157, 8)';
 
 export const primary = orange;
 

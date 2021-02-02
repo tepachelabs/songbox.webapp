@@ -1,10 +1,12 @@
 import React from 'react';
-
-import './styles/refreshbutton.scss';
 import propTypes from 'prop-types';
 
+import { RefreshButton } from './refresh-button.style';
+
 const RefreshButtonComponent = ({ event }) => (
-  <button type="button" className="refresh-btn" onClick={event}>Refresh</button>
+  <RefreshButton type="button" className="refresh-btn" onClick={event}>
+    Refresh
+  </RefreshButton>
 );
 
 RefreshButtonComponent.propTypes = {
