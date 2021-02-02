@@ -1,46 +1,28 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
 
 import PlayerComponent from './player';
 import AudioProgressContainer from './audio-progress';
 
-import './style/player.scss';
-import './audio-progress/styles/progress.scss';
-
-const useStyles = makeStyles(() => ({
-  audioContainer: {
-    background: '#F7F6F6',
-    textAlign: 'center',
-    position: 'fixed',
-    bottom: 0,
-    width: '100%',
-    height: '150px',
-  },
-  audioPlayer: {
-    width: '100%',
-  },
-}));
+import { AudioWrapper } from './audio-player.styles';
 
 const AudioPlayerComponent = ({
-  audioRef, updateCurrentTime, onClick, isDisabled,
-}) => {
-  const classes = useStyles();
-  return (
-    <div className={classes.audioContainer}>
-      <AudioProgressContainer
-        audioRef={audioRef}
-        updateCurrentTime={updateCurrentTime}
-      />
-      <div className={classes.audioPlayer}>
-        <PlayerComponent
-          onClick={onClick}
-          isDisabled={isDisabled}
-        />
-      </div>
-    </div>
-  );
-};
+  audioRef,
+  isDisabled,
+  onClick,
+  updateCurrentTime,
+}) => (
+  <AudioWrapper>
+    <AudioProgressContainer
+      audioRef={audioRef}
+      updateCurrentTime={updateCurrentTime}
+    />
+    <PlayerComponent
+      onClick={onClick}
+      isDisabled={isDisabled}
+    />
+  </AudioWrapper>
+);
 
 AudioPlayerComponent.propTypes = {
   audioRef: propTypes.shape({ current: propTypes.node }).isRequired,

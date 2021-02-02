@@ -3,17 +3,17 @@ import propTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 
 import { ShuffleIcon } from 'components/icon';
-import { PlayerButton } from 'style/button';
-import { gray, orange } from 'style/colors';
+import { PlayerRegularButton } from 'style/button';
+import { darkGray, orange } from 'style/colors';
 
 const ShuffleButton = ({ onClick }) => {
   const isRandomEnabled = useSelector((state) => state.player.get('isRandom'));
-  const strokeColor = isRandomEnabled ? orange : gray;
+  const strokeColor = isRandomEnabled ? orange : darkGray;
 
   return (
-    <PlayerButton onClick={onClick}>
+    <PlayerRegularButton onClick={onClick}>
       <ShuffleIcon stroke={strokeColor} />
-    </PlayerButton>
+    </PlayerRegularButton>
   );
 };
 

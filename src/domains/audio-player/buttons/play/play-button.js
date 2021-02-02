@@ -2,25 +2,25 @@ import React from 'react';
 import propTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 
-import { PlayerButton } from 'style/button';
+import { PlayerLargeButton } from 'style/button';
 import {
   PlayCircleIcon,
   PauseCircleIcon,
 } from 'components/icon';
 
-import { gray } from 'style/colors';
+import { darkGray } from 'style/colors';
 
 const PlayButton = ({ onClick }) => {
   const isPlaying = useSelector((state) => state.player.get('isPlaying'));
 
   return (
-    <PlayerButton onClick={onClick}>
+    <PlayerLargeButton onClick={onClick} type="play">
       {
         isPlaying
-          ? <PauseCircleIcon stroke={gray} />
-          : <PlayCircleIcon stroke={gray} />
+          ? <PauseCircleIcon stroke={darkGray} />
+          : <PlayCircleIcon stroke={darkGray} />
       }
-    </PlayerButton>
+    </PlayerLargeButton>
   );
 };
 

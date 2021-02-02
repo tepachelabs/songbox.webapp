@@ -2,19 +2,19 @@ import React from 'react';
 import propTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 
-import { PlayerButton } from 'style/button';
-import { gray, orange } from 'style/colors';
+import { PlayerRegularButton } from 'style/button';
+import { darkGray, orange } from 'style/colors';
 
 import { RepeatIcon } from 'components/icon';
 
 const RepeatButton = ({ onClick }) => {
   const isRepeatEnabled = useSelector((state) => state.player.get('isRepeat'));
-  const strokeColor = isRepeatEnabled ? orange : gray;
+  const strokeColor = isRepeatEnabled ? orange : darkGray;
 
   return (
-    <PlayerButton onClick={onClick}>
+    <PlayerRegularButton onClick={onClick}>
       <RepeatIcon stroke={strokeColor} />
-    </PlayerButton>
+    </PlayerRegularButton>
   );
 };
 
