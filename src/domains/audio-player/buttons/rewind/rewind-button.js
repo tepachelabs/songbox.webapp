@@ -6,7 +6,7 @@ import { canPlayPreviousSong } from 'store/selectors/songsQueue';
 import { PlayerRegularButton } from 'style/button';
 
 import { RewindIcon } from 'components/icon';
-import { darkGray } from 'style/colors';
+import { darkWhite } from 'style/colors';
 
 const RewindButton = ({ onClick }) => {
   const canRewind = useSelector((state) => canPlayPreviousSong(state));
@@ -14,7 +14,7 @@ const RewindButton = ({ onClick }) => {
 
   return (
     <PlayerRegularButton onClick={onClick} disabled={isDisabled}>
-      <RewindIcon stroke={darkGray} fill={darkGray} />
+      <RewindIcon stroke={darkWhite} fill={darkWhite} />
     </PlayerRegularButton>
   );
 };

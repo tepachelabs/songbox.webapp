@@ -5,11 +5,10 @@ export const ButtonsWrapper = styled.div`
   align-items: center;
   display: flex;
   height: 90%;
-  justify-content: space-around;
+  justify-content: space-evenly;
   width: 100%;
   
   pointer-events: ${(props) => (props.isDisabled ? 'none' : '')};
-  opacity: ${(props) => (props.isDisabled ? '0.5' : '')};
   
   ${respondTo.xs`
     justify-content: center;

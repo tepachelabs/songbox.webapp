@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import { theme } from 'style/theme';
-import { almostGray } from 'style/colors';
+import { darkWhite } from 'style/colors';
 
 export const AudioProgress = styled.input`
   -webkit-appearance: none;
@@ -20,7 +20,7 @@ export const AudioProgress = styled.input`
   }
   
   &::-webkit-slider-thumb, &::-webkit-slider-thumb {
-    border: 1px solid ${almostGray};
+    border: 1px solid ${darkWhite};
     border-radius: 50%;
     height: ${theme.spacing.four};
     width: ${theme.spacing.four};

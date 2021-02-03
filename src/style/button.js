@@ -42,10 +42,10 @@ export const PlayerRegularButton = withStyles(({ breakpoints, spacing }) => ({
 export const PlayerLargeButton = withStyles(({ breakpoints, spacing }) => ({
   root: {
     [breakpoints.down('sm')]: {
-      height: spacing(6),
-      width: spacing(6),
+      height: spacing(8),
+      width: spacing(8),
     },
-    height: spacing(7),
-    width: spacing(7),
+    height: spacing(9),
+    width: spacing(9),
   },
 }))(PlayerRegularButton);

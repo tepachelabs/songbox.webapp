@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 import { canPlayNextSong } from 'store/selectors/songsQueue';
 import { PlayerRegularButton } from 'style/button';
-import { darkGray } from 'style/colors';
+import { darkWhite } from 'style/colors';
 
 import { FastForwardIcon } from 'components/icon';
 
@@ -15,7 +15,7 @@ const ForwardButton = ({ onClick }) => {
 
   return (
     <PlayerRegularButton onClick={onClick} disabled={isDisabled}>
-      <FastForwardIcon stroke={darkGray} fill={darkGray} />
+      <FastForwardIcon stroke={darkWhite} fill={darkWhite} />
     </PlayerRegularButton>
   );
 };

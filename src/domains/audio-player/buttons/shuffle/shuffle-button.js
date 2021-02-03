@@ -4,11 +4,11 @@ import { useSelector } from 'react-redux';
 
 import { ShuffleIcon } from 'components/icon';
 import { PlayerRegularButton } from 'style/button';
-import { darkGray, orange } from 'style/colors';
+import { darkWhite, orange } from 'style/colors';
 
 const ShuffleButton = ({ onClick }) => {
   const isRandomEnabled = useSelector((state) => state.player.get('isRandom'));
-  const strokeColor = isRandomEnabled ? orange : darkGray;
+  const strokeColor = isRandomEnabled ? orange : darkWhite;
 
   return (
     <PlayerRegularButton onClick={onClick}>
