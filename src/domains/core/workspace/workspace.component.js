@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import {
@@ -7,11 +7,13 @@ import {
 
 import { Sidebar } from 'components/sidebar';
 import { UserProfile } from 'components/user-profile';
-import Main from 'components/Main';
-import Favorites from 'components/Favorites';
-import Settings from 'components/Settings';
-import Help from 'components/Help';
-import AudioPlayer from 'domains/audio-player';
+import { Loading } from '../Loading';
+
+const Main = React.lazy(() => import('components/Main'));
+const Favorites = React.lazy(() => import('components/Favorites'));
+const Settings = React.lazy(() => import('components/Settings'));
+const Help = React.lazy(() => import('components/Help'));
+const AudioPlayer = React.lazy(() => import('domains/audio-player'));
 
 export const WorkspaceComponent = () => (
   <BrowserRouter>
@@ -21,13 +23,15 @@ export const WorkspaceComponent = () => (
       </Sidebar>
     </div>
     <div className="App">
-      <Switch>
-        <Route path={FAVORITES_PATH} component={Favorites} />
-        <Route path={SETTINGS_PATH} component={Settings} />
-        <Route path={HELP_PATH} component={Help} />
-        <Route path={APP_PATH} exact component={Main} />
-        <Route path={FILE_PATH} exact component={Main} />
-      </Switch>
+      <Suspense fallback={Loading}>
+        <Switch>
+          <Route path={FAVORITES_PATH} component={Favorites} />
+          <Route path={SETTINGS_PATH} component={Settings} />
+          <Route path={HELP_PATH} component={Help} />
+          <Route path={APP_PATH} exact component={Main} />
+          <Route path={FILE_PATH} exact component={Main} />
+        </Switch>
+      </Suspense>
     </div>
     <AudioPlayer />
   </BrowserRouter>
