@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 
-import BreadcrumbComponent from './Breadcrumb.component';
+import BreadcrumbComponent from './breadcrumb.component';
 
 const BreadcrumbContainer = () => {
   const location = useLocation();
@@ -18,11 +18,7 @@ const BreadcrumbContainer = () => {
     ];
   }, []);
 
-  return (
-    <BreadcrumbComponent
-      breadcrumbs={breadcrumbs}
-    />
-  );
+  return <BreadcrumbComponent breadcrumbs={breadcrumbs} />;
 };
 
 export default BreadcrumbContainer;

@@ -1,24 +1,24 @@
 import React from 'react';
+import { Grid } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import propTypes from 'prop-types';
 
-import Home from '../Home';
-
-import './style/breadcrumb.scss';
+import HomeComponent from '../home';
+import { BreadcrumbLink } from './breadcrumb.styles';
 
 const BreadcrumbComponent = ({ breadcrumbs }) => (
-  <div className="directory-container">
-    <Home />
-    <div className="breadcrumb">
-      {
-        breadcrumbs.map(({ title, uri }) => (title ? (
-          <Link key={title} className="route-breadcrumb" to={`${uri}`}>
+  <Grid container justify="flex-start">
+    <HomeComponent />
+    {
+      breadcrumbs.map(({ title, uri }) => (title ? (
+        <BreadcrumbLink key={title}>
+          <Link to={`${uri}`}>
             {`/${title}`}
           </Link>
-        ) : null))
-      }
-    </div>
-  </div>
+        </BreadcrumbLink>
+      ) : null))
+    }
+  </Grid>
 );
 
 BreadcrumbComponent.propTypes = {

@@ -64,4 +64,4 @@ export const FileListItem = () => {
   );
 };
 
-// export const Home = Template.bind({});
+// export const home = Template.bind({});
