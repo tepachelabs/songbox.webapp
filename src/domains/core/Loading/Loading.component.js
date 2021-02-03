@@ -1,5 +1,5 @@
 import React from 'react';
 
-import './styles/loading.scss';
+import { LoadingBox } from './Loading.styles';
 
-export const Loading = () => <div id="loading-splash" />;
+export const Loading = () => <LoadingBox />;
