@@ -1,5 +1,5 @@
 import { Button as MuiButton, withStyles } from '@material-ui/core';
-import { blue, white } from './colors';
+import { blue, white, orange } from './colors';
 
 export const Button = withStyles(({ spacing }) => ({
   root: {
@@ -36,5 +36,21 @@ export const PlayerButton = withStyles(({ breakpoints, spacing }) => ({
     height: spacing(6),
     width: spacing(6),
     padding: 0,
+  },
+}))(Button);
+
+export const RoundedButton = withStyles(({ spacing }) => ({
+  root: {
+    backgroundColor: white,
+    border: spacing(1),
+    borderColor: orange,
+    borderRadius: spacing(3),
+    borderStyle: 'solid',
+    borderWidth: spacing(0.1),
+    color: orange,
+    '&:hover': {
+      backgroundColor: orange,
+      color: white,
+    },
   },
 }))(Button);
