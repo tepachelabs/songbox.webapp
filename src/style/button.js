@@ -39,18 +39,12 @@ export const PlayerButton = withStyles(({ breakpoints, spacing }) => ({
   },
 }))(Button);
 
-export const RoundedButton = withStyles(({ spacing }) => ({
+export const OrangeButton = withStyles(() => ({
   root: {
-    backgroundColor: white,
-    border: spacing(1),
-    borderColor: orange,
-    borderRadius: spacing(3),
-    borderStyle: 'solid',
-    borderWidth: spacing(0.1),
-    color: orange,
+    backgroundColor: orange,
+    color: white,
     '&:hover': {
       backgroundColor: orange,
-      color: white,
     },
   },
 }))(Button);
