@@ -2,9 +2,8 @@ import React, { Fragment } from 'react';
 import { List } from 'immutable';
 import propTypes from 'prop-types';
 
-import { FavoritesTitle } from './favorites.style';
-
 import { FileListComponent } from 'components/file-list';
+import { FavoritesTitle } from './favorites.style';
 
 const transformPaths = (songs) => songs.map((song) => ({
   type: 'file',
