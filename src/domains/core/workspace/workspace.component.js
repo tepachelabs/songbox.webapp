@@ -13,7 +13,7 @@ const Main = React.lazy(() => import('components/Main'));
 const Favorites = React.lazy(() => import('components/Favorites'));
 const Settings = React.lazy(() => import('components/Settings'));
 const Help = React.lazy(() => import('components/Help'));
-const AudioPlayer = React.lazy(() => import('do:mains/audio-player'));
+const AudioPlayer = React.lazy(() => import('domains/audio-player'));
 
 export const WorkspaceComponent = () => (
   <BrowserRouter>
