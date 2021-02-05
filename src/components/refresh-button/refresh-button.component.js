@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 
 import { OrangeButton } from 'style/button';
 
-const RefreshButtonComponent = ({ event }) => (
+export const RefreshButtonComponent = ({ event }) => (
   <OrangeButton type="button" onClick={event}>
     Refresh
   </OrangeButton>
@@ -12,5 +12,3 @@ const RefreshButtonComponent = ({ event }) => (
 RefreshButtonComponent.propTypes = {
   event: propTypes.func.isRequired,
 };
-
-export default RefreshButtonComponent;

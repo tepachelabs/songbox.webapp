@@ -43,7 +43,7 @@ export const OrangeButton = withStyles(() => ({
   root: {
     backgroundColor: orange,
     color: white,
-    '&:hover': {
+    '&:hover, &:active, &:visited': {
       backgroundColor: orange,
     },
   },

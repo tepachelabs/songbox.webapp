@@ -4,9 +4,9 @@ import { useParams } from 'react-router-dom';
 
 import { fetchFileListFromPath } from 'store/actions/filesActions';
 
-import RefreshButtonComponent from './refresh-button.component';
+import { RefreshButtonComponent } from './refresh-button.component';
 
-const RefreshButtonContainer = () => {
+export const RefreshButtonContainer = () => {
   const { path } = useParams();
 
   const dispatch = useDispatch();
@@ -14,5 +14,3 @@ const RefreshButtonContainer = () => {
 
   return <RefreshButtonComponent event={getFilesFromCurrentPath} />;
 };
-
-export default RefreshButtonContainer;

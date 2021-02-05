@@ -1,11 +1,11 @@
 import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
-import RefreshButton from './refresh-button.component';
+import { RefreshButtonComponent } from './refresh-button.component';
 
 describe('refresh-button component', () => {
   it('should render and be clicked', () => {
     const mockFn = jest.fn();
-    const component = render(<RefreshButton event={mockFn} />);
+    const component = render(<RefreshButtonComponent event={mockFn} />);
 
     const { firstChild } = component.container;
     fireEvent.click(firstChild);
@@ -14,7 +14,7 @@ describe('refresh-button component', () => {
 
   it('should render and not be clicked', () => {
     const mockFn = jest.fn();
-    render(<RefreshButton event={mockFn} />);
+    render(<RefreshButtonComponent event={mockFn} />);
 
     expect(mockFn).not.toHaveBeenCalled();
   });

@@ -1,1 +1,1 @@
-export { default } from './refresh-button.container';
+export { RefreshButtonContainer } from './refresh-button.container';
