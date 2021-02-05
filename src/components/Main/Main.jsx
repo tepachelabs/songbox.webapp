@@ -4,7 +4,7 @@ import { Container, Grid } from '@material-ui/core';
 
 import BreadcrumbContainer from '../Breadcrumb';
 import FilesContainer from '../Files';
-import RefreshButtonContainer from '../RefreshButton';
+import { RefreshButtonContainer } from '../refresh-button';
 
 import './style/style.scss';
 
