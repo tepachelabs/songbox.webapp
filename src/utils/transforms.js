@@ -2,10 +2,10 @@
 * TODO: Fix this temporary fix
 *
 * This functions is a temporary fix
-* server receives `song_name` and `path_lower`
+* server receives `songTitle` and `songPath`
 *
 */
 export const serializeFavoriteObject = (body) => ({
-  song_name: body.fileName,
-  path_lower: body.path,
+  song_name: body.songTitle,
+  path_lower: body.songPath,
 });

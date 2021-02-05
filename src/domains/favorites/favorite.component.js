@@ -2,9 +2,14 @@ import React, { Fragment } from 'react';
 import { List } from 'immutable';
 import propTypes from 'prop-types';
 
-import { FavoritesTitle } from './Favorites.style';
+import { FileListComponent } from 'components/file-list';
+import { FavoritesTitle } from './favorites.style';
 
-import LinkToSongContainer from '../Files/LinkToSong';
+const transformPaths = (songs) => songs.map((song) => ({
+  type: 'file',
+  title: song.get('song_name'),
+  path: song.get('path_lower'),
+}));
 
 const FavoriteComponent = ({ favorites }) => (
   <Fragment>
@@ -12,17 +17,7 @@ const FavoriteComponent = ({ favorites }) => (
       Your personal library
       <span role="img" aria-label="heart">❤️</span>
     </FavoritesTitle>
-    {
-      favorites.map((favorite, index) => (
-        <LinkToSongContainer
-          key={favorite.get('song_name')}
-          files={favorites}
-          fileName={favorite.get('song_name')}
-          path={favorite.get('path_lower')}
-          index={index}
-        />
-      ))
-    }
+    <FileListComponent files={transformPaths(favorites)} dense={false} />
   </Fragment>
 );
 

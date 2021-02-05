@@ -1,5 +1,5 @@
 import { Button as MuiButton, withStyles } from '@material-ui/core';
-import { blue, white } from './colors';
+import { blue, white, orange } from './colors';
 
 export const Button = withStyles(({ spacing }) => ({
   root: {
@@ -24,5 +24,15 @@ export const TransparentButton = withStyles(() => ({
   root: {
     background: 'none',
     border: 'none',
+  },
+}))(Button);
+
+export const OrangeButton = withStyles(() => ({
+  root: {
+    backgroundColor: orange,
+    color: white,
+    '&:hover, &:active, &:visited': {
+      backgroundColor: orange,
+    },
   },
 }))(Button);
