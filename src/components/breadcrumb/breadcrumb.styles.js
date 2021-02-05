@@ -12,7 +12,7 @@ export const BreadcrumbLink = styled(ProductTitle)`
     color: ${black};
   }
 
-  & a:hover {
+  & a:hover, & a:visited,  a:active {
     color: ${orange};
   }
 `;

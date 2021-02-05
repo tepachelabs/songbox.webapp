@@ -1,1 +1,1 @@
-export { default } from './breadcrumb.container';
+export { BreadcrumbContainer } from './breadcrumb.container';

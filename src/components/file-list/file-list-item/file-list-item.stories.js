@@ -63,5 +63,3 @@ export const FileListItem = () => {
     </Wrapper>
   );
 };
-
-// export const home = Template.bind({});

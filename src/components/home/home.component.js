@@ -4,12 +4,10 @@ import { HomeIcon } from 'components/icon';
 
 import { HomeWrapper } from './home.styles';
 
-const HomeComponent = () => (
+export const Home = () => (
   <HomeWrapper>
     <Link to="/app">
       <HomeIcon />
     </Link>
   </HomeWrapper>
 );
-
-export default HomeComponent;

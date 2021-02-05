@@ -1,14 +1,13 @@
-import React from 'react';
-import { Grid } from '@material-ui/core';
+import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import propTypes from 'prop-types';
 
-import HomeComponent from '../home';
+import { Home } from '../home';
 import { BreadcrumbLink } from './breadcrumb.styles';
 
-const BreadcrumbComponent = ({ breadcrumbs }) => (
-  <Grid container justify="flex-start">
-    <HomeComponent />
+export const BreadcrumbComponent = ({ breadcrumbs }) => (
+  <Fragment>
+    <Home />
     {
       breadcrumbs.map(({ title, uri }) => (title ? (
         <BreadcrumbLink key={title}>
@@ -18,7 +17,7 @@ const BreadcrumbComponent = ({ breadcrumbs }) => (
         </BreadcrumbLink>
       ) : null))
     }
-  </Grid>
+  </Fragment>
 );
 
 BreadcrumbComponent.propTypes = {
@@ -27,5 +26,3 @@ BreadcrumbComponent.propTypes = {
     uri: propTypes.string.isRequired,
   })).isRequired,
 };
-
-export default BreadcrumbComponent;

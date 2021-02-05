@@ -1,9 +1,9 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 
-import BreadcrumbComponent from './breadcrumb.component';
+import { BreadcrumbComponent } from './breadcrumb.component';
 
-const BreadcrumbContainer = () => {
+export const BreadcrumbContainer = () => {
   const location = useLocation();
 
   const split = location.pathname.split('/');
@@ -20,5 +20,3 @@ const BreadcrumbContainer = () => {
 
   return <BreadcrumbComponent breadcrumbs={breadcrumbs} />;
 };
-
-export default BreadcrumbContainer;
