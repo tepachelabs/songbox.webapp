@@ -13,7 +13,7 @@ import {
   lightGray,
   white,
 } from 'style/colors';
-import { PlayerButton } from '../player-button/player-button.component';
+import { PlayerButton } from '../player-button';
 
 const PlayButton = ({ onClick }) => {
   const isPlaying = useSelector((state) => state.player.get('isPlaying'));
@@ -24,7 +24,7 @@ const PlayButton = ({ onClick }) => {
     <PlayerButton onClick={onClick} size="large">
       {
         isPlaying
-          ? <PauseCircleIcon stroke={darkWhite} />
+          ? <PauseCircleIcon stroke={darkWhite} fill={playCircleFill} />
           : <PlayCircleIcon stroke={darkWhite} fill={playCircleFill} />
       }
     </PlayerButton>

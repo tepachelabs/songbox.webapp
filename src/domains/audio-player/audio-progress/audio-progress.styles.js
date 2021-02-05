@@ -8,9 +8,8 @@ export const AudioProgress = styled.input`
   appearance: none;
   background: linear-gradient(90deg, #FFA834 ${(props) => props.value}%, white ${(props) => props.value}%);
   height: ${theme.spacing.one};
-  margin: 0 auto;
-  opacity: 1;
-  outline: none;
+  left: 0;
+  position: absolute;
   width: 100%;
   
   &::-webkit-slider-thumb {
