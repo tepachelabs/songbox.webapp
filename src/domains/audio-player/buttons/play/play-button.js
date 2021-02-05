@@ -3,7 +3,6 @@ import propTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { selectQueueSize } from 'store/selectors/songsQueue';
 
-import { PlayerLargeButton } from 'style/button';
 import {
   PlayCircleIcon,
   PauseCircleIcon,
@@ -14,6 +13,7 @@ import {
   lightGray,
   white,
 } from 'style/colors';
+import { PlayerButton } from '../player-button/player-button.component';
 
 const PlayButton = ({ onClick }) => {
   const isPlaying = useSelector((state) => state.player.get('isPlaying'));
@@ -21,13 +21,13 @@ const PlayButton = ({ onClick }) => {
   const playCircleFill = queueSize > 0 ? white : lightGray;
 
   return (
-    <PlayerLargeButton onClick={onClick} type="play">
+    <PlayerButton onClick={onClick} size="large">
       {
         isPlaying
           ? <PauseCircleIcon stroke={darkWhite} />
           : <PlayCircleIcon stroke={darkWhite} fill={playCircleFill} />
       }
-    </PlayerLargeButton>
+    </PlayerButton>
   );
 };
 

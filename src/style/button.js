@@ -26,26 +26,3 @@ export const TransparentButton = withStyles(() => ({
     border: 'none',
   },
 }))(Button);
-
-export const PlayerRegularButton = withStyles(({ breakpoints, spacing }) => ({
-  root: {
-    [breakpoints.down('sm')]: {
-      height: spacing(3),
-      width: spacing(3),
-    },
-    height: spacing(4),
-    width: spacing(4),
-    padding: 0,
-  },
-}))(Button);
-
-export const PlayerLargeButton = withStyles(({ breakpoints, spacing }) => ({
-  root: {
-    [breakpoints.down('sm')]: {
-      height: spacing(8),
-      width: spacing(8),
-    },
-    height: spacing(9),
-    width: spacing(9),
-  },
-}))(PlayerRegularButton);

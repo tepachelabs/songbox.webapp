@@ -3,10 +3,10 @@ import propTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 
 import { canPlayNextSong } from 'store/selectors/songsQueue';
-import { PlayerRegularButton } from 'style/button';
 import { darkWhite } from 'style/colors';
 
 import { FastForwardIcon } from 'components/icon';
+import { PlayerButton } from '../player-button';
 
 const ForwardButton = ({ onClick }) => {
   const isRepeatEnabled = useSelector((state) => state.player.get('isRepeat'));
@@ -14,9 +14,9 @@ const ForwardButton = ({ onClick }) => {
   const isDisabled = !isRepeatEnabled && !canFastForward;
 
   return (
-    <PlayerRegularButton onClick={onClick} disabled={isDisabled}>
+    <PlayerButton onClick={onClick} disabled={isDisabled}>
       <FastForwardIcon stroke={darkWhite} fill={darkWhite} />
-    </PlayerRegularButton>
+    </PlayerButton>
   );
 };
 

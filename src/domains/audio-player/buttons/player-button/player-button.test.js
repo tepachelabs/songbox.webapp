@@ -1,13 +1,13 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 
-import { PlayerRegularButton } from 'style/button';
+import { PlayerButton } from './player-button.component';
 
 test('it should be disabled and should NOT be clickable', () => {
   const mockFn = jest.fn();
 
   const component = render(
-    <PlayerRegularButton onClick={mockFn} disabled />,
+    <PlayerButton onClick={mockFn} disabled />,
   );
 
   const { firstChild } = component.container;
@@ -23,7 +23,7 @@ test('it should be enabled and it should be clickable', () => {
   const mockFn = jest.fn();
 
   const component = render(
-    <PlayerRegularButton onClick={mockFn} disabled={false} />,
+    <PlayerButton onClick={mockFn} disabled={false} />,
   );
 
   const { firstChild } = component.container;
