@@ -10,7 +10,7 @@ import { UserProfile } from 'components/user-profile';
 import { Loading } from '../Loading';
 
 const Main = React.lazy(() => import('components/Main'));
-const Favorites = React.lazy(() => import('components/Favorites'));
+const Favorites = React.lazy(() => import('domains/favorites'));
 const Settings = React.lazy(() => import('components/Settings'));
 const Help = React.lazy(() => import('domains/help'));
 const AudioPlayer = React.lazy(() => import('domains/audio-player'));
