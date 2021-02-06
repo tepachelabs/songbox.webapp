@@ -9,7 +9,7 @@ import { Sidebar } from 'components/sidebar';
 import { UserProfile } from 'components/user-profile';
 import { Loading } from '../Loading';
 
-const Main = React.lazy(() => import('components/Main'));
+const Main = React.lazy(() => import('domains/main/main.component'));
 const Favorites = React.lazy(() => import('domains/favorites'));
 const Settings = React.lazy(() => import('components/Settings'));
 const Help = React.lazy(() => import('domains/help'));
