@@ -17,7 +17,7 @@ const FavoriteComponent = ({ favorites }) => (
       Your personal library
       <span role="img" aria-label="heart">❤️</span>
     </FavoritesTitle>
-    <FileListComponent files={transformPaths(favorites)} dense={false} />
+    <FileListComponent files={transformPaths(favorites)} songs={favorites} dense={false} />
   </Fragment>
 );
 
