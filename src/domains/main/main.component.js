@@ -7,6 +7,7 @@ import FilesContainer from 'components/Files';
 import { RefreshButtonContainer } from 'components/refresh-button';
 
 import { ProductTitle } from 'style/typography';
+import { BreadcrumbWrapper } from './main.styles';
 
 const MainComponent = () => {
   const { path } = useParams();
@@ -16,14 +17,14 @@ const MainComponent = () => {
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <ProductTitle>Your personal library</ProductTitle>
-          <Grid container justify="space-between">
-            <Grid item xs>
+          <BreadcrumbWrapper container justify="space-between">
+            <Grid container>
               <BreadcrumbContainer />
             </Grid>
-            <Grid item xs>
+            <Grid container justify="flex-end">
               <RefreshButtonContainer />
             </Grid>
-          </Grid>
+          </BreadcrumbWrapper>
         </Grid>
         <Grid item xs={12}>
           <FilesContainer path={path || ''} />
