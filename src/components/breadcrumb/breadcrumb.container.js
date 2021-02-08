@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 
-import { BreadcrumbComponent } from 'components/Breadcrumb/breadcrumb.component';
+import { BreadcrumbComponent } from 'components/breadcrumb/breadcrumb.component';
 
 export const BreadcrumbContainer = () => {
   const location = useLocation();

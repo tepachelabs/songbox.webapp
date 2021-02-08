@@ -1,1 +1,1 @@
-export { BreadcrumbContainer } from 'components/Breadcrumb/breadcrumb.container';
+export { BreadcrumbContainer } from './breadcrumb.container';
