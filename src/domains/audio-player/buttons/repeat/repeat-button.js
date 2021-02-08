@@ -2,14 +2,14 @@ import React from 'react';
 import propTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 
-import { PlayerButton } from 'style/button';
-import { gray, orange } from 'style/colors';
+import { darkWhite, orange } from 'style/colors';
 
 import { RepeatIcon } from 'components/icon';
+import { PlayerButton } from '../player-button';
 
 const RepeatButton = ({ onClick }) => {
   const isRepeatEnabled = useSelector((state) => state.player.get('isRepeat'));
-  const strokeColor = isRepeatEnabled ? orange : gray;
+  const strokeColor = isRepeatEnabled ? orange : darkWhite;
 
   return (
     <PlayerButton onClick={onClick}>

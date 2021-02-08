@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import propTypes from 'prop-types';
 
-import './styles/progress.scss';
+import { AudioProgress } from './audio-progress.styles';
 
 const AudioProgressComponent = ({
   progress,
@@ -16,7 +16,7 @@ const AudioProgressComponent = ({
   const inputRef = React.createRef();
 
   return (
-    <input
+    <AudioProgress
       min={0}
       max={100}
       step={1}
@@ -29,7 +29,6 @@ const AudioProgressComponent = ({
       type="range"
       ref={inputRef}
       disabled={isQueueEmpty}
-      className={`progress-${progress}`}
     />
   );
 };

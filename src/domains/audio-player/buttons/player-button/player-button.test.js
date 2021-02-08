@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 
-import { PlayerButton } from 'style/button';
+import { PlayerButton } from './player-button.component';
 
 test('it should be disabled and should NOT be clickable', () => {
   const mockFn = jest.fn();

@@ -1,9 +1,11 @@
 import React from 'react';
+import { darkWhite } from 'style/colors';
 import { Icon } from '../icon';
 
+// Need to hardcode fill on polygon to follow design.
 export const PlayCircleIcon = (props) => (
   <Icon {...props}>
-    <circle cx="12" cy="12" r="10" />
-    <polygon points="10 8 16 12 10 16 10 8" />
+    <circle {...props} cx="12" cy="12" r="10" />
+    <polygon fill={darkWhite} points="10 8 16 12 10 16 10 8" />
   </Icon>
 );
