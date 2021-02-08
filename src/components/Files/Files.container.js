@@ -1,6 +1,5 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import propTypes from 'prop-types';
-import { List, fromJS } from 'immutable';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { getFilesFromPath } from 'store/actions/filesActions';
@@ -17,8 +16,6 @@ const transformPaths = (paths) => paths.map((path) => ({
 }));
 
 const FilesContainer = ({ path }) => {
-  const [songs, setSongs] = useState(List());
-
   const files = useSelector((state) => state.files.get('files'));
   const favorites = useSelector((state) => state.favorites.get('songs'));
   const folders = useSelector((state) => state.files.get('folders'));
@@ -41,21 +38,10 @@ const FilesContainer = ({ path }) => {
     dispatch(getFilesFromPath(path));
   }, [path, dispatch]);
 
-  useEffect(() => {
-    setSongs(fromJS(files));
-  }, [files]);
-
   return (
     <Fragment>
-      <FileListComponent
-        files={transformPaths(folders)}
-        dense={false}
-      />
-      <FileListComponent
-        files={filesWithActions}
-        songs={songs}
-        dense={false}
-      />
+      <FileListComponent files={transformPaths(folders)} dense={false} />
+      <FileListComponent files={filesWithActions} songs={files} dense={false} />
     </Fragment>
   );
 };
