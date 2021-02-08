@@ -2,8 +2,8 @@ import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import propTypes from 'prop-types';
 
-import { Home } from '../home';
 import { BreadcrumbLink } from './breadcrumb.styles';
+import { Home } from '../home';
 
 export const BreadcrumbComponent = ({ breadcrumbs }) => (
   <Fragment>
