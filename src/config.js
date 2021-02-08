@@ -14,7 +14,7 @@ const stage = {
 
 let config = dev;
 
-config = process.env.REACT_APP_ENV === 'prod' ? prod : config;
+config = process.env.REACT_APP_ENV === 'production' ? prod : config;
 config = process.env.REACT_APP_ENV === 'stage' ? stage : config;
 
 export default {
