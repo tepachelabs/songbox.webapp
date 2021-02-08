@@ -9,7 +9,7 @@ import {
   ForwardButton,
   RewindButton,
   ShuffleButton,
-} from './index';
+} from '../index';
 
 const buttons = [
   RepeatButton,

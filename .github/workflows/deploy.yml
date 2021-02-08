@@ -1,0 +1,19 @@
+name: Build & Deploy
+on:
+  push:
+    branches: [ main ]
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy NodeJS app
+        uses: appleboy/ssh-action@v0.1.2
+        with:
+          host: ${{secrets.SSH_HOST}}
+          key: ${{secrets.SSH_KEY}}
+          username: ${{secret.SSH_USERNAME}}
+          scripts: |
+            mkdir test
+            cd test
+            git clone git@github.com:tepachelabs/songbox.webapp.git
+            echo 'Deployment successful to digital ocean'

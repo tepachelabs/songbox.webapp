@@ -2,7 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import { Container, Grid } from '@material-ui/core';
 
-import BreadcrumbContainer from 'components/Breadcrumb';
+import { BreadcrumbContainer } from 'components/Breadcrumb';
 import FilesContainer from 'components/Files';
 import { RefreshButtonContainer } from 'components/refresh-button';
 
