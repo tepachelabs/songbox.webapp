@@ -9,6 +9,8 @@ import { Sidebar } from 'components/sidebar';
 import { UserProfile } from 'components/user-profile';
 import { Loading } from '../Loading';
 
+import { AppWrapper } from './workspace.style';
+
 const Main = React.lazy(() => import('domains/main'));
 const Favorites = React.lazy(() => import('domains/favorites'));
 const Settings = React.lazy(() => import('components/Settings'));
@@ -22,7 +24,7 @@ export const WorkspaceComponent = () => (
         <UserProfile />
       </Sidebar>
     </div>
-    <div className="App">
+    <AppWrapper>
       <Suspense fallback={Loading}>
         <Switch>
           <Route path={FAVORITES_PATH} component={Favorites} />
@@ -32,7 +34,7 @@ export const WorkspaceComponent = () => (
           <Route path={FILE_PATH} exact component={Main} />
         </Switch>
       </Suspense>
-    </div>
+    </AppWrapper>
     <AudioPlayer />
   </BrowserRouter>
 );
