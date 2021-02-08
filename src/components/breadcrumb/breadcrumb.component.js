@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import propTypes from 'prop-types';
 
-import { BreadcrumbLink } from 'components/breadcrumb/breadcrumb.styles';
+import { BreadcrumbLink } from './breadcrumb.styles';
 import { Home } from '../home';
 
 export const BreadcrumbComponent = ({ breadcrumbs }) => (
