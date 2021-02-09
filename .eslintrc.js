@@ -1,6 +1,3 @@
-const isProd = process.env.NODE_ENV === 'production';
-const warnDevErrorProd = isProd ? 2 : 1;
-
 module.exports = {
   env: {
     browser: true,
@@ -34,8 +31,6 @@ module.exports = {
     'react/jsx-filename-extension': 'off',
     'react/jsx-fragments': ['error', 'element'],
     'react/jsx-props-no-spreading': ['off'],
-    'prettier/prettier': warnDevErrorProd,
-    'no-console': warnDevErrorProd,
   },
   settings: {
     'import/resolver': {
