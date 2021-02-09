@@ -4,6 +4,7 @@ import {
   FILES_SET_FILES_LIST,
   FILES_SET_FOLDER_LIST,
   FILES_ADD_CACHED_FILES,
+  FILES_SET_IS_LOADING,
 } from '../constants';
 
 /* SYNC OPERATIONS */
@@ -11,19 +12,23 @@ import {
 export const setFilesList = (payload) => ({ type: FILES_SET_FILES_LIST, payload });
 export const setFoldersList = (payload) => ({ type: FILES_SET_FOLDER_LIST, payload });
 export const setCachedFiles = (payload) => ({ type: FILES_ADD_CACHED_FILES, payload });
+export const setFilesLoading = (payload) => ({ type: FILES_SET_IS_LOADING, payload });
 
 /* ASYNC OPERATIONS */
 
 export const fetchFileListFromPath = (path) => (dispatch, getState) => {
   const token = getState().app.get('token');
+  dispatch(setFilesLoading(true));
 
   apiFetchFiles(token, path)
     .then(({ data }) => {
+      dispatch(setFilesLoading(false));
       dispatch(setFoldersList(filterAndSortFolders(data)));
       dispatch(setFilesList(filterAndSortSongs(data)));
       dispatch(setCachedFiles({ path, files: data }));
     })
     .catch((err) => {
+      dispatch(setFilesLoading(false));
       throw new Error(err);
     });
 };

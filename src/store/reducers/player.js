@@ -7,10 +7,12 @@ import {
   PLAYER_SET_SONG_LINK,
   PLAYER_SET_IS_PLAYING,
   PLAYER_SET_RANDOM,
+  PLAYER_SET_IS_LOADING,
 } from '../constants';
 
 const defaultPlayer = Map({
   currentSong: undefined,
+  isLoading: false,
   isRandom: false,
   isRepeat: false,
   isPlaying: false,
@@ -37,6 +39,9 @@ const playerReducer = (state = defaultPlayer, { type, payload }) => {
 
   case PLAYER_SET_RANDOM:
     return state.set('isRandom', payload);
+
+  case PLAYER_SET_IS_LOADING:
+    return state.set('isLoading', payload);
 
   default:
     return state;

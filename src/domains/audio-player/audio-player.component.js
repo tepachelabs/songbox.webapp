@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import propTypes from 'prop-types';
 
+import { Loading } from 'domains/core/Loading';
 import PlayerComponent from './player';
 import AudioProgressContainer from './audio-progress';
 
@@ -11,16 +12,25 @@ const AudioPlayerComponent = ({
   isDisabled,
   onClick,
   updateCurrentTime,
+  isLoading,
 }) => (
   <AudioWrapper>
-    <AudioProgressContainer
-      audioRef={audioRef}
-      updateCurrentTime={updateCurrentTime}
-    />
-    <PlayerComponent
-      onClick={onClick}
-      isDisabled={isDisabled}
-    />
+    {
+      isLoading
+        ? (<Loading />)
+        : (
+          <Fragment>
+            <AudioProgressContainer
+              audioRef={audioRef}
+              updateCurrentTime={updateCurrentTime}
+            />
+            <PlayerComponent
+              onClick={onClick}
+              isDisabled={isDisabled}
+            />
+          </Fragment>
+        )
+    }
   </AudioWrapper>
 );
 
@@ -29,6 +39,7 @@ AudioPlayerComponent.propTypes = {
   updateCurrentTime: propTypes.func.isRequired,
   onClick: propTypes.func.isRequired,
   isDisabled: propTypes.bool.isRequired,
+  isLoading: propTypes.bool.isRequired,
 };
 
 export default AudioPlayerComponent;

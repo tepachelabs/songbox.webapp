@@ -10,8 +10,9 @@ const spinAnimation = keyframes`
 `;
 
 export const LoadingBox = styled.div`
-  align-items: center;
-  display: flex;
+  position: relative;
+  height: 100%;
+  width: 100%;
 
   &::after {
     animation: ${spinAnimation} 0.7s infinite;
@@ -20,9 +21,9 @@ export const LoadingBox = styled.div`
     border-radius: 50%;
     content: "";
     height: 60px;
-    left: 50%;
+    left: 45%;
     position: absolute;
-    top: 50%;
+    top: 25%;
     width: 60px;
   }
 `;

@@ -10,6 +10,7 @@ import {
   PLAYER_SET_CURRENT_SONG,
   PLAYER_SET_IS_PLAYING,
   PLAYER_SET_RANDOM,
+  PLAYER_SET_IS_LOADING,
 } from '../constants';
 
 import {
@@ -25,16 +26,20 @@ export const setSong = (payload) => ({ type: PLAYER_SET_CURRENT_SONG, payload })
 export const setSongLink = (payload) => ({ type: PLAYER_SET_SONG_LINK, payload });
 export const setIsPlaying = (payload) => ({ type: PLAYER_SET_IS_PLAYING, payload });
 export const setRandom = (payload) => ({ type: PLAYER_SET_RANDOM, payload });
+export const setIsLoading = (payload) => ({ type: PLAYER_SET_IS_LOADING, payload });
 
 export const getSongStreamLink = (path) => (dispatch, getState) => {
   const token = getState().app.get('token');
+  dispatch(setIsLoading(true));
 
   apiFetchStreamableSong(token, path)
     .then(({ data }) => {
       const streamableSong = data.url.replace('?dl=0', '?dl=1');
+      dispatch(setIsLoading(false));
       dispatch(setSongLink(streamableSong));
     })
     .catch((err) => {
+      dispatch(setIsLoading(false));
       throw new Error(err);
     });
 };
