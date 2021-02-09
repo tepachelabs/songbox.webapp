@@ -1,6 +1,6 @@
 import { List, Map } from 'immutable';
 
-import { SONGS_QUEUE_ADD_BROKEN_LINK, SONGS_QUEUE_CHANGE_SONGS, SONGS_QUEUE_SET_SONG_INDEX } from '../constants';
+import { SONGS_QUEUE_ADD_BROKEN_LINK, SONGS_QUEUE_SET_SONGS, SONGS_QUEUE_SET_SONG_INDEX } from '../constants';
 
 const initialState = Map({
   index: 0,
@@ -13,7 +13,7 @@ const songsQueueReducer = (state = initialState, { type, payload }) => {
   case SONGS_QUEUE_SET_SONG_INDEX:
     return state.set('index', payload);
 
-  case SONGS_QUEUE_CHANGE_SONGS:
+  case SONGS_QUEUE_SET_SONGS:
     return state.set('queue', payload);
 
   case SONGS_QUEUE_ADD_BROKEN_LINK: {

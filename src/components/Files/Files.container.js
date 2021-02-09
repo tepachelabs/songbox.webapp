@@ -41,7 +41,7 @@ const FilesContainer = ({ path }) => {
   return (
     <Fragment>
       <FileListComponent files={transformPaths(folders)} dense={false} />
-      <FileListComponent files={filesWithActions} dense={false} />
+      <FileListComponent files={filesWithActions} songs={files} dense={false} />
     </Fragment>
   );
 };

@@ -9,7 +9,7 @@ import {
 } from '@material-ui/core';
 
 import { getSongStreamLink } from 'store/actions/playerActions';
-import { setSongIndex } from 'store/actions/songsQueueActions';
+import { setSongIndex, setSongsQueue } from 'store/actions/songsQueueActions';
 
 import { APP_PATH } from 'routes';
 import { FolderIcon, MusicIcon } from 'components/icon';
@@ -31,12 +31,13 @@ const renderActions = (actions, title, path) => (
   ))
 );
 
-export const FileListComponent = ({ dense, files }) => {
+export const FileListComponent = ({ dense, files, songs }) => {
   const dispatch = useDispatch();
 
   const onSongClick = (path, index) => {
     dispatch(getSongStreamLink(path));
     dispatch(setSongIndex(index));
+    dispatch(setSongsQueue(songs));
   };
 
   const getProps = ({ type, path, index }) => {
@@ -74,8 +75,10 @@ FileListComponent.propTypes = {
   dense: PropTypes.bool.isRequired,
   files: PropTypes.instanceOf(List).isRequired,
   onClick: PropTypes.func,
+  songs: PropTypes.instanceOf(List),
 };
 
 FileListComponent.defaultProps = {
   onClick: () => {},
+  songs: List(),
 };
