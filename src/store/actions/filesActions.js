@@ -24,7 +24,7 @@ export const setCachedFiles = (payload) => ({
 
 export const setFilesLoading = (payload) => ({
   type: FILES_SET_IS_LOADING,
-  payload
+  payload,
 });
 
 /* ASYNC OPERATIONS */

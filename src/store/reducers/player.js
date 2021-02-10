@@ -40,11 +40,11 @@ const playerReducer = (state = defaultPlayer, { type, payload }) => {
     case PLAYER_SET_RANDOM:
       return state.set('isRandom', payload);
 
-  case PLAYER_SET_IS_LOADING:
-    return state.set('isLoading', payload);
+    case PLAYER_SET_IS_LOADING:
+      return state.set('isLoading', payload);
 
-  default:
-    return state;
+    default:
+      return state;
   }
 };
 

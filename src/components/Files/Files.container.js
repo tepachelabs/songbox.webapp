@@ -46,15 +46,13 @@ const FilesContainer = ({ path }) => {
     dispatch(getFilesFromPath(path));
   }, [path, dispatch]);
 
-  return (
-    isLoading
-      ? (<Loading />)
-      : (
-        <Fragment>
-          <FileListComponent files={transformPaths(folders)} dense={false} />
-          <FileListComponent files={filesWithActions} songs={files} dense={false} />
-        </Fragment>
-      )
+  return isLoading ? (
+    <Loading />
+  ) : (
+    <Fragment>
+      <FileListComponent files={transformPaths(folders)} dense={false} />
+      <FileListComponent files={filesWithActions} songs={files} dense={false} />
+    </Fragment>
   );
 };
 

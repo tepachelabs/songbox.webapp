@@ -36,7 +36,10 @@ export const setIsPlaying = (payload) => ({
   payload,
 });
 export const setRandom = (payload) => ({ type: PLAYER_SET_RANDOM, payload });
-export const setIsLoading = (payload) => ({ type: PLAYER_SET_IS_LOADING, payload });
+export const setIsLoading = (payload) => ({
+  type: PLAYER_SET_IS_LOADING,
+  payload,
+});
 
 export const getSongStreamLink = (path) => (dispatch, getState) => {
   const token = getState().app.get('token');

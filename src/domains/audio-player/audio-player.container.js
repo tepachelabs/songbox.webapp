@@ -22,9 +22,7 @@ const AudioPlayerContainer = () => {
   const isRepeatEnabled = useSelector((state) =>
     state.player.get('isRepeatEnabled'),
   );
-  const isLoading = useSelector((state) =>
-    state.player.get('isLoading'),
-  );
+  const isLoading = useSelector((state) => state.player.get('isLoading'));
 
   const isDisabled = songsQueue.size <= 0;
   const dispatch = useDispatch();
