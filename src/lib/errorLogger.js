@@ -3,7 +3,6 @@ import Rollbar from 'rollbar';
 import config from '../config';
 
 let isInitialized;
-/* eslint-disable no-unused-vars */
 let rollbar;
 
 export const initErrorLogger = () => {

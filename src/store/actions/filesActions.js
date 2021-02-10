@@ -35,14 +35,15 @@ export const fetchFileListFromPath = (path) => (dispatch, getState) => {
 
   apiFetchFiles(token, path)
     .then(({ data }) => {
-      dispatch(setFilesLoading(false));
       dispatch(setFoldersList(filterAndSortFolders(data)));
       dispatch(setFilesList(filterAndSortSongs(data)));
       dispatch(setCachedFiles({ path, files: data }));
     })
     .catch((err) => {
-      dispatch(setFilesLoading(false));
       throw new Error(err);
+    })
+    .finally(() => {
+      dispatch(setFilesLoading(false));
     });
 };
 
