@@ -6,9 +6,9 @@ import { APP_PATH } from 'routes';
 import { LoginComponent } from './login.component';
 
 export const Login = () => {
-  const isValidSession = useSelector((state) => state.app.get('isValidSession'));
+  const isValidSession = useSelector((state) =>
+    state.app.get('isValidSession'),
+  );
 
-  return isValidSession
-    ? <Redirect to={APP_PATH} />
-    : <LoginComponent />;
+  return isValidSession ? <Redirect to={APP_PATH} /> : <LoginComponent />;
 };

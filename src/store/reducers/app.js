@@ -17,17 +17,17 @@ const initialState = Map({
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
-  case APP_LOADING:
-    return state.set('isLoaded', false);
-  case APP_LOADED:
-    return state.set('isLoaded', true);
-  case APP_TOKEN_UPDATE:
-    return state.set('token', payload);
-  case SET_OS:
-    return state.set('os', payload);
-  case APP_SET_IS_VALID_SESSION:
-    return state.set('isValidSession', payload);
-  default:
-    return state;
+    case APP_LOADING:
+      return state.set('isLoaded', false);
+    case APP_LOADED:
+      return state.set('isLoaded', true);
+    case APP_TOKEN_UPDATE:
+      return state.set('token', payload);
+    case SET_OS:
+      return state.set('os', payload);
+    case APP_SET_IS_VALID_SESSION:
+      return state.set('isValidSession', payload);
+    default:
+      return state;
   }
 };

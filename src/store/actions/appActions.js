@@ -9,11 +9,11 @@ import {
 /* SYNC OPERATIONS */
 
 export const setAppIsLoading = () => ({
-  type: APP_LOADING
+  type: APP_LOADING,
 });
 
 export const setAppLoaded = () => ({
-  type: APP_LOADED
+  type: APP_LOADED,
 });
 
 export const updateAppToken = (payload) => ({
@@ -28,7 +28,7 @@ export const setOS = (payload) => ({
 
 export const setValidSession = (payload) => ({
   type: APP_SET_IS_VALID_SESSION,
-  payload ,
+  payload,
 });
 
 /* ASYNC OPERATIONS */
