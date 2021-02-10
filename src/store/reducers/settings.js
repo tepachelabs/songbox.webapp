@@ -15,18 +15,18 @@ const initialState = Map({
 
 const settingsReducer = (state = initialState, { type, payload }) => {
   switch (type) {
-  case SETTINGS_SET_AUTO_PLAY:
-    return state.set('autoPlay', payload);
-  case SETTINGS_SET_FULL_FILENAME:
-    return state.set('fullFilename', payload);
-  case SETTINGS_SET_DARK_THEME:
-    return state.set('darkTheme', payload);
+    case SETTINGS_SET_AUTO_PLAY:
+      return state.set('autoPlay', payload);
+    case SETTINGS_SET_FULL_FILENAME:
+      return state.set('fullFilename', payload);
+    case SETTINGS_SET_DARK_THEME:
+      return state.set('darkTheme', payload);
 
-  case SETTINGS_RESTORE_PREFERENCES:
-    return initialState;
+    case SETTINGS_RESTORE_PREFERENCES:
+      return initialState;
 
-  default:
-    return state;
+    default:
+      return state;
   }
 };
 

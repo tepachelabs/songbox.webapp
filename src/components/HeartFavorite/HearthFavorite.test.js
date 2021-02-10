@@ -8,12 +8,7 @@ describe('HearthFavorite component', () => {
     const mockFn = jest.fn();
     const isFavorite = false;
 
-    render(
-      <HeartFavorite
-        onClick={mockFn}
-        isFavorite={isFavorite}
-      />,
-    );
+    render(<HeartFavorite onClick={mockFn} isFavorite={isFavorite} />);
   });
 
   test('it should render and be clicked', () => {
@@ -21,10 +16,7 @@ describe('HearthFavorite component', () => {
     const isFavorite = true;
 
     const component = render(
-      <HeartFavorite
-        onClick={mockFn}
-        isFavorite={isFavorite}
-      />,
+      <HeartFavorite onClick={mockFn} isFavorite={isFavorite} />,
     );
 
     const { firstChild } = component.container;
@@ -37,12 +29,7 @@ describe('HearthFavorite component', () => {
     const mockFn = jest.fn();
     const isFavorite = true;
 
-    render(
-      <HeartFavorite
-        onClick={mockFn}
-        isFavorite={isFavorite}
-      />,
-    );
+    render(<HeartFavorite onClick={mockFn} isFavorite={isFavorite} />);
 
     expect(mockFn).not.toHaveBeenCalled();
   });

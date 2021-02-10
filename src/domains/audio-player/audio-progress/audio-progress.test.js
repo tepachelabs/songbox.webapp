@@ -12,10 +12,7 @@ test('it renders', () => {
 
   render(
     <Provider store={store}>
-      <AudioProgress
-        audioRef={ref}
-        updateCurrentTime={mockFn}
-      />
+      <AudioProgress audioRef={ref} updateCurrentTime={mockFn} />
     </Provider>,
   );
 });

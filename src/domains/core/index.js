@@ -1,5 +1,3 @@
 import { App } from './app.container';
 
-export {
-  App,
-};
+export { App };

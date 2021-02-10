@@ -40,8 +40,12 @@ const Settings = ({ pageNumber }) => {
   const dispatch = useDispatch();
 
   const autoPlayActive = useSelector((state) => state.settings.get('autoPlay'));
-  const darkThemeActive = useSelector((state) => state.settings.get('darkTheme'));
-  const fullFilename = useSelector((state) => state.settings.get('fullFilename'));
+  const darkThemeActive = useSelector((state) =>
+    state.settings.get('darkTheme'),
+  );
+  const fullFilename = useSelector((state) =>
+    state.settings.get('fullFilename'),
+  );
   const classes = useStyles();
 
   useEffect(() => {
@@ -50,39 +54,41 @@ const Settings = ({ pageNumber }) => {
 
   return (
     <Paper className={classes.paper}>
-      <h1 id="your-personal-library" className="title">Settings</h1>
+      <h1 id="your-personal-library" className="title">
+        Settings
+      </h1>
       <Container>
         <Box className={classes.box}>
           <FormLabel component="legend">Autoplay next song</FormLabel>
           <FormControlLabel
-            control={(
+            control={
               <StyledSwitch
                 onChange={() => dispatch(setAutoPlay(!autoPlayActive))}
                 checked={autoPlayActive}
               />
-            )}
+            }
             label="Autoplay next song"
           />
         </Box>
         <Box className={classes.box}>
           <FormLabel component="legend">Apparience</FormLabel>
           <FormControlLabel
-            control={(
+            control={
               <StyledSwitch
                 onChange={() => dispatch(setDarkTheme(!darkThemeActive))}
                 checked={darkThemeActive}
               />
-            )}
+            }
             label="Toggle dark theme"
           />
           <FormControlLabel
-            control={(
+            control={
               <StyledSwitch
                 optionTitle="Show full filename"
                 onChange={() => dispatch(setFullFilename(!fullFilename))}
                 checked={fullFilename}
               />
-            )}
+            }
             label="Show full filename"
           />
         </Box>
@@ -98,7 +104,9 @@ const Settings = ({ pageNumber }) => {
       </Container>
 
       <Container>
-        <p className={classes.p}>Copyright © 2020, Songbox. All rights reserved.</p>
+        <p className={classes.p}>
+          Copyright © 2020, Songbox. All rights reserved.
+        </p>
       </Container>
     </Paper>
   );

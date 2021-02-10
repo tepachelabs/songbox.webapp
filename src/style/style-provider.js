@@ -17,7 +17,7 @@ export default function StyleProvider({ children }) {
       <MuiThemeProvider theme={muiTheme}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          { children }
+          {children}
         </ThemeProvider>
       </MuiThemeProvider>
     </StylesProvider>

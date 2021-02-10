@@ -10,22 +10,20 @@ import {
 import { FileListItem } from './file-list-item.style';
 
 export const FileListItemComponent = ({
-  children, icon, onClick, title, ...props
+  children,
+  icon,
+  onClick,
+  title,
+  ...props
 }) => (
   <FileListItem button onClick={onClick} {...props}>
-    <ListItemIcon>
-      {icon}
-    </ListItemIcon>
+    <ListItemIcon>{icon}</ListItemIcon>
     <ListItemText>
       <Typography variant="inherit" noWrap component="div">
-        { title }
+        {title}
       </Typography>
     </ListItemText>
-    {children && (
-      <ListItemSecondaryAction>
-        {children}
-      </ListItemSecondaryAction>
-    )}
+    {children && <ListItemSecondaryAction>{children}</ListItemSecondaryAction>}
   </FileListItem>
 );
 

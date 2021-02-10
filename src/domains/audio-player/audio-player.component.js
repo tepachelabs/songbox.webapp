@@ -17,10 +17,7 @@ const AudioPlayerComponent = ({
       audioRef={audioRef}
       updateCurrentTime={updateCurrentTime}
     />
-    <PlayerComponent
-      onClick={onClick}
-      isDisabled={isDisabled}
-    />
+    <PlayerComponent onClick={onClick} isDisabled={isDisabled} />
   </AudioWrapper>
 );
 

@@ -19,24 +19,26 @@ const initState = {
 
 export default (state = initState, action) => {
   switch (action.type) {
-  case SESSION_UPDATE:
-    return {
-      ...state,
-      user: action.payload.user,
-      isLogged: true,
-    };
-  case SESSION_DELETE:
-    return {
-      ...initState,
-    };
-  case SESSION_RECOVER:
-    // eslint-disable-next-line no-case-declarations
-    const savedSession = getSession();
-    return savedSession ? {
-      ...savedSession,
-      isLogged: true,
-    } : state;
-  default:
-    return state;
+    case SESSION_UPDATE:
+      return {
+        ...state,
+        user: action.payload.user,
+        isLogged: true,
+      };
+    case SESSION_DELETE:
+      return {
+        ...initState,
+      };
+    case SESSION_RECOVER:
+      // eslint-disable-next-line no-case-declarations
+      const savedSession = getSession();
+      return savedSession
+        ? {
+            ...savedSession,
+            isLogged: true,
+          }
+        : state;
+    default:
+      return state;
   }
 };

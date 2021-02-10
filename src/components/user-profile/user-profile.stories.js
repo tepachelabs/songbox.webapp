@@ -14,7 +14,7 @@ export default {
 // eslint-disable-next-line react/prop-types
 const Wrapper = ({ children }) => (
   <div style={{ padding: 64, background: 'white', display: 'inline-block' }}>
-    { children }
+    {children}
   </div>
 );
 // eslint-disable-next-line react/prop-types

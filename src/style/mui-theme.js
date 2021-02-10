@@ -1,10 +1,5 @@
 import { createMuiTheme } from '@material-ui/core/styles';
-import {
-  gray,
-  black,
-  hexToRGB,
-  orange,
-} from './colors';
+import { gray, black, hexToRGB, orange } from './colors';
 
 const transparentOrange = `rgba(${hexToRGB(orange)},0.1)`;
 

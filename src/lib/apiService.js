@@ -8,7 +8,8 @@ const { apiGatewayUrl } = config;
 const onError = (error, reject) => {
   logError(error);
 
-  if (error.response.status === 401) { // probably because token has expired
+  if (error.response.status === 401) {
+    // probably because token has expired
     destroySession();
     window.location = '/login?token-expired';
   }
@@ -16,47 +17,52 @@ const onError = (error, reject) => {
   reject(error);
 };
 
-export const post = (url, body, resolve, reject) => axios.post(`${apiGatewayUrl}${url}`, body, {
-  headers: { 'Content-Type': 'application/json' },
-})
-  .then(resolve)
-  .catch((error) => {
-    logError(error);
-    reject(error);
-  });
+export const post = (url, body, resolve, reject) =>
+  axios
+    .post(`${apiGatewayUrl}${url}`, body, {
+      headers: { 'Content-Type': 'application/json' },
+    })
+    .then(resolve)
+    .catch((error) => {
+      logError(error);
+      reject(error);
+    });
 
 export const getWithAuth = (url, token, resolve, reject) => {
-  axios.get(`${apiGatewayUrl}${url}`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-      'Content-Type': 'application/json',
-    },
-  })
+  axios
+    .get(`${apiGatewayUrl}${url}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+    })
     .then(resolve)
     .catch((error) => onError(error, reject));
 };
 
 export const postWithAuth = (url, token, body, resolve, reject) => {
-  axios.post(`${apiGatewayUrl}${url}`, body, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-      'Content-Type': 'application/json',
-    },
-  })
+  axios
+    .post(`${apiGatewayUrl}${url}`, body, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+    })
     .then(resolve)
     .catch((error) => onError(error, reject));
 };
 
 export const deleteWithAuth = (url, token, body, resolve, reject) => {
-  axios.delete(`${apiGatewayUrl}${url}`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-      'Content-Type': 'application/json',
-    },
-    params: {
-      body,
-    },
-  })
+  axios
+    .delete(`${apiGatewayUrl}${url}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+      params: {
+        body,
+      },
+    })
     .then(resolve)
     .catch((error) => onError(error, reject));
 };

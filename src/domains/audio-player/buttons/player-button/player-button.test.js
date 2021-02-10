@@ -6,9 +6,7 @@ import { PlayerButton } from './player-button.component';
 test('it should be disabled and should NOT be clickable', () => {
   const mockFn = jest.fn();
 
-  const component = render(
-    <PlayerButton onClick={mockFn} disabled />,
-  );
+  const component = render(<PlayerButton onClick={mockFn} disabled />);
 
   const { firstChild } = component.container;
 
@@ -22,9 +20,7 @@ test('it should be disabled and should NOT be clickable', () => {
 test('it should be enabled and it should be clickable', () => {
   const mockFn = jest.fn();
 
-  const component = render(
-    <PlayerButton onClick={mockFn} disabled={false} />,
-  );
+  const component = render(<PlayerButton onClick={mockFn} disabled={false} />);
 
   const { firstChild } = component.container;
 

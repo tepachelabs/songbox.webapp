@@ -60,18 +60,22 @@ export default {
 };
 
 // eslint-disable-next-line react/prop-types
-const Container = ({ children }) => <div style={{ display: 'flex', flexWrap: 'wrap' }}>{ children }</div>;
+const Container = ({ children }) => (
+  <div style={{ display: 'flex', flexWrap: 'wrap' }}>{children}</div>
+);
 // eslint-disable-next-line react/prop-types
-const ElementWrapper = ({ children }) => <div style={{ padding: 8, textAlign: 'center' }}>{ children }</div>;
+const ElementWrapper = ({ children }) => (
+  <div style={{ padding: 8, textAlign: 'center' }}>{children}</div>
+);
 // eslint-disable-next-line react/prop-types
 const Template = ({ stroke, fill }) => (
   <Container>
-    { icons.map(({ component: Component, title }) => (
+    {icons.map(({ component: Component, title }) => (
       <ElementWrapper key={title}>
         <Component stroke={colors[stroke]} fill={colors[fill]} />
-        <p>{ title }</p>
+        <p>{title}</p>
       </ElementWrapper>
-    )) }
+    ))}
   </Container>
 );
 
