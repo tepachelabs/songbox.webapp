@@ -9,11 +9,12 @@ import { isSongInFavorites } from 'Favorites/favorites';
 import { HeartIcon } from 'components/icon';
 import { FileListComponent } from '../file-list';
 
-const transformPaths = (paths) => paths.map((path) => ({
-  type: path.get('.tag'),
-  title: path.get('name'),
-  path: path.get('path_lower'),
-}));
+const transformPaths = (paths) =>
+  paths.map((path) => ({
+    type: path.get('.tag'),
+    title: path.get('name'),
+    path: path.get('path_lower'),
+  }));
 
 const FilesContainer = ({ path }) => {
   const files = useSelector((state) => state.files.get('files'));
@@ -27,12 +28,17 @@ const FilesContainer = ({ path }) => {
       alt: 'add to favorites',
       onClick: (songTitle, songPath) => {
         const isFavorite = isSongInFavorites(favorites, songPath);
-        dispatch(handleInteractionWithFavorite(isFavorite, { songTitle, songPath }));
+        dispatch(
+          handleInteractionWithFavorite(isFavorite, { songTitle, songPath }),
+        );
       },
     },
   ];
 
-  const filesWithActions = transformPaths(files).map((file) => ({ ...file, actions }));
+  const filesWithActions = transformPaths(files).map((file) => ({
+    ...file,
+    actions,
+  }));
 
   useEffect(() => {
     dispatch(getFilesFromPath(path));

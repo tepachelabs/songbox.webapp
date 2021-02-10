@@ -1,5 +1,3 @@
 import StyledSwitch from './Switch';
 
-export {
-  StyledSwitch,
-};
+export { StyledSwitch };

@@ -2,11 +2,7 @@ import React from 'react';
 import { text } from '@storybook/addon-knobs';
 import { Divider, IconButton, List } from '@material-ui/core';
 
-import {
-  HeartIcon,
-  MoreIcon,
-  SettingsIcon,
-} from 'components/icon';
+import { HeartIcon, MoreIcon, SettingsIcon } from 'components/icon';
 
 import { FileListItemComponent } from './file-list-item.component';
 
@@ -20,9 +16,7 @@ const noop = () => {};
 // eslint-disable-next-line react/prop-types
 const Wrapper = ({ children }) => (
   <div style={{ padding: 8, background: 'white' }}>
-    <List>
-      { children }
-    </List>
+    <List>{children}</List>
   </div>
 );
 const SecondaryActions = () => (
@@ -49,7 +43,11 @@ export const FileListItem = () => {
       <FileListItemComponent onClick={noop} title={title1} />
       <Divider />
       {/* With icon */}
-      <FileListItemComponent onClick={noop} title={title2} icon={<HeartIcon />} />
+      <FileListItemComponent
+        onClick={noop}
+        title={title2}
+        icon={<HeartIcon />}
+      />
       <Divider />
       {/* With secondary actions */}
       <FileListItemComponent onClick={noop} title={title3}>
@@ -57,7 +55,11 @@ export const FileListItem = () => {
       </FileListItemComponent>
       <Divider />
       {/* With icon & secondary actions */}
-      <FileListItemComponent onClick={noop} title={title4} icon={<SettingsIcon />}>
+      <FileListItemComponent
+        onClick={noop}
+        title={title4}
+        icon={<SettingsIcon />}
+      >
         <SecondaryActions />
       </FileListItemComponent>
     </Wrapper>

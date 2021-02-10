@@ -85,18 +85,8 @@ const styles = {
 const StyledSwitch = (props) => {
   const os = useSelector(selectOS);
   const style = styles[os];
-  const {
-    root,
-    switchBase,
-    thumb,
-    track,
-    checked,
-    focusVisible,
-  } = style();
-  const {
-    checked: isChecked,
-    onChange,
-  } = props;
+  const { root, switchBase, thumb, track, checked, focusVisible } = style();
+  const { checked: isChecked, onChange } = props;
   return (
     <Switch
       focusVisibleClassName={focusVisible}

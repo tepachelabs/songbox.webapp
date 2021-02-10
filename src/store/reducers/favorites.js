@@ -14,26 +14,32 @@ const initialState = Map({
 
 const favoritesReducer = (state = initialState, { type, payload }) => {
   switch (type) {
-  case FAVORITES_INITIALIZE_FAVORITES:
-    return state.set('songs', payload);
+    case FAVORITES_INITIALIZE_FAVORITES:
+      return state.set('songs', payload);
 
-  case FAVORITES_ADD_FAVORITE: {
-    const itemIndex = state.get('songs').findIndex((song) => song.get('song_name') === payload.get('song_name'));
-    const songs = state.get('songs');
-    const updatedSongs = songs.push(payload);
-    return itemIndex > -1 ? state : state.set('songs', updatedSongs);
-  }
+    case FAVORITES_ADD_FAVORITE: {
+      const itemIndex = state
+        .get('songs')
+        .findIndex(
+          (song) => song.get('song_name') === payload.get('song_name'),
+        );
+      const songs = state.get('songs');
+      const updatedSongs = songs.push(payload);
+      return itemIndex > -1 ? state : state.set('songs', updatedSongs);
+    }
 
-  case FAVORITES_REMOVE_FAVORITE: {
-    const favoritesUpdated = state.get('songs').filter((song) => song.get('path_lower') !== payload.get('path'));
-    return state.set('songs', favoritesUpdated);
-  }
+    case FAVORITES_REMOVE_FAVORITE: {
+      const favoritesUpdated = state
+        .get('songs')
+        .filter((song) => song.get('path_lower') !== payload.get('path'));
+      return state.set('songs', favoritesUpdated);
+    }
 
-  case FAVORITES_SET_IS_FAVORITE_PLAYING:
-    return state.set('isPlaying', payload);
+    case FAVORITES_SET_IS_FAVORITE_PLAYING:
+      return state.set('isPlaying', payload);
 
-  default:
-    return state;
+    default:
+      return state;
   }
 };
 

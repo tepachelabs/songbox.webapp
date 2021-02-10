@@ -14,16 +14,16 @@ const initialState = Map({
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
-  case FILES_SET_FILES_LIST:
-    return state.set('files', payload);
-  case FILES_SET_FOLDER_LIST:
-    return state.set('folders', payload);
-  case FILES_ADD_CACHED_FILES: {
-    const { path, files } = payload;
-    const cachedFilesUpdated = state.get('cachedFiles').set(path, files);
-    return state.set('cachedFiles', cachedFilesUpdated);
-  }
-  default:
-    return state;
+    case FILES_SET_FILES_LIST:
+      return state.set('files', payload);
+    case FILES_SET_FOLDER_LIST:
+      return state.set('folders', payload);
+    case FILES_ADD_CACHED_FILES: {
+      const { path, files } = payload;
+      const cachedFilesUpdated = state.get('cachedFiles').set(path, files);
+      return state.set('cachedFiles', cachedFilesUpdated);
+    }
+    default:
+      return state;
   }
 };

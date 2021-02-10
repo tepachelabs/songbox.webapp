@@ -24,7 +24,7 @@ export const UserProfileWrapper = styled.div`
 
 export const UserProfileEmail = styled.h3`
   font-size: 14px;
-  color: ${(props) => props.theme.colors.darkWhite}; 
+  color: ${(props) => props.theme.colors.darkWhite};
   margin: 0;
 `;
 

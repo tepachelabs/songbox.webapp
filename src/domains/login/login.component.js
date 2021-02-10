@@ -6,8 +6,13 @@ import { Link } from 'style/typography';
 
 import {
   LoginCenteredWrapper,
-  LoginContentWrapper, LoginContent,
-  LoginSplash, LoginSplashTitle, LoginSplashWrapper, LoginTitle, LoginWrapper,
+  LoginContentWrapper,
+  LoginContent,
+  LoginSplash,
+  LoginSplashTitle,
+  LoginSplashWrapper,
+  LoginTitle,
+  LoginWrapper,
 } from './login.style';
 
 export const Login = () => (
@@ -18,14 +23,9 @@ export const Login = () => (
     </LoginSplashWrapper>
     <LoginContentWrapper>
       <LoginTitle>Sign In</LoginTitle>
-      <LoginContent>
-        Hi there! Nice to see you again.
-      </LoginContent>
+      <LoginContent>Hi there! Nice to see you again.</LoginContent>
       <LoginCenteredWrapper>
-        <DropboxButton
-          size="large"
-          href={DROPBOX_SIGN_IN_ROUTE}
-        >
+        <DropboxButton size="large" href={DROPBOX_SIGN_IN_ROUTE}>
           Dropbox
         </DropboxButton>
       </LoginCenteredWrapper>

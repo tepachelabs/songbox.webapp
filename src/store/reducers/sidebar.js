@@ -8,11 +8,11 @@ const initialState = Map({
 
 const slideBarReducer = (state = initialState, { type, payload }) => {
   switch (type) {
-  case SIDEBAR_CHANGE_INDEX:
-    return state.set('index', payload);
+    case SIDEBAR_CHANGE_INDEX:
+      return state.set('index', payload);
 
-  default:
-    return state;
+    default:
+      return state;
   }
 };
 

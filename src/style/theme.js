@@ -13,7 +13,10 @@ const SPACING_VALUES = [
   'ten',
 ];
 
-const spacing = SPACING_VALUES.reduce((obj, value, index) => ({ ...obj, [value]: `${index / 2}em` }), {});
+const spacing = SPACING_VALUES.reduce(
+  (obj, value, index) => ({ ...obj, [value]: `${index / 2}em` }),
+  {},
+);
 
 export const theme = {
   colors,

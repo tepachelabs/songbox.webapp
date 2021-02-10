@@ -10,9 +10,7 @@ const Svg = styled.svg.attrs({
   xmlnsXlink: 'http://www.w3.org/1999/xlink',
 })``;
 
-export const Icon = ({
-  children, width, height, viewBox, fill, stroke,
-}) => (
+export const Icon = ({ children, width, height, viewBox, fill, stroke }) => (
   <Svg
     width={width}
     height={height}
@@ -23,7 +21,7 @@ export const Icon = ({
     stroke-linecap="round"
     stroke-linejoin="round"
   >
-    { children }
+    {children}
   </Svg>
 );
 
