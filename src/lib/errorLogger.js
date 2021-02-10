@@ -9,7 +9,6 @@ export const initErrorLogger = () => {
   if (process.env.NODE_ENV === 'development') {
     console.info('Development mode');
   } else {
-    // eslint-disable-next-line no-unused-vars
     rollbar = new Rollbar({
       accessToken: config.rollbarKey,
       captureUncaught: true,
@@ -25,7 +24,7 @@ export const initErrorLogger = () => {
 
 export const logError = (error) => {
   if (isInitialized) {
-    throw new Error(error);
+    rollbar.error(error);
   } else {
     console.error(error);
   }
