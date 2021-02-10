@@ -9,10 +9,23 @@ import {
 
 /* SYNC OPERATIONS */
 
-export const setFilesList = (payload) => ({ type: FILES_SET_FILES_LIST, payload });
-export const setFoldersList = (payload) => ({ type: FILES_SET_FOLDER_LIST, payload });
-export const setCachedFiles = (payload) => ({ type: FILES_ADD_CACHED_FILES, payload });
-export const setFilesLoading = (payload) => ({ type: FILES_SET_IS_LOADING, payload });
+export const setFilesList = (payload) => ({
+  type: FILES_SET_FILES_LIST,
+  payload,
+});
+export const setFoldersList = (payload) => ({
+  type: FILES_SET_FOLDER_LIST,
+  payload,
+});
+export const setCachedFiles = (payload) => ({
+  type: FILES_ADD_CACHED_FILES,
+  payload,
+});
+
+export const setFilesLoading = (payload) => ({
+  type: FILES_SET_IS_LOADING,
+  payload
+});
 
 /* ASYNC OPERATIONS */
 

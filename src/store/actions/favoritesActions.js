@@ -15,12 +15,22 @@ import {
 } from '../constants';
 
 export const toggleIsFavoritePlaying = (payload) => ({
-  type: FAVORITES_SET_IS_FAVORITE_PLAYING, payload,
+  type: FAVORITES_SET_IS_FAVORITE_PLAYING,
+  payload,
 });
 
-export const removeFavorite = (payload) => ({ type: FAVORITES_REMOVE_FAVORITE, payload });
-export const addFavorite = (payload) => ({ type: FAVORITES_ADD_FAVORITE, payload });
-export const initializeFavorites = (payload) => ({ type: FAVORITES_INITIALIZE_FAVORITES, payload });
+export const removeFavorite = (payload) => ({
+  type: FAVORITES_REMOVE_FAVORITE,
+  payload,
+});
+export const addFavorite = (payload) => ({
+  type: FAVORITES_ADD_FAVORITE,
+  payload,
+});
+export const initializeFavorites = (payload) => ({
+  type: FAVORITES_INITIALIZE_FAVORITES,
+  payload,
+});
 
 export const createFavorite = (body) => (dispatch, getState) => {
   const token = getState().app.get('token');
@@ -62,7 +72,9 @@ export const fetchFavoritesSongs = () => (dispatch, getState) => {
   }
 };
 
-export const handleInteractionWithFavorite = (isFavorite, body) => (dispatch) => {
+export const handleInteractionWithFavorite = (isFavorite, body) => (
+  dispatch,
+) => {
   if (isFavorite) {
     dispatch(deleteFavorite(body));
   } else {

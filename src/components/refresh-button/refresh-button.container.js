@@ -10,7 +10,8 @@ export const RefreshButtonContainer = () => {
   const { path } = useParams();
 
   const dispatch = useDispatch();
-  const getFilesFromCurrentPath = () => dispatch(fetchFileListFromPath(path || ''));
+  const getFilesFromCurrentPath = () =>
+    dispatch(fetchFileListFromPath(path || ''));
 
   return <RefreshButtonComponent event={getFilesFromCurrentPath} />;
 };

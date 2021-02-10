@@ -10,8 +10,18 @@ const UseClickOutsideExample = () => {
   return (
     <div>
       <div>
-        <button data-testid="toggle-button" type="button" onClick={() => setShowElement(!showElement)}>toggle</button>
-        <div data-testid="toggle-element" ref={nodeRef} className={showElement ? 'active' : 'hide'} />
+        <button
+          data-testid="toggle-button"
+          type="button"
+          onClick={() => setShowElement(!showElement)}
+        >
+          toggle
+        </button>
+        <div
+          data-testid="toggle-element"
+          ref={nodeRef}
+          className={showElement ? 'active' : 'hide'}
+        />
       </div>
       <div>
         <button type="button">outside</button>

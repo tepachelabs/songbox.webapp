@@ -1,7 +1,10 @@
 import { Map } from 'immutable';
 
 import {
-  APP_LOADED, APP_LOADING, APP_TOKEN_UPDATE, SET_OS,
+  APP_LOADED,
+  APP_LOADING,
+  APP_TOKEN_UPDATE,
+  SET_OS,
 } from '../constants';
 
 const initialState = Map({
@@ -12,15 +15,15 @@ const initialState = Map({
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
-  case APP_LOADING:
-    return state.set('isLoaded', false);
-  case APP_LOADED:
-    return state.set('isLoaded', true);
-  case APP_TOKEN_UPDATE:
-    return state.set('token', payload);
-  case SET_OS:
-    return state.set('os', payload);
-  default:
-    return state;
+    case APP_LOADING:
+      return state.set('isLoaded', false);
+    case APP_LOADED:
+      return state.set('isLoaded', true);
+    case APP_TOKEN_UPDATE:
+      return state.set('token', payload);
+    case SET_OS:
+      return state.set('os', payload);
+    default:
+      return state;
   }
 };

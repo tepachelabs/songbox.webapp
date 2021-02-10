@@ -17,9 +17,9 @@ export const LoadingBox = styled.div`
   &::after {
     animation: ${spinAnimation} 0.7s infinite;
     border: 5px solid transparent;
-    border-top-color: #FFA834;
+    border-top-color: #ffa834;
     border-radius: 50%;
-    content: "";
+    content: '';
     height: 60px;
     left: 45%;
     position: absolute;

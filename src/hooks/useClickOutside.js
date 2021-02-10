@@ -1,6 +1,10 @@
 import React from 'react';
 
-const useClickOutside = (active, onOutsideClick = (f) => f, onInsideClick = (f) => f) => {
+const useClickOutside = (
+  active,
+  onOutsideClick = (f) => f,
+  onInsideClick = (f) => f,
+) => {
   const node = React.useRef();
 
   React.useEffect(() => {

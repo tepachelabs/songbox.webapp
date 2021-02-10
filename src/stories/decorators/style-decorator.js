@@ -4,9 +4,7 @@ import PropTypes from 'prop-types';
 import StyleProvider from 'style/style-provider';
 
 const StyleDecorator = ({ children }) => (
-  <StyleProvider>
-    {children}
-  </StyleProvider>
+  <StyleProvider>{children}</StyleProvider>
 );
 
 StyleDecorator.propTypes = {

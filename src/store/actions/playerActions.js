@@ -16,15 +16,25 @@ import {
 import {
   canPlayNextSong,
   canPlayPreviousSong,
-  selectIndex, selectQueueSize,
+  selectIndex,
+  selectQueueSize,
   selectSongPathAtIndex,
 } from '../selectors/songsQueue';
 
 export const setRepeat = (payload) => ({ type: PLAYER_SET_REPEAT, payload });
 export const setVolume = (payload) => ({ type: PLAYER_SET_VOLUME, payload });
-export const setSong = (payload) => ({ type: PLAYER_SET_CURRENT_SONG, payload });
-export const setSongLink = (payload) => ({ type: PLAYER_SET_SONG_LINK, payload });
-export const setIsPlaying = (payload) => ({ type: PLAYER_SET_IS_PLAYING, payload });
+export const setSong = (payload) => ({
+  type: PLAYER_SET_CURRENT_SONG,
+  payload,
+});
+export const setSongLink = (payload) => ({
+  type: PLAYER_SET_SONG_LINK,
+  payload,
+});
+export const setIsPlaying = (payload) => ({
+  type: PLAYER_SET_IS_PLAYING,
+  payload,
+});
 export const setRandom = (payload) => ({ type: PLAYER_SET_RANDOM, payload });
 export const setIsLoading = (payload) => ({ type: PLAYER_SET_IS_LOADING, payload });
 
@@ -52,10 +62,12 @@ const getNextAvailableIndex = (state) => {
 
   if (isRandomEnabled) {
     return getRandomNumber(songIndex, queueSize);
-  } if (isRepeatEnabled) {
+  }
+  if (isRepeatEnabled) {
     const lastPosition = queueSize - 1;
     return songIndex === lastPosition ? 0 : songIndex + 1;
-  } if (canPlayNextSong(state)) {
+  }
+  if (canPlayNextSong(state)) {
     return songIndex + 1;
   }
 

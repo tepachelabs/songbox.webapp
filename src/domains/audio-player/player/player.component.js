@@ -11,10 +11,7 @@ import {
 
 import { ButtonsWrapper } from './player.styles';
 
-const PlayerComponent = ({
-  isDisabled,
-  onClick,
-}) => (
+const PlayerComponent = ({ isDisabled, onClick }) => (
   <ButtonsWrapper isDisabled={isDisabled}>
     <RepeatButton onClick={onClick('repeat')} />
     <RewindButton onClick={onClick('rewind')} />

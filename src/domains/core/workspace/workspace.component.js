@@ -2,7 +2,11 @@ import React, { Suspense } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import {
-  FAVORITES_PATH, FILE_PATH, HELP_PATH, APP_PATH, SETTINGS_PATH,
+  FAVORITES_PATH,
+  FILE_PATH,
+  HELP_PATH,
+  APP_PATH,
+  SETTINGS_PATH,
 } from 'routes';
 
 import { Sidebar } from 'components/sidebar';
