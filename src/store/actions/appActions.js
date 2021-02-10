@@ -3,7 +3,6 @@ import {
   APP_LOADING,
   APP_TOKEN_UPDATE,
   SET_OS,
-  APP_SET_IS_VALID_SESSION,
 } from '../constants';
 
 /* SYNC OPERATIONS */
@@ -23,11 +22,6 @@ export const updateAppToken = (payload) => ({
 
 export const setOS = (payload) => ({
   type: SET_OS,
-  payload,
-});
-
-export const setValidSession = (payload) => ({
-  type: APP_SET_IS_VALID_SESSION,
   payload,
 });
 

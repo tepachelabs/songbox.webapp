@@ -1,7 +1,7 @@
 import { apiMeRequest } from 'lib/apiUserService';
 import { getSession, saveSession } from 'lib/localStorage';
 import { setUser } from './index';
-import { setAppLoaded, updateAppToken, setValidSession } from './appActions';
+import { setAppLoaded, updateAppToken } from './appActions';
 
 /* SYNC OPERATIONS */
 
@@ -13,10 +13,8 @@ export const createNewSession = (token) => (dispatch) => {
       dispatch(updateAppToken(token));
       saveSession(token, user); // rename this saveSessionToLocalStorage
       dispatch(setAppLoaded());
-      dispatch(setValidSession(true));
     })
     .catch((err) => {
-      dispatch(setValidSession(false));
       throw new Error(err);
     });
 };
@@ -29,6 +27,4 @@ export const recoverSession = () => (dispatch) => {
     dispatch(updateAppToken(recoveredUser.token));
     dispatch(createNewSession(recoveredUser.token));
   }
-
-  dispatch(setAppLoaded());
 };
