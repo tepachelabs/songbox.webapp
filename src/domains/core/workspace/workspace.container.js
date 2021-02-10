@@ -15,7 +15,5 @@ export const Workspace = () => {
     dispatch(fetchFavoritesSongs());
   }, [dispatch]);
 
-  return isSessionToken
-    ? <WorkspaceComponent />
-    : <Redirect to={LOGIN_PATH} />;
+  return isSessionToken ? <WorkspaceComponent /> : <Redirect to={LOGIN_PATH} />;
 };

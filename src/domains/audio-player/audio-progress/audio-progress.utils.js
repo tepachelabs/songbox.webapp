@@ -10,14 +10,16 @@ export const convertDurationToProgress = (currentTime, duration) => {
   return Math.round(progress);
 };
 
-export const convertProgressToCurrentTime = (progress, duration) => (duration * progress) / 100;
+export const convertProgressToCurrentTime = (progress, duration) =>
+  (duration * progress) / 100;
 
-export const updateProgress = (isBeingDragged, audioRef) => new Promise((resolve, reject) => {
-  if (!isBeingDragged && audioRef.duration) {
-    const { currentTime, duration } = audioRef;
-    const progress = convertDurationToProgress(currentTime, duration);
-    resolve(progress);
-  } else {
-    reject(new Error('There\'s nothing currently playing.'));
-  }
-});
+export const updateProgress = (isBeingDragged, audioRef) =>
+  new Promise((resolve, reject) => {
+    if (!isBeingDragged && audioRef.duration) {
+      const { currentTime, duration } = audioRef;
+      const progress = convertDurationToProgress(currentTime, duration);
+      resolve(progress);
+    } else {
+      reject(new Error("There's nothing currently playing."));
+    }
+  });

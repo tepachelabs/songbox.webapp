@@ -6,9 +6,7 @@ import reducers from 'store/reducers';
 
 const store = createStore(reducers);
 const ProviderDecorator = ({ children }) => (
-  <Provider store={store}>
-    {children}
-  </Provider>
+  <Provider store={store}>{children}</Provider>
 );
 
 ProviderDecorator.propTypes = {

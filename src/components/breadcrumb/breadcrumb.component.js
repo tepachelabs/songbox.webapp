@@ -8,21 +8,21 @@ import { Home } from '../home';
 export const BreadcrumbComponent = ({ breadcrumbs }) => (
   <Fragment>
     <Home />
-    {
-      breadcrumbs.map(({ title, uri }) => (title ? (
+    {breadcrumbs.map(({ title, uri }) =>
+      title ? (
         <BreadcrumbLink key={title}>
-          <Link to={`${uri}`}>
-            {`/${title}`}
-          </Link>
+          <Link to={`${uri}`}>{`/${title}`}</Link>
         </BreadcrumbLink>
-      ) : null))
-    }
+      ) : null,
+    )}
   </Fragment>
 );
 
 BreadcrumbComponent.propTypes = {
-  breadcrumbs: propTypes.arrayOf(propTypes.shape({
-    title: propTypes.string.isRequired,
-    uri: propTypes.string.isRequired,
-  })).isRequired,
+  breadcrumbs: propTypes.arrayOf(
+    propTypes.shape({
+      title: propTypes.string.isRequired,
+      uri: propTypes.string.isRequired,
+    }),
+  ).isRequired,
 };

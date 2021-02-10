@@ -32,7 +32,7 @@ export const Sidebar = ({ children }) => {
       </Button>
       <Drawer open={isOpen} onClose={toggleDrawer(false)}>
         <SidebarWrapper>
-          { children }
+          {children}
           <SidebarDivisor />
           <List>
             {MENU_ITEMS.map(({ title, link, icon: Icon }) => (
@@ -43,7 +43,9 @@ export const Sidebar = ({ children }) => {
                 to={link}
                 onClick={toggleDrawer(false)}
               >
-                <ListItemIcon><Icon /></ListItemIcon>
+                <ListItemIcon>
+                  <Icon />
+                </ListItemIcon>
                 <ListItemText disableTypography primary={title} />
               </ListItem>
             ))}

@@ -22,18 +22,26 @@ const buttons = [
 export default {
   component: PlayButton,
   title: 'buttons',
-  decorators: [(Story) => (<RouterDecorator><Story /></RouterDecorator>)],
+  decorators: [
+    (Story) => (
+      <RouterDecorator>
+        <Story />
+      </RouterDecorator>
+    ),
+  ],
 };
 
 // eslint-disable-next-line react/prop-types
-const Container = ({ children }) => <div style={{ display: 'flex', flexWrap: 'wrap' }}>{ children }</div>;
+const Container = ({ children }) => (
+  <div style={{ display: 'flex', flexWrap: 'wrap' }}>{children}</div>
+);
 
 const Template = () => (
   <Provider store={store}>
     <Container>
-      {
-        buttons.map((Button) => <Button />)
-      }
+      {buttons.map((Button) => (
+        <Button />
+      ))}
     </Container>
   </Provider>
 );
