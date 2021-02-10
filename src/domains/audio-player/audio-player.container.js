@@ -32,26 +32,24 @@ const AudioPlayerContainer = () => {
     random: () => dispatch(setRandom(!isRandomEnabled)),
     play: () => {
       if (isPlaying) {
+        audio.pause();
         dispatch(setIsPlaying(false));
       } else {
-        dispatch(setIsPlaying(true));
+        audio
+          .play()
+          .then(() => dispatch(setIsPlaying(true)))
+          .catch(() => dispatch(setIsPlaying(false)));
       }
     },
   };
 
   useEffect(() => {
     audio.src = songLink;
+    audio
+      .play()
+      .then(() => dispatch(setIsPlaying(true)))
+      .catch(() => dispatch(setIsPlaying(false)));
   }, [songLink, audio, audio.src]);
-
-  useEffect(() => {
-    if (songLink) {
-      if (isPlaying) {
-        audio.pause();
-      } else {
-        audio.play();
-      }
-    }
-  }, [isPlaying, songLink, audio]);
 
   const onClick = (action) => (e) => {
     e.preventDefault();
