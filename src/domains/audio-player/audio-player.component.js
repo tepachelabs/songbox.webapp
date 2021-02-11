@@ -11,13 +11,14 @@ const AudioPlayerComponent = ({
   isDisabled,
   onClick,
   updateCurrentTime,
+  theme
 }) => (
   <AudioWrapper>
-    <AudioProgressContainer
-      audioRef={audioRef}
-      updateCurrentTime={updateCurrentTime}
-    />
-    <PlayerComponent onClick={onClick} isDisabled={isDisabled} />
+      <AudioProgressContainer
+        audioRef={audioRef}
+        updateCurrentTime={updateCurrentTime}
+      />
+      <PlayerComponent onClick={onClick} isDisabled={isDisabled} />
   </AudioWrapper>
 );
 

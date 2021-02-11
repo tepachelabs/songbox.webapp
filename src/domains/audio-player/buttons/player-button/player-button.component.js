@@ -1,15 +1,14 @@
 import React from 'react';
 import { styled } from '@material-ui/core/styles';
 import { Button } from '@material-ui/core';
-import { theme } from 'style/theme';
 
-export const PlayerButton = styled(({ size, ...other }) => (
-  <Button {...other} />
+export const PlayerButton = styled(props => (
+  <Button {...props} />
 ))({
   height: (props) =>
-    props.size === 'large' ? theme.spacing.ten : theme.spacing.five,
+    props.size === 'large' ? props.theme.spacing(10) : props.theme.spacing(5),
   width: (props) =>
-    props.size === 'large' ? theme.spacing.ten : theme.spacing.five,
+    props.size === 'large' ? props.theme.spacing(10) : props.theme.spacing(5),
 
   '& span, & svg': {
     height: '100%',

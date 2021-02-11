@@ -1,32 +1,56 @@
 import { createMuiTheme } from '@material-ui/core/styles';
-import { gray, black, hexToRGB, orange } from './colors';
+import {
+  gray,
+  black,
+  hexToRGB,
+  orange,
+  white,
+} from './colors';
 
 const transparentOrange = `rgba(${hexToRGB(orange)},0.1)`;
 
-export const muiTheme = createMuiTheme({
-  palette: {
-    text: {
-      primary: gray,
-    },
-  },
-  typography: {
-    fontFamily: ['Asap', 'sans-serif'],
-  },
-  overrides: {
-    MuiListItem: {
-      root: {
-        color: black,
-        fontSize: 16,
-        '&.active': {
-          backgroundColor: transparentOrange,
+export function MuiThemeFactory() {
+  const create = (themeType = 'light') => {
+    return createMuiTheme({
+        palette: {
+          type: themeType,
+          text: {
+            primary: themeType === 'light' ? gray : white,
+          },
         },
-      },
-      button: {
-        minWidth: '14em',
-        '&:hover': {
-          backgroundColor: transparentOrange,
+        typography: {
+          h4: {
+            padding: '10px',
+          },
+          fontFamily: ['Quicksand', 'sans-serif'],
         },
-      },
-    },
-  },
-});
+        overrides: {
+          MuiPaper: {
+            root: {
+              height: '82vh'
+            }
+          },
+          MuiListItem: {
+            root: {
+              color: themeType === 'light' ? black : white,
+              fontSize: 16,
+              '&.active': {
+                backgroundColor: transparentOrange,
+              },
+            },
+            button: {
+              minWidth: '14em',
+              '&:hover': {
+                backgroundColor: transparentOrange,
+              },
+            },
+          },
+        },
+      })
+  }
+  return {
+    create
+  }
+}
+
+export default MuiThemeFactory();
