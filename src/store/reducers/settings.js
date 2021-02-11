@@ -10,7 +10,7 @@ import {
 
 let initialState;
 const preferences = getPreferences();
-if(!preferences) {
+if (!preferences) {
   initialState = Map({
     autoPlay: true,
     darkTheme: false,
@@ -26,10 +26,10 @@ const settingsReducer = (state = initialState, { type, payload }) => {
       setPreferences({ ...state, autoPlay: payload });
       return state.set('autoPlay', payload);
     case SETTINGS_SET_FULL_FILENAME:
-      setPreferences({...state, fullFilename: payload });
+      setPreferences({ ...state, fullFilename: payload });
       return state.set('fullFilename', payload);
     case SETTINGS_SET_DARK_THEME:
-      setPreferences({...state, darkTheme: payload });
+      setPreferences({ ...state, darkTheme: payload });
       return state.set('darkTheme', payload);
 
     case SETTINGS_RESTORE_PREFERENCES:

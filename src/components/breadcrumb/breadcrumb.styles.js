@@ -4,7 +4,7 @@ import { black, orange } from 'style/colors';
 
 export const BreadcrumbLink = styled(ProductTitle)`
   margin: 0;
-  font-size: ${props => props.theme.spacing.three};
+  font-size: ${(props) => props.theme.spacing.three};
 
   & a {
     text-decoration: none;

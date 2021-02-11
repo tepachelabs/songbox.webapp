@@ -28,7 +28,6 @@ const PlayButton = ({ onClick }) => {
 
 PlayButton.propTypes = {
   onClick: propTypes.func.isRequired,
-  theme: propTypes.shape.isRequired
 };
 
 export default PlayButton;

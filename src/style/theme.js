@@ -1,4 +1,10 @@
-import colors, { almostWhite, black, gray, muiBackgroundBlack, white } from './colors';
+import colors, {
+  almostWhite,
+  black,
+  gray,
+  muiBackgroundBlack,
+  white,
+} from './colors';
 
 const SPACING_VALUES = [
   'none',
@@ -34,11 +40,8 @@ const dark = {
   spacing,
   textColor: {
     base: almostWhite,
-    darker: white
-  }
+    darker: white,
+  },
 };
 
-export {
-  dark,
-  light
-}
+export { dark, light };

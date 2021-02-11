@@ -10,13 +10,12 @@ export const getSession = () => {
   return !user || !token ? null : { user: JSON.parse(user), token };
 };
 
-export const getPreferences = () => {
-  return JSON.parse(global.localStorage.getItem('preferences')) || null;
-}
+export const getPreferences = () =>
+  JSON.parse(global.localStorage.getItem('preferences')) || null;
 
 export const setPreferences = (preferences) => {
   global.localStorage.setItem('preferences', JSON.stringify(preferences));
-}
+};
 
 export const destroySession = () => {
   global.localStorage.removeItem('token');

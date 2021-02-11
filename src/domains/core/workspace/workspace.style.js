@@ -5,5 +5,5 @@ export const AppWrapper = styled.div`
 `;
 
 export const MenuWrapper = styled.div`
-  background: ${props => props.theme.background}
+  background: ${(props) => props.theme.background};
 `;

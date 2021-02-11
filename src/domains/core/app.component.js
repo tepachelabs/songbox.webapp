@@ -11,14 +11,14 @@ import { AppWrapper } from './app.style';
 
 const AppComponent = () => (
   <BrowserRouter>
-      <AppWrapper>
-        <Switch>
-          <Route path={LOGIN_PATH} component={Login} />
-          <Route path={APP_PATH} component={Workspace} />
-          <Redirect strict from={EMPTY_PATH} to={APP_PATH} />
-          <Route path="*" component={NotFound} />
-        </Switch>
-      </AppWrapper>
+    <AppWrapper>
+      <Switch>
+        <Route path={LOGIN_PATH} component={Login} />
+        <Route path={APP_PATH} component={Workspace} />
+        <Redirect strict from={EMPTY_PATH} to={APP_PATH} />
+        <Route path="*" component={NotFound} />
+      </Switch>
+    </AppWrapper>
   </BrowserRouter>
 );
 
