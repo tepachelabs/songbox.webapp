@@ -45,6 +45,7 @@ const AudioPlayerContainer = () => {
 
   useEffect(() => {
     audio.src = songLink;
+    audio.load();
     audio
       .play()
       .then(() => dispatch(setIsPlaying(true)))
