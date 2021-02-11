@@ -41,7 +41,8 @@ export const getSongStreamLink = (path) => (dispatch, getState) => {
 
   apiFetchStreamableSong(token, path)
     .then(({ data }) => {
-      dispatch(setSongLink(data.url));
+      const streamableSong = data.url.replace('?dl=0', '?dl=1');
+      dispatch(setSongLink(streamableSong));
     })
     .catch((err) => {
       throw new Error(err);
