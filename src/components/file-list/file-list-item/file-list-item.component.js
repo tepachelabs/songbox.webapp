@@ -4,10 +4,10 @@ import {
   ListItemIcon,
   ListItemSecondaryAction,
   ListItemText,
-  Typography,
 } from '@material-ui/core';
 
 import { FileListItem } from './file-list-item.style';
+import { FileTitle } from '../file-title';
 
 export const FileListItemComponent = ({
   children,
@@ -19,9 +19,7 @@ export const FileListItemComponent = ({
   <FileListItem button onClick={onClick} {...props}>
     <ListItemIcon>{icon}</ListItemIcon>
     <ListItemText>
-      <Typography variant="inherit" noWrap component="div">
-        {title}
-      </Typography>
+      <FileTitle title={title} />
     </ListItemText>
     {children && <ListItemSecondaryAction>{children}</ListItemSecondaryAction>}
   </FileListItem>
