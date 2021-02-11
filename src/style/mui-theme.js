@@ -12,6 +12,7 @@ export function MuiThemeFactory() {
           primary: themeType === 'light' ? gray : white,
         },
       },
+      color: themeType === 'light' ? gray : white,
       typography: {
         h4: {
           padding: '10px',
@@ -19,11 +20,6 @@ export function MuiThemeFactory() {
         fontFamily: ['Quicksand', 'sans-serif'],
       },
       overrides: {
-        MuiPaper: {
-          root: {
-            height: '82vh',
-          },
-        },
         MuiListItem: {
           root: {
             color: themeType === 'light' ? black : white,

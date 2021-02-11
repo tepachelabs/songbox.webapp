@@ -13,8 +13,8 @@ export const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const retrievedToken = urlParams.get('token');
+    // const urlParams = new URLSearchParams(window.location.search);
+    const retrievedToken = null; // urlParams.get('token');
     const os = getMobileOperatingSystem();
 
     if (retrievedToken) {
