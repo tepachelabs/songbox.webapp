@@ -15,7 +15,7 @@ import {
   LoginWrapper,
 } from './login.style';
 
-export const LoginComponent = () => (
+export const Login = () => (
   <LoginWrapper>
     <LoginSplashWrapper>
       <LoginSplash />

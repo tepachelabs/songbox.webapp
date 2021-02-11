@@ -1,1 +1,1 @@
-export { Login } from './login.container';
+export { Login } from './login.component';
