@@ -26,7 +26,7 @@ const spacing = SPACING_VALUES.reduce(
 
 const light = {
   colors,
-  backgroundColor: white,
+  background: white,
   textColor: {
     base: gray,
     darker: black,
