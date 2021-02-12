@@ -1,5 +1,7 @@
 import { apiFetchFiles } from 'lib/apiFilesService';
 import { filterAndSortFolders, filterAndSortSongs } from 'utils';
+import { logError } from 'lib/errorLogger';
+
 import {
   FILES_SET_FILES_LIST,
   FILES_SET_FOLDER_LIST,
@@ -40,7 +42,7 @@ export const fetchFileListFromPath = (path) => (dispatch, getState) => {
       dispatch(setCachedFiles({ path, files: data }));
     })
     .catch((err) => {
-      throw new Error(err);
+      logError(err);
     })
     .finally(() => {
       dispatch(setFilesLoading(false));

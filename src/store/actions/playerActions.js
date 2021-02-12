@@ -1,6 +1,6 @@
 import { apiFetchStreamableSong } from 'lib/apiFetchStreamableSong';
-
 import { setSongIndex } from 'store/actions/songsQueueActions';
+import { logError } from 'lib/errorLogger';
 
 import { getRandomNumber } from 'utils/numberGenerator';
 import {
@@ -52,8 +52,10 @@ export const getSongStreamLink = (path) => (dispatch, getState) => {
       dispatch(setSongLink(streamableSong));
     })
     .catch((err) => {
+      logError(err);
+    })
+    .finally(() => {
       dispatch(setIsLoading(false));
-      throw new Error(err);
     });
 };
 
