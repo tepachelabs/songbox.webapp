@@ -12,8 +12,8 @@ test('it renders', () => {
   const mockFn = jest.fn();
   const mockTheme = {
     spacing: {
-      one: 1
-    }
+      one: 1,
+    },
   };
 
   render(
