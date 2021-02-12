@@ -1,9 +1,4 @@
-export const removeFileNameExtension = (fileName) => {
-  const fileExtensionExp = /.(mp3|wav|ogg)$/;
-  if (fileExtensionExp.test(fileName)) {
-    const lastDotIndex = fileName.lastIndexOf('.');
-    return fileName.substring(0, lastDotIndex);
-  }
+const FILE_EXTENSION_REGEX = /.(mp3|wav|ogg)$/;
 
-  return fileName;
-};
+export const getFileNameWithoutExtension = (fileName) =>
+  fileName.replace(FILE_EXTENSION_REGEX, '');
