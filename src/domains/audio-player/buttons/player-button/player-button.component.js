@@ -16,11 +16,9 @@ const PlayerButton = styled((props) => <Button {...props} />)({
 
 PlayerButton.defaultProps = {
   theme: {
-    spacing: (number = 10) => `${number}px`
+    spacing: (number = 10) => `${number}px`,
   },
-  size: 'medium'
-}
-
-export {
-  PlayerButton
+  size: 'medium',
 };
+
+export { PlayerButton };
