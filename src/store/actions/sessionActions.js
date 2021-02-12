@@ -6,18 +6,6 @@ import { setAppLoaded, updateAppToken } from './appActions';
 /* SYNC OPERATIONS */
 
 /* ASYNC OPERATIONS */
-
-export const recoverSession = () => (dispatch) => {
-  const recoveredUser = getSession();
-
-  if (recoveredUser) {
-    dispatch(setUser(recoveredUser.user));
-    dispatch(updateAppToken(recoveredUser.token));
-  }
-
-  dispatch(setAppLoaded());
-};
-
 export const createNewSession = (token) => (dispatch) => {
   apiMeRequest(token)
     .then(({ data: user }) => {
@@ -29,4 +17,14 @@ export const createNewSession = (token) => (dispatch) => {
     .catch((err) => {
       throw new Error(err);
     });
+};
+
+export const recoverSession = () => (dispatch) => {
+  const recoveredUser = getSession();
+
+  if (recoveredUser) {
+    dispatch(setUser(recoveredUser.user));
+    dispatch(updateAppToken(recoveredUser.token));
+    dispatch(createNewSession(recoveredUser.token));
+  }
 };
