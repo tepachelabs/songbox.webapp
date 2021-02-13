@@ -1,4 +1,10 @@
-import colors, { black, gray } from './colors';
+import colors, {
+  almostWhite,
+  black,
+  gray,
+  muiBackgroundBlack,
+  white,
+} from './colors';
 
 const SPACING_VALUES = [
   'none',
@@ -18,11 +24,24 @@ const spacing = SPACING_VALUES.reduce(
   {},
 );
 
-export const theme = {
+const light = {
   colors,
+  background: white,
   textColor: {
     base: gray,
     darker: black,
   },
   spacing,
 };
+
+const dark = {
+  colors,
+  background: muiBackgroundBlack,
+  spacing,
+  textColor: {
+    base: almostWhite,
+    darker: white,
+  },
+};
+
+export { dark, light };
