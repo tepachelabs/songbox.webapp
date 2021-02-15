@@ -10,20 +10,17 @@ const spinAnimation = keyframes`
 `;
 
 export const LoadingBox = styled.div`
-  position: relative;
-  height: 100%;
-  width: 100%;
+  display: flex;
+  min-height: 100%;
 
-  &::after {
+  .spinner {
     animation: ${spinAnimation} 0.7s infinite;
     border: 5px solid transparent;
     border-top-color: #ffa834;
     border-radius: 50%;
     content: '';
     height: 60px;
-    left: 45%;
-    position: absolute;
-    top: 25%;
     width: 60px;
+    margin: auto;
   }
 `;
