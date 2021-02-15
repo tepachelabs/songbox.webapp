@@ -1,6 +1,8 @@
 export const white = '#ffffff';
 export const blue = '#1da1f2';
 export const black = '#35424a';
+export const muiBackgroundBlack = '#424242';
+export const muiBlack = '#989eb1';
 export const gray = '#989eb1';
 export const orange = '#ffa834';
 export const lightGray = '#d2dae2';

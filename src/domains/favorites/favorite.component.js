@@ -1,9 +1,9 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { List } from 'immutable';
 import propTypes from 'prop-types';
+import { Paper, Typography } from '@material-ui/core';
 
 import { FileListComponent } from 'components/file-list';
-import { FavoritesTitle } from './favorites.style';
 
 const transformPaths = (songs) =>
   songs.map((song) => ({
@@ -13,19 +13,19 @@ const transformPaths = (songs) =>
   }));
 
 const FavoriteComponent = ({ favorites }) => (
-  <Fragment>
-    <FavoritesTitle>
+  <Paper>
+    <Typography variant="h4">
       Your personal library
       <span role="img" aria-label="heart">
         ❤️
       </span>
-    </FavoritesTitle>
+    </Typography>
     <FileListComponent
       files={transformPaths(favorites)}
       songs={favorites}
       dense={false}
     />
-  </Fragment>
+  </Paper>
 );
 
 FavoriteComponent.propTypes = {

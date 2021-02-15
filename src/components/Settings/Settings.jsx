@@ -8,6 +8,7 @@ import {
   Box,
   Container,
   Paper,
+  Typography,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -54,9 +55,9 @@ const Settings = ({ pageNumber }) => {
 
   return (
     <Paper className={classes.paper}>
-      <h1 id="your-personal-library" className="title">
+      <Typography id="your-personal-library" variant="h4">
         Settings
-      </h1>
+      </Typography>
       <Container>
         <Box className={classes.box}>
           <FormLabel component="legend">Autoplay next song</FormLabel>

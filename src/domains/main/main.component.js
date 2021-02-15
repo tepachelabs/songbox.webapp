@@ -1,22 +1,21 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { Container, Grid } from '@material-ui/core';
+import { Paper, Grid, Typography } from '@material-ui/core';
 
 import { BreadcrumbContainer } from 'components/breadcrumb';
 import FilesContainer from 'components/Files';
 import { RefreshButtonContainer } from 'components/refresh-button';
 
-import { ProductTitle } from 'style/typography';
 import { BreadcrumbWrapper } from './main.styles';
 
 const MainComponent = () => {
   const { path } = useParams();
 
   return (
-    <Container>
+    <Paper>
       <Grid container spacing={3}>
         <Grid item xs={12}>
-          <ProductTitle>Your personal library</ProductTitle>
+          <Typography variant="h4">Your personal library</Typography>
           <BreadcrumbWrapper container justify="space-between">
             <Grid container>
               <BreadcrumbContainer />
@@ -30,7 +29,7 @@ const MainComponent = () => {
           <FilesContainer path={path || ''} />
         </Grid>
       </Grid>
-    </Container>
+    </Paper>
   );
 };
 

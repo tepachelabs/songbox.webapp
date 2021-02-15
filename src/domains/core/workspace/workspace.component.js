@@ -13,7 +13,7 @@ import { Sidebar } from 'components/sidebar';
 import { UserProfile } from 'components/user-profile';
 import { Loading } from '../Loading';
 
-import { AppWrapper } from './workspace.style';
+import { AppWrapper, MenuWrapper } from './workspace.style';
 
 const Main = React.lazy(() => import('domains/main'));
 const Favorites = React.lazy(() => import('domains/favorites'));
@@ -23,11 +23,11 @@ const AudioPlayer = React.lazy(() => import('domains/audio-player'));
 
 export const WorkspaceComponent = () => (
   <BrowserRouter>
-    <div style={{ paddingTop: '1em' }}>
+    <MenuWrapper>
       <Sidebar>
         <UserProfile />
       </Sidebar>
-    </div>
+    </MenuWrapper>
     <AppWrapper>
       <Suspense fallback={Loading}>
         <Switch>

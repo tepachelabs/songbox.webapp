@@ -1,8 +1,7 @@
 import styled from 'styled-components';
-import { almostWhite } from 'style/colors';
 
 export const AudioWrapper = styled.div`
-  background: ${almostWhite};
+  background-color: ${(props) => props.theme.background};
   text-align: center;
   position: fixed;
   bottom: 0;
