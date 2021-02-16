@@ -8,6 +8,8 @@ const PlayerButton = styled((props) => <Button {...props} />)({
   width: (props) =>
     props.size === 'large' ? props.theme.spacing(10) : props.theme.spacing(5),
 
+  opacity: (props) => (props.disabled ? '0.2' : '1'),
+
   '& span, & svg': {
     height: '100%',
     width: '100%',
