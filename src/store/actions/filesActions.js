@@ -1,9 +1,12 @@
 import { apiFetchFiles } from 'lib/apiFilesService';
 import { filterAndSortFolders, filterAndSortSongs } from 'utils';
+import { logError } from 'lib/errorLogger';
+
 import {
   FILES_SET_FILES_LIST,
   FILES_SET_FOLDER_LIST,
   FILES_ADD_CACHED_FILES,
+  FILES_SET_IS_LOADING,
 } from '../constants';
 
 /* SYNC OPERATIONS */
@@ -21,10 +24,16 @@ export const setCachedFiles = (payload) => ({
   payload,
 });
 
+export const setFilesLoading = (payload) => ({
+  type: FILES_SET_IS_LOADING,
+  payload,
+});
+
 /* ASYNC OPERATIONS */
 
 export const fetchFileListFromPath = (path) => (dispatch, getState) => {
   const token = getState().app.get('token');
+  dispatch(setFilesLoading(true));
 
   apiFetchFiles(token, path)
     .then(({ data }) => {
@@ -33,7 +42,10 @@ export const fetchFileListFromPath = (path) => (dispatch, getState) => {
       dispatch(setCachedFiles({ path, files: data }));
     })
     .catch((err) => {
-      throw new Error(err);
+      logError(err);
+    })
+    .finally(() => {
+      dispatch(setFilesLoading(false));
     });
 };
 

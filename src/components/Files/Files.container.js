@@ -7,6 +7,7 @@ import { handleInteractionWithFavorite } from 'store/actions/favoritesActions';
 
 import { isSongInFavorites } from 'Favorites/favorites';
 import { HeartIcon } from 'components/icon';
+import { Loading } from 'domains/core/Loading';
 import { FileListComponent } from '../file-list';
 
 const transformPaths = (paths) =>
@@ -20,6 +21,7 @@ const FilesContainer = ({ path }) => {
   const files = useSelector((state) => state.files.get('files'));
   const favorites = useSelector((state) => state.favorites.get('songs'));
   const folders = useSelector((state) => state.files.get('folders'));
+  const isLoading = useSelector((state) => state.files.get('isLoading'));
   const dispatch = useDispatch();
 
   const actions = [
@@ -43,6 +45,8 @@ const FilesContainer = ({ path }) => {
   useEffect(() => {
     dispatch(getFilesFromPath(path));
   }, [path, dispatch]);
+
+  if (isLoading) return <Loading />;
 
   return (
     <Fragment>

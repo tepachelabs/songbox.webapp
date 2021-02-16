@@ -15,12 +15,15 @@ const AudioPlayerContainer = () => {
   const songLink = useSelector((state) => state.player.get('songLink'));
   const songsQueue = useSelector((state) => state.songsQueue.get('queue'));
   const isPlaying = useSelector((state) => state.player.get('isPlaying'));
+
   const isRandomEnabled = useSelector((state) =>
     state.player.get('isRandomEnabled'),
   );
   const isRepeatEnabled = useSelector((state) =>
     state.player.get('isRepeatEnabled'),
   );
+  const isLoading = useSelector((state) => state.player.get('isLoading'));
+
   const isDisabled = songsQueue.size <= 0;
   const dispatch = useDispatch();
   const [audio] = useState(new Audio(songLink));
@@ -70,6 +73,7 @@ const AudioPlayerContainer = () => {
       updateCurrentTime={updateCurrentTime}
       onClick={onClick}
       isDisabled={isDisabled}
+      isLoading={isLoading}
     />
   );
 };

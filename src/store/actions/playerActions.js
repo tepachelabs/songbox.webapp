@@ -1,6 +1,6 @@
 import { apiFetchStreamableSong } from 'lib/apiFetchStreamableSong';
-
 import { setSongIndex } from 'store/actions/songsQueueActions';
+import { logError } from 'lib/errorLogger';
 
 import { getRandomNumber } from 'utils/numberGenerator';
 import {
@@ -10,6 +10,7 @@ import {
   PLAYER_SET_CURRENT_SONG,
   PLAYER_SET_IS_PLAYING,
   PLAYER_SET_RANDOM,
+  PLAYER_SET_IS_LOADING,
 } from '../constants';
 
 import {
@@ -35,9 +36,14 @@ export const setIsPlaying = (payload) => ({
   payload,
 });
 export const setRandom = (payload) => ({ type: PLAYER_SET_RANDOM, payload });
+export const setIsLoading = (payload) => ({
+  type: PLAYER_SET_IS_LOADING,
+  payload,
+});
 
 export const getSongStreamLink = (path) => (dispatch, getState) => {
   const token = getState().app.get('token');
+  dispatch(setIsLoading(true));
 
   apiFetchStreamableSong(token, path)
     .then(({ data }) => {
@@ -45,7 +51,10 @@ export const getSongStreamLink = (path) => (dispatch, getState) => {
       dispatch(setSongLink(streamableSong));
     })
     .catch((err) => {
-      throw new Error(err);
+      logError(err);
+    })
+    .finally(() => {
+      dispatch(setIsLoading(false));
     });
 };
 
