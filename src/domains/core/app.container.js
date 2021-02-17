@@ -1,17 +1,17 @@
-import React, { useEffect, Suspense } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 import { getMobileOperatingSystem } from 'utils';
 import { createNewSession, recoverSession } from 'store/actions/sessionActions';
 import { setOS } from 'store/actions/appActions';
 
-import { Loading } from './Loading';
-
 const AppComponent = React.lazy(() => import('./app.component'));
 
 export const App = () => {
   const dispatch = useDispatch();
-
+  const lang = useSelector((state) => state.settings.get('lang'));
+  const [, i18next] = useTranslation();
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const retrievedToken = urlParams.get('token');
@@ -23,11 +23,10 @@ export const App = () => {
       dispatch(recoverSession());
     }
     dispatch(setOS(os));
-  }, [dispatch]);
+    if (lang !== i18next.language) {
+      i18next.changeLanguage(lang);
+    }
+  }, [dispatch, lang]);
 
-  return (
-    <Suspense fallback={<Loading />}>
-      <AppComponent />
-    </Suspense>
-  );
+  return <AppComponent />;
 };
