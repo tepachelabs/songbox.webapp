@@ -57,8 +57,12 @@ const Settings = ({ pageNumber }) => {
 
   useEffect(() => {
     dispatch(changeSidebarIndex(pageNumber));
+  }, [dispatch, pageNumber]);
+
+  const onChange = (event) => {
+    dispatch(setLang(event.target.value));
     i18next.changeLanguage(lang);
-  }, [dispatch, pageNumber, lang]);
+  };
 
   return (
     <Paper className={classes.paper}>
@@ -107,10 +111,7 @@ const Settings = ({ pageNumber }) => {
           <Box className={classes.box}>
             <FormControlLabel
               control={
-                <Select
-                  onChange={(event) => dispatch(setLang(event.target.value))}
-                  value={lang}
-                >
+                <Select onChange={onChange} value={lang}>
                   <MenuItem value="en-US">English</MenuItem>
                   <MenuItem value="es-MX">Español</MenuItem>
                 </Select>
