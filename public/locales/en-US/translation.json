@@ -1,4 +1,13 @@
 {
+    "common": {
+        "privacy": "Privacy Policy",
+        "tos": "Terms of Service"
+    },
+    "landing": {
+        "title": "Songbox",
+        "login": "Sign In",
+        "message": "Hi there! Nice to see you again."
+    },
     "menu": {
         "home": "Home",
         "favorites": "Favorites",

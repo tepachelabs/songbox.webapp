@@ -24,18 +24,26 @@ if (!preferences) {
 
 const settingsReducer = (state = initialState, { type, payload }) => {
   switch (type) {
-    case SETTINGS_SET_AUTO_PLAY:
-      setPreferences({ ...state.toJS(), autoPlay: payload });
-      return state.set('autoPlay', payload);
-    case SETTINGS_SET_FULL_FILENAME:
-      setPreferences({ ...state.toJS(), fullFilename: payload });
-      return state.set('fullFilename', payload);
-    case SETTINGS_SET_DARK_THEME:
-      setPreferences({ ...state.toJS(), darkTheme: payload });
-      return state.set('darkTheme', payload);
-    case SETTINGS_SET_LANG:
-      setPreferences({ ...state.toJS(), lang: payload });
-      return state.set('lang', payload);
+    case SETTINGS_SET_AUTO_PLAY: {
+      const newState = state.set('autoPlay', payload);
+      setPreferences(newState);
+      return newState;
+    }
+    case SETTINGS_SET_FULL_FILENAME: {
+      const newState = state.set('fullFilename', payload);
+      setPreferences(newState);
+      return newState;
+    }
+    case SETTINGS_SET_DARK_THEME: {
+      const newState = state.set('darkTheme', payload);
+      setPreferences(newState);
+      return newState;
+    }
+    case SETTINGS_SET_LANG: {
+      const newState = state.set('lang', payload);
+      setPreferences(newState);
+      return newState;
+    }
     case SETTINGS_RESTORE_PREFERENCES:
       return initialState;
 

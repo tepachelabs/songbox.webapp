@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { DROPBOX_SIGN_IN_ROUTE } from 'routes';
 import { DropboxButton } from 'style/button';
@@ -15,25 +16,28 @@ import {
   LoginWrapper,
 } from './login.style';
 
-export const Login = () => (
-  <LoginWrapper>
-    <LoginSplashWrapper>
-      <LoginSplash />
-      <LoginSplashTitle>Songbox</LoginSplashTitle>
-    </LoginSplashWrapper>
-    <LoginContentWrapper>
-      <LoginTitle>Sign In</LoginTitle>
-      <LoginContent>Hi there! Nice to see you again.</LoginContent>
-      <LoginCenteredWrapper>
-        <DropboxButton size="large" href={DROPBOX_SIGN_IN_ROUTE}>
-          Dropbox
-        </DropboxButton>
-      </LoginCenteredWrapper>
-      <LoginCenteredWrapper>
-        <Link href="/#">Privacy Policy</Link>
-        {' | '}
-        <Link href="/#">Terms of Service</Link>
-      </LoginCenteredWrapper>
-    </LoginContentWrapper>
-  </LoginWrapper>
-);
+export const Login = () => {
+  const [t] = useTranslation();
+  return (
+    <LoginWrapper>
+      <LoginSplashWrapper>
+        <LoginSplash />
+        <LoginSplashTitle>{t('landing.title')}</LoginSplashTitle>
+      </LoginSplashWrapper>
+      <LoginContentWrapper>
+        <LoginTitle>{t('landing.login')}</LoginTitle>
+        <LoginContent>{t('landing.message')}</LoginContent>
+        <LoginCenteredWrapper>
+          <DropboxButton size="large" href={DROPBOX_SIGN_IN_ROUTE}>
+            Dropbox
+          </DropboxButton>
+        </LoginCenteredWrapper>
+        <LoginCenteredWrapper>
+          <Link href="/#">{t('common.privacy')}</Link>
+          {' | '}
+          <Link href="/#">{t('common.tos')}</Link>
+        </LoginCenteredWrapper>
+      </LoginContentWrapper>
+    </LoginWrapper>
+  );
+};
