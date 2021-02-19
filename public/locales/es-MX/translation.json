@@ -1,0 +1,71 @@
+{
+    "common": {
+        "privacy": "Politicas de privacidad",
+        "tos": "Términos de servicio"
+    },
+    "landing": {
+        "title": "Songbox",
+        "login": "Inicia Sesión",
+        "message": "¡Hola! Nos da gusto volverte a ver."
+    },
+    "menu": {
+        "home": "Inicio",
+        "favorites": "Favoritos",
+        "settings": "Configuración",
+        "help": "Ayuda",
+        "sign-out": "Salir"
+    },
+    "home": {
+        "title": "Tu libreria personal",
+        "refresh": "Actualizar"
+    },
+    "favorites": {
+        "title": "Tu libreria personal"
+    },
+    "settings": {
+        "title": "Configuración",
+        "config": {
+            "player": {
+                "options": {
+                    "autoplay": {
+                        "label": "Reproducir automáticamente",
+                        "description": "Reproducir automáticamente"
+                    }
+                }
+            },
+            "apparience": {
+                "label": "Apariencia",
+                "options": {
+                    "theme": {
+                        "label": "Activar tema oscuro"
+                    },
+                    "file-name": {
+                        "label": "Mostrar el nombre de archivo completo"
+                    },
+                    "lang": {
+                        "label": "Selecciona tu idioma"
+                    }
+                }
+            },
+            "other": {
+                "label": "Otros",
+                "options": {
+                    "restore": {
+                        "label": "Restaurar preferencias"
+                    }
+                }
+            }
+        }
+    },
+    "help": {
+        "title": "Ayuda"
+    },
+    "auth": {
+        "sign-in": {
+            "title": "Iniciar sesión"
+        },
+        "sign-out": {
+            "title": "Salir"
+        }
+    }
+}

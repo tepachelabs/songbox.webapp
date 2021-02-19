@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import {
   Drawer,
@@ -18,6 +19,7 @@ import { SidebarWrapper, SidebarDivisor, SidebarTitle } from './sidebar.style';
 
 export const Sidebar = ({ children }) => {
   const [isOpen, setIsOpen] = useState();
+  const [t] = useTranslation();
   const toggleDrawer = (open) => ({ type, key }) => {
     if (type === 'keydown' && (key === 'Tab' || key === 'Shift')) {
       return;
@@ -46,7 +48,7 @@ export const Sidebar = ({ children }) => {
                 <ListItemIcon>
                   <Icon />
                 </ListItemIcon>
-                <ListItemText disableTypography primary={title} />
+                <ListItemText disableTypography primary={t(`menu.${title}`)} />
               </ListItem>
             ))}
           </List>

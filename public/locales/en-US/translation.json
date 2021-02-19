@@ -1,0 +1,71 @@
+{
+    "common": {
+        "privacy": "Privacy Policy",
+        "tos": "Terms of Service"
+    },
+    "landing": {
+        "title": "Songbox",
+        "login": "Sign In",
+        "message": "Hi there! Nice to see you again."
+    },
+    "menu": {
+        "home": "Home",
+        "favorites": "Favorites",
+        "settings": "Settings",
+        "help": "Help",
+        "sign-out": "Sign Out"
+    },
+    "home": {
+        "title": "Your personal library",
+        "refresh": "Refresh"
+    },
+    "favorites": {
+        "title": "Your personal library"
+    },
+    "settings": {
+        "title": "Settings",
+        "config": {
+            "player": {
+                "options": {
+                    "autoplay": {
+                        "label": "Autoplay next song",
+                        "description": "Autoplay next song"
+                    }
+                }
+            },
+            "apparience": {
+                "label": "Apparience",
+                "options": {
+                    "theme": {
+                        "label": "Toggle dark theme"
+                    },
+                    "file-name": {
+                        "label": "Show full filename"
+                    },
+                    "lang": {
+                        "label": "Select your language"
+                    }
+                }
+            },
+            "other": {
+                "label": "Other",
+                "options": {
+                    "restore": {
+                        "label": "Restore preferences"
+                    }
+                }
+            }
+        }
+    },
+    "help": {
+        "title": "Help"
+    },
+    "auth": {
+        "sign-in": {
+            "title": "Sign in"
+        },
+        "sign-out": {
+            "title": "Sign out"
+        }
+    }
+}
