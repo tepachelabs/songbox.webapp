@@ -4,15 +4,9 @@ import propTypes from 'prop-types';
 import { Paper, Typography } from '@material-ui/core';
 
 import { FileListComponent } from 'components/file-list';
+import { AudioLeg } from 'components/file-navigator';
 
-const transformPaths = (songs) =>
-  songs.map((song) => ({
-    type: 'file',
-    title: song.get('song_name'),
-    path: song.get('path_lower'),
-  }));
-
-const FavoriteComponent = ({ favorites }) => (
+const FavoriteComponent = ({ itemsList }) => (
   <Paper>
     <Typography variant="h4">
       Your personal library
@@ -20,16 +14,12 @@ const FavoriteComponent = ({ favorites }) => (
         ❤️
       </span>
     </Typography>
-    <FileListComponent
-      files={transformPaths(favorites)}
-      songs={favorites}
-      dense={false}
-    />
+    <FileListComponent itemsList={itemsList} itemRenderer={AudioLeg} />
   </Paper>
 );
 
 FavoriteComponent.propTypes = {
-  favorites: propTypes.instanceOf(List).isRequired,
+  itemsList: propTypes.instanceOf(List).isRequired,
 };
 
 export default FavoriteComponent;

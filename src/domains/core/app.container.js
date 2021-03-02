@@ -12,6 +12,7 @@ export const App = () => {
   const dispatch = useDispatch();
   const lang = useSelector((state) => state.settings.get('lang'));
   const [, i18next] = useTranslation();
+
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const retrievedToken = urlParams.get('token');
@@ -22,7 +23,9 @@ export const App = () => {
     } else {
       dispatch(recoverSession());
     }
+
     dispatch(setOS(os));
+
     if (lang !== i18next.language) {
       i18next.changeLanguage(lang);
     }

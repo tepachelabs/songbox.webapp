@@ -10,7 +10,6 @@ i18next
   .init({
     lng: 'en-US',
     fallbackLng: 'en-US',
-    debug: true,
     whitelist: ['en-US', 'es-MX'],
     react: {
       useSuspense: true,

@@ -1,3 +1,1 @@
-import MainComponent from './main.component';
-
-export default MainComponent;
+export { MainComponent as default } from './main.component';

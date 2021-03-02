@@ -1,74 +1,27 @@
-import React, { Fragment } from 'react';
-import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { List } from 'immutable';
-import { Divider, IconButton } from '@material-ui/core';
-
-import { getSongStreamLink } from 'store/actions/playerActions';
-import { setSongIndex, setSongsQueue } from 'store/actions/songsQueueActions';
-
-import { APP_PATH } from 'routes';
-import { FolderIcon, MusicIcon } from 'components/icon';
 
 import { ListWrapper } from './file-list.style';
-import { FileListItemComponent } from './file-list-item';
 
-const getIcon = (type) => (type === 'folder' ? <FolderIcon /> : <MusicIcon />);
-
-const renderActions = (actions, title, path) =>
-  actions.map(({ alt, icon, onClick }) => (
-    <IconButton key={alt} edge="end" onClick={() => onClick(title, path)}>
-      {icon}
-    </IconButton>
-  ));
-
-export const FileListComponent = ({ dense, files, songs }) => {
-  const dispatch = useDispatch();
-
-  const onSongClick = (path, index) => {
-    dispatch(getSongStreamLink(path));
-    dispatch(setSongIndex(index));
-    dispatch(setSongsQueue(songs));
-  };
-
-  const getProps = ({ type, path, index }) => {
-    if (type === 'folder') {
-      return {
-        component: Link,
-        to: `${APP_PATH}${path}`,
-      };
-    }
-
-    return { onClick: () => onSongClick(path, index) };
-  };
-
-  return (
-    <ListWrapper dense={dense}>
-      {files.map(({ type, title, actions, path }, index) => (
-        <Fragment key={title}>
-          <Divider />
-          <FileListItemComponent
-            {...getProps({ type, path, index })}
-            icon={getIcon(type)}
-            title={title}
-          >
-            {actions && renderActions(actions, title, path)}
-          </FileListItemComponent>
-        </Fragment>
-      ))}
-    </ListWrapper>
-  );
-};
+export const FileListComponent = ({
+  dense,
+  itemsList,
+  itemRenderer: ItemRenderer,
+}) => (
+  <ListWrapper dense={dense}>
+    {itemsList.map((item) => (
+      <ItemRenderer key={item.get('name')} item={item} />
+    ))}
+  </ListWrapper>
+);
 
 FileListComponent.propTypes = {
-  dense: PropTypes.bool.isRequired,
-  files: PropTypes.instanceOf(List).isRequired,
-  onClick: PropTypes.func,
-  songs: PropTypes.instanceOf(List),
+  itemsList: PropTypes.instanceOf(List).isRequired,
+  dense: PropTypes.bool,
+  itemRenderer: PropTypes.any,
 };
 
 FileListComponent.defaultProps = {
-  onClick: () => {},
-  songs: List(),
+  dense: false,
 };

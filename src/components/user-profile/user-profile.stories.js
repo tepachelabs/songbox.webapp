@@ -5,9 +5,9 @@ export default {
   component: UserProfileComponent,
   title: 'UserProfileComponent',
   argTypes: {
+    avatar: { control: 'text' },
     email: { control: 'text' },
     name: { control: 'text' },
-    photo: { control: 'text' },
   },
 };
 
@@ -18,16 +18,16 @@ const Wrapper = ({ children }) => (
   </div>
 );
 // eslint-disable-next-line react/prop-types
-const Template = ({ email, photo, name }) => (
+const Template = ({ avatar, email, name }) => (
   <Wrapper>
-    <UserProfileComponent email={email} name={name} photo={photo} />
+    <UserProfileComponent avatar={avatar} email={email} name={name} />
   </Wrapper>
 );
 
 export const Home = Template.bind({});
 
 Home.args = {
+  avatar: 'https://avatarfiles.alphacoders.com/557/55775.jpg',
   email: 'jenner@example.com',
   name: 'Jenner Smith',
-  photo: 'https://avatarfiles.alphacoders.com/557/55775.jpg',
 };

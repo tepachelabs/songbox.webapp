@@ -1,54 +1,44 @@
+import { Map } from 'immutable';
+
 import { apiFetchStreamableSong } from 'lib/apiFetchStreamableSong';
-import { setSongIndex } from 'store/actions/songsQueueActions';
 import { logError } from 'lib/errorLogger';
 
-import { getRandomNumber } from 'utils/numberGenerator';
 import {
-  PLAYER_SET_REPEAT,
-  PLAYER_SET_VOLUME,
-  PLAYER_SET_SONG_LINK,
   PLAYER_SET_CURRENT_SONG,
-  PLAYER_SET_IS_PLAYING,
-  PLAYER_SET_RANDOM,
   PLAYER_SET_IS_LOADING,
+  PLAYER_SET_PLAYLIST,
 } from '../constants';
 
-import {
-  canPlayNextSong,
-  canPlayPreviousSong,
-  selectIndex,
-  selectQueueSize,
-  selectSongPathAtIndex,
-} from '../selectors/songsQueue';
+/* SYNC OPERATIONS */
 
-export const setRepeat = (payload) => ({ type: PLAYER_SET_REPEAT, payload });
-export const setVolume = (payload) => ({ type: PLAYER_SET_VOLUME, payload });
-export const setSong = (payload) => ({
+export const setCurrentSong = (payload) => ({
   type: PLAYER_SET_CURRENT_SONG,
   payload,
 });
-export const setSongLink = (payload) => ({
-  type: PLAYER_SET_SONG_LINK,
-  payload,
-});
-export const setIsPlaying = (payload) => ({
-  type: PLAYER_SET_IS_PLAYING,
-  payload,
-});
-export const setRandom = (payload) => ({ type: PLAYER_SET_RANDOM, payload });
 export const setIsLoading = (payload) => ({
   type: PLAYER_SET_IS_LOADING,
   payload,
 });
+export const setPlaylist = (payload) => ({
+  type: PLAYER_SET_PLAYLIST,
+  payload,
+});
 
-export const getSongStreamLink = (path) => (dispatch, getState) => {
+/* ASYNC OPERATIONS */
+
+export const playAudio = (path) => (dispatch, getState) => {
   const token = getState().app.get('token');
   dispatch(setIsLoading(true));
 
   apiFetchStreamableSong(token, path)
     .then(({ data }) => {
-      const streamableSong = data.url.replace('?dl=0', '?dl=1');
-      dispatch(setSongLink(streamableSong));
+      dispatch(setCurrentSong(Map(data)));
+
+      const files = getState().files.get('files');
+      const key = files.findKey((file) => file.get('path') === data.path);
+      const newPlaylist = files.slice(key + 1).concat(files.slice(0, key));
+
+      dispatch(setPlaylist(newPlaylist));
     })
     .catch((err) => {
       logError(err);
@@ -58,43 +48,54 @@ export const getSongStreamLink = (path) => (dispatch, getState) => {
     });
 };
 
-const getNextAvailableIndex = (state) => {
-  const songIndex = selectIndex(state);
-  const queueSize = selectQueueSize(state);
-  const isRepeatEnabled = state.player.get('isRepeat');
-  const isRandomEnabled = state.player.get('isRandom');
+export const loadNextSong = () => (dispatch, getState) => {
+  const currentPlaylist = getState().player.get('playlist');
 
-  if (isRandomEnabled) {
-    return getRandomNumber(songIndex, queueSize);
-  }
-  if (isRepeatEnabled) {
-    const lastPosition = queueSize - 1;
-    return songIndex === lastPosition ? 0 : songIndex + 1;
-  }
-  if (canPlayNextSong(state)) {
-    return songIndex + 1;
-  }
+  if (!currentPlaylist.size) return;
 
-  return songIndex;
+  const token = getState().app.get('token');
+  dispatch(setIsLoading(true));
+
+  const previousSong = getState().player.get('currentSong');
+  const nextSong = currentPlaylist.first();
+  const newPlaylist = currentPlaylist.shift().push(previousSong);
+
+  dispatch(setPlaylist(newPlaylist));
+
+  apiFetchStreamableSong(token, nextSong.get('path'))
+    .then(({ data }) => {
+      dispatch(setCurrentSong(Map(data)));
+    })
+    .catch((err) => {
+      logError(err);
+    })
+    .finally(() => {
+      dispatch(setIsLoading(false));
+    });
 };
 
-export const playNextSong = () => (dispatch, getState) => {
-  const nextIndex = getNextAvailableIndex(getState());
-  const songPath = selectSongPathAtIndex(getState(), nextIndex);
+export const loadPreviousSong = () => (dispatch, getState) => {
+  const currentPlaylist = getState().player.get('playlist');
 
-  dispatch(getSongStreamLink(songPath));
-  dispatch(setSongIndex(nextIndex));
-};
+  if (!currentPlaylist.size) return;
 
-export const playPreviousSong = () => (dispatch, getState) => {
-  const state = getState();
-  const songIndex = selectIndex(state);
+  const token = getState().app.get('token');
+  dispatch(setIsLoading(true));
 
-  if (canPlayPreviousSong(state)) {
-    const nextIndex = songIndex - 1;
-    const songPath = selectSongPathAtIndex(state, nextIndex);
+  const previousSong = getState().player.get('currentSong');
+  const nextSong = currentPlaylist.last();
+  const newPlaylist = currentPlaylist.pop().unshift(previousSong);
 
-    dispatch(getSongStreamLink(songPath));
-    dispatch(setSongIndex(nextIndex));
-  }
+  dispatch(setPlaylist(newPlaylist));
+
+  apiFetchStreamableSong(token, nextSong.get('path'))
+    .then(({ data }) => {
+      dispatch(setCurrentSong(Map(data)));
+    })
+    .catch((err) => {
+      logError(err);
+    })
+    .finally(() => {
+      dispatch(setIsLoading(false));
+    });
 };

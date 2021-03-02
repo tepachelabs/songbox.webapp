@@ -29,7 +29,7 @@ export const WorkspaceComponent = () => (
       </Sidebar>
     </MenuWrapper>
     <AppWrapper>
-      <Suspense fallback={Loading}>
+      <Suspense fallback={<Loading />}>
         <Switch>
           <Route path={FAVORITES_PATH} component={Favorites} />
           <Route path={SETTINGS_PATH} component={Settings} />

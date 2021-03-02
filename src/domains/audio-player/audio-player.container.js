@@ -1,75 +1,29 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import AudioPlayer from 'react-h5-audio-player';
 import { useDispatch, useSelector } from 'react-redux';
+import 'react-h5-audio-player/lib/styles.css';
 
-import {
-  setIsPlaying,
-  playNextSong,
-  setRepeat,
-  setRandom,
-  playPreviousSong,
-} from 'store/actions/playerActions';
+import { loadNextSong, loadPreviousSong } from 'store/actions/playerActions';
+import { AudioWrapper } from './audio-player.styles';
 
-import AudioPlayerComponent from './audio-player.component';
-
-const AudioPlayerContainer = () => {
-  const songLink = useSelector((state) => state.player.get('songLink'));
-  const songsQueue = useSelector((state) => state.songsQueue.get('queue'));
-  const isPlaying = useSelector((state) => state.player.get('isPlaying'));
-  const isRandomEnabled = useSelector((state) => state.player.get('isRandom'));
-  const isRepeatEnabled = useSelector((state) => state.player.get('isRepeat'));
-  const isLoading = useSelector((state) => state.player.get('isLoading'));
-  const isDisabled = songsQueue.size <= 0;
+export const AudioPlayerContainer = () => {
+  const songLink = useSelector((state) => state.player.get('currentSong'));
   const dispatch = useDispatch();
-  const [audio] = useState(new Audio(songLink));
-
-  const playerActions = {
-    forward: () => dispatch(playNextSong()),
-    rewind: () => dispatch(playPreviousSong()),
-    repeat: () => dispatch(setRepeat(!isRepeatEnabled)),
-    random: () => dispatch(setRandom(!isRandomEnabled)),
-    play: () => {
-      if (isPlaying) {
-        audio.pause();
-        dispatch(setIsPlaying(false));
-      } else {
-        audio
-          .play()
-          .then(() => dispatch(setIsPlaying(true)))
-          .catch(() => dispatch(setIsPlaying(false)));
-      }
-    },
-  };
-
-  useEffect(() => {
-    audio.src = songLink;
-    audio.load();
-    audio
-      .play()
-      .then(() => dispatch(setIsPlaying(true)))
-      .catch(() => dispatch(setIsPlaying(false)));
-  }, [songLink, audio, audio.src]);
-
-  const onClick = (action) => (e) => {
-    e.preventDefault();
-    const exec = playerActions[action];
-    if (exec) {
-      exec();
-    }
-  };
-
-  const updateCurrentTime = (second) => {
-    audio.currentTime = second;
-  };
+  const onNextClick = () => dispatch(loadNextSong());
+  const onPrevClick = () => dispatch(loadPreviousSong());
 
   return (
-    <AudioPlayerComponent
-      audioRef={audio}
-      updateCurrentTime={updateCurrentTime}
-      onClick={onClick}
-      isDisabled={isDisabled}
-      isLoading={isLoading}
-    />
+    <AudioWrapper>
+      <AudioPlayer
+        autoPlay
+        showSkipControls
+        src={songLink?.get('src')}
+        onClickNext={onNextClick}
+        onClickPrevious={onPrevClick}
+        onEnded={onNextClick}
+        customVolumeControls={[]}
+        customAdditionalControls={[]}
+      />
+    </AudioWrapper>
   );
 };
-
-export default AudioPlayerContainer;

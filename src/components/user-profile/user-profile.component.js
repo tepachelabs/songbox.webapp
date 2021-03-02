@@ -9,12 +9,12 @@ import {
   useStyles,
 } from './user-profile.style';
 
-export const UserProfileComponent = ({ email, name, photo }) => {
+export const UserProfileComponent = ({ avatar, email, name }) => {
   const classes = useStyles();
 
   return (
     <UserProfileWrapper>
-      <Avatar className={classes.brand} alt="your avatar" src={photo} />
+      <Avatar className={classes.brand} alt="your avatar" src={avatar} />
       <UserProfileEmail>{email}</UserProfileEmail>
       <UserProfileName>{name}</UserProfileName>
     </UserProfileWrapper>
@@ -22,7 +22,7 @@ export const UserProfileComponent = ({ email, name, photo }) => {
 };
 
 UserProfileComponent.propTypes = {
+  avatar: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  photo: PropTypes.string.isRequired,
 };
