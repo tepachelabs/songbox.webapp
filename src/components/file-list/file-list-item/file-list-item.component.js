@@ -13,13 +13,13 @@ export const FileListItemComponent = ({
   children,
   icon,
   onClick,
-  title,
+  name,
   ...props
 }) => (
   <FileListItem button onClick={onClick} {...props}>
     <ListItemIcon>{icon}</ListItemIcon>
     <ListItemText>
-      <FileTitle title={title} />
+      <FileTitle name={name} />
     </ListItemText>
     {children && <ListItemSecondaryAction>{children}</ListItemSecondaryAction>}
   </FileListItem>
@@ -29,7 +29,7 @@ FileListItemComponent.propTypes = {
   children: PropTypes.node,
   icon: PropTypes.node,
   onClick: PropTypes.func,
-  title: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
 };
 
 FileListItemComponent.defaultProps = {

@@ -8,7 +8,7 @@ import { FileTitle } from './file-title.component';
 test('it should render', () => {
   render(
     <Provider store={store}>
-      <FileTitle title="El_ansioso.mp3" />
+      <FileTitle name="test_song.mp3" />
     </Provider>,
   );
 });

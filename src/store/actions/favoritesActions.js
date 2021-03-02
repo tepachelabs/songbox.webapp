@@ -1,83 +1,66 @@
-import { Map, fromJS } from 'immutable';
+import { fromJS } from 'immutable';
 
 import {
-  apiAddFavorite,
-  apiFetchFavorites,
+  apiCreateFavorite,
+  apiReadFavorites,
   apiDeleteFavorite,
 } from 'lib/apiFavoritesService';
 
 import { logError } from 'lib/errorLogger';
-import {
-  FAVORITES_SET_IS_FAVORITE_PLAYING,
-  FAVORITES_REMOVE_FAVORITE,
-  FAVORITES_ADD_FAVORITE,
-  FAVORITES_INITIALIZE_FAVORITES,
-} from '../constants';
+import { setFilesList, setFilesLoading } from './filesActions';
 
-export const toggleIsFavoritePlaying = (payload) => ({
-  type: FAVORITES_SET_IS_FAVORITE_PLAYING,
-  payload,
-});
+/* SYNC OPERATIONS */
 
-export const removeFavorite = (payload) => ({
-  type: FAVORITES_REMOVE_FAVORITE,
-  payload,
-});
-export const addFavorite = (payload) => ({
-  type: FAVORITES_ADD_FAVORITE,
-  payload,
-});
-export const initializeFavorites = (payload) => ({
-  type: FAVORITES_INITIALIZE_FAVORITES,
-  payload,
-});
+/* ASYNC OPERATIONS */
 
-export const createFavorite = (body) => (dispatch, getState) => {
+export const createFavorite = ({ name, path }) => (dispatch, getState) => {
   const token = getState().app.get('token');
 
-  apiAddFavorite(token, body)
+  apiCreateFavorite(token, name, path)
     .then(({ data }) => {
-      const songData = Map(data);
-      dispatch(addFavorite(songData));
+      const files = getState().files.get('files');
+      const key = files.findKey((val) => val.get('path') === path);
+      const newFilesState = files.update(key, (value) =>
+        value.set('isFavorite', true).set('favoriteId', data.favoriteId),
+      );
+      dispatch(setFilesList(newFilesState));
     })
     .catch((error) => {
       logError(error);
     });
 };
 
-export const deleteFavorite = (body) => (dispatch, getState) => {
+export const deleteFavorite = (id) => (dispatch, getState) => {
   const token = getState().app.get('token');
 
-  apiDeleteFavorite(token, body)
+  apiDeleteFavorite(token, id)
     .then(() => {
-      dispatch(removeFavorite(Map(body)));
+      const files = getState().files.get('files');
+      const key = files.findKey((val) => val.get('favoriteId') === id);
+      const newFilesState = files.update(key, (value) =>
+        value.set('isFavorite', false).set('favoriteId', null),
+      );
+      dispatch(setFilesList(newFilesState));
     })
     .catch((error) => {
       logError(error);
     });
 };
 
-export const fetchFavoritesSongs = () => (dispatch, getState) => {
+export const getFavorites = () => (dispatch, getState) => {
   const token = getState().app.get('token');
-  const isSessionToken = !!token;
 
-  if (isSessionToken) {
-    apiFetchFavorites(token)
-      .then((result) => {
-        dispatch(initializeFavorites(fromJS(result.data)));
-      })
-      .catch((error) => {
-        logError(error);
-      });
-  }
-};
+  dispatch(setFilesLoading(true));
 
-export const handleInteractionWithFavorite = (isFavorite, body) => (
-  dispatch,
-) => {
-  if (isFavorite) {
-    dispatch(deleteFavorite(body));
-  } else {
-    dispatch(createFavorite(body));
-  }
+  apiReadFavorites(token)
+    .then(({ data }) => {
+      const newState = fromJS(data);
+      dispatch(setFilesList(newState));
+    })
+    .catch((error) => {
+      logError(error);
+    })
+    .finally(() => {
+      dispatch(setFilesLoading(false));
+    });
 };

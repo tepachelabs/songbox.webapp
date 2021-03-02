@@ -4,15 +4,16 @@ import { useTranslation } from 'react-i18next';
 
 import { OrangeButton } from 'style/button';
 
-export const RefreshButtonComponent = ({ event }) => {
+export const RefreshButtonComponent = ({ onClick }) => {
   const [t] = useTranslation();
+
   return (
-    <OrangeButton type="button" onClick={event}>
+    <OrangeButton type="button" onClick={onClick}>
       {t('home.refresh')}
     </OrangeButton>
   );
 };
 
 RefreshButtonComponent.propTypes = {
-  event: propTypes.func.isRequired,
+  onClick: propTypes.func.isRequired,
 };

@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import propTypes from 'prop-types';
 import {
   FormControlLabel,
   Button,
@@ -15,7 +14,6 @@ import {
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
-import { changeSidebarIndex } from 'store/actions';
 import {
   setAutoPlay,
   setDarkTheme,
@@ -41,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Settings = ({ pageNumber }) => {
+export const Settings = () => {
   const dispatch = useDispatch();
   const [t, i18next] = useTranslation();
 
@@ -54,10 +52,6 @@ const Settings = ({ pageNumber }) => {
   );
   const lang = useSelector((state) => state.settings.get('lang'));
   const classes = useStyles();
-
-  useEffect(() => {
-    dispatch(changeSidebarIndex(pageNumber));
-  }, [dispatch, pageNumber]);
 
   const onChange = (event) => {
     dispatch(setLang(event.target.value));
@@ -135,19 +129,9 @@ const Settings = ({ pageNumber }) => {
 
       <Container>
         <p className={classes.p}>
-          Copyright © 2020, Songbox. All rights reserved.
+          Copyright © 2021, Songbox. All rights reserved.
         </p>
       </Container>
     </Paper>
   );
 };
-
-Settings.propTypes = {
-  pageNumber: propTypes.number,
-};
-
-Settings.defaultProps = {
-  pageNumber: 0,
-};
-
-export default Settings;

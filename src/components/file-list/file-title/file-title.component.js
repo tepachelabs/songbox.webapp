@@ -5,13 +5,13 @@ import { Typography } from '@material-ui/core';
 
 import { getFileNameWithoutExtension } from './file-title.utils';
 
-export const FileTitle = ({ title }) => {
+export const FileTitle = ({ name }) => {
   const isExtensionOn = useSelector((state) =>
     state.settings.get('fullFilename'),
   );
   const formattedTitle = isExtensionOn
-    ? title
-    : getFileNameWithoutExtension(title);
+    ? name
+    : getFileNameWithoutExtension(name);
 
   return (
     <Typography variant="inherit" noWrap component="div">
@@ -21,5 +21,5 @@ export const FileTitle = ({ title }) => {
 };
 
 FileTitle.propTypes = {
-  title: propTypes.string.isRequired,
+  name: propTypes.string.isRequired,
 };

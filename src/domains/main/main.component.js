@@ -4,13 +4,13 @@ import { useTranslation } from 'react-i18next';
 import { Paper, Grid, Typography } from '@material-ui/core';
 
 import { BreadcrumbContainer } from 'components/breadcrumb';
-import FilesContainer from 'components/Files';
+import { FileNavigator } from 'components/file-navigator';
 import { RefreshButtonContainer } from 'components/refresh-button';
 
 import { BreadcrumbWrapper } from './main.styles';
 
-const MainComponent = () => {
-  const { path } = useParams();
+export const MainComponent = () => {
+  const { path = '' } = useParams();
   const [t] = useTranslation();
 
   return (
@@ -28,11 +28,9 @@ const MainComponent = () => {
           </BreadcrumbWrapper>
         </Grid>
         <Grid item xs={12}>
-          <FilesContainer path={path || ''} />
+          <FileNavigator path={path} />
         </Grid>
       </Grid>
     </Paper>
   );
 };
-
-export default MainComponent;

@@ -7,9 +7,9 @@ export const UserProfile = () => {
 
   return (
     <UserProfileComponent
+      avatar={user.get('avatar')}
       email={user.get('email')}
-      name={user.getIn(['name', 'display_name'])}
-      photo={user.get('photo')}
+      name={user.get('name')}
     />
   );
 };

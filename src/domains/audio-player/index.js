@@ -1,3 +1,1 @@
-import AudioPlayerContainer from './audio-player.container';
-
-export default AudioPlayerContainer;
+export { AudioPlayerContainer as default } from './audio-player.container';

@@ -1,8 +1,15 @@
 import React from "react";
-import StyleDecorator from "stories/decorators/style-decorator";
+import { ProviderDecorator, StyleDecorator } from "stories/decorators";
 
 export const parameters = {
-  actions: { argTypesRegex: "^on[A-Z].*" },
-}
+  actions: { argTypesRegex: "^on[A-Z].*" }
+};
 
-export const decorators = [(Story) => <StyleDecorator><Story/></StyleDecorator>];
+export const decorators = [
+  (Story) =>
+    <ProviderDecorator>
+      <StyleDecorator>
+        <Story />
+      </StyleDecorator>
+    </ProviderDecorator>
+];

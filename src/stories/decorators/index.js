@@ -1,4 +1,5 @@
-import ProviderDecorator from './ProviderDecorator';
-import RouterDecorator from './RouterDecorator';
+import ProviderDecorator from './provider-decorator';
+import RouterDecorator from './router-decorator';
+import StyleDecorator from './style-decorator';
 
-export { ProviderDecorator, RouterDecorator };
+export { ProviderDecorator, RouterDecorator, StyleDecorator };

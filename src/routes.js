@@ -14,8 +14,7 @@ export const SETTINGS_PATH = '/settings';
 export const HELP_PATH = '/help';
 
 /* API routes */
-export const API_FILE_ROUTE = '/api/file';
-
-/* API favorites routes */
-export const API_FAVORITE_ROUTE = '/api/favorite';
-export const API_FAVORITES_ROUTE = '/api/favorites';
+export const API_ME_ROUTE = '/v1/me';
+export const API_PATH_ROUTE = '/v1/path';
+export const API_STREAM_LINK_ROUTE = '/v1/stream_link';
+export const API_FAVORITES_ROUTE = '/v1/favorites';
