@@ -19,7 +19,7 @@ export const FileListComponent = ({
 FileListComponent.propTypes = {
   itemsList: PropTypes.instanceOf(List).isRequired,
   dense: PropTypes.bool,
-  itemRenderer: PropTypes.any,
+  itemRenderer: PropTypes.any.isRequired,
 };
 
 FileListComponent.defaultProps = {
