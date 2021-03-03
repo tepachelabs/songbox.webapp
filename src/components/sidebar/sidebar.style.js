@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { ProductTitle } from 'style/typography';
+import { makeStyles } from '@material-ui/core/styles';
 
 export const SidebarWrapper = styled.div`
   padding: ${({ theme }) => `${theme.spacing.ten} ${theme.spacing.one}`};
@@ -19,3 +20,9 @@ export const SidebarTitle = styled(ProductTitle)`
   text-align: center;
   width: 100%;
 `;
+
+export const useSidebarStyles = makeStyles(() => ({
+  button: {
+    minWidth: '14em',
+  },
+}));

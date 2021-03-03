@@ -1,5 +1,6 @@
 export const white = '#ffffff';
-export const blue = '#1da1f2';
+export const blue = '#1976d2';
+export const dropboxBlue = '#1da1f2';
 export const black = '#35424a';
 export const muiBackgroundBlack = '#424242';
 export const muiBlack = '#989eb1';
@@ -14,6 +15,7 @@ export const primary = orange;
 export default {
   white,
   blue,
+  dropboxBlue,
   black,
   gray,
   orange,

@@ -1,4 +1,4 @@
-import { Map } from 'immutable';
+import { fromJS, Map } from 'immutable';
 import { getPreferences, setPreferences } from '../../lib/localStorage';
 
 import {
@@ -9,18 +9,14 @@ import {
   SETTINGS_SET_LANG,
 } from '../constants';
 
-let initialState;
+const defaultState = Map({
+  autoPlay: true,
+  darkTheme: false,
+  fullFilename: false,
+  lang: 'en-US',
+});
 const preferences = getPreferences();
-if (!preferences) {
-  initialState = Map({
-    autoPlay: true,
-    darkTheme: false,
-    fullFilename: false,
-    lang: 'en-US',
-  });
-} else {
-  initialState = Map(preferences);
-}
+const initialState = preferences ? fromJS(preferences) : defaultState;
 
 const settingsReducer = (state = initialState, { type, payload }) => {
   switch (type) {
@@ -45,8 +41,8 @@ const settingsReducer = (state = initialState, { type, payload }) => {
       return newState;
     }
     case SETTINGS_RESTORE_PREFERENCES:
-      return initialState;
-
+      setPreferences(defaultState);
+      return defaultState;
     default:
       return state;
   }

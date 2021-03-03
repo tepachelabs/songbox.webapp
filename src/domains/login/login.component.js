@@ -8,7 +8,7 @@ import { Link } from 'style/typography';
 import {
   LoginCenteredWrapper,
   LoginContentWrapper,
-  LoginContent,
+  LoginText,
   LoginSplash,
   LoginSplashTitle,
   LoginSplashWrapper,
@@ -26,9 +26,15 @@ export const Login = () => {
       </LoginSplashWrapper>
       <LoginContentWrapper>
         <LoginTitle>{t('landing.login')}</LoginTitle>
-        <LoginContent>{t('landing.message')}</LoginContent>
+        <LoginText>{t('landing.message')}</LoginText>
         <LoginCenteredWrapper>
-          <DropboxButton size="large" href={DROPBOX_SIGN_IN_ROUTE}>
+          <DropboxButton
+            size="large"
+            href={DROPBOX_SIGN_IN_ROUTE}
+            variant="contained"
+            disableElevation
+            color="primary"
+          >
             Dropbox
           </DropboxButton>
         </LoginCenteredWrapper>

@@ -1,5 +1,5 @@
 import { Button as MuiButton, withStyles } from '@material-ui/core';
-import { blue, white, orange } from './colors';
+import { white, orange, dropboxBlue } from './colors';
 
 export const Button = withStyles(({ spacing }) => ({
   root: {
@@ -12,10 +12,10 @@ export const Button = withStyles(({ spacing }) => ({
 
 export const DropboxButton = withStyles(() => ({
   root: {
+    backgroundColor: dropboxBlue,
     color: white,
-    backgroundColor: blue,
     '&:hover': {
-      backgroundColor: blue,
+      backgroundColor: dropboxBlue,
     },
   },
 }))(Button);
