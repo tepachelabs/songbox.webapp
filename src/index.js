@@ -7,8 +7,8 @@ import store from 'store';
 import StyleProvider from 'style/style-provider';
 import { App } from 'domains/core';
 import { Loading } from './domains/core/Loading';
-import 'translations';
 
+import 'translations';
 import 'index.css';
 
 initErrorLogger();

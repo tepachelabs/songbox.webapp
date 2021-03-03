@@ -5,9 +5,9 @@
 /* themes instead.                              */
 
 html, body, #root {
-    font-family: 'Asap', sans-serif;
     height: 100%;
-    margin: 0;
-    padding: 0;
-    width: 100%;
+}
+
+a:visited:not(.MuiButton-root) {
+    color: inherit;
 }

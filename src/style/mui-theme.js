@@ -1,42 +1,31 @@
 import { createMuiTheme } from '@material-ui/core/styles';
-import { gray, black, hexToRGB, orange, white } from './colors';
-
-const transparentOrange = `rgba(${hexToRGB(orange)},0.1)`;
+import { black, orange, white } from './colors';
 
 export function MuiThemeFactory() {
-  const create = (themeType = 'light') =>
+  const create = (isDarkThemeActive) =>
     createMuiTheme({
       palette: {
-        type: themeType,
+        common: { black, white },
+        primary: {
+          type: isDarkThemeActive ? 'dark' : 'light',
+          main: isDarkThemeActive ? orange : orange,
+        },
         text: {
-          primary: themeType === 'light' ? gray : white,
+          primary: isDarkThemeActive ? white : black,
         },
       },
-      color: themeType === 'light' ? gray : white,
       typography: {
-        h4: {
-          padding: '10px',
-        },
-        fontFamily: ['Quicksand', 'sans-serif'],
-      },
-      overrides: {
-        MuiListItem: {
-          root: {
-            color: themeType === 'light' ? black : white,
-            fontSize: 16,
-            '&.active': {
-              backgroundColor: transparentOrange,
-            },
-          },
-          button: {
-            minWidth: '14em',
-            '&:hover': {
-              backgroundColor: transparentOrange,
-            },
-          },
-        },
+        fontFamily: ['Asap', 'sans-serif'],
+        h1: { fontFamily: ['Quicksand', 'sans-serif'] },
+        h2: { fontFamily: ['Quicksand', 'sans-serif'] },
+        h3: { fontFamily: ['Quicksand', 'sans-serif'] },
+        h4: { fontFamily: ['Quicksand', 'sans-serif'] },
+        h5: { fontFamily: ['Quicksand', 'sans-serif'] },
+        h6: { fontFamily: ['Quicksand', 'sans-serif'] },
+        button: { fontFamily: ['Quicksand', 'sans-serif'] },
       },
     });
+
   return {
     create,
   };

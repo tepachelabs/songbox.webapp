@@ -4,6 +4,7 @@ import { ThemeProvider } from 'styled-components';
 import { useSelector } from 'react-redux';
 
 import {
+  CssBaseline,
   StylesProvider,
   ThemeProvider as MuiThemeProvider,
 } from '@material-ui/core';
@@ -15,11 +16,12 @@ export default function StyleProvider({ children }) {
   const isDarkThemeActive = useSelector((state) =>
     state.settings.get('darkTheme'),
   );
-  const type = isDarkThemeActive ? 'dark' : 'light';
-  const muiTheme = MuiThemeFactory.create(type);
+  const muiTheme = MuiThemeFactory.create(isDarkThemeActive);
   const styledTheme = isDarkThemeActive ? dark : light;
+
   return (
     <StylesProvider injectFirst>
+      <CssBaseline />
       <MuiThemeProvider theme={muiTheme}>
         <ThemeProvider theme={styledTheme}>{children}</ThemeProvider>
       </MuiThemeProvider>

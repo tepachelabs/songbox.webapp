@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Box } from '@material-ui/core';
 
-import { ProductTitle } from 'style/typography';
+import { FONT, ProductTitle } from 'style/typography';
 import { respondTo } from 'style/respondTo';
 
 import splashImg from './img/splash.jpg';
@@ -57,7 +57,7 @@ export const LoginSplash = styled.div`
 `;
 
 export const LoginSplashTitle = styled(ProductTitle)`
-  color: white;
+  color: ${(props) => props.theme.colors.white};
   position: absolute;
   right: ${(props) => props.theme.spacing.four};
   top: ${(props) => props.theme.spacing.two};
@@ -68,7 +68,9 @@ export const LoginTitle = styled(ProductTitle)`
   margin-bottom: 0;
 `;
 
-export const LoginContent = styled.p`
+export const LoginText = styled.p`
+  color: ${(props) => props.theme.textColor.base};
   margin-top: ${(props) => props.theme.spacing.one};
   margin-bottom: 0;
+  ${FONT.DEFAULT}
 `;

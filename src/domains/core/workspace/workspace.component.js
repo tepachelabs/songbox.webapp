@@ -1,5 +1,6 @@
 import React, { Suspense } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import {
   FAVORITES_PATH,
@@ -9,36 +10,49 @@ import {
   SETTINGS_PATH,
 } from 'routes';
 
-import { Sidebar } from 'components/sidebar';
-import { UserProfile } from 'components/user-profile';
+import { Page } from 'components/page';
 import { Loading } from '../Loading';
-
-import { AppWrapper, MenuWrapper } from './workspace.style';
 
 const Main = React.lazy(() => import('domains/main'));
 const Favorites = React.lazy(() => import('domains/favorites'));
-const Settings = React.lazy(() => import('components/Settings'));
+const Settings = React.lazy(() => import('domains/settings'));
 const Help = React.lazy(() => import('domains/help'));
 const AudioPlayer = React.lazy(() => import('domains/audio-player'));
 
-export const WorkspaceComponent = () => (
-  <BrowserRouter>
-    <MenuWrapper>
-      <Sidebar>
-        <UserProfile />
-      </Sidebar>
-    </MenuWrapper>
-    <AppWrapper>
+export const WorkspaceComponent = () => {
+  const [t] = useTranslation();
+  return (
+    <BrowserRouter>
       <Suspense fallback={<Loading />}>
         <Switch>
-          <Route path={FAVORITES_PATH} component={Favorites} />
-          <Route path={SETTINGS_PATH} component={Settings} />
-          <Route path={HELP_PATH} component={Help} />
-          <Route path={APP_PATH} exact component={Main} />
-          <Route path={FILE_PATH} exact component={Main} />
+          <Route path={FAVORITES_PATH}>
+            <Page title={t('favorites.title')}>
+              <Favorites />
+            </Page>
+          </Route>
+          <Route path={SETTINGS_PATH}>
+            <Page title={t('settings.title')}>
+              <Settings />
+            </Page>
+          </Route>
+          <Route path={HELP_PATH} exact>
+            <Page title={t('help.title')}>
+              <Help />
+            </Page>
+          </Route>
+          <Route path={APP_PATH} exact>
+            <Page title={t('home.title')}>
+              <Main />
+            </Page>
+          </Route>
+          <Route path={FILE_PATH} exact>
+            <Page title={t('home.title')}>
+              <Main />
+            </Page>
+          </Route>
         </Switch>
       </Suspense>
-    </AppWrapper>
-    <AudioPlayer />
-  </BrowserRouter>
-);
+      <AudioPlayer />
+    </BrowserRouter>
+  );
+};

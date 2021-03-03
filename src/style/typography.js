@@ -19,10 +19,12 @@ export const ProductTitle = styled.h1`
 `;
 
 export const Link = styled.a`
-  color: ${(props) => props.theme.textColor.base};
+  color: ${(props) => props.theme.textColor.base} !important;
   text-decoration: none;
 
   &:hover {
-    color: ${(props) => props.theme.textColor.darker};
+    color: ${(props) => props.theme.textColor.darker} !important;
   }
+
+  ${DefaultFont}
 `;

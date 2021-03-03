@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import {
   Drawer,
+  IconButton,
   List,
   ListItem,
   ListItemIcon,
@@ -11,13 +12,17 @@ import {
 } from '@material-ui/core';
 
 import { MenuIcon } from 'components/icon';
-import { Button } from 'style/button';
-import { orange } from 'style/colors';
 
 import { MENU_ITEMS } from './sidebar.constants';
-import { SidebarWrapper, SidebarDivisor, SidebarTitle } from './sidebar.style';
+import {
+  SidebarWrapper,
+  SidebarDivisor,
+  SidebarTitle,
+  useSidebarStyles,
+} from './sidebar.style';
 
 export const Sidebar = ({ children }) => {
+  const classes = useSidebarStyles();
   const [isOpen, setIsOpen] = useState();
   const [t] = useTranslation();
   const toggleDrawer = (open) => ({ type, key }) => {
@@ -29,9 +34,14 @@ export const Sidebar = ({ children }) => {
 
   return (
     <Fragment>
-      <Button onClick={toggleDrawer(true)}>
-        <MenuIcon stroke={orange} width={32} height={32} />
-      </Button>
+      <IconButton
+        edge="start"
+        color="inherit"
+        aria-label="menu"
+        onClick={toggleDrawer(true)}
+      >
+        <MenuIcon width={32} height={32} />
+      </IconButton>
       <Drawer open={isOpen} onClose={toggleDrawer(false)}>
         <SidebarWrapper>
           {children}
@@ -39,6 +49,7 @@ export const Sidebar = ({ children }) => {
           <List>
             {MENU_ITEMS.map(({ title, link, icon: Icon }) => (
               <ListItem
+                className={classes.button}
                 key={title}
                 button
                 component={NavLink}
@@ -48,7 +59,7 @@ export const Sidebar = ({ children }) => {
                 <ListItemIcon>
                   <Icon />
                 </ListItemIcon>
-                <ListItemText disableTypography primary={t(`menu.${title}`)} />
+                <ListItemText primary={t(`menu.${title}`)} />
               </ListItem>
             ))}
           </List>

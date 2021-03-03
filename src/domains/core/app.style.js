@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const AppWrapper = styled.div`
-  height: 100%;
+  min-height: 100%;
+  height: auto;
   background-color: ${(props) => props.theme.background};
 `;
