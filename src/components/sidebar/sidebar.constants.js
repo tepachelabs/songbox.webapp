@@ -2,8 +2,8 @@ import {
   APP_PATH,
   FAVORITES_PATH,
   HELP_PATH,
-  LOGIN_PATH,
   SETTINGS_PATH,
+  SIGN_OUT_PATH,
 } from 'routes';
 
 import {
@@ -19,5 +19,5 @@ export const MENU_ITEMS = [
   { icon: HeartIcon, title: 'favorites', link: FAVORITES_PATH },
   { icon: SettingsIcon, title: 'settings', link: SETTINGS_PATH },
   { icon: HelpCircleIcon, title: 'help', link: HELP_PATH },
-  { icon: LogOutIcon, title: 'sign-out', link: LOGIN_PATH },
+  { icon: LogOutIcon, title: 'sign-out', link: SIGN_OUT_PATH },
 ];
