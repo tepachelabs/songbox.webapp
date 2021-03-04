@@ -3,9 +3,10 @@ import propTypes from 'prop-types';
 import { Map } from 'immutable';
 import { useDispatch } from 'react-redux';
 import { IconButton } from '@material-ui/core';
+import { useTranslation } from 'react-i18next';
 
 import { FileListItemComponent } from 'components/file-list';
-import { HeartIcon, MusicIcon } from 'components/icon';
+import { HeartIcon, HelpCircleIcon, MusicIcon } from 'components/icon';
 import { playAudio } from 'store/actions/playerActions';
 import { createFavorite, deleteFavorite } from 'store/actions/favoritesActions';
 import { gray } from 'style/colors';
@@ -15,11 +16,18 @@ const getFavoriteIcon = (isFavorite) => {
   return <HeartIcon fill={fillHeartStatus} stroke={gray} />;
 };
 
+const getLinkStatusIcon = (isBroken) =>
+  isBroken ? <HelpCircleIcon /> : <MusicIcon />;
+
 export const AudioLeg = ({ item }) => {
   const dispatch = useDispatch();
-  const name = item.get('name');
+  const [t] = useTranslation();
   const path = item.get('path');
   const isFavorite = item.get('isFavorite');
+  const isBroken = item.get('isBroken');
+  const name = isBroken
+    ? `${t('common.brokenLink')} ${item.get('name')}`
+    : item.get('name');
 
   const onFavoriteClick = () => {
     if (isFavorite) {
@@ -32,8 +40,9 @@ export const AudioLeg = ({ item }) => {
   return (
     <FileListItemComponent
       name={name}
-      icon={<MusicIcon />}
-      onClick={() => dispatch(playAudio(path))}
+      icon={getLinkStatusIcon(isBroken)}
+      isStrikethrough={isBroken}
+      onClick={() => !isBroken && dispatch(playAudio(path))}
     >
       <IconButton
         key={`favorite-cta-${name}`}

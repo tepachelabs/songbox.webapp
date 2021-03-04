@@ -1,5 +1,6 @@
 {
   "common": {
+    "brokenLink": "[Enlace roto]",
     "privacy": "Politicas de privacidad",
     "tos": "Términos de servicio"
   },

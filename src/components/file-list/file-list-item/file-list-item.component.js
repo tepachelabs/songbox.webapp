@@ -12,6 +12,7 @@ import { FileTitle } from '../file-title';
 export const FileListItemComponent = ({
   children,
   icon,
+  isStrikethrough,
   onClick,
   name,
   ...props
@@ -19,7 +20,7 @@ export const FileListItemComponent = ({
   <FileListItem button onClick={onClick} {...props}>
     <ListItemIcon>{icon}</ListItemIcon>
     <ListItemText>
-      <FileTitle name={name} />
+      <FileTitle name={name} isStrikethrough={isStrikethrough} />
     </ListItemText>
     {children && <ListItemSecondaryAction>{children}</ListItemSecondaryAction>}
   </FileListItem>
@@ -28,6 +29,7 @@ export const FileListItemComponent = ({
 FileListItemComponent.propTypes = {
   children: PropTypes.node,
   icon: PropTypes.node,
+  isStrikethrough: PropTypes.bool,
   onClick: PropTypes.func,
   name: PropTypes.string.isRequired,
 };
