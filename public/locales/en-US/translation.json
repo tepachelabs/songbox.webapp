@@ -33,7 +33,7 @@
       "title": "Appearance",
       "desc": "The way you visualize your Songbox",
       "darkThemeLabel": "Toggle dark theme",
-      "hideFileExtensionLabel": "Hide file extensions"
+      "showFileExtensionLabel": "Show files extension (for audio files only)"
     },
     "other": {
       "title": "Other settings",

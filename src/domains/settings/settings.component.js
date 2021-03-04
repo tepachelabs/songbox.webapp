@@ -19,10 +19,10 @@ export const SettingsComponent = ({
   isAutoPlayEnabled,
   isDarkThemeEnabled,
   isFullFilenameEnabled,
-  onLanguageChange,
+  onAppLanguageChange,
   onSettingChange,
   onRestoreClick,
-  userLanguage,
+  appLanguage,
 }) => {
   const [t] = useTranslation();
 
@@ -84,7 +84,7 @@ export const SettingsComponent = ({
                   onChange={onSettingChange}
                 />
               }
-              label={t('settings.appearance.hideFileExtensionLabel')}
+              label={t('settings.appearance.showFileExtensionLabel')}
             />
           </FormGroup>
         </FormControl>
@@ -104,9 +104,9 @@ export const SettingsComponent = ({
             <InputLabel>{t('settings.other.languageLabel')}</InputLabel>
             <Select
               autoWidth
-              name="userLanguage"
-              onChange={onLanguageChange}
-              value={userLanguage}
+              name="appLanguage"
+              onChange={onAppLanguageChange}
+              value={appLanguage}
             >
               <MenuItem value="en-US">English</MenuItem>
               <MenuItem value="es-MX">Español</MenuItem>
@@ -132,8 +132,8 @@ SettingsComponent.propTypes = {
   isAutoPlayEnabled: PropTypes.bool.isRequired,
   isDarkThemeEnabled: PropTypes.bool.isRequired,
   isFullFilenameEnabled: PropTypes.bool.isRequired,
-  onLanguageChange: PropTypes.func.isRequired,
+  onAppLanguageChange: PropTypes.func.isRequired,
   onSettingChange: PropTypes.func.isRequired,
   onRestoreClick: PropTypes.func.isRequired,
-  userLanguage: PropTypes.string.isRequired,
+  appLanguage: PropTypes.string.isRequired,
 };

@@ -21,15 +21,17 @@ export const SettingsContainer = () => {
   const dispatch = useDispatch();
   const [, i18next] = useTranslation();
   const isAutoPlayEnabled = useSelector(({ settings }) =>
-    settings.get('autoPlay'),
+    settings.get('isAutoPlay'),
   );
   const isDarkThemeEnabled = useSelector(({ settings }) =>
-    settings.get('darkTheme'),
+    settings.get('isDarkTheme'),
   );
   const isFullFilenameEnabled = useSelector(({ settings }) =>
-    settings.get('fullFilename'),
+    settings.get('isFullFilename'),
   );
-  const userLanguage = useSelector((state) => state.settings.get('lang'));
+  const appLanguage = useSelector(({ settings }) =>
+    settings.get('appLanguage'),
+  );
 
   const onSettingChange = ({ target }) => {
     const action = targetNameToAction[target.name];
@@ -42,9 +44,9 @@ export const SettingsContainer = () => {
     dispatch(restorePreferences());
   };
 
-  const onLanguageChange = (event) => {
+  const onAppLanguageChange = (event) => {
     dispatch(setLang(event.target.value));
-    i18next.changeLanguage(userLanguage);
+    i18next.changeLanguage(appLanguage);
   };
 
   return (
@@ -52,10 +54,10 @@ export const SettingsContainer = () => {
       isAutoPlayEnabled={isAutoPlayEnabled}
       isDarkThemeEnabled={isDarkThemeEnabled}
       isFullFilenameEnabled={isFullFilenameEnabled}
-      onLanguageChange={onLanguageChange}
+      onAppLanguageChange={onAppLanguageChange}
       onSettingChange={onSettingChange}
       onRestoreClick={onRestoreClick}
-      userLanguage={userLanguage}
+      appLanguage={appLanguage}
     />
   );
 };

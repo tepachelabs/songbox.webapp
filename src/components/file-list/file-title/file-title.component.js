@@ -6,10 +6,10 @@ import { Typography } from '@material-ui/core';
 import { getFileNameWithoutExtension } from './file-title.utils';
 
 export const FileTitle = ({ name }) => {
-  const isExtensionOn = useSelector((state) =>
-    state.settings.get('fullFilename'),
+  const isFullFilenameEnabled = useSelector(({ settings }) =>
+    settings.get('isFullFilename'),
   );
-  const formattedTitle = isExtensionOn
+  const formattedTitle = isFullFilenameEnabled
     ? name
     : getFileNameWithoutExtension(name);
 

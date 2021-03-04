@@ -10,26 +10,32 @@ const AppComponent = React.lazy(() => import('./app.component'));
 
 export const App = () => {
   const dispatch = useDispatch();
-  const lang = useSelector((state) => state.settings.get('lang'));
   const [, i18next] = useTranslation();
+  const appLanguage = useSelector(({ settings }) =>
+    settings.get('appLanguage'),
+  );
+
+  useEffect(() => {
+    const mobileOS = getMobileOperatingSystem();
+    dispatch(setOS(mobileOS));
+  }, []);
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const retrievedToken = urlParams.get('token');
-    const os = getMobileOperatingSystem();
 
     if (retrievedToken) {
       dispatch(createNewSession(retrievedToken));
     } else {
       dispatch(recoverSession());
     }
+  }, [dispatch]);
 
-    dispatch(setOS(os));
-
-    if (lang !== i18next.language) {
-      i18next.changeLanguage(lang);
+  useEffect(() => {
+    if (appLanguage !== i18next.language) {
+      i18next.changeLanguage(appLanguage);
     }
-  }, [dispatch, lang]);
+  }, [appLanguage]);
 
   return <AppComponent />;
 };
