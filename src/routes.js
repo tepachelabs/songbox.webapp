@@ -12,6 +12,7 @@ export const FILE_PATH = '/app/:path+';
 export const FAVORITES_PATH = '/favorites';
 export const SETTINGS_PATH = '/settings';
 export const HELP_PATH = '/help';
+export const SIGN_OUT_PATH = '/sign-out';
 
 /* API routes */
 export const API_ME_ROUTE = '/v1/me';

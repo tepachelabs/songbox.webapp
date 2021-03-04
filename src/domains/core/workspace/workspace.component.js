@@ -8,6 +8,7 @@ import {
   HELP_PATH,
   APP_PATH,
   SETTINGS_PATH,
+  SIGN_OUT_PATH,
 } from 'routes';
 
 import { Page } from 'components/page';
@@ -17,6 +18,7 @@ const Main = React.lazy(() => import('domains/main'));
 const Favorites = React.lazy(() => import('domains/favorites'));
 const Settings = React.lazy(() => import('domains/settings'));
 const Help = React.lazy(() => import('domains/help'));
+const SignOut = React.lazy(() => import('domains/sign-out'));
 const AudioPlayer = React.lazy(() => import('domains/audio-player'));
 
 export const WorkspaceComponent = () => {
@@ -25,6 +27,7 @@ export const WorkspaceComponent = () => {
     <BrowserRouter>
       <Suspense fallback={<Loading />}>
         <Switch>
+          <Route path={SIGN_OUT_PATH} component={SignOut} />
           <Route path={FAVORITES_PATH}>
             <Page title={t('favorites.title')}>
               <Favorites />
