@@ -13,11 +13,11 @@ import MuiThemeFactory from './mui-theme';
 import { light, dark } from './theme';
 
 export default function StyleProvider({ children }) {
-  const isDarkThemeActive = useSelector((state) =>
-    state.settings.get('darkTheme'),
+  const isDarkThemeEnabled = useSelector(({ settings }) =>
+    settings.get('isDarkTheme'),
   );
-  const muiTheme = MuiThemeFactory.create(isDarkThemeActive);
-  const styledTheme = isDarkThemeActive ? dark : light;
+  const muiTheme = MuiThemeFactory.create(isDarkThemeEnabled);
+  const styledTheme = isDarkThemeEnabled ? dark : light;
 
   return (
     <StylesProvider injectFirst>

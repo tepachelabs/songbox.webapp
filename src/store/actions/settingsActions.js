@@ -1,28 +1,35 @@
 import {
-  SETTINGS_SET_AUTO_PLAY,
-  SETTINGS_SET_FULL_FILENAME,
-  SETTINGS_SET_DARK_THEME,
+  SETTINGS_SET_APP_LANGUAGE,
+  SETTINGS_SET_IS_AUTO_PLAY,
+  SETTINGS_SET_IS_DARK_THEME,
+  SETTINGS_SET_IS_FULL_FILENAME,
   SETTINGS_RESTORE_PREFERENCES,
-  SETTINGS_SET_LANG,
 } from '../constants';
 
+/* SYNC OPERATIONS */
+
 export const setAutoPlay = (payload) => ({
-  type: SETTINGS_SET_AUTO_PLAY,
+  type: SETTINGS_SET_IS_AUTO_PLAY,
   payload,
 });
-export const setFullFilename = (payload) => ({
-  type: SETTINGS_SET_FULL_FILENAME,
-  payload,
-});
+
 export const setDarkTheme = (payload) => ({
-  type: SETTINGS_SET_DARK_THEME,
+  type: SETTINGS_SET_IS_DARK_THEME,
   payload,
 });
+
+export const setFullFilename = (payload) => ({
+  type: SETTINGS_SET_IS_FULL_FILENAME,
+  payload,
+});
+
+export const setLang = (payload) => ({
+  type: SETTINGS_SET_APP_LANGUAGE,
+  payload,
+});
+
 export const restorePreferences = () => ({
   type: SETTINGS_RESTORE_PREFERENCES,
 });
 
-export const setLang = (payload) => ({
-  type: SETTINGS_SET_LANG,
-  payload,
-});
+/* ASYNC OPERATIONS */
