@@ -21,7 +21,11 @@
     "refresh": "Refresh"
   },
   "favorites": {
-    "title": "Your favorites ❤️"
+    "title": "Your favorites ❤️",
+    "empty": {
+      "title": "This looks empty!",
+      "subtitle": "All items marked as favorite will appear here, regardless their path."
+    }
   },
   "settings": {
     "title": "Personalize your Songbox",

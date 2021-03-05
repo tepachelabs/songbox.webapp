@@ -3,8 +3,7 @@ import propTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { getContentsFromPath } from 'store/actions/filesActions';
-import { Loading } from 'domains/core/Loading';
-import { FileListComponent } from 'components/file-list';
+import { FileListComponent, FileListLoading } from 'components/file-list';
 import { FolderLeg } from './folder-leg.component';
 import { AudioLeg } from './audio-leg.component';
 
@@ -18,7 +17,7 @@ export const FileNavigator = ({ path }) => {
     dispatch(getContentsFromPath(path));
   }, [path, dispatch]);
 
-  if (isLoading) return <Loading />;
+  if (isLoading) return <FileListLoading />;
 
   return (
     <Fragment>
