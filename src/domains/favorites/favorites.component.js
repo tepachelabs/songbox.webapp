@@ -1,19 +1,20 @@
 import React from 'react';
 import { List } from 'immutable';
 import propTypes from 'prop-types';
-import { Grid } from '@material-ui/core';
 
-import { FileListComponent } from 'components/file-list';
+import { FileListComponent, FileListLoading } from 'components/file-list';
 import { AudioLeg } from 'components/file-navigator';
+import { FavoritesEmpty } from './favorites-empty.component';
 
-const FavoritesComponent = ({ itemsList }) => (
-  <Grid item xs={12}>
-    <FileListComponent itemsList={itemsList} itemRenderer={AudioLeg} />
-  </Grid>
-);
+export const FavoritesComponent = ({ isLoading, itemsList }) => {
+  if (isLoading) return <FileListLoading />;
 
-FavoritesComponent.propTypes = {
-  itemsList: propTypes.instanceOf(List).isRequired,
+  if (!itemsList.size) return <FavoritesEmpty />;
+
+  return <FileListComponent itemsList={itemsList} itemRenderer={AudioLeg} />;
 };
 
-export default FavoritesComponent;
+FavoritesComponent.propTypes = {
+  isLoading: propTypes.bool,
+  itemsList: propTypes.instanceOf(List).isRequired,
+};

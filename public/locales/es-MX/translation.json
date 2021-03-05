@@ -21,7 +21,11 @@
     "refresh": "Actualizar"
   },
   "favorites": {
-    "title": "Tus favoritos ❤️"
+    "title": "Tus favoritos ❤️",
+    "empty": {
+      "title": "¡Tu lista está vacía!",
+      "subtitle": "Todos tus favoritos aparecerán aquí, sin importar su ubicación."
+    }
   },
   "settings": {
     "title": "Personaliza tu Songbox",

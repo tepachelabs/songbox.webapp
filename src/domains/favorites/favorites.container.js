@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Grid } from '@material-ui/core';
 
 import { getFavorites } from 'store/actions/favoritesActions';
-import { Loading } from 'domains/core/Loading';
-import FavoritesComponent from './favorites.component';
+import { FavoritesComponent } from './favorites.component';
 
-const FavoritesContainer = () => {
+export const FavoritesContainer = () => {
   const files = useSelector((state) => state.files.get('files'));
   const isLoading = useSelector((state) => state.files.get('isLoading'));
   const dispatch = useDispatch();
@@ -14,9 +14,9 @@ const FavoritesContainer = () => {
     dispatch(getFavorites());
   }, [dispatch]);
 
-  if (isLoading) return <Loading />;
-
-  return <FavoritesComponent itemsList={files} />;
+  return (
+    <Grid item xs={12}>
+      <FavoritesComponent isLoading={isLoading} itemsList={files} />
+    </Grid>
+  );
 };
-
-export default FavoritesContainer;
