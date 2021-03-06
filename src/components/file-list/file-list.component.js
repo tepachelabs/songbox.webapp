@@ -8,10 +8,11 @@ export const FileListComponent = ({
   dense,
   itemsList,
   itemRenderer: ItemRenderer,
+  ...props
 }) => (
   <ListWrapper dense={dense}>
     {itemsList.map((item) => (
-      <ItemRenderer key={item.get('name')} item={item} />
+      <ItemRenderer key={item.get('name')} item={item} {...props} />
     ))}
   </ListWrapper>
 );

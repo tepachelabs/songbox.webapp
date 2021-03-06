@@ -19,7 +19,7 @@ const getFavoriteIcon = (isFavorite) => {
 const getLinkStatusIcon = (isBroken) =>
   isBroken ? <HelpCircleIcon /> : <MusicIcon />;
 
-export const AudioLeg = ({ item }) => {
+export const AudioLeg = ({ item, currentSongPath }) => {
   const dispatch = useDispatch();
   const [t] = useTranslation();
   const path = item.get('path');
@@ -41,6 +41,7 @@ export const AudioLeg = ({ item }) => {
     <FileListItemComponent
       name={name}
       icon={getLinkStatusIcon(isBroken)}
+      selected={currentSongPath === path}
       isStrikethrough={isBroken}
       onClick={() => !isBroken && dispatch(playAudio(path))}
     >
@@ -56,5 +57,6 @@ export const AudioLeg = ({ item }) => {
 };
 
 AudioLeg.propTypes = {
+  currentSongPath: propTypes.string,
   item: propTypes.instanceOf(Map).isRequired,
 };
