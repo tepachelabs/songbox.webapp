@@ -11,6 +11,7 @@ export const FileNavigator = ({ path }) => {
   const files = useSelector((state) => state.files.get('files'));
   const folders = useSelector((state) => state.files.get('folders'));
   const isLoading = useSelector((state) => state.files.get('isLoading'));
+  const currentSong = useSelector(({ player }) => player.get('currentSong'));
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -22,7 +23,11 @@ export const FileNavigator = ({ path }) => {
   return (
     <Fragment>
       <FileListComponent itemsList={folders} itemRenderer={FolderLeg} />
-      <FileListComponent itemsList={files} itemRenderer={AudioLeg} />
+      <FileListComponent
+        itemsList={files}
+        itemRenderer={AudioLeg}
+        currentSongPath={currentSong?.get('path')}
+      />
     </Fragment>
   );
 };
