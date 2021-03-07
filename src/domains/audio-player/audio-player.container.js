@@ -4,10 +4,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import 'react-h5-audio-player/lib/styles.css';
 
 import { loadNextSong, loadPreviousSong } from 'store/actions/playerActions';
-import { AudioWrapper } from './audio-player.styles';
 import { AudioPlayerHeader } from './audio-player-header.components';
+import { AudioWrapper, CircularProgress } from './audio-player.styles';
 
 export const AudioPlayerContainer = () => {
+  const isLoading = useSelector(({ player }) => player.get('isLoading'));
   const currentSong = useSelector(({ player }) => player.get('currentSong'));
   const isAutoPlayEnabled = useSelector(({ settings }) =>
     settings.get('isAutoPlay'),
@@ -41,6 +42,9 @@ export const AudioPlayerContainer = () => {
             currentSong={currentSong}
           />
         }
+        customIcons={{
+          play: isLoading ? <CircularProgress /> : null,
+        }}
       />
     </AudioWrapper>
   );
