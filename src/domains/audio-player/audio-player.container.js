@@ -20,7 +20,7 @@ export const AudioPlayerContainer = () => {
   const onPrevClick = () => dispatch(loadPreviousSong());
   const onEnded = () => {
     if (isAutoPlayEnabled) {
-      dispatch(loadPreviousSong());
+      dispatch(loadNextSong());
     }
   };
 
