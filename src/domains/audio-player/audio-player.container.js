@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import AudioPlayer from 'react-h5-audio-player';
 import { useDispatch, useSelector } from 'react-redux';
 import 'react-h5-audio-player/lib/styles.css';
 
 import { loadNextSong, loadPreviousSong } from 'store/actions/playerActions';
+import { CircularProgressIcon } from 'components/circular-progress-icon';
 import { AudioPlayerHeader } from './audio-player-header.components';
-import { AudioWrapper, CircularProgress } from './audio-player.styles';
+import { AudioWrapper } from './audio-player.styles';
+
+const BRAND = 'Songbox';
 
 export const AudioPlayerContainer = () => {
   const isLoading = useSelector(({ player }) => player.get('isLoading'));
@@ -17,6 +20,8 @@ export const AudioPlayerContainer = () => {
     settings.get('isFullFilename'),
   );
   const dispatch = useDispatch();
+  const onPlay = () => setIsPlaying(true);
+  const onPause = () => setIsPlaying(false);
   const onNextClick = () => dispatch(loadNextSong());
   const onPrevClick = () => dispatch(loadPreviousSong());
   const onEnded = () => {
@@ -24,6 +29,15 @@ export const AudioPlayerContainer = () => {
       dispatch(loadNextSong());
     }
   };
+
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  useEffect(() => {
+    document.title =
+      currentSong && isPlaying
+        ? `▶️ ${currentSong.get('name')} - ${BRAND}`
+        : BRAND;
+  }, [currentSong, isPlaying]);
 
   return (
     <AudioWrapper>
@@ -33,6 +47,8 @@ export const AudioPlayerContainer = () => {
         src={currentSong?.get('src')}
         onClickNext={onNextClick}
         onClickPrevious={onPrevClick}
+        onPause={onPause}
+        onPlay={onPlay}
         onEnded={onEnded}
         customVolumeControls={[]}
         customAdditionalControls={[]}
@@ -43,7 +59,7 @@ export const AudioPlayerContainer = () => {
           />
         }
         customIcons={{
-          play: isLoading ? <CircularProgress /> : null,
+          play: isLoading ? <CircularProgressIcon /> : null,
         }}
       />
     </AudioWrapper>

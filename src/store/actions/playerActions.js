@@ -28,7 +28,9 @@ export const setPlaylist = (payload) => ({
 
 export const playAudio = (path) => (dispatch, getState) => {
   const token = getState().app.get('token');
+  const currentSong = getState().player.get('currentSong');
   dispatch(setIsLoading(true));
+  dispatch(setCurrentSong(currentSong?.set('path', path)));
 
   apiFetchStreamableSong(token, path)
     .then(({ data }) => {
