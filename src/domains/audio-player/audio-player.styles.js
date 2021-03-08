@@ -22,7 +22,7 @@ export const useAudioPlayerStyle = makeStyles(({ palette }) => ({
       outline: 0,
     },
 
-    '& .rhap_header': {
+    '& .rhap_header, & .rhap_time': {
       color: palette.text.primary,
     },
   },
