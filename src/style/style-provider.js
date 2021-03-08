@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
 import { useSelector } from 'react-redux';
@@ -11,6 +11,7 @@ import {
 
 import MuiThemeFactory from './mui-theme';
 import { light, dark } from './theme';
+import { muiBlack, muiWhite } from './colors';
 
 export default function StyleProvider({ children }) {
   const isDarkThemeEnabled = useSelector(({ settings }) =>
@@ -18,6 +19,12 @@ export default function StyleProvider({ children }) {
   );
   const muiTheme = MuiThemeFactory.create(isDarkThemeEnabled);
   const styledTheme = isDarkThemeEnabled ? dark : light;
+
+  useEffect(() => {
+    document.body.style.backgroundColor = isDarkThemeEnabled
+      ? muiBlack
+      : muiWhite;
+  }, [isDarkThemeEnabled]);
 
   return (
     <StylesProvider injectFirst>
