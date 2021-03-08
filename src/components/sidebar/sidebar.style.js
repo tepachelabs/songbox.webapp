@@ -28,7 +28,11 @@ export const useSidebarStyles = makeStyles(() => ({
     minWidth: '14em',
 
     '&.active': {
-      backgroundColor: `rgba(${hexToRGB(orange)},0.5)`,
+      backgroundColor: `rgba(${hexToRGB(orange)},0.3)`,
+
+      '& svg': {
+        fill: orange,
+      },
     },
   },
 }));

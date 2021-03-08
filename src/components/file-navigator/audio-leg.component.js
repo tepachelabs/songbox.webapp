@@ -4,22 +4,30 @@ import { Map } from 'immutable';
 import { useDispatch } from 'react-redux';
 import { IconButton } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
+import {
+  BrokenImageOutlined,
+  Favorite,
+  FavoriteBorder,
+  MusicNoteOutlined,
+} from '@material-ui/icons';
 
 import { playAudio } from 'store/actions/playerActions';
 import { createFavorite, deleteFavorite } from 'store/actions/favoritesActions';
 import { FileListItemComponent } from 'components/file-list';
-import { HeartIcon, HelpCircleIcon, MusicIcon } from 'components/icon';
 import { CircularProgressIcon } from 'components/circular-progress-icon';
-import { gray } from 'style/colors';
 
 const getFavoriteIcon = (isFavorite, isLoadingFavorite) => {
   if (isLoadingFavorite) return <CircularProgressIcon size={24} />;
-  const fillHeartStatus = isFavorite ? gray : 'none';
-  return <HeartIcon fill={fillHeartStatus} stroke={gray} />;
+  if (isFavorite) return <Favorite color="primary" />;
+  return <FavoriteBorder color="primary" />;
 };
 
 const getLinkStatusIcon = (isBroken) =>
-  isBroken ? <HelpCircleIcon /> : <MusicIcon />;
+  isBroken ? (
+    <BrokenImageOutlined color="primary" />
+  ) : (
+    <MusicNoteOutlined color="primary" />
+  );
 
 export const AudioLeg = ({ item, currentSongPath }) => {
   const dispatch = useDispatch();

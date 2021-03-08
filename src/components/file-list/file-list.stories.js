@@ -1,5 +1,4 @@
 import React from 'react';
-import { HeartIcon, MoreIcon } from 'components/icon';
 import { RouterDecorator } from 'stories/decorators';
 
 import { FileListComponent } from './file-list.component';
@@ -21,12 +20,12 @@ export default {
 
 const actions = [
   {
-    icon: <HeartIcon />,
+    icon: null,
     alt: 'add to favs',
     onClick: () => {},
   },
   {
-    icon: <MoreIcon />,
+    icon: null,
     alt: 'toggle menu',
     onClick: () => {},
   },

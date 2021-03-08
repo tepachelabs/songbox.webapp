@@ -2,8 +2,6 @@ import React from 'react';
 import { text } from '@storybook/addon-knobs';
 import { Divider, IconButton, List } from '@material-ui/core';
 
-import { HeartIcon, MoreIcon, SettingsIcon } from 'components/icon';
-
 import { FileListItemComponent } from './file-list-item.component';
 
 export default {
@@ -21,12 +19,8 @@ const Wrapper = ({ children }) => (
 );
 const SecondaryActions = () => (
   <React.Fragment>
-    <IconButton edge="end" aria-label="comments" onClick={noop}>
-      <HeartIcon />
-    </IconButton>
-    <IconButton edge="end" aria-label="comments" onClick={noop}>
-      <MoreIcon />
-    </IconButton>
+    <IconButton edge="end" aria-label="comments" onClick={noop} />
+    <IconButton edge="end" aria-label="comments" onClick={noop} />
   </React.Fragment>
 );
 // eslint-disable-next-line react/prop-types
@@ -43,11 +37,7 @@ export const FileListItem = () => {
       <FileListItemComponent onClick={noop} title={title1} />
       <Divider />
       {/* With icon */}
-      <FileListItemComponent
-        onClick={noop}
-        title={title2}
-        icon={<HeartIcon />}
-      />
+      <FileListItemComponent onClick={noop} title={title2} />
       <Divider />
       {/* With secondary actions */}
       <FileListItemComponent onClick={noop} title={title3}>
@@ -55,11 +45,7 @@ export const FileListItem = () => {
       </FileListItemComponent>
       <Divider />
       {/* With icon & secondary actions */}
-      <FileListItemComponent
-        onClick={noop}
-        title={title4}
-        icon={<SettingsIcon />}
-      >
+      <FileListItemComponent onClick={noop} title={title4}>
         <SecondaryActions />
       </FileListItemComponent>
     </Wrapper>
