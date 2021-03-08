@@ -37,11 +37,7 @@ export const FileListItem = () => {
       <FileListItemComponent onClick={noop} title={title1} />
       <Divider />
       {/* With icon */}
-      <FileListItemComponent
-        onClick={noop}
-        title={title2}
-        icon={<HeartIcon />}
-      />
+      <FileListItemComponent onClick={noop} title={title2} />
       <Divider />
       {/* With secondary actions */}
       <FileListItemComponent onClick={noop} title={title3}>
