@@ -1,6 +1,8 @@
 import styled from 'styled-components';
-import { ProductTitle } from 'style/typography';
 import { makeStyles } from '@material-ui/core/styles';
+
+import { ProductTitle } from 'style/typography';
+import { hexToRGB, orange } from 'style/colors';
 
 export const SidebarWrapper = styled.div`
   padding: ${({ theme }) => `${theme.spacing.ten} ${theme.spacing.one}`};
@@ -24,5 +26,9 @@ export const SidebarTitle = styled(ProductTitle)`
 export const useSidebarStyles = makeStyles(() => ({
   button: {
     minWidth: '14em',
+
+    '&.active': {
+      backgroundColor: `rgba(${hexToRGB(orange)},0.5)`,
+    },
   },
 }));

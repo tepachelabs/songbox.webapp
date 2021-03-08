@@ -13,7 +13,10 @@ import { setFilesList, setFilesLoading } from './filesActions';
 
 /* ASYNC OPERATIONS */
 
-export const createFavorite = ({ name, path }) => (dispatch, getState) => {
+export const createFavorite = ({ name, path }, callback) => (
+  dispatch,
+  getState,
+) => {
   const token = getState().app.get('token');
 
   apiCreateFavorite(token, name, path)
@@ -27,10 +30,11 @@ export const createFavorite = ({ name, path }) => (dispatch, getState) => {
     })
     .catch((error) => {
       logError(error);
-    });
+    })
+    .finally(callback);
 };
 
-export const deleteFavorite = (id) => (dispatch, getState) => {
+export const deleteFavorite = (id, callback) => (dispatch, getState) => {
   const token = getState().app.get('token');
 
   apiDeleteFavorite(token, id)
@@ -44,7 +48,8 @@ export const deleteFavorite = (id) => (dispatch, getState) => {
     })
     .catch((error) => {
       logError(error);
-    });
+    })
+    .finally(callback);
 };
 
 export const getFavorites = () => (dispatch, getState) => {
