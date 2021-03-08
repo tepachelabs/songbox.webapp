@@ -1,9 +1,10 @@
-export const white = '#ffffff';
+export const white = '#fafafa';
 export const blue = '#1976d2';
 export const dropboxBlue = '#1da1f2';
 export const black = '#35424a';
-export const muiBackgroundBlack = '#424242';
-export const muiBlack = '#989eb1';
+export const muiPaperBackgroundBlack = '#424242';
+export const muiBlack = '#303030';
+export const muiWhite = '#ffffff';
 export const gray = '#989eb1';
 export const orange = '#ffa834';
 export const lightGray = '#d2dae2';

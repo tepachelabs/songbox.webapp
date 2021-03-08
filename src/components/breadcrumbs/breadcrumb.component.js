@@ -1,8 +1,12 @@
 import React from 'react';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
+import {
+  Breadcrumbs as MuiBreadcrumbs,
+  Link,
+  Typography,
+} from '@material-ui/core';
+import { Home } from '@material-ui/icons';
 
-import { Breadcrumbs as MuiBreadcrumbs, Link } from '@material-ui/core';
-import { HomeIcon } from 'components/icon';
 import { getBreadcrumbs } from './breadcrumb.utils';
 
 export const Breadcrumbs = () => {
@@ -10,9 +14,13 @@ export const Breadcrumbs = () => {
   const breadcrumbs = getBreadcrumbs(location);
 
   return (
-    <MuiBreadcrumbs maxItems={2} aria-label="breadcrumb">
+    <MuiBreadcrumbs
+      maxItems={2}
+      separator={<Typography color="textPrimary">/</Typography>}
+      aria-label="breadcrumb"
+    >
       <Link color="inherit" to="/app" component={RouterLink}>
-        <HomeIcon />
+        <Home color="primary" />
       </Link>
 
       {breadcrumbs.map(({ title, uri }) =>
@@ -23,7 +31,7 @@ export const Breadcrumbs = () => {
             component={RouterLink}
             to={`${uri}`}
           >
-            {title}
+            <Typography color="textPrimary">{title}</Typography>
           </Link>
         ) : null,
       )}

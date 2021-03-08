@@ -33,7 +33,7 @@ export const SettingsComponent = ({
           <Typography variant="h6" color="textPrimary">
             {t('settings.player.title')}
           </Typography>
-          <Typography variant="subtitle2">
+          <Typography variant="subtitle2" color="textPrimary">
             {t('settings.player.desc')}
           </Typography>
         </Box>
@@ -48,7 +48,11 @@ export const SettingsComponent = ({
                   onChange={onSettingChange}
                 />
               }
-              label={t('settings.player.autoplayLabel')}
+              label={
+                <Typography color="textPrimary">
+                  {t('settings.player.autoplayLabel')}
+                </Typography>
+              }
             />
           </FormGroup>
         </FormControl>
@@ -59,7 +63,7 @@ export const SettingsComponent = ({
           <Typography variant="h6" color="textPrimary">
             {t('settings.appearance.title')}
           </Typography>
-          <Typography variant="subtitle2">
+          <Typography variant="subtitle2" color="textPrimary">
             {t('settings.appearance.desc')}
           </Typography>
         </Box>
@@ -74,7 +78,11 @@ export const SettingsComponent = ({
                   onChange={onSettingChange}
                 />
               }
-              label={t('settings.appearance.darkThemeLabel')}
+              label={
+                <Typography color="textPrimary">
+                  {t('settings.appearance.darkThemeLabel')}
+                </Typography>
+              }
             />
             <FormControlLabel
               control={
@@ -84,7 +92,11 @@ export const SettingsComponent = ({
                   onChange={onSettingChange}
                 />
               }
-              label={t('settings.appearance.showFileExtensionLabel')}
+              label={
+                <Typography color="textPrimary">
+                  {t('settings.appearance.showFileExtensionLabel')}
+                </Typography>
+              }
             />
           </FormGroup>
         </FormControl>
@@ -98,7 +110,9 @@ export const SettingsComponent = ({
         </Box>
 
         <Box mb={2}>
-          <Typography>{t('settings.other.languageDesc')}</Typography>
+          <Typography color="textPrimary">
+            {t('settings.other.languageDesc')}
+          </Typography>
 
           <FormControl>
             <InputLabel>{t('settings.other.languageLabel')}</InputLabel>

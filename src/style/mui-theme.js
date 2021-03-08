@@ -1,10 +1,22 @@
 import { createMuiTheme } from '@material-ui/core/styles';
-import { black, orange, white } from './colors';
+import {
+  black,
+  gray,
+  muiBlack,
+  muiPaperBackgroundBlack,
+  muiWhite,
+  orange,
+  white,
+} from './colors';
 
 export function MuiThemeFactory() {
   const create = (isDarkThemeEnabled) =>
     createMuiTheme({
       palette: {
+        background: {
+          default: isDarkThemeEnabled ? muiBlack : white,
+          paper: isDarkThemeEnabled ? muiPaperBackgroundBlack : muiWhite,
+        },
         common: { black, white },
         primary: {
           type: isDarkThemeEnabled ? 'dark' : 'light',
@@ -12,6 +24,10 @@ export function MuiThemeFactory() {
         },
         text: {
           primary: isDarkThemeEnabled ? white : black,
+          secondary: gray,
+        },
+        action: {
+          active: isDarkThemeEnabled ? white : gray,
         },
       },
       typography: {

@@ -12,6 +12,7 @@ const getFormattedName = (isFullFilenameEnabled, name) =>
 
 export const AudioPlayerHeader = ({ currentSong, isFullFilenameEnabled }) => (
   <Typography
+    color="textPrimary"
     variant="subtitle2"
     component={Link}
     to={`/app${currentSong?.get('parentPath')}`}

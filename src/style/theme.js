@@ -2,7 +2,7 @@ import colors, {
   almostWhite,
   black,
   gray,
-  muiBackgroundBlack,
+  muiPaperBackgroundBlack,
   white,
 } from './colors';
 
@@ -36,7 +36,7 @@ const light = {
 
 const dark = {
   colors,
-  background: muiBackgroundBlack,
+  background: muiPaperBackgroundBlack,
   spacing,
   textColor: {
     base: almostWhite,

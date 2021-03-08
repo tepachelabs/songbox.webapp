@@ -17,6 +17,7 @@ export const FileTitle = ({ name, isStrikethrough }) => {
 
   return (
     <Typography
+      color="textPrimary"
       className={classes.root}
       variant="inherit"
       noWrap

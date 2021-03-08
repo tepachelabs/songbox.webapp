@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import AudioPlayer from 'react-h5-audio-player';
 import { useDispatch, useSelector } from 'react-redux';
-import 'react-h5-audio-player/lib/styles.css';
 
 import { loadNextSong, loadPreviousSong } from 'store/actions/playerActions';
 import { CircularProgressIcon } from 'components/circular-progress-icon';
 import { AudioPlayerHeader } from './audio-player-header.components';
-import { AudioWrapper } from './audio-player.styles';
+import { AudioWrapper, useAudioPlayerStyle } from './audio-player.styles';
 
 const BRAND = 'Songbox';
 
 export const AudioPlayerContainer = () => {
+  const classes = useAudioPlayerStyle();
   const isLoading = useSelector(({ player }) => player.get('isLoading'));
   const currentSong = useSelector(({ player }) => player.get('currentSong'));
   const isAutoPlayEnabled = useSelector(({ settings }) =>
@@ -42,6 +42,7 @@ export const AudioPlayerContainer = () => {
   return (
     <AudioWrapper>
       <AudioPlayer
+        className={classes.audioPlayer}
         autoPlay
         showSkipControls
         src={currentSong?.get('src')}

@@ -10,8 +10,7 @@ import {
   ListItemIcon,
   ListItemText,
 } from '@material-ui/core';
-
-import { MenuIcon } from 'components/icon';
+import { MenuOutlined } from '@material-ui/icons';
 
 import { MENU_ITEMS } from './sidebar.constants';
 import {
@@ -40,7 +39,7 @@ export const Sidebar = ({ children }) => {
         aria-label="menu"
         onClick={toggleDrawer(true)}
       >
-        <MenuIcon width={32} height={32} />
+        <MenuOutlined />
       </IconButton>
       <Drawer open={isOpen} onClose={toggleDrawer(false)}>
         <SidebarWrapper>
@@ -57,7 +56,7 @@ export const Sidebar = ({ children }) => {
                 onClick={toggleDrawer(false)}
               >
                 <ListItemIcon>
-                  <Icon />
+                  <Icon color="action" />
                 </ListItemIcon>
                 <ListItemText primary={t(`menu.${title}`)} />
               </ListItem>
