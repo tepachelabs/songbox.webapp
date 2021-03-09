@@ -1,1 +1,1 @@
-export { RefreshButtonContainer } from './refresh-button.container';
+export { RefreshButton } from './refresh-button.component';

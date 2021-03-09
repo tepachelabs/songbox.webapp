@@ -4,7 +4,7 @@ import { Box, Grid } from '@material-ui/core';
 
 import { Breadcrumbs } from 'components/breadcrumbs';
 import { FileNavigator } from 'components/file-navigator';
-import { RefreshButtonContainer } from 'components/refresh-button';
+import { RefreshButton } from 'components/refresh-button';
 
 export const MainComponent = () => {
   const { path = '' } = useParams();
@@ -15,7 +15,7 @@ export const MainComponent = () => {
         <Breadcrumbs />
       </Box>
       <Box>
-        <RefreshButtonContainer />
+        <RefreshButton />
       </Box>
       <Grid item xs={12}>
         <FileNavigator path={path} />

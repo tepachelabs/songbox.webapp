@@ -2,6 +2,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 import {
   AppBar,
+  Box,
   Container,
   Grid,
   Toolbar,
@@ -10,6 +11,7 @@ import {
 
 import { Sidebar } from 'components/sidebar';
 import { UserProfile } from 'components/user-profile';
+import { Copyright } from 'components/copyright';
 import { usePageStyles } from './page.styles';
 
 export const Page = ({ title, children }) => {
@@ -28,6 +30,11 @@ export const Page = ({ title, children }) => {
       <Container className={classes.content}>
         <Grid container spacing={3}>
           {children}
+        </Grid>
+        <Grid item xs={12}>
+          <Box mt={5}>
+            <Copyright />
+          </Box>
         </Grid>
       </Container>
     </React.Fragment>

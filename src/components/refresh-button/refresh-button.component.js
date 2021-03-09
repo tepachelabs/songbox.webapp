@@ -1,19 +1,24 @@
 import React from 'react';
-import propTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { Button } from '@material-ui/core';
 
-import { OrangeButton } from 'style/button';
+import { getContentsFromPath } from 'store/actions/filesActions';
 
-export const RefreshButtonComponent = ({ onClick }) => {
+export const RefreshButton = () => {
+  const { path = '' } = useParams();
+  const dispatch = useDispatch();
+  const getFilesFromCurrentPath = () => dispatch(getContentsFromPath(path));
   const [t] = useTranslation();
 
   return (
-    <OrangeButton type="button" onClick={onClick}>
+    <Button
+      color="primary"
+      onClick={getFilesFromCurrentPath}
+      variant="contained"
+    >
       {t('home.refresh')}
-    </OrangeButton>
+    </Button>
   );
-};
-
-RefreshButtonComponent.propTypes = {
-  onClick: propTypes.func.isRequired,
 };

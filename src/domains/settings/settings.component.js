@@ -44,6 +44,7 @@ export const SettingsComponent = ({
               control={
                 <Switch
                   checked={isAutoPlayEnabled}
+                  color="primary"
                   name="isAutoPlayEnabled"
                   onChange={onSettingChange}
                 />
@@ -74,6 +75,7 @@ export const SettingsComponent = ({
               control={
                 <Switch
                   checked={isDarkThemeEnabled}
+                  color="primary"
                   name="isDarkThemeEnabled"
                   onChange={onSettingChange}
                 />
@@ -88,6 +90,7 @@ export const SettingsComponent = ({
               control={
                 <Switch
                   checked={isFullFilenameEnabled}
+                  color="primary"
                   name="isFullFilenameEnabled"
                   onChange={onSettingChange}
                 />
@@ -129,11 +132,7 @@ export const SettingsComponent = ({
         </Box>
 
         <Box>
-          <Button
-            color="secondary"
-            onClick={onRestoreClick}
-            variant="contained"
-          >
+          <Button color="primary" onClick={onRestoreClick} variant="contained">
             {t('settings.other.restoreLabel')}
           </Button>
         </Box>

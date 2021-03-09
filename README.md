@@ -1,4 +1,4 @@
-Copyright © 2020, TepacheLabs
+Copyright © 2016-2021, TepacheLabs
 
 # Songbox
 

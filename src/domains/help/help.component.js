@@ -1,15 +1,16 @@
 import React from 'react';
-import { Paper, Typography } from '@material-ui/core';
-import { useTranslation } from 'react-i18next';
+import { Box, Grid, Typography } from '@material-ui/core';
 
-const HelpComponent = () => {
-  const [t] = useTranslation();
-  return (
-    <Paper>
-      <Typography variant="h4">{t('help.title')}</Typography>
-      <p>Hello im just a filler!</p>
-    </Paper>
-  );
-};
+const HelpComponent = () => (
+  <React.Fragment>
+    <Grid item xs={12}>
+      <Box mb={1}>
+        <Typography variant="subtitle2" color="textPrimary">
+          Work in progress...
+        </Typography>
+      </Box>
+    </Grid>
+  </React.Fragment>
+);
 
 export default HelpComponent;
