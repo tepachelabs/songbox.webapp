@@ -1,3 +1,1 @@
-import HelpComponent from './help.component';
-
-export default HelpComponent;
+export { HelpComponent as default } from './help.component';

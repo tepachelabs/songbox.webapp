@@ -1,5 +1,7 @@
 {
   "common": {
+    "back": "Atrás",
+    "next": "Siguiente",
     "brokenLink": "[Enlace roto]",
     "privacy": "Politicas de privacidad",
     "tos": "Términos de servicio"
@@ -48,7 +50,44 @@
     }
   },
   "help": {
-    "title": "Ayuda"
+    "title": "Ayuda",
+    "subtitle": "¡Bienvenido a Songbox!",
+    "description": "En ésta página aprenderás como utilizar Songbox para escuchar música y administrar tus favoritos. Puedes usar Songbox tanto en tu celular como en tu computadora. Songbox requiere acceso a Internet para funcionar.",
+    "content": {
+      "description": {
+        "title": "\uD83C\uDFB5 ¿Qué es Songbox?",
+        "description": "Songbox es un servicio web gratuito que permite al usuario escuchar su música almacenada en su Dropbox sin tener que instalar nada, mediante una interface web."
+      },
+      "start": {
+        "title": "\uD83E\uDD14 ¿Qué necesito para empezar a usar Songbox?",
+        "description": "Songbox es gratuito. Todo lo que necesitas es un navegador web moderno y una cuenta en Dropbox."
+      },
+      "favorite": {
+        "title": "❤️ ¿Cómo funcionan los Favoritos?",
+        "description": "Favoritos es una lista de reproducción especial que puedes crear con tus audios preferidos.",
+        "step": {
+          "one": "Marca un audio como favorito",
+          "two": "Todos los audios marcados aparecerán listados en la sección 'Favoritos'",
+          "three": "Presiona de nuevo sobre el botón de Favorito para desmarcarlo"
+        }
+      },
+      "cost": {
+        "title": "\uD83E\uDD11 ¿Cuánto cuesta utilizar Songbox?",
+        "description": "Songbox es gratuito."
+      },
+      "playlist": {
+        "title": "\uD83D\uDCD1 ¿Puedo crear otras listas de reproducción?",
+        "description": "Puedes usar nuestra función de 'Favoritos'. Actualmente, no soportamos otras listas de reproducción. ¡Pero pronto lo haremos!"
+      },
+      "dark": {
+        "title": "\uD83D\uDD76 ¿Hay algún tema oscuro?",
+        "description": "¡Claro! Puedes configurar algunos parámetros en la sección 'Configuración', incluyendo el botón para activar el modo oscuro."
+      },
+      "creator": {
+        "title": "\uD83C\uDF4D ¿Quién está detrás de Songbox?",
+        "description": "TepacheLabs es un equipo de desarrolladores que disfrutan de crear servicios y herramientas en sus ratos libres. Hemos creado Songbox con nuestro ❤️ y ☕️."
+      }
+    }
   },
   "auth": {
     "sign-in": {

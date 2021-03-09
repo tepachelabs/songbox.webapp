@@ -1,5 +1,7 @@
 {
   "common": {
+    "back": "Back",
+    "next": "Next",
     "brokenLink": "[Broken link]",
     "privacy": "Privacy Policy",
     "tos": "Terms of Service"
@@ -48,7 +50,44 @@
     }
   },
   "help": {
-    "title": "Help"
+    "title": "Help",
+    "subtitle": "Welcome to Songbox!",
+    "description": "This page teaches you how to sign-up for Songbox, as well as how to use it to listen to music and manage your favorites. You can use Songbox both through mobile and on your computer's desktop. Songbox requires Internet access to use.",
+    "content": {
+      "description": {
+        "title": "\uD83C\uDFB5 What is Songbox?",
+        "description": "Songbox is a free web service that allows users to listen to their music stored in Dropbox without having to install any app, directly from a web interface."
+      },
+      "start": {
+        "title": "\uD83E\uDD14 What do I need to start using Songbox?",
+        "description": "Songbox is free to use. All you need is a modern web browser and a Dropbox account."
+      },
+      "favorite": {
+        "title": "❤️ How do Favorites work?",
+        "description": "Favorites is an special playlist you can create with your starred tracks.",
+        "step": {
+          "one": "Mark an audio as favorite",
+          "two": "All marked audios will appear in the section 'Favorites'",
+          "three": "Click again the icon to delete a favorite"
+        }
+      },
+      "cost": {
+        "title": "\uD83E\uDD11 How much does Songbox cost?",
+        "description": "Songbox is free to use."
+      },
+      "playlist": {
+        "title": "\uD83D\uDCD1 Can I create playlists?",
+        "description": "You can use our 'Favorites' feature. Currently, we don't support custom playlists. But we will!"
+      },
+      "dark": {
+        "title": "\uD83D\uDD76 Is there a dark mode?",
+        "description": "Of course! You can configure some parameters in the 'Settings' section, the 'dark mode' toggle included."
+      },
+      "creator": {
+        "title": "\uD83C\uDF4D Who is behind Songbox?",
+        "description": "TepacheLabs is a group of developers that enjoy creating services and tools in their free time. We created Songbox with our ❤️ and ☕️."
+      }
+    }
   },
   "auth": {
     "sign-in": {
